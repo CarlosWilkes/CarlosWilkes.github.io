@@ -1,0 +1,102 @@
+p { font-family: 'Titillium+Web', sans-serif; margin-block-start: 0px; margin-block-end: 10px; padding-bottom: 10px; font-size: 16px; }
+a { color: inherit; font-weight: bold; }
+.left { display: flex; flex-direction: row; align-items: center; margin-top: 25px; background-color: #E8F7FF; border-radius: 5px; }
+.left img, p { margin: 10px; }
+.right { display: flex; flex-direction: row-reverse; align-items: center; margin-top: 25px; background-color: #E8F7FF; border-radius: 5px; }
+.right img, p { margin: 10px; }
+.nav { float: right; padding: 30px; }
+.nav a { font-family: 'Titillium+Web'; margin: 10px; font-family: 'Titillium+Web', sans-serif; font-size: 14px; font-weight: normal; text-decoration: none; }
+.logo
+{
+	display: block;
+	padding: 27px;
+	width: 100px;
+	float: left;
+}
+.header
+{
+	padding-bottom: 100px;
+}
+.main
+{
+	background-color: #FFF;
+	margin-left: 200px;
+	margin-right: 200px;
+	padding-top: 200px;
+	margin-top: 40px;
+	margin-bottom: 100px;
+	border-radius: 5px;
+	padding: 60px;
+	box-shadow: 0px 0px 70px -30px #000;
+}
+.title
+{
+	font-size: 50px;
+	text-align: center;
+	margin-top: 30px;
+}
+.gallery
+{
+	float: left;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Titillium+Web', sans-serif;
+}
+
+.tabs{
+	width: 100%;
+    display: block;
+    position: relative;
+}
+
+.tabs .tab{
+	float: right;
+	display: block;
+}
+
+.tabs .tab>input[type="radio"] {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+}
+
+.tabs .tab>label {
+	display: block;
+	padding: 7px 21px;
+	font-size: 12px;
+	text-transform: uppercase;
+	cursor: pointer;
+	position: relative;
+	color: #000;
+	background: clear;
+}
+
+.tabs .content {
+	z-index: 0;/* or display: none; */
+	overflow: hidden;
+	right: 0px;
+	padding: 50px;
+	position: absolute;
+	margin-top: 50px;
+	top: 27px;
+	left: 0;
+
+	opacity:0;
+	transition: opacity 400ms ease-out;
+}
+
+.tabs>.tab>[id^="tab"]:checked + label {
+	top: 0;
+	background: #303030;
+	color: #F5F5F5;
+}
+
+.tabs>.tab>[id^="tab"]:checked ~ [id^="tab-content"] {
+	z-index: 1;/* or display: block; */
+
+	opacity: 1;
+	transition: opacity 400ms ease-out;
+}
