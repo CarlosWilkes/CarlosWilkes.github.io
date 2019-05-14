@@ -1,0 +1,3 @@
+Space Graphics Toolkit
+Quickly make the space scene of your dreams using Space Graphics Toolkit. This huge collection of space effects can be customized and combined in any way you like, allowing you to quickly make realistic or fantasy worlds. Each feature has been heavily optimized to run on almost any device and platform.
+<a href="http://assetstore.unity.com/packages/slug/4160?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/4160/icon" alt="Space Graphics Toolkit" width="128" height="128" /></a>

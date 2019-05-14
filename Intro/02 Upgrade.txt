@@ -1,0 +1,3 @@
+How do I upgrade?
+First, make sure you <b>back up</b> your project files.
+If for some reason the latest updates breaks your project (e.g. errors in the console), then try deleting the root folder for this asset, and reinstall it.

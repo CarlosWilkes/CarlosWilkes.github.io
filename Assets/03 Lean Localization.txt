@@ -1,0 +1,3 @@
+Lean Localization
+Lean Localization is a localization library that's designed to be as simple to use as possible for both designers, and programmers.
+<a href="http://assetstore.unity.com/packages/slug/28504?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/28504/icon" alt="Lean Localization" width="128" height="128" /></a>

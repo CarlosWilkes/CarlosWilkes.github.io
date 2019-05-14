@@ -33,13 +33,13 @@ Lean Pool Documentation
 </div>
 			</div>
 			<div style="position: absolute; left: 350px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
-<a name="14270"></a><h2>Thank you for downloading!</h2><div style="">
+<a name="31544"></a><h2>Thank you for downloading!</h2><div style="">
 </div>
 <p>If you haven't already, please consider writing a review. They really help me out &#x2764;&#xFE0F;</p><p>If you have any questions, then feel free to send me an <a href="mailto:carlos.wilkes@gmail.com">E-Mail</a>.</p><p>You can also find me on the <a href="forum.unity.com/members/41960">Unity Forums</a>, or <a href="https://twitter.com/CarlosWilkes">Twitter</a>, or <a href="http://www.youtube.com/user/CarlosWilkes">YouTube</a>.</p><p>I'm also available for freelance work if you need help with your projects.</p>
-<br><br><a name="12812"></a><h2>What is Lean Pool?</h2><div style="">
+<br><br><a name="30092"></a><h2>What is Lean Pool?</h2><div style="">
 <p>Lean Pool is a lightweight pooling asset, allowing you to easily cache and recycle prefab instances.</p><p>Pooling improves spawning and despawning performance, reduces gc alloc.</p><p>Lean Pool also works with normal C# classes too.</p>
 </div>
-<br><br><a name="13100"></a><h2>How do I use it?</h2><div style="">
+<br><br><a name="30398"></a><h2>How do I use it?</h2><div style="">
 <p>Find your code that heavily relies on:</p>
 <div class="code"><pre>Instantiate( ... );</pre></div>
 <p>And replace it with:</p>
@@ -52,24 +52,24 @@ Lean Pool Documentation
 <div class="code"><pre>var enemy = Lean.Pool.LeanPool.Spawn(enemyPrefab);</br></br>...</br></br>Lean.Pool.LeanPool.Despawn(enemy);</pre></div>
 <p>That's it, you've now implemented Lean Pool!</p>
 </div>
-<br><br><a name="15694"></a><h2>Why do I have to keep typing Lean.Pool. before everything?</h2><div style="">
+<br><br><a name="32944"></a><h2>Why do I have to keep typing Lean.Pool. before everything?</h2><div style="">
 <p>To improve organization, all Lean Pool classes are inside the Lean.Pool namespace.</p><p>If you don't like typing Lean.Pool. each time, then you can add the following code to the top of your script:</p>
 <div class="code"><pre>using Lean.Pool;</pre></div>
 <p>You can now just call LeanPool.Spawn(...) etc.</p>
 </div>
-<br><br><a name="12610"></a><h2>How do I alter the settings and stuff?</h2><div style="">
+<br><br><a name="29890"></a><h2>How do I alter the settings and stuff?</h2><div style="">
 <p>If you use the steps above then Lean Pool will automatically create pools when you first call LeanPool.Spawn, so to adjust the settings ahead of time you need to manually create the pool.</p><p>To do this, right click in your <b>Hierarchy</b> window, and select <b>Lean / Pool</b>. You should now see a GameObject in your scene called <b>LeanGameObjectPool</b>, and it should be automatically selected.</p><p>Next, drag and drop your prefab into the <b>Prefab</b> slot, and this will associate this pool with this prefab. You can now adjust the pool settings like the Preload, Capacity, etc.</p>
 </div>
-<br><br><a name="13628"></a><h2>Help, my Rigidbody velocity isn't being reset!!</h2><div style="">
+<br><br><a name="30908"></a><h2>Help, my Rigidbody velocity isn't being reset!!</h2><div style="">
 <p>By default, Lean Pool doesn't modify any components when spawning or despawning.</p><p>This means when a Rigidbody is despawned it will retain its old velocity, and when spawned again it will shoot off with its old velocity.</p><p>To fix this, the velocity must reset when it spawned, which can be done by adding the LeanPooledRigidbody component that comes with Lean Pool.</p><p>Lean Pool also comes with the LeanPooledRigidbody2D component for Rigidbody2D GameObjects.</p><div class="tip"><strong>NOTE:</strong>&emsp;Most Unity components automatically reset their state when deactivating and activating (which is done during pooling), so there is no need to add these extra components.</div>
 </div>
-<br><br><a name="15778"></a><h2>How do I create custom spawning/despawning behaviour for the _______ component?</h2><div style="">
+<br><br><a name="33028"></a><h2>How do I create custom spawning/despawning behaviour for the _______ component?</h2><div style="">
 <p>All you need to do is make a new component that implements the IPoolable interface.</p><p>This interface defines the OnSpawn and OnDespawn methods, which which will automatically be called when your prefab is spawned and despawned.</p><div class="tip"><strong>NOTE:</strong>&emsp;Despawned prefabs are also deactivated, so you could handle such code in OnEnable and OnDisable.</div>
 </div>
-<br><br><a name="13274"></a><h2>How do I increase the performance even more?</h2><div style="">
+<br><br><a name="30554"></a><h2>How do I increase the performance even more?</h2><div style="">
 <p>You may notice that the Lean.Pool.LeanPool.Spawn and Lean.Pool.LeanPool.Despawn methods work like magic.</p><p>This is because they're static methods that search a dictionary to find the pool associated with the prefab clone before performing the actual spawn or despawn code.</p><p>This is generally very fast, but if you need to super optimize your game then you may want to access the Lean.Pool.LeanGameObjectPool component itself. If you store a reference to it, then you can call the <b>Spawn</b> and <b>Despawn</b> methods directly.</p>
 </div>
-<br><br><a name="14724"></a><h2>Why do I get warnings in the console?</h2><div style="">
+<br><br><a name="32034"></a><h2>Why do I get warnings in the console?</h2><div style="">
 <p>This is probably because you did something wrong.</p><p>For example, you may have replaced all your Instantiate calls with Spawn calls, but maybe you forgot to replace all your Destroy calls with Despawn.</p><p>There are many scenarios like this where you can forget what code is instantiating or destroying what, and it causes Lean Pool to throw a warning when it detects soemthing wrong.</p><p>However, Lean Pool will (hopefully) not break if you make anu mistakes like this, becuase I included many safety checks at every step.</p>
 </div>
 <br><br><br><h1>Assets</h1><div style="">
@@ -77,81 +77,87 @@ Lean Pool Documentation
 					<br><br><br>
 <a href="http://assetstore.unity.com/packages/slug/30111?aid=1101l4Jks" style="float: left; padding-right: 20px;"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/30111/icon" alt="Lean Touch" width="128" height="128" /></a>
 					
-<a name="14234"></a><h2>Lean Touch</h2><div style="">
+<a name="31508"></a><h2>Lean Touch</h2><div style="">
 <p>Rapidly develop your game with consistent input across desktop & mobile using Lean Touch. This lightweight asset comes with many modular components, allowing you to customize them to your exact project needs!</p>
 </div>
 					<br><br><br><br>
 <a href="http://assetstore.unity.com/packages/slug/72356?aid=1101l4Jks" style="float: left; padding-right: 20px;"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/72356/icon" alt="Lean Touch+" width="128" height="128" /></a>
 					
-<a name="14682"></a><h2>Lean Touch+</h2><div style="">
+<a name="31980"></a><h2>Lean Touch+</h2><div style="">
 <p>Lean Touch+ is an extension to the popular Lean Touch asset, adding many more example scenes.</p>
 </div>
 					<br><br><br><br>
 <a href="http://assetstore.unity.com/packages/slug/28504?aid=1101l4Jks" style="float: left; padding-right: 20px;"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/28504/icon" alt="Lean Localization" width="128" height="128" /></a>
 					
-<a name="14730"></a><h2>Lean Localization</h2><div style="">
+<a name="32040"></a><h2>Lean Localization</h2><div style="">
 <p>Lean Localization is a localization library that's designed to be as simple to use as possible for both designers, and programmers.</p>
 </div>
 					<br><br><br><br>
 <a href="http://assetstore.unity.com/packages/slug/35666?aid=1101l4Jks" style="float: left; padding-right: 20px;"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/35666/icon" alt="Lean Pool" width="128" height="128" /></a>
 					
-<a name="14504"></a><h2>Lean Pool</h2><div style="">
+<a name="31796"></a><h2>Lean Pool</h2><div style="">
 <p>Quickly optimize the performance of your games using Lean Pool. Within minutes you can use this lightweight asset to preload, recycle, and limit the spawning of your prefabs.</p>
 </div>
 					<br><br><br><br>
 <a href="http://assetstore.unity.com/packages/slug/26286?aid=1101l4Jks" style="float: left; padding-right: 20px;"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/26286/icon" alt="Paint in 3D" width="128" height="128" /></a>
 					
-<a name="12616"></a><h2>Paint in 3D</h2><div style="">
+<a name="29896"></a><h2>Paint in 3D</h2><div style="">
 <p>Paint all your objects using <strong>Paint in 3D</strong> - both in game, and in editor. All features are optimized with GPU accelerated texture painting, so you can enjoy consistent performance, even if you paint your objects one million times!</p>
 </div>
 					<br><br><br><br>
 <a href="http://assetstore.unity.com/packages/slug/18125?aid=1101l4Jks" style="float: left; padding-right: 20px;"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/18125/icon" alt="Destructible 2D" width="128" height="128" /></a>
 					
-<a name="13076"></a><h2>Destructible 2D</h2><div style="">
+<a name="30374"></a><h2>Destructible 2D</h2><div style="">
 <p>Unlock the full potential of your 2D games using Destructible 2D, this asset allows you to quickly convert all your boring solid sprites into fully destructible ones!</p>
 </div>
 					<br><br><br><br>
 <a href="http://assetstore.unity.com/packages/slug/4160?aid=1101l4Jks" style="float: left; padding-right: 20px;"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/4160/icon" alt="Space Graphics Toolkit" width="128" height="128" /></a>
 					
-<a name="14978"></a><h2>Space Graphics Toolkit</h2><div style="">
+<a name="32282"></a><h2>Space Graphics Toolkit</h2><div style="">
 <p>Quickly make the space scene of your dreams using Space Graphics Toolkit. This huge collection of space effects can be customized and combined in any way you like, allowing you to quickly make realistic or fantasy worlds. Each feature has been heavily optimized to run on almost any device and platform.</p>
 </div>
 					<br><br><br><br>
 <a href="http://assetstore.unity.com/packages/slug/124578?aid=1101l4Jks" style="float: left; padding-right: 20px;"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/124578/icon" alt="Planet Pack - Space Graphics Toolkit" width="128" height="128" /></a>
 					
-<a name="13706"></a><h2>Planet Pack - Space Graphics Toolkit</h2><div style="">
+<a name="30986"></a><h2>Planet Pack - Space Graphics Toolkit</h2><div style="">
 <p>This pack contains 26 high detail PBR planets, all finished using the powerful planet features of Space Graphics Toolkit (SGT). This is a standalone package, so SGT is not required. You can even use the included features to turn your own planets into beautiful worlds!</p>
 </div>
 					<br><br><br><br>
 <a href="http://assetstore.unity.com/packages/slug/17125?aid=1101l4Jks" style="float: left; padding-right: 20px;"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/17125/icon" alt="Volumetric Audio" width="128" height="128" /></a>
 					
-<a name="14330"></a><h2>Volumetric Audio</h2><div style="">
+<a name="31616"></a><h2>Volumetric Audio</h2><div style="">
 <p>Unity sounds only emanate from a single point source. This is great for explosions and footsteps, but quite often you need something more advanced.</p><p>Volumetric Audio is an easy to use package that allows you to define boxes, spheres, capsules, paths, or meshes that sounds can emanate from.</p>
 </div>
 </div>
 <br><br><br><br><br><h1>Versions</h1><div style="">
-<br><a name="12378"></a><h2>1.1.0</h2><div style="">
+<br><a name="-56604"></a><h2>1.1.2</h2><div style="">
+<p>Added additional error checks to LeanPool.Spawn.</p>
+</div>
+<br><a name="29854"></a><h2>1.1.1</h2><div style="">
+<p>Fixed bug when despawning a specific clone.</p>
+</div>
+<br><a name="29670"></a><h2>1.1.0</h2><div style="">
 <p>Moved main build to Unity 2017.4.0f1.<br>Restructured project files.<br>Rewritten core pooling code for better performance and lower memory usage.<br>Replaced LeanPoolable with IPoolable interface.<br>Simplified demo scenes.</p>
 </div>
-<br><a name="13250"></a><h2>1.0.9</h2><div style="">
+<br><a name="30530"></a><h2>1.0.9</h2><div style="">
 <p>Fixed package structure.<br>Updated documentation.</p>
 </div>
-<br><a name="15832"></a><h2>1.0.8</h2><div style="">
+<br><a name="33070"></a><h2>1.0.8</h2><div style="">
 <p>Updated documentation.</p>
 </div>
-<br><a name="15682"></a><h2>1.0.7</h2><div style="">
+<br><a name="32932"></a><h2>1.0.7</h2><div style="">
 <p>Moved main build to Unity 5.6.6f2.<br>Redesigned documentation.<br>Changed folder structure.<br>Added support for LWRP and HDRP.</p>
 </div>
-<br><a name="15766"></a><h2>1.0.6</h2><div style="">
+<br><a name="33022"></a><h2>1.0.6</h2><div style="">
 <p>Fixed DespawnAll behaviour with delayed pooling.<br>Simplified spawn & despawn list handling code.<br>Improved demo scene comments.</p>
 </div>
-<br><a name="14300"></a><h2>1.0.5</h2><div style="">
+<br><a name="31586"></a><h2>1.0.5</h2><div style="">
 <p>Moved main LeanPool code to LeanGameObjectPool component.<br>Added <b>Recycle</b> setting and feature.<br>Added <b>Persist</b> setting and feature.<br>Added <b>Warnings</b> setting and feature.<br>Added tracking of spawned objects.</p>
 </div>
-<br><a name="14264"></a><h2>1.0.4</h2><div style="">
+<br><a name="31538"></a><h2>1.0.4</h2><div style="">
 <p>Fixed despawn delay bug with components.</p>
 </div>
-<br><a name="12426"></a><h2>1.0.3</h2><div style="">
+<br><a name="29712"></a><h2>1.0.3</h2><div style="">
 <p>Removed OnDespawn message when caching objects.</p>
 </div>
 </div>
@@ -249,40 +255,42 @@ Lean Pool Documentation
 			<div style="position: absolute; width: 310px; left: 0px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
 <h2 style="padding-bottom: 20px;">Index</h2><div style="">
 				<div style="margin:2px;">
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14270">Thank you for downloading!</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#12812">What is Lean Pool?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13100">How do I use it?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#15694">Why do I have to keep typing Lean.Pool. before everything?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#12610">How do I alter the settings and stuff?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13628">Help, my Rigidbody velocity isn't being reset!!</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#15778">How do I create custom spawning/despawning behaviour for the _______ component?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13274">How do I increase the performance even more?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14724">Why do I get warnings in the console?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#31544">Thank you for downloading!</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#30092">What is Lean Pool?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#30398">How do I use it?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#32944">Why do I have to keep typing Lean.Pool. before everything?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#29890">How do I alter the settings and stuff?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#30908">Help, my Rigidbody velocity isn't being reset!!</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#33028">How do I create custom spawning/despawning behaviour for the _______ component?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#30554">How do I increase the performance even more?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#32034">Why do I get warnings in the console?</a></p>
 				</div>
 </div>
 <br><h2 style="padding-bottom: 20px;">Assets</h2><div style="">
 				<div style="margin:2px;">
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14234">Lean Touch</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14682">Lean Touch+</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14730">Lean Localization</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14504">Lean Pool</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#12616">Paint in 3D</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13076">Destructible 2D</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14978">Space Graphics Toolkit</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13706">Planet Pack - Space Graphics Toolkit</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14330">Volumetric Audio</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#31508">Lean Touch</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#31980">Lean Touch+</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#32040">Lean Localization</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#31796">Lean Pool</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#29896">Paint in 3D</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#30374">Destructible 2D</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#32282">Space Graphics Toolkit</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#30986">Planet Pack - Space Graphics Toolkit</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#31616">Volumetric Audio</a></p>
 				</div>
 </div>
 <br><h2 style="padding-bottom: 20px;">Versions</h2><div style="">
 				<div style="margin:2px;">
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#12378">1.1.0</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13250">1.0.9</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#15832">1.0.8</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#15682">1.0.7</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#15766">1.0.6</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14300">1.0.5</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14264">1.0.4</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#12426">1.0.3</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-56604">1.1.2</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#29854">1.1.1</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#29670">1.1.0</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#30530">1.0.9</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#33070">1.0.8</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#32932">1.0.7</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#33022">1.0.6</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#31586">1.0.5</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#31538">1.0.4</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#29712">1.0.3</a></p>
 				</div>
 </div>
 <br><h2 style="padding-bottom: 20px;">Components</h2><div style="">
