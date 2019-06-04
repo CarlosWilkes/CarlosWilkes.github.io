@@ -29,18 +29,25 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h1 style="font-size: 75px; color: #FFF; text-align: center; vertical-align: middle; line-height: 100px;">Lean Transition</h1>
 </div>
 <div style="position: absolute; left: 350px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
-<a name="-136680"></a><h2>Thank you for your support &#x2764;&#xFE0F</h2>
+<a name="-938506"></a><h2>Thank you for your support &#x2764;&#xFE0F</h2>
 <p>If you haven't already, please consider writing a review. They really help me out!</p><p>If you have any questions, then feel free to send me an <a href="mailto:carlos.wilkes@gmail.com">E-Mail</a>.</p><p>You can also find me on the <a href="http://forum.unity.com/members/41960">Unity Forums</a>, or <a href="http://twitter.com/CarlosWilkes">Twitter</a>, or <a href="http://youtube.com/user/CarlosWilkes">YouTube</a>.</p><p>I'm also available for freelance work if you need help with your projects.</p>
 <br><br>
-<a name="-136686"></a><h2>How do I upgrade?</h2>
+<a name="-938512"></a><h2>How do I upgrade?</h2>
 <p>First, make sure you <b>back up</b> your project files.</p><p>Next, install the latest version.</p><p>If for some reason the latest updates breaks your project (e.g. errors in the console), then try deleting the root folder for this asset, and reinstalling it.</p><p>If it still doesn't work then go back to your previous version, and let me know what the errors are, so I can fix it.</p>
 <br><br>
 <div style="">
-<a name="-14710"></a><h2>What is Lean Transition?</h2>
-<p>Lean Transition allows you to smoothly animate many GameObject and Component settings to new values.</p><p>Transitions can be as simple as fading menus in and out, to complex sequences with many different branches.</p><p>Transitions can be set up in the editor, as well as from code, using exactly the same procedure!</p>
+<a name="32396"></a><h2>What is Lean Transition?</h2>
+<p>Lean Transition allows you to smoothly animate GameObject and Component settings from their current values, to new values.</p><p>Transitions can be as simple as fading menus in and out, to complex sequences with many different branches.</p><p>Transitions can be set up in the editor, as well as from code, using exactly the same procedure!</p>
 <br><br></div>
 <div style="">
-<a name="-14718"></a><h2>How do I use it from code?</h2>
+<a name="32576"></a><h2>How do I use it?</h2>
+<br><br></div>
+<div style="padding-left: 75px;">
+<h2>Editor</h2>
+<p>First, add transition components to your GameObject. If you click the <b>Add Component</b> button and type in <b>"Transition"</b>, you will see a list of all available components. For example, the <b>Transform.localPosition Transition (LeanTransformLocalPosition)</b> component can be added to your GameObject, allowing you t alter the <b>Transform</b> component's <b>localPosition</b> setting.</p><p>Next, you must begin the transition. This can be done using many different methods:</p><div class="tip"><strong>Method 1 [Editor Only]</strong>&emsp;Open your transition component's <b>Context Menu</b> (gear icon at the top right), and select <b>Begin All Transitions</b>.</div><div class="tip"><strong>Method 2</strong>&emsp;Connect your UI button's <b>On Click</b> event to your transition component's <b>Begin All Transitions</b> function.</div><div class="tip"><strong>Method 3</strong>&emsp;Make a new GameObject with the <b>LeanAnimate</b> component, and drag and drop your transitions GameObject into the <b>Transitions</b> setting. You can now call the <b>LeanAnimate.Begin Transitions</b> function from your UI buttons.</div><div class="tip"><strong>Method 4</strong>&emsp;Make a new GameObject with the <b>LeanAnimateKeyPress</b> component, and drag and drop your transitions GameObject into the <b>Transitions</b> setting. You can now press the <b>Required Key</b> button, and the animation will begin.</div>
+<br><br></div>
+<div style="padding-left: 75px;">
+<h2>Code</h2>
 <p>First, you must use the Lean.Transition namespace. Put this at the top of your source file:</p>
 <div class="code"><pre>using Lean.Transition;</pre></div>
 <p>This namespace includes all the extension methods for you to use.</p><p>Next, simply replace your normal code with transition variants. For example:</p>
@@ -50,11 +57,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>It's as simple as that!</p><div class="tip"><strong>NOTE:</strong>&emsp;All Lean Transition extension methods are named like this with <b>Transition</b> added to the end, so it should be really easy to find them.</div><div class="tip"><strong>NOTE:</strong>&emsp;Not all values have transitions. If you feel like I've missed an important one then please contect me so I can implement it!</div>
 <br><br></div>
 <div style="">
-<a name="-14758"></a><h2>How do I use it in the editor?</h2>
-<p>First, make an empty GameObject that you want to store your transition components in.</p><p>Then you can add various transition components to it. For example, the <b>Transform.localPosition Transition (LeanTransformLocalPosition)</b> component can be added to your empty GameObject. You can then drag and drop a Transform into the <b>Target</b> setting that you want to transition, and then set the <b>Position</b> you want it to transition to.</p><p>To begin the transition, you must call the <b>Begin All Transitions</b> function on one of your transition components. To test this in the editor you can click the context menu button (gear icon at top right) of your transition component, and select <b>Begin All Transitions</b>. You can also set up a UI button event and connect it to the <b>Begin All Transitions</b> function.</p><div class="tip"><strong>Method 1</strong>&emsp;Open your transition component's <b>Context Menu</b> (gear icon at the top right), and select <b>Begin All Transitions</b>.</div><div class="tip"><strong>Method 2</strong>&emsp;Connect your UI button's <b>On Click</b> event to your transition component's <b>Begin All Transitions</b> function.</div><div class="tip"><strong>Method 3</strong>&emsp;Make a new GameObject with the <b>LeanAnimate</b> component, and drag and drop your transitions GameObject into the <b>Transitions</b> setting. You can now call the <b>LeanAnimate.Begin Transitions</b> function from your UI buttons.</div><div class="tip"><strong>Method 4</strong>&emsp;Make a new GameObject with the <b>LeanAnimateKeyPress</b> component, and drag and drop your transitions GameObject into the <b>Transitions</b> setting. You can now press the <b>Required Key</b> button, and the animation will begin.</div>
-<br><br></div>
-<div style="">
-<a name="-14678"></a><h2>How do I combine transitions to make a sequence?</h2>
+<a name="33046"></a><h2>How do I combine transitions to make a sequence?</h2>
 <br><br></div>
 <div style="padding-left: 75px;">
 <h2>Editor</h2>
@@ -66,7 +69,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <div class="code"><pre>transform.</br>	localPositionTransition(new Vector3(10, 10, 10), 0.5f).</br>	JoinTransition().</br>	localPositionTransition(new Vector3(1, 1, 1), 0.5f);</pre></div>
 <br><br></div>
 <div style="">
-<a name="-74218"></a><h2>How do I add a delay between transitions?</h2>
+<a name="32374"></a><h2>How do I add a delay between transitions?</h2>
 <br><br></div>
 <div style="padding-left: 75px;">
 <h2>Editor</h2>
@@ -78,7 +81,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <div class="code"><pre>transform.</br>	localPositionTransition(new Vector3(10, 10, 10), 0.5f).</br>	JoinDelayTransition(5.0f).</br>	localPositionTransition(new Vector3(1, 1, 1), 0.5f);</pre></div>
 <br><br></div>
 <div style="">
-<a name="-83648"></a><h2>How do I insert transitions to save time?</h2>
+<a name="32536"></a><h2>How do I insert transitions to save time?</h2>
 <br><br></div>
 <div style="padding-left: 75px;">
 <h2>Editor</h2>
@@ -90,7 +93,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <div class="code"><pre>transform.</br>	localPositionTransition(new Vector3(10, 10, 10), 0.5f).</br>	JoinInsertTransition(gameObjectWithTransitions).</br>	localPositionTransition(new Vector3(1, 1, 1), 0.5f);</pre></div>
 <br><br></div>
 <div style="">
-<a name="-89376"></a><h2>How do I delay or insert without joining?</h2>
+<a name="32954"></a><h2>How do I delay or insert without joining?</h2>
 <p>The <b>JoinDelay</b> and <b>JoinInsert</b> features are same as <b>Delay</b> and <b>Insert</b>, except they automatically have a <b>Join</b> placed at the start and end.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -102,8 +105,8 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Instead of calling the <b>JoinDelayTransition()</b> method, you can manually call the <b>JoinTransition()</b> and <b>DelayTransition()</b> methods.</p><p>Instead of calling the <b>JoinInsertTransition()</b> method, you can manually call the <b>JoinTransition()</b> and <b>InsertTransition()</b> methods.</p>
 <br><br></div>
 <div style="">
-<a name="-97522"></a><h2>How do I change the transition timing?</h2>
-<p>By default, all transitions are executed in <b>Update</b>, using <b>Unscaled Time</b>.</p><p>To change this, simply moidify the settings of the <b>LeanTransition</b> component in your scene. If your scene doesn't contain this component, then make a new GameObject and add it.</p>
+<a name="31666"></a><h2>How do I change the transition timing?</h2>
+<p>By default, all transitions are executed in <b>Update</b>, using <b>Unscaled Time</b>.</p><p>To change this, simply modify the settings of the <b>LeanTransition</b> component in your scene. If your scene doesn't contain this component, then make a new GameObject and add it.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
 <h2>Editor</h2>
@@ -114,7 +117,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Simply call the TimeTransition() method, and all transitions after it will use the specified time.</p><div class="tip"><strong>NOTE:</strong>&emsp;To reset the transition time you must call the <b>LeanTransition.ResetTiming</b> method, or call the <b>TimeTransition()</b> method with <b>LeanTime.Default</b>.</div>
 <br><br></div>
 <div style="">
-<a name="-104198"></a><h2>How do I perform a custom action?</h2>
+<a name="33288"></a><h2>How do I perform a custom action?</h2>
 <br><br></div>
 <div style="padding-left: 75px;">
 <h2>Editor</h2>
@@ -157,14 +160,11 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Unity sounds only emanate from a single point source. This is great for explosions and footsteps, but quite often you need something more advanced. Volumetric Audio is an easy to use package that allows you to define boxes, spheres, capsules, paths, or meshes that sounds can emanate from.</p><br><br><br><br>
 <br><br>
 <h1>Versions</h1>
-<a name="-14744"></a><h2>3.6.4</h2>
-<p>Added night light support to the Planet shader.<br>Added new demo scenes for the Debris feature.<br>Updated Solar System Pack link.<br></p>
+<a name="33392"></a><h2>1.0.1</h2>
+<p>Added Transform.position transition.<br>Fixed bug when adding multiple events to the same object.<br>Allowed LeanPlayer.Speed to be toggled off.<br></p>
 <br><br>
-<a name="-14636"></a><h2>3.6.3</h2>
-<p>Fixed shadow casting calculations.<br>Improved component consistency.<br>Redesigned documentation.<br></p>
-<br><br>
-<a name="-14690"></a><h2>3.6.2</h2>
-<p>Updated Solar System Pack for better realism.<br>Added automatic floating origin support to SgtStarfieldInfinite.<br>Added SgtCamera.UseOrigin setting for floating origin compatibility.<br>Added SgtStarfield.StretchLimit to improve warp effects at high speed.<br></p>
+<a name="31602"></a><h2>1.0.0</h2>
+<p>First release.<br></p>
 <br><br>
 <br><br>
 <h1>Components</h1>
@@ -455,17 +455,16 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 </div>
 <div style="position: absolute; width: 310px; left: 0px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
 <h2 style="padding-bottom: 20px;">Index</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-136680">Thank you for your support &#x2764;&#xFE0F</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-136686">How do I upgrade?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-14710">What is Lean Transition?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-14718">How do I use it from code?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-14758">How do I use it in the editor?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-14678">How do I combine transitions to make a sequence?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-74218">How do I add a delay between transitions?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-83648">How do I insert transitions to save time?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-89376">How do I delay or insert without joining?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-97522">How do I change the transition timing?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-104198">How do I perform a custom action?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-938506">Thank you for your support &#x2764;&#xFE0F</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-938512">How do I upgrade?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#32396">What is Lean Transition?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#32576">How do I use it?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#33046">How do I combine transitions to make a sequence?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#32374">How do I add a delay between transitions?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#32536">How do I insert transitions to save time?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#32954">How do I delay or insert without joining?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#31666">How do I change the transition timing?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#33288">How do I perform a custom action?</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Assets</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#1">Lean Touch</a></p>
@@ -479,9 +478,8 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#9">Volumetric Audio</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Versions</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-14744">3.6.4</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-14636">3.6.3</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-14690">3.6.2</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#33392">1.0.1</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#31602">1.0.0</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Components</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanEase">LeanEase</a></p>
