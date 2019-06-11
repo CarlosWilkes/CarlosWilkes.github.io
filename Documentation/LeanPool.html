@@ -29,18 +29,18 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h1 style="font-size: 75px; color: #FFF; text-align: center; vertical-align: middle; line-height: 100px;">Lean Pool</h1>
 </div>
 <div style="position: absolute; left: 350px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
-<a name="-28224"></a><h2>Thank you for your support &#x2764;&#xFE0F</h2>
+<a name="-383210"></a><h2>Thank you for your support &#x2764;&#xFE0F</h2>
 <p>If you haven't already, please consider writing a review. They really help me out!</p><p>If you have any questions, then feel free to send me an <a href="mailto:carlos.wilkes@gmail.com">E-Mail</a>.</p><p>You can also find me on the <a href="http://forum.unity.com/members/41960">Unity Forums</a>, or <a href="http://twitter.com/CarlosWilkes">Twitter</a>, or <a href="http://youtube.com/user/CarlosWilkes">YouTube</a>.</p><p>I'm also available for freelance work if you need help with your projects.</p>
 <br><br>
-<a name="-28230"></a><h2>How do I upgrade?</h2>
+<a name="-383216"></a><h2>How do I upgrade?</h2>
 <p>First, make sure you <b>back up</b> your project files.</p><p>Next, install the latest version.</p><p>If for some reason the latest updates breaks your project (e.g. errors in the console), then try deleting the root folder for this asset, and reinstalling it.</p><p>If it still doesn't work then go back to your previous version, and let me know what the errors are, so I can fix it.</p>
 <br><br>
 <div style="">
-<a name="18474"></a><h2>What is Lean Pool?</h2>
+<a name="23384"></a><h2>What is Lean Pool?</h2>
 <p>Lean Pool is a lightweight pooling asset, allowing you to easily cache and recycle prefab instances.</p><p>Pooling improves spawning performance, despawning performance, and reduces gc alloc.</p><p>Lean Pool also works with normal C# classes too.</p>
 <br><br></div>
 <div style="">
-<a name="18508"></a><h2>How do I use it?</h2>
+<a name="23406"></a><h2>How do I use it?</h2>
 <p>Find your code that heavily relies on:</p>
 <div class="code"><pre>Instantiate( ... );</pre></div>
 <p>And replace it with:</p>
@@ -54,29 +54,41 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>That's it, you've now implemented Lean Pool!</p>
 <br><br></div>
 <div style="">
-<a name="19006"></a><h2>Why do I have to keep typing Lean.Pool. before everything?</h2>
+<a name="23862"></a><h2>Why do I have to type Lean.Pool. before everything?</h2>
 <p>To improve organization, all Lean Pool classes are inside the Lean.Pool namespace.</p><p>If you don't like typing Lean.Pool. each time, then you can add the following code to the top of your script:</p>
 <div class="code"><pre>using Lean.Pool;</pre></div>
 <p>You can now just call LeanPool.Spawn(...) etc.</p>
 <br><br></div>
 <div style="">
-<a name="17832"></a><h2>How do I alter the settings and stuff?</h2>
+<a name="22824"></a><h2>How do I alter the settings?</h2>
 <p>If you use the steps above then Lean Pool will automatically create pools when you first call LeanPool.Spawn, so to adjust the settings ahead of time you need to manually create the pool.</p><p>To do this, right click in your <b>Hierarchy</b> window, and select <b>Lean / Pool</b>. You should now see a GameObject in your scene called <b>LeanGameObjectPool</b>, and it should be automatically selected.</p><p>Next, drag and drop your prefab into the <b>Prefab</b> slot, and this will associate this pool with this prefab. You can now adjust the pool settings like the Preload, Capacity, etc.</p>
 <br><br></div>
 <div style="">
-<a name="18192"></a><h2>Help, my Rigidbody velocity isn't being reset!!</h2>
-<p>By default, Lean Pool doesn't modify any components when spawning or despawning.</p><p>This means when a Rigidbody is despawned it will retain its old velocity, and when spawned again it will shoot off with its old velocity.</p><p>To fix this, the velocity must reset when it spawned, which can be done by adding the LeanPooledRigidbody component that comes with Lean Pool.</p><p>Lean Pool also comes with the LeanPooledRigidbody2D component for Rigidbody2D GameObjects.</p><div class="tip"><strong>NOTE:</strong>&emsp;Most Unity components automatically reset their state when deactivating and activating (which is done during pooling), so there is no need to add these extra components.</div>
+<a name="23112"></a><h2>My Rigidbody velocity isn't being reset!?</h2>
+<p>By default, Lean Pool doesn't modify any components when spawning or despawning.</p><p>This works fine for most components, but some components maintain their state even when deactivated, which requires you to manually reset their state.</p><p>The <b>Rigidbody</b> and <b>Rigidbody2D</b> components are two examples that don't reset their own state. When these components are despawned/deactivated they will retain their velocity, and when spawned again they will shoot off with their old velocity.</p><p>To fix this, the velocity must reset when despawned. This can be done by adding the <b>LeanPooledRigidbody</b> or <b>LeanPooledRigidbody2D</b> component that comes with Lean Pool.</p>
 <br><br></div>
 <div style="">
-<a name="17726"></a><h2>How do I create custom spawning/despawning behaviour for the _______ component?</h2>
-<p>All you need to do is make a new component that implements the IPoolable interface.</p><p>This interface defines the OnSpawn and OnDespawn methods, which which will automatically be called when your prefab is spawned and despawned.</p><div class="tip"><strong>NOTE:</strong>&emsp;Despawned prefabs are also deactivated, so you could handle such code in OnEnable and OnDisable.</div>
+<a name="22652"></a><h2>How do I write custom spawning/despawning code?</h2>
+<p>There are several ways to do this, each with their pros and cons.</p>
+<br><br></div>
+<div style="padding-left: 75px;">
+<h2>OnEnable and OnDisable messages</h2>
+<p>LeanPool will activate and deactivate your prefab clones when pooled.</p><p>When a component is deactivated, Unity sends it the <b>OnDisable</b> message, and when activated it sends the <b>OnEnable</b> message.</p><p>This means you can make a new component that implements <b>OnEnable</b> and/or <b>OnDisable</b>, and attach this component to your prefab.</p><div class="tip"><strong>NOTE:</strong>&emsp;If you use this approach then you can set <b>LeanGameObjectPool.Notification = None</b>, which can improve performance.</div><div class="tip"><strong>NOTE:</strong>&emsp;If your game requires your prefab clone to be deactivated during gameplay before it's despawned, then this approach may give undesired behaviour.</div>
+<br><br></div>
+<div style="padding-left: 75px;">
+<h2>OnSpawn and OnDespawn messages</h2>
+<p>If you use the <b>LeanGameObjectPool.Notification = Send Message</b> setting, then LeanPool will call the <b>OnSpawn</b> and <b>OnDespawn</b> methods on any components attached to your prefab clone.</p><p>This means you can make a new component that implements <b>OnSpawn</b> and/or <b>OnDespawn</b>, and attach this component to your prefab.</p><p>The main downside to this approach is that it may have performance overhead, it may interfere with any code that already uses <b>OnSpawn</b> or <b>OnDespawn</b> for something else, and you may make a typo, causing the methods to not get called.</p><p>If you need to reset the state of a child GameObjct, then you can use the <b>LeanGameObjectPool.Notification = Broadcast Message</b> setting instead.</p><div class="tip"><strong>NOTE:</strong>&emsp;Broadcasting may be inefficient if your prefab is complex.</div>
+<br><br></div>
+<div style="padding-left: 75px;">
+<h2>IPoolable interface</h2>
+<p>If you use the <b>LeanGameObjectPool.Notification = IPoolable</b> setting, then LeanPool will call the <b>OnSpawn</b> and <b>OnDespawn</b> methods on any components attached to your prefab clone that implement the <b>Lean.Pool.IPoolable</b> interface.</p><p>This is the recommended approach, because it makes the intent of your code clearer. However, if you can use <b>OnEnable</b> and <b>OnDisable</b> instead, then that may give you slightly better performance.</p><p>If you need to reset the state of a child GameObjct, then you can use the <b>LeanGameObjectPool.Notification = Broadcast IPoolable</b> setting instead.</p><div class="tip"><strong>NOTE:</strong>&emsp;Broadcasting may be inefficient if your prefab is complex.</div>
 <br><br></div>
 <div style="">
-<a name="18946"></a><h2>How do I increase the performance even more?</h2>
-<p>You may notice that the Lean.Pool.LeanPool.Spawn and Lean.Pool.LeanPool.Despawn methods work like magic.</p><p>This is because they're static methods that search a dictionary to find the pool associated with the prefab clone before performing the actual spawn or despawn code.</p><p>This is generally very fast, but if you need to super optimize your game then you may want to access the Lean.Pool.LeanGameObjectPool component itself. If you store a reference to it, then you can call the <b>Spawn</b> and <b>Despawn</b> methods directly.</p>
+<a name="23808"></a><h2>How do I increase the performance even more?</h2>
+<p>You may notice that the <b>Lean.Pool.LeanPool.Spawn</b> and <b>Lean.Pool.LeanPool.Despawn</b> methods work like magic.</p><p>This is because they're static methods that search a dictionary to find the pool associated with the prefab clone before performing the actual spawn or despawn code.</p><p>This is generally very fast, but if you need to super optimize your game then you may want to access the <b>Lean.Pool.LeanGameObjectPool</b> component itself. If you store a reference to it, then you can call the <b>Spawn</b> and <b>Despawn</b> methods directly.</p>
 <br><br></div>
 <div style="">
-<a name="17284"></a><h2>Why do I get warnings in the console?</h2>
+<a name="22282"></a><h2>Why do I get warnings in the console?</h2>
 <p>This is probably because you did something wrong.</p><p>For example, you may have replaced all your Instantiate calls with Spawn calls, but maybe you forgot to replace all your Destroy calls with Despawn.</p><p>There are many scenarios like this where you can forget what code is instantiating or destroying what, and it causes Lean Pool to throw a warning when it detects soemthing wrong.</p><p>However, Lean Pool will (hopefully) not break if you make mistakes like this, becuase I included many safety checks at every step.</p>
 </div>
 <br><br>
@@ -94,57 +106,52 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <div style="float: left; padding-right: 20px;"><a href="http://assetstore.unity.com/packages/slug/35666?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/35666/icon" alt="Lean Pool" width="128" height="128" /></a></div>
 <a name="4"></a><h2>Lean Pool</h2>
 <p>Quickly optimize the performance of your games using Lean Pool. Within minutes you can use this lightweight asset to preload, recycle, and limit the spawning of your prefabs.</p><br><br><br><br>
+<div style="float: left; padding-right: 20px;"><a href="http://assetstore.unity.com/packages/slug/144107?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/144107/icon" alt="Lean Transition" width="128" height="128" /></a></div>
+<a name="5"></a><h2>Lean Transition</h2>
+<p>Quickly polish your games using Lean Transition. This asset allows you to easily tween or animate almost anything in your game, making it transition smoothly.</p><br><br><br><br>
+<div style="float: left; padding-right: 20px;"><a href="http://assetstore.unity.com/packages/slug/72138?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/72138/icon" alt="Lean GUI" width="128" height="128" /></a></div>
+<a name="6"></a><h2>Lean GUI</h2>
+<p>Lean GUI is a colllection of components that extend Unity's GUI system, allowing you to rapidly enhance the user experience (UX) of your game's UI.</p><br><br><br><br>
 <div style="float: left; padding-right: 20px;"><a href="http://assetstore.unity.com/packages/slug/26286?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/26286/icon" alt="Paint in 3D" width="128" height="128" /></a></div>
-<a name="5"></a><h2>Paint in 3D</h2>
+<a name="7"></a><h2>Paint in 3D</h2>
 <p>Paint all your objects using <strong>Paint in 3D</strong> - both in game, and in editor. All features are optimized with GPU accelerated texture painting, so you can enjoy consistent performance, even if you paint your objects one million times!</p><br><br><br><br>
 <div style="float: left; padding-right: 20px;"><a href="http://assetstore.unity.com/packages/slug/18125?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/18125/icon" alt="Destructible 2D" width="128" height="128" /></a></div>
-<a name="6"></a><h2>Destructible 2D</h2>
+<a name="8"></a><h2>Destructible 2D</h2>
 <p>Unlock the full potential of your 2D games using Destructible 2D, this asset allows you to quickly convert all your boring solid sprites into fully destructible ones!</p><br><br><br><br>
 <div style="float: left; padding-right: 20px;"><a href="http://assetstore.unity.com/packages/slug/4160?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/4160/icon" alt="Space Graphics Toolkit" width="128" height="128" /></a></div>
-<a name="7"></a><h2>Space Graphics Toolkit</h2>
+<a name="9"></a><h2>Space Graphics Toolkit</h2>
 <p>Quickly make the space scene of your dreams using Space Graphics Toolkit. This huge collection of space effects can be customized and combined in any way you like, allowing you to quickly make realistic or fantasy worlds. Each feature has been heavily optimized to run on almost any device and platform.</p><br><br><br><br>
 <div style="float: left; padding-right: 20px;"><a href="http://assetstore.unity.com/packages/slug/124578?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/124578/icon" alt="Planet Pack - Space Graphics Toolkit" width="128" height="128" /></a></div>
-<a name="8"></a><h2>Planet Pack - Space Graphics Toolkit</h2>
+<a name="10"></a><h2>Planet Pack - Space Graphics Toolkit</h2>
 <p>This pack contains 26 high detail PBR planets, all finished using the powerful planet features of Space Graphics Toolkit (SGT). This is a standalone package, so SGT is not required. You can even use the included features to turn your own planets into beautiful worlds!</p><br><br><br><br>
 <div style="float: left; padding-right: 20px;"><a href="http://assetstore.unity.com/packages/slug/17125?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/17125/icon" alt="Volumetric Audio" width="128" height="128" /></a></div>
-<a name="9"></a><h2>Volumetric Audio</h2>
+<a name="11"></a><h2>Volumetric Audio</h2>
 <p>Unity sounds only emanate from a single point source. This is great for explosions and footsteps, but quite often you need something more advanced. Volumetric Audio is an easy to use package that allows you to define boxes, spheres, capsules, paths, or meshes that sounds can emanate from.</p><br><br><br><br>
 <br><br>
 <h1>Versions</h1>
-<a name="-20046"></a><h2>1.1.3</h2>
+<a name="-336792"></a><h2>1.1.4</h2>
+<p>Improved demo scenes.<br>Improved documentation.<br>Renamed <b>"Poolable Interface"</b> notification to <b>"IPoolable"</b>.<br>Added <b>"Broadcast IPoolable"</b> notification.<br></p>
+<br><br>
+<a name="22352"></a><h2>1.1.3</h2>
 <p>Forced activation of deactivated prefabs.<br></p>
 <br><br>
-<a name="18892"></a><h2>1.1.2</h2>
+<a name="23742"></a><h2>1.1.2</h2>
 <p>Added additional error checks to LeanPool.Spawn.<br></p>
 <br><br>
-<a name="17000"></a><h2>1.1.1</h2>
+<a name="21926"></a><h2>1.1.1</h2>
 <p>Fixed bug when despawning a specific clone.<br></p>
 <br><br>
-<a name="17978"></a><h2>1.1.0</h2>
+<a name="22942"></a><h2>1.1.0</h2>
 <p>Moved main build to Unity 2017.4.0f1.<br>Restructured project files.<br>Rewritten core pooling code for better performance and lower memory usage.<br>Replaced LeanPoolable with IPoolable interface.<br>Simplified demo scenes.<br></p>
 <br><br>
 <br><br>
 <h1>Components</h1>
-<a name="LeanHelper"></a><h2>LeanHelper</h2>
-<p>This class contains useful methods used in almost all of my code.</p>
-<div style="padding-left: 75px;"><br><h2>DampenFactor</h2>
-<p>This gives you the time-independent 't' value for lerp when used for dampening. This returns 1 in edit mode, or if dampening is less than 0.</p>
-<br><h2>Destroy<T></h2>
-<p>This allows you to destroy the target object in game and in edit mode, and it returns null.</p>
-<br><h2>GetObjectFromSerializedProperty<T></h2>
-<p>This gives you the actual object behind a SerializedProperty given to you by a property drawer.</p>
-</div><br>
-<br><br>
-<a name="LeanInspector"></a><h2>LeanInspector&lt;T&gt;</h2>
-<p>This class allows you to quickly make custom inspectors with common features.</p>
-<div style="padding-left: 75px;"></div><br>
-<br><br>
 <a name="IPoolable"></a><h2>IPoolable</h2>
 <p>If you implement this interface in a component on your pooled prefab, then the OnSpawn and OnDespawn methods will be automatically called when the associated LeanGameObjectPool.Notification = PoolableInterface.</p>
 <div style="padding-left: 75px;"></div><br>
 <br><br>
 <a name="LeanClassPool"></a><h2>LeanClassPool&lt;T&gt;</h2>
-<p>This class allows you to pool normal C# classes, for example:<br><br>var foo = Lean.LeanClassPool<Foo>.Spawn() ?? new Foo();<br><br>Lean.LeanClassPool<Foo>.Despawn(foo);</p>
+<p>This class allows you to pool normal C# classes, for example:<br><br>var foo = Lean.Pool.LeanClassPool<Foo>.Spawn() ?? new Foo();<br><br>Lean.Pool.LeanClassPool<Foo>.Despawn(foo);</p>
 <div style="padding-left: 75px;"><br><h2>Spawn</h2>
 <p>This will either return a pooled class instance, or null. If an instance it found, onSpawn will be called with it. NOTE: onSpawn is expected to not be null.</p>
 <br><h2>Spawn</h2>
@@ -164,7 +171,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h2>Prefab</h2>
 <p>The prefab this pool controls.</p>
 <br><h2>Notification</h2>
-<p>If you need to peform a special action when a prefab is spawned or despawned, then this allows you to control how that action is performed.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; SendMessage = The prefab clone is sent the OnSpawn and OnDespawn messages.</div><div class="tip"><strong>NOTE:</strong>&emsp; BroadcastMessage = The prefab clone and all its children are sent the OnSpawn and OnDespawn messages.</div><div class="tip"><strong>NOTE:</strong>&emsp; PoolableEvent = The prefab clone's LeanPoolable component is used.</div></p>
+<p>If you need to peform a special action when a prefab is spawned or despawned, then this allows you to control how that action is performed.<br><br><div class="tip"><strong>None</strong>&emsp;If you use this then you must rely on the OnEnable and OnDisable messages.</div><div class="tip"><strong>SendMessage</strong>&emsp;The prefab clone is sent the OnSpawn and OnDespawn messages.</div><div class="tip"><strong>BroadcastMessage</strong>&emsp;The prefab clone and all its children are sent the OnSpawn and OnDespawn messages.</div><div class="tip"><strong>IPoolable</strong>&emsp;The prefab clone's components implementing IPoolable are called.</div><div class="tip"><strong>Broadcast IPoolable</strong>&emsp;The prefab clone and all its child components implementing IPoolable are called.</div></p>
 <br><h2>Preload</h2>
 <p>Should this pool preload some clones?</p>
 <br><h2>Capacity</h2>
@@ -191,6 +198,10 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>This will either spawn a previously despanwed/preloaded clone, recycle one, create a new one, or return null.</p>
 <br><h2>TrySpawn</h2>
 <p>This will either spawn a previously despanwed/preloaded clone, recycle one, create a new one, or return null.</p>
+<br><h2>[CONTEXT] Despawn Oldest</h2>
+<p>This will despawn the oldest prefab clone that is still spawned.</p>
+<br><h2>[CONTEXT] Despawn All</h2>
+<p>This method will despawn all currently spawned prefabs managed by this pool.</p>
 <br><h2>Despawn</h2>
 <p>This will either instantly despawn the specified gameObject, or delay despawn it after t seconds.</p>
 <br><h2>[CONTEXT] Preload One More</h2>
@@ -226,37 +237,38 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 </div>
 <div style="position: absolute; width: 310px; left: 0px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
 <h2 style="padding-bottom: 20px;">Index</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-28224">Thank you for your support &#x2764;&#xFE0F</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-28230">How do I upgrade?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#18474">What is Lean Pool?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#18508">How do I use it?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#19006">Why do I have to keep typing Lean.Pool. before everything?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#17832">How do I alter the settings and stuff?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#18192">Help, my Rigidbody velocity isn't being reset!!</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#17726">How do I create custom spawning/despawning behaviour for the _______ component?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#18946">How do I increase the performance even more?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#17284">Why do I get warnings in the console?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-383210">Thank you for your support &#x2764;&#xFE0F</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-383216">How do I upgrade?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23384">What is Lean Pool?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23406">How do I use it?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23862">Why do I have to type Lean.Pool. before everything?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#22824">How do I alter the settings?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23112">My Rigidbody velocity isn't being reset!?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#22652">How do I write custom spawning/despawning code?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23808">How do I increase the performance even more?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#22282">Why do I get warnings in the console?</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Assets</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#1">Lean Touch</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#2">Lean Touch+</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#3">Lean Localization</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#4">Lean Pool</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5">Paint in 3D</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6">Destructible 2D</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#7">Space Graphics Toolkit</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#8">Planet Pack - Space Graphics Toolkit</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#9">Volumetric Audio</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5">Lean Transition</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6">Lean GUI</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#7">Paint in 3D</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#8">Destructible 2D</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#9">Space Graphics Toolkit</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#10">Planet Pack - Space Graphics Toolkit</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#11">Volumetric Audio</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Versions</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-20046">1.1.3</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#18892">1.1.2</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#17000">1.1.1</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#17978">1.1.0</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-336792">1.1.4</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#22352">1.1.3</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23742">1.1.2</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#21926">1.1.1</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#22942">1.1.0</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Components</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanHelper">LeanHelper</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanInspector">LeanInspector&lt;T&gt;</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#IPoolable">IPoolable</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanClassPool">LeanClassPool&lt;T&gt;</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanGameObjectPool">LeanGameObjectPool</a></p>
