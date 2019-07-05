@@ -29,18 +29,18 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h1 style="font-size: 75px; color: #FFF; text-align: center; vertical-align: middle; line-height: 100px;">Lean GUI</h1>
 </div>
 <div style="position: absolute; left: 350px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
-<a name="-8070"></a><h2>Thank you for your support &#x2764;&#xFE0F</h2>
+<a name="-56496"></a><h2>Thank you for your support &#x2764;&#xFE0F</h2>
 <p>If you haven't already, please consider writing a review. They really help me out!</p><p>If you have any questions, then feel free to send me an <a href="mailto:carlos.wilkes@gmail.com">E-Mail</a>.</p><p>You can also find me on the <a href="http://forum.unity.com/members/41960">Unity Forums</a>, or <a href="http://twitter.com/CarlosWilkes">Twitter</a>, or <a href="http://youtube.com/user/CarlosWilkes">YouTube</a>.</p><p>I'm also available for freelance work if you need help with your projects.</p>
 <br><br>
-<a name="-8076"></a><h2>How do I upgrade?</h2>
+<a name="-56502"></a><h2>How do I upgrade?</h2>
 <p>First, make sure you <b>back up</b> your project files.</p><p>Next, install the latest version.</p><p>If for some reason the latest updates breaks your project (e.g. errors in the console), then try deleting the root folder for this asset, and reinstalling it.</p><p>If it still doesn't work then go back to your previous version, and let me know what the errors are, so I can fix it.</p>
 <br><br>
 <div style="">
-<a name="14612"></a><h2>What is Lean GUI?</h2>
+<a name="20308"></a><h2>What is Lean GUI?</h2>
 <p>Lean GUI is an extension to Unity's UI system, adding many useful components.</p><p>The new components are also designed to be very flexible, so you can combine them in any way you like.</p>
 <br><br></div>
 <div style="">
-<a name="14066"></a><h2>How do I get started?</h2>
+<a name="19696"></a><h2>How do I get started?</h2>
 <p>Simply go through all the demo scenes in the Lean/GUI/Examples folder!</p><p>Most of the demo scenes introduce one new feature at a time, allowing you to clearly understand what is being done.</p><p>The description at the bottom also tells you in detail which components or settings were added/changed to achieve the effects seen.</p><p>To understand what a specific component setting does, just hover your mouse over it to see the tooltip. You can also click the documentation button at the top right of the component.</p>
 </div>
 <br><br>
@@ -81,7 +81,13 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Unity sounds only emanate from a single point source. This is great for explosions and footsteps, but quite often you need something more advanced. Volumetric Audio is an easy to use package that allows you to define boxes, spheres, capsules, paths, or meshes that sounds can emanate from.</p><br><br><br><br>
 <br><br>
 <h1>Versions</h1>
-<a name="14364"></a><h2>1.0.0</h2>
+<a name="20172"></a><h2>1.0.2</h2>
+<p>Included LeanTransition again.<br>Added Horizontal + Vertical joysticks to "14 Joystick" demo scene.<br></p>
+<br><br>
+<a name="21546"></a><h2>1.0.1</h2>
+<p>Fixed LeanSelectionManager error in 2019.1.5f1~.<br>Added "Safe Area" demo scene.<br></p>
+<br><br>
+<a name="20036"></a><h2>1.0.0</h2>
 <p>Initial release.<br></p>
 <br><br>
 <br><br>
@@ -204,30 +210,60 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><br>
 <a name="LeanOrientation"></a><h2>LeanOrientation</h2>
 <p>This component allows you make a UI element based on the current device orientation.</p>
-<div style="padding-left: 75px;"><br><h2>ControlThisRect</h2>
-<p>Should the attached RectTransform settings be controlled by this component?</p>
-<br><h2>Landscape</h2>
-<p>The RectTransform settings that will be used in landscape mode.<br><br>If you click <b>Apply</b>, then the current settings will be copied to this.</p>
-<br><h2>Portrait</h2>
-<p>The RectTransform settings that will be used in portrait mode.<br><br>If you click <b>Apply</b>, then the current settings will be copied to this.</p>
-<br><h2>AnchoredPosition</h2>
+<div style="padding-left: 75px;"><br><h2>AnchoredPosition</h2>
 <p>Should the RectTransform.anchoredPosition setting change based on device orientation?</p>
+<br><h2>AnchoredPositionL</h2>
+<p>The RectTransform.anchoredPosition value when in landscape mode.</p>
+<br><h2>AnchoredPositionP</h2>
+<p>The RectTransform.anchoredPosition value when in portrait mode.</p>
 <br><h2>SizeDelta</h2>
 <p>Should the RectTransform.sizeDelta setting change based on device orientation?</p>
+<br><h2>SizeDeltaL</h2>
+<p>The RectTransform.sizeDelta value when in landscape mode.</p>
+<br><h2>SizeDeltaP</h2>
+<p>The RectTransform.sizeDelta value when in portrait mode.</p>
 <br><h2>AnchorMin</h2>
 <p>Should the RectTransform.anchorMin setting change based on device orientation?</p>
+<br><h2>AnchorMinL</h2>
+<p>The RectTransform.anchorMin value when in landscape mode.</p>
+<br><h2>AnchorMinP</h2>
+<p>The RectTransform.anchorMin value when in portrait mode.</p>
 <br><h2>AnchorMax</h2>
 <p>Should the RectTransform.anchorMax setting change based on device orientation?</p>
+<br><h2>AnchorMaxL</h2>
+<p>The RectTransform.anchorMax value when in landscape mode.</p>
+<br><h2>AnchorMaxP</h2>
+<p>The RectTransform.anchorMax value when in portrait mode.</p>
 <br><h2>OffsetMin</h2>
 <p>Should the RectTransform.offsetMin setting change based on device orientation?</p>
+<br><h2>OffsetMinL</h2>
+<p>The RectTransform.offsetMin value when in landscape mode.</p>
+<br><h2>OffsetMinP</h2>
+<p>The RectTransform.offsetMin value when in portrait mode.</p>
 <br><h2>OffsetMax</h2>
 <p>Should the RectTransform.offsetMax setting change based on device orientation?</p>
+<br><h2>OffsetMaxL</h2>
+<p>The RectTransform.offsetMax value when in landscape mode.</p>
+<br><h2>OffsetMaxP</h2>
+<p>The RectTransform.offsetMax value when in portrait mode.</p>
 <br><h2>Pivot</h2>
 <p>Should the RectTransform.pivot setting change based on device orientation?</p>
+<br><h2>PivotL</h2>
+<p>The RectTransform.pivot value when in landscape mode.</p>
+<br><h2>PivotP</h2>
+<p>The RectTransform.pivot value when in portrait mode.</p>
 <br><h2>LocalRotation</h2>
 <p>Should the RectTransform.localRotation setting change based on device orientation?</p>
+<br><h2>LocalRotationL</h2>
+<p>The RectTransform.localRotation value when in landscape mode.</p>
+<br><h2>LocalRotationP</h2>
+<p>The RectTransform.localRotation value when in portrait mode.</p>
 <br><h2>LocalScale</h2>
 <p>Should the RectTransform.localScale setting change based on device orientation?</p>
+<br><h2>LocalScaleL</h2>
+<p>The RectTransform.localScale value when in landscape mode.</p>
+<br><h2>LocalScaleP</h2>
+<p>The RectTransform.localScale value when in portrait mode.</p>
 <br><h2>LandscapeTransitions</h2>
 <p>This allows you to perform a transition when the orientation changes to landscape.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>Graphic.color Transition (LeanGraphicColor)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here must be reverted in the <b>Portrait Transitions</b> setting using a matching transition component.</div></p>
 <br><h2>PortraitTransitions</h2>
@@ -237,9 +273,9 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h2>OnPortrait</h2>
 <p>This event will be invoked when the orientation changes to portrait.</p>
 <br><h2>[CONTEXT] Copy To Landscape</h2>
-<p>This will copy the attached RectTransform settings to the <b>Landscape</b> setting.</p>
+<p>This will copy the current RectTransform settings to the <b>Landscape</b> settings.</p>
 <br><h2>[CONTEXT] Copy To Portrait</h2>
-<p>This will copy the attached RectTransform settings to the <b>Portrait</b> setting.</p>
+<p>This will copy the current RectTransform settings to the <b>Portrait</b> settings.</p>
 <br><h2>[CONTEXT] Update Orientation</h2>
 <p>This forces the orientation to update now.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; This will call OnLandscape/OnPortrait again.</div></p>
 </div><br>
@@ -444,9 +480,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><br>
 <a name="LeanTooltip"></a><h2>LeanTooltip</h2>
 <p>This component allows you to display a tooltip as long as the mouse is hovering over the current UI element, or a finger is on top.<br><br>Tooltips will display for any raycastable UI element that has the <b>LeanTooltipData</b> component.</p>
-<div style="padding-left: 75px;"><br><h2>Layers</h2>
-<p>This allows you to set the UI layers this tooltip will display for.</p>
-<br><h2>Boundary</h2>
+<div style="padding-left: 75px;"><br><h2>Boundary</h2>
 <p>This allows you to control how the tooltip will behave when it goes outside the screen bounds.</p>
 <br><h2>ShowDelay</h2>
 <p>This allows you to delay how quickly the tooltip will appear or switch.</p>
@@ -489,10 +523,10 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 </div>
 <div style="position: absolute; width: 310px; left: 0px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
 <h2 style="padding-bottom: 20px;">Index</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-8070">Thank you for your support &#x2764;&#xFE0F</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-8076">How do I upgrade?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14612">What is Lean GUI?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14066">How do I get started?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-56496">Thank you for your support &#x2764;&#xFE0F</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-56502">How do I upgrade?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#20308">What is Lean GUI?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#19696">How do I get started?</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Assets</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#1">Lean Touch</a></p>
@@ -508,7 +542,9 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#11">Volumetric Audio</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Versions</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14364">1.0.0</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#20172">1.0.2</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#21546">1.0.1</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#20036">1.0.0</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Components</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanButton">LeanButton</a></p>
