@@ -1,0 +1,193 @@
+* { margin: 0; padding: 0; font-family: 'Titillium+Web', sans-serif; }
+a { color: inherit; font-weight: bold; text-decoration: none; }
+p { font-family: 'Titillium+Web', sans-serif; margin-block-start: 0px; margin-block-end: 10px; padding-bottom: 10px; font-size: 16px; }
+html {
+	scroll-behavior: smooth;
+}
+hr {
+	display: inline-block;
+	width: 100%;
+	visibility: hidden;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.title {
+	font-size: 50px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.main {
+	background-color: #FFF;
+	margin-left: auto;
+	margin-right: auto;
+	min-width: 600px;
+	max-width: 60%;
+	margin-top: 40px;
+	margin-bottom: 50px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 70px -30px #000;
+	position: relative;
+}
+.main > a {
+	display: table;
+	width: 100%;
+	text-align: center;
+}
+.main > a > h1 {
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 40px;
+	padding: 25px 85px 25px 85px;
+}
+.main table {
+	color: inherit;
+}
+.info {
+	padding: 50px;
+	overflow: hidden;
+}
+.expandable {
+	background-repeat: no-repeat;
+}
+.expandable > a > i {
+	font-size: 48px;
+	padding: 25px;
+	position: absolute;
+	right: 20px;
+}
+.expandable:target > a > i {
+	display: none;
+}
+.expandable > div {
+	display: none;
+}
+.expandable:target > div {
+	display: block;
+}
+.center {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: -10px;
+	text-align: center;
+	margin-bottom: -20px;
+}
+.center > * {
+	display: inline-block;
+	margin: 10px;
+}
+.center > a {
+	margin-left: auto;
+	margin-right: auto;
+	color: inherit;
+	padding: 12px 30px;
+	cursor: pointer;
+	font-size: 20px;
+	text-decoration: none;
+	border: none;
+	border-radius: 5px;
+	border-width: 2px;
+	border-style: dashed;
+}
+.center > a > i {
+	margin-right: 10px;
+}
+.center > a:hover {
+	border-style: solid;
+}
+.main blockquote
+{
+	border-radius: 3px;
+	position: relative;  /*  <--- */
+	font-style: italic;
+	text-align: center;
+	padding: 1rem 1.2rem;
+	width: 80%;  /* create space for the quotes */
+	color: #4a4a4a;
+	margin: 1rem auto 2rem;
+	color: #4a4a4a;
+	background: #E8E8E8;
+}
+	/* -- create the quotation marks -- */
+.main blockquote:before,
+.main blockquote:after
+{
+	font-family: FontAwesome;
+	position: absolute;
+	/* -- inside the relative position of blockquote -- */
+	top: 13px;
+	color: #E8E8E8;
+	font-size: 34px;
+}
+.main blockquote:before
+{
+	content: "\f10d";
+	margin-right: 13px;
+	right: 100%;
+}
+.main blockquote:after
+{
+	content: "\f10e";
+	margin-left: 13px;
+	left: 100%;  
+}
+lightbox {
+	cursor: zoom-out;
+	margin: 20px;
+}
+lightbox:nth-of-type(even) {
+	float: left;
+}
+lightbox:nth-of-type(odd) {
+	float: right;
+}
+lightbox::before {
+	display: none;
+	content: "";
+	background-color: rgba(0, 0, 0, 0.5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+}
+lightbox::after {
+	display: none;
+	content: "";
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	z-index: 0;
+	background: #333 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAAAwAAAAMADO7oxXAAAA2ElEQVRo3u2ZQQ4CIRAEwT/ynuXhm7QnDyIwIMjMxK7zhK2KsBoMgZD/JkoDAKAqGGPX8aEptwMGaCOegZLyTEh79Nfruf8EGKANA7TZHgAgo03WDg4VqTQYkStzqRw6EXAXz7wHIlryH2udCEiTEcPytTXUI8zJr4iYkf9GyJy8JFaZsyffi6jM2JRvRXQCtsq7/ymxBddbyPUhdv0adf1FtiKiHjG5bS4Al6mISfkXwxEnAkokeSnijeMBg/K9iKWA5Zu53fBmzhsM0MZ9AP8j04YBhBBdnpcx5ojPA/ruAAAAAElFTkSuQmCC) no-repeat center;
+}
+lightbox img + span {
+	position: fixed;
+	top: 1em;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+lightbox img + span {
+	background: center / contain no-repeat;
+	width: 100%;
+	height: 100%;
+}
+lightbox img + span {
+	display: none;
+}
+lightbox:active::before, lightbox:active::after,
+lightbox:active img + span, lightbox:focus::before, lightbox:focus::after,
+lightbox:focus img + span {
+	display: block;
+}
+lightbox img {
+	display: block;
+	cursor: zoom-in;
+}
+lightbox:active img + span, lightbox:focus img + span {
+	z-index: 20;
+}

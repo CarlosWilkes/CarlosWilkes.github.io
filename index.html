@@ -1,157 +1,83 @@
 <html>
 	<head>
-		<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+		<link rel="stylesheet" href="Content/Style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<style>
-			* { margin: 0; padding: 0; font-family: 'Titillium+Web', sans-serif; }
-			a { color: inherit; font-weight: bold; }
-			p { font-family: 'Titillium+Web', sans-serif; margin-block-start: 0px; margin-block-end: 10px; padding-bottom: 10px; font-size: 16px; }
-			.title
-			{
-				font-size: 50px;
-				text-align: center;
-				margin-bottom: 20px;
-			}
-			.main
-			{
-				background-color: #FFF;
-				margin-left: auto;
-				margin-right: auto;
-				min-width: 600px;
-				max-width: 60%;
-				padding-top: 200px;
-				padding-bottom: 20px;
-				padding-left: 60px;
-				padding-right: 60px;
-				margin-top: 40px;
-				margin-bottom: 50px;
-				border-radius: 5px;
-				box-shadow: 0px 0px 70px -30px #000;
-				position: relative;
-			}
-			.main blockquote
-			{
-				border-radius: 3px;
-				position: relative;  /*  <--- */
-				font-style: italic;
-				text-align: center;
-				padding: 1rem 1.2rem;
-				width: 80%;  /* create space for the quotes */
-				color: #4a4a4a;
-				margin: 1rem auto 2rem;
-				color: #4a4a4a;
-				background: #E8E8E8;
-			}
-				/* -- create the quotation marks -- */
-			.main blockquote:before,
-			.main blockquote:after
-			{
-				font-family: FontAwesome;
-				position: absolute;
-				/* -- inside the relative position of blockquote -- */
-				top: 13px;
-				color: #E8E8E8;
-				font-size: 34px;
-			}
-			.main blockquote:before
-			{
-				content: "\f10d";
-				margin-right: 13px;
-				right: 100%;
-			}
-			.main blockquote:after
-			{
-				content: "\f10e";
-				margin-left: 13px;
-				left: 100%;  
-			}
-			.screenshots
-			{
-				text-align: center;
-			}
-			.screenshots img iframe
-			{
-				margin: 10px;
-			}
-			.links
-			{
-				position: absolute;
-				text-align: center;
-				top: 24px;
-				left: 0px;
-				right: 0px;
-			}
-			.btn
-			{
-				border: none;
-				color: inherit;
-				padding: 12px 30px;
-				cursor: pointer;
-				font-size: 20px;
-				border-radius: 5px;
-				text-decoration: none;
-				border-width: 2px;
-				border-style: dashed;
-				display: inline-block; 
-			}
-			.btn i
-			{
-				margin-right: 10px;
-			}
-			.btn:hover
-			{
-				border-style: solid;
-			}
-		</style>
 	</head>
 	<body style="background-color: #1A222C;">
 		<canvas id="background" style="background-color: #1A222C; position: fixed; width: 100%; height: 100%; z-index: -1;"></canvas>
-		<div style="width: 100%; text-align: center;">
-			<img title="Carlos Wilkes" style="padding: 100px;" src="Content/Logo.png">
+		<div>
+			<img title="Carlos Wilkes" src="Content/Logo.png" style="padding: 100px; display: block; margin-left: auto; margin-right: auto;"/>
 		</div>
-		<div class="main" style="padding-top: 110px;">
-			<div class="links">
-				<h1 class="title">Welcome to my website!</h1>
-			</div>
-			<p>My name is Carlos Wilkes, and I'm from England. This website is dedicated to my projects.</p>
-			<p>I've been developing games, prototypes, shaders, artwork, and everything in between for over 17 years. My favourite aspect of game development is programming - I began with the DarkBASIC programming language, later moving on to C++, and now use C#. For the past seven years I've been addicted to making Unity <a href="http://assetstore.unity.com/publishers/1513?aid=1101l4Jks">Asset Store</a> products.</p>
-			<p>Most of my assets focus on solving difficult or tedious programming tasks, and packinging it in a way that makes it easy for anyone to use. For example, every time I started a project for mobile devices I would waste time writing the same input code over and over again, and so I created <a href="http://assetstore.unity.com/packages/slug/30111?aid=1101l4Jks">Lean Touch</a> to solve this problem once and for all.</p>
-			<p>If you have any questions then please contact me at: <a href="mailto:carlos.wilkes@gmail.com">carlos.wilkes@gmail.com</a></p>
-			<p>You can also find me on <a href="https://www.youtube.com/channel/UCuYkv7cIUmeGHH5tkaMlCVw" target="_blank">YouTube</a>, or <a href="https://twitter.com/CarlosWilkes" target="_blank">Twitter</a>.</p>
-		</div>
-		<div class="main" style="background: url('Content/SGT_0.png') no-repeat #000; color: #EEF;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #000;">Space Graphics Toolkit</h1>
-				<a class="btn" href="http://assetstore.unity.com/packages/slug/4160?aid=1101l4Jks" target="_blank"><i class="fa fa-external-link"></i> More Information</a>
-			</div>
-			<p><strong>Space Graphics Toolkit</strong> is a huge collection of space effects can be customized and combined in any way you like, allowing you to quickly make realistic or fantasy worlds. Each feature has been heavily optimized to run on almost any device and platform.</p>
-			<div class="screenshots">
-				<img src="Content/SGT_A.jpg"/>
-				<img src="Content/SGT_B.jpg"/>
-				<img src="Content/SGT_C.png"/>
-				<img src="Content/SGT_D.png"/>
+		<div class="main">
+			<a>
+				<h1>Welcome to my website!</h1>
+			</a>
+			<div class="info">
+				<p>My name is Carlos Wilkes, and I'm from England. This website is dedicated to my projects.</p>
+				<p>I've been developing games, prototypes, shaders, artwork, and everything in between for over 17 years. My favourite aspect of game development is programming - I began with the DarkBASIC programming language, later moving on to C++, and now use C#. For the past seven years I've been addicted to making Unity <a href="http://assetstore.unity.com/publishers/1513?aid=1101l4Jks">Asset Store</a> products.</p>
+				<p>Most of my assets focus on solving difficult or tedious programming tasks, and packinging it in a way that makes it easy for anyone to use. For example, every time I started a project for mobile devices I would waste time writing the same input code over and over again, and so I created <a href="http://assetstore.unity.com/packages/slug/30111?aid=1101l4Jks">Lean Touch</a> to solve this problem once and for all.</p>
+				<p>If you have any questions then please contact me at: <a href="mailto:carlos.wilkes@gmail.com">carlos.wilkes@gmail.com</a></p>
+				<p>You can also find me on <a href="https://www.youtube.com/channel/UCuYkv7cIUmeGHH5tkaMlCVw" target="_blank">YouTube</a>, or <a href="https://twitter.com/CarlosWilkes" target="_blank">Twitter</a>.</p>
 			</div>
 		</div>
-		<div class="main" style="background: url('Content/D2D_0.png') no-repeat #010020; color: #EEF;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #010020;">Destructible 2D</h1>
-				<a class="btn" href="http://assetstore.unity.com/packages/slug/18125?aid=1101l4Jks" target="_blank"><i class="fa fa-external-link"></i> More Information</a>
+		<div class="main expandable" style="background-image: url('Content/SGT_0.png'); background-color: #000; color: #EEF;" id="SpaceGraphicsToolkit">
+			<a href="#SpaceGraphicsToolkit">
+				<h1 style="text-shadow: 0px 0px 5px #000;">Space Graphics Toolkit</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="center">
+				<a href="Get/SpaceGraphicsToolkit" target="_blank"><i class="fa fa-external-link"></i>Get Space Graphics Toolkit</a>
 			</div>
-			<p><strong>Destructible 2D</strong> allows you to quickly convert all your boring solid sprites into fully destructible ones, unlocking new gameplay possibilities!</p>
-			<div class="screenshots">
+			<div class="info">
+				<p><strong>Space Graphics Toolkit</strong> is a huge collection of space effects can be customized and combined in any way you like, allowing you to quickly make realistic or fantasy worlds. Each feature has been heavily optimized to run on almost any device and platform.</p>
+				<hr>
+				<lightbox tabindex="0">
+					<img src="Content/SpaceGraphicsToolkit/Atmosphere_t.jpg" alt="" /> <span style="background-image: url('Content/SpaceGraphicsToolkit/Atmosphere.jpg')" tabindex="0" />
+				</lightbox>
+				<h2>Atmosphere</h2>
+				<p>This feature allows you to add a volumetric haze around your planets. You have full control over the atmosphere color, sunset color, atmospheric scattering, fog, and much more. You can create any kind of atmosphere you like with this.</p>
+				<hr>
+				<lightbox tabindex="0">
+					<img src="Content/SpaceGraphicsToolkit/Planet_t.jpg" alt="" /> <span style="background-image: url('Content/SpaceGraphicsToolkit/Planet.jpg')" tabindex="0" />
+				</lightbox>
+				<h2>Planet Shader</h2>
+				<p>Allows you to turn your basic PBR textures into an impressive planet with high quality detail maps, dynamic water level, and night lights.</p>
+				<hr>
+				<lightbox tabindex="0">
+					<img src="Content/SpaceGraphicsToolkit/Aurora_t.jpg" alt="" /> <span style="background-image: url('Content/SpaceGraphicsToolkit/Aurora.jpg')" tabindex="0" />
+				</lightbox>
+				<h2>Aurora</h2>
+				<p>To make your planets look really exotic you can add an aurora layer on top. The SGT Aurora feature is fully procedural, including procedural animation, and looks great from every angle.</p>
+				<hr>
+			</div>
+		</div>
+		<div class="main expandable" style="background-image: url('Content/D2D_0.png'); background-color: #010020; color: #EEF;" id="Destructible2D">
+			<a href="#Destructible2D">
+				<h1 style="text-shadow: 0px 0px 5px #010020;">Destructible 2D</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="center">
+				<a href="Get/Destructible2D" target="_blank"><i class="fa fa-external-link"></i>Get Destructible 2D</a>
+			</div>
+			<div class="info">
+				<p><strong>Destructible 2D</strong> allows you to quickly convert all your boring solid sprites into fully destructible ones, unlocking new gameplay possibilities!</p>
 				<img src="Content/D2D_A.png"/>
 				<img src="Content/D2D_B.png"/>
 				<img src="Content/D2D_C.png"/>
 				<img src="Content/D2D_D.png"/>
 			</div>
 		</div>
-		<div class="main" style="background: url('Content/P3D_0.png') no-repeat #FFC205; color: #111;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #FFC205;">Paint in 3D</h1>
-				<a class="btn" href="http://assetstore.unity.com/packages/slug/26286?aid=1101l4Jks" target="_blank"><i class="fa fa-external-link"></i> More Information</a>
+		<div class="main expandable" style="background-image: url('Content/P3D_0.png'); background-color: #FFC205; color: #111;" id="PaintIn3D">
+			<a href="#PaintIn3D">
+				<h1 style="text-shadow: 0px 0px 5px #FFC205;">Paint in 3D</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="center">
+				<a href="Get/PaintIn3D" target="_blank"><i class="fa fa-external-link"></i>Get Paint in 3D</a>
 			</div>
-			<p><strong>Paint in 3D</strong> allows you to paint all the objects in your scene - both in game, and in editor. All features are optimized with GPU accelerated texture painting, so you can enjoy consistent performance, even if you paint your objects one million times!</p>
-			<div class="screenshots">
+			<div class="info">
+				<p><strong>Paint in 3D</strong> allows you to paint all the objects in your scene - both in game, and in editor. All features are optimized with GPU accelerated texture painting, so you can enjoy consistent performance, even if you paint your objects one million times!</p>
 				<img src="Content/P3D_A.png"/>
 				<img src="Content/P3D_B.png"/>
 				<img src="Content/P3D_C.png"/>
@@ -159,66 +85,100 @@
 				<img src="Content/P3D_E.png"/>
 			</div>
 		</div>
-		<div class="main" style="background: url('Content/LT_0.png') no-repeat #5BD2FF; color: #FFF;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #5BD2FF;">Lean Touch</h1>
-				<a class="btn" href="http://assetstore.unity.com/packages/slug/30111?aid=1101l4Jks" target="_blank"><i class="fa fa-external-link"></i> More Information</a>
+		<div class="main expandable" style="background-image: url('Content/LT_0.png'); background-color: #5BD2FF; color: #FFF;" id="LeanTouch">
+			<a href="#LeanTouch">
+				<h1 style="text-shadow: 0px 0px 5px #5BD2FF;">Lean Touch</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="center">
+				<a href="Get/LeanTouch" target="_blank"><i class="fa fa-external-link"></i>Get Lean Touch</a>
 			</div>
-			<p><strong>Lean Touch</strong> allows you to rapidly develop games with consistent input across desktop &amp mobile devices! This lightweight asset comes with many modular components, allowing you to customize them to your exact project needs!</p>
+			<div class="info">
+				<p><strong>Lean Touch</strong> allows you to rapidly develop games with consistent input across desktop &amp mobile devices! This lightweight asset comes with many modular components, allowing you to customize them to your exact project needs!</p>
+			</div>
 		</div>
-		<div class="main" style="background: url('Content/LTP_0.png') no-repeat #5BD2FF; color: #FFF;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #5BD2FF">Lean Touch+</h1>
-				<a class="btn" href="http://assetstore.unity.com/packages/slug/72356?aid=1101l4Jks" target="_blank"><i class="fa fa-external-link"></i> More Information</a>
+		<div class="main expandable" style="background-image: url('Content/LTP_0.png'); background-color: #5BD2FF; color: #FFF;" id="LeanTouchPlus">
+			<a href="#LeanTouchPlus">
+				<h1 style="text-shadow: 0px 0px 5px #5BD2FF;">Lean Touch+</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="center">
+				<a href="Get/LeanTouchPlus" target="_blank"><i class="fa fa-external-link"></i>Get Lean Touch+</a>
 			</div>
-			<p><strong>Lean Touch+</strong> is an extension to the popular <a href="http://assetstore.unity.com/packages/slug/30111?aid=1101l4Jks" target="_blank">Lean Touch</a> asset, adding <strong>MANY</strong> more example scenes, and new modular components.</p>
+			<div class="info">
+				<p><strong>Lean Touch+</strong> is an extension to the popular <a href="http://assetstore.unity.com/packages/slug/30111?aid=1101l4Jks" target="_blank">Lean Touch</a> asset, adding <strong>MANY</strong> more example scenes, and new modular components.</p>
+			</div>
 		</div>
-		<div class="main" style="background: url('Content/LP_0.png') no-repeat #FFF; color: #111;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #FFF">Lean Pool</h1>
-				<a class="btn" href="http://assetstore.unity.com/packages/slug/35666?aid=1101l4Jks" target="_blank"><i class="fa fa-external-link"></i> More Information</a>
+		<div class="main expandable" style="background-image: url('Content/LP_0.png'); background-color: #FFF; color: #111;" id="LeanPool">
+			<a href="#LeanPool">
+				<h1 style="text-shadow: 0px 0px 5px #FFF;">Lean Pool</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="center">
+				<a href="Get/LeanPool" target="_blank"><i class="fa fa-external-link"></i>Get Lean Pool</a>
 			</div>
-			<p><strong>Lean Pool</strong> allows you to quickly optimize the performance of your games. Within minutes you can use this lightweight asset to preload, recycle, and limit the spawning of your prefabs.</p>
+			<div class="info">
+				<p><strong>Lean Pool</strong> allows you to quickly optimize the performance of your games. Within minutes you can use this lightweight asset to preload, recycle, and limit the spawning of your prefabs.</p>
+			</div>
 		</div>
-		<div class="main" style="background: url('Content/LL_0.png') no-repeat #C2C2C2; color: #111;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #C2C2C2">Lean Localization</h1>
-				<a class="btn" href="http://assetstore.unity.com/packages/slug/28504?aid=1101l4Jks" target="_blank"><i class="fa fa-external-link"></i> More Information</a>
+		<div class="main expandable" style="background-image: url('Content/LL_0.png'); background-color: #C2C2C2; color: #111;" id="LeanLocalization">
+			<a href="#LeanLocalization">
+				<h1 style="text-shadow: 0px 0px 5px #C2C2C2;">Lean Localization</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="center">
+				<a href="Get/LeanLocalization" target="_blank"><i class="fa fa-external-link"></i>Get Lean Localization</a>
 			</div>
-			<p><strong>Lean Localization</strong> allows you to localize the text, sprites, and much more in just a few clicks. This asset was designed to be as simple to use as possible for both designers, and programmers.</p>
+			<div class="info">
+				<p><strong>Lean Localization</strong> allows you to localize the text, sprites, and much more in just a few clicks. This asset was designed to be as simple to use as possible for both designers, and programmers.</p>
+			</div>
 		</div>
-		<div class="main" style="background: url('Content/VA_0.jpg') no-repeat #474747; color: #EEE;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #474747">Volumetric Audio</h1>
-				<a class="btn" href="http://assetstore.unity.com/packages/slug/17125?aid=1101l4Jks" target="_blank"><i class="fa fa-external-link"></i> More Information</a>
+		<div class="main expandable" style="background-image: url('Content/VA_0.jpg'); background-color: #474747; color: #EEE;" id="VolumetricAudio">
+			<a href="#VolumetricAudio">
+				<h1 style="text-shadow: 0px 0px 5px #474747;">Volumetric Audio</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="center">
+				<a href="Get/VolumetricAudio" target="_blank"><i class="fa fa-external-link"></i>Get Volumetric Audio</a>
 			</div>
-			<p><strong>Volumetric Audio</strong> allows you to simulate sound emanation from complex shapes like paths or meshes with great performance.</p>
+			<div class="info">
+				<p><strong>Volumetric Audio</strong> allows you to simulate sound emanation from complex shapes like paths or meshes with great performance.</p>
+			</div>
 		</div>
-		<div class="main" style="background: url('Content/PP_0.jpg') no-repeat #0D0906; color: #EEE;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #0D0906">Planet Pack</h1>
-				<a class="btn" href="http://assetstore.unity.com/packages/slug/124578?aid=1101l4Jks" target="_blank"><i class="fa fa-external-link"></i> More Information</a>
+		<div class="main expandable" style="background-image: url('Content/PP_0.jpg'); background-color: #0D0906; color: #EEE;" id="PlanetPack">
+			<a href="#PlanetPack">
+				<h1 style="text-shadow: 0px 0px 5px #0D0906;">Planet Pack</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="center">
+				<a href="Get/PlanetPack" target="_blank"><i class="fa fa-external-link"></i>Get Planet Pack</a>
 			</div>
-			<p><strong>Planet Pack</strong> is a collection of 26 high detail PBR planets, all finished using the powerful planet features of <a href="http://assetstore.unity.com/packages/slug/4160?aid=1101l4Jks" target="_blank">Space Graphics Toolkit</a> (SGT). This is a standalone package, so SGT is not required. You can even use the included features to turn your own planets into beautiful worlds!</p>
+			<div class="info">
+				<p><strong>Planet Pack</strong> is a collection of 26 high detail PBR planets, all finished using the powerful planet features of <a href="http://assetstore.unity.com/packages/slug/4160?aid=1101l4Jks" target="_blank">Space Graphics Toolkit</a> (SGT). This is a standalone package, so SGT is not required. You can even use the included features to turn your own planets into beautiful worlds!</p>
+			</div>
 		</div>
-		<div class="main" style="background: url('Content/SP_0.jpg') no-repeat #FFF; color: #333;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #FFF">Sprite Packer</h1>
-				<a class="btn" href="http://assetstore.unity.com/packages/slug/12976?aid=1101l4Jks" target="_blank"><i class="fa fa-external-link"></i> More Information</a>
+		<div class="main expandable" style="background-image: url('Content/SP_0.jpg'); background-color: #FFF; color: #333;" id="SpritePacker">
+			<a href="#SpritePacker">
+				<h1 style="text-shadow: 0px 0px 5px #FFF;">Sprite Packer</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="center">
+				<a href="Get/SpritePacker" target="_blank"><i class="fa fa-external-link"></i>Get Sprite Packer</a>
 			</div>
-			<p><strong>Sprite Packer</strong> allows you to easily pack sprites into a single sprite sheet, allowing you to achieve one draw call.</p>
-			<div class="screenshots">
+			<div class="info">
+				<p><strong>Sprite Packer</strong> allows you to easily pack sprites into a single sprite sheet, allowing you to achieve one draw call.</p>
 				<img src="Content/SP_A.jpg"/>
 				<img src="Content/SP_B.jpg"/>
 				<img src="Content/SP_C.jpg"/>
 			</div>
 		</div>
-		<div class="main" style="background: url('Content/GF_0.png') no-repeat #395059; color: #EEF;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #395059">Gravity Factory</h1>
-			</div>
-			<p>This was a game I made in Unity for fun. It took about two weeks, and included quite a bit of cool UI and procedural mesh code. I released it on the Google Play Store.</p>
-			<div class="screenshots">
+		<div class="main expandable" style="background-image: url('Content/GF_0.png'); background-color: #395059; color: #EEF;" id="GravityFactory">
+			<a href="#GravityFactory">
+				<h1 style="text-shadow: 0px 0px 5px #395059;">Gravity Factory</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="info">
+				<p>This was a game I made in Unity for fun. It took about two weeks, and included quite a bit of cool UI and procedural mesh code. I released it on the Google Play Store.</p>
 				<img src="Content/GF_A.png"/>
 				<img src="Content/GF_B.png"/>
 				<img src="Content/GF_C.png"/>
@@ -226,13 +186,14 @@
 				<img src="Content/GF_E.png"/>
 			</div>
 		</div>
-		<div class="main" style="background: url('Content/BS_0.png') no-repeat #575E63; color: #EEF;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #575E63">Block Sniper</h1>
-			</div>
-			<p>When Synty Studios released their low polygon packs I got the idea to release a simple mobile game using it, and so I made this.</p>
-			<p>This was made in Unity, and I did all the programming from scratch in C#. I released it on the Google Play Store.</p>
-			<div class="screenshots">
+		<div class="main expandable" style="background-image: url('Content/BS_0.png'); background-color: #575E63; color: #EEF;" id="BlockSniper">
+			<a href="#BlockSniper">
+				<h1 style="text-shadow: 0px 0px 5px #575E63;">Block Sniper</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="info">
+				<p>When Synty Studios released their low polygon packs I got the idea to release a simple mobile game using it, and so I made this.</p>
+				<p>This was made in Unity, and I did all the programming from scratch in C#. I released it on the Google Play Store.</p>
 				<img src="Content/BS_A.png"/>
 				<img src="Content/BS_B.png"/>
 				<img src="Content/BS_C.png"/>
@@ -240,15 +201,18 @@
 				<iframe width='271' height='160' src="https://www.youtube.com/embed/6jjvMS9DhbE?&theme=dark&autohide=2"frameborder="0"></iframe>
 			</div>
 		</div>
-		<div class="main" style="background: url('Content/A1_0.jpg') no-repeat #000; color: #EEF;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #000">Astrodude (1.0)</h1>
-				<a class="btn" href="http://www.dropbox.com/s/0yj6g3vqgtscg62/Astrodude_1_0.zip?dl=1" target="_blank"><i class="fa fa-download"></i> Download</a>
+		<div class="main expandable" style="background-image: url('Content/A1_0.jpg'); background-color: #000; color: #EEF;" id="Astrodude_1_0">
+			<a href="#Astrodude_1_0">
+				<h1 style="text-shadow: 0px 0px 5px #000;">Astrodude (1.0)</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="center">
+				<a href="Get/Astrodude_1_0" target="_blank"><i class="fa fa-download"></i>Get Astrodude</a>
 			</div>
-			<p><strong>Astrodude (1.0)</strong> is a game I made for the Intel AppUp store (now discontinued), and is the first game I commercially published.</p>
-			<p>This contained media from the original "Astrodude 0.3" game, but it was rewritten from scratch. Some parts like the UI system even bypassed the DarkGDK library entirely, and were rendered directly using D3D9 API calls.</p>
-			<p>Since it was a commercial release, I wanted to include more features than just the car racing feature from the original competition version, so I made levels where you control the astrodude himself to avoid dangers and collect eggs. The eggs are then used to unlock new levels, and I put a lot of polish into each aspect.</p>
-			<div class="screenshots">
+			<div class="info">
+				<p><strong>Astrodude (1.0)</strong> is a game I made for the Intel AppUp store (now discontinued), and is the first game I commercially published.</p>
+				<p>This contained media from the original "Astrodude 0.3" game, but it was rewritten from scratch. Some parts like the UI system even bypassed the DarkGDK library entirely, and were rendered directly using D3D9 API calls.</p>
+				<p>Since it was a commercial release, I wanted to include more features than just the car racing feature from the original competition version, so I made levels where you control the astrodude himself to avoid dangers and collect eggs. The eggs are then used to unlock new levels, and I put a lot of polish into each aspect.</p>
 				<img src="Content/A1_A.jpg"/>
 				<img src="Content/A1_B.jpg"/>
 				<img src="Content/A1_C.jpg"/>
@@ -256,39 +220,45 @@
 				<iframe width='271' height='160' src="https://www.youtube.com/embed/bHdncjRtcPU?&theme=dark&autohide=2"frameborder="0"></iframe>
 			</div>
 		</div>
-		<div class="main" style="background: url('Content/A3_0.png') no-repeat #000; color: #EEF;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #000">Astrodude (0.3)</h1>
-				<a class="btn" href="http://www.dropbox.com/s/tw4hxyiscm9mgxc/Astrodude_0_3.zip?dl=1" target="_blank"><i class="fa fa-download"></i> Download</a>
+		<div class="main expandable" style="background-image: url('Content/A3_0.png'); background-color: #000; color: #EEF;" id="Astrodude_0_3">
+			<a href="#Astrodude_0_3">
+				<h1 style="text-shadow: 0px 0px 5px #000;">Astrodude (0.3)</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="center">
+				<a href="Get/Astrodude_0_3" target="_blank"><i class="fa fa-download"></i>Get Astrodude</a>
 			</div>
-			<img src="Content/A3_A.png" align="right" style="margin: 10px;"/>
-			<p><strong>Astrodude (0.3)</strong> is a game I entered into the Intel Netbook Competition, hosted by The Game Creators. I won <a href="http://www.thegamecreators.com/pages/newsletters/newsletter_issue_94.html" target="_blank">1st place</a>, also announced <a href="http://www.gamasutra.com/view/pressreleases/145151/Winners_of_The_Game_Creators_and_Intel_GamesnbspforNotebooks_Competition_Announced.php">HERE</a>.</p>
-			<p>The theme of the competition was to make a game suitable for the new Intel Netbook range, which were basically mini laptops. I decided to make a car physics based dodging game, where you can use the trackpad to 'swipe' the car to dodge obstacles.</p>
-			<p>I did all the programming for this game using C++ with the DarkGDK graphics library, and all the artwork in Photoshop. The biggest challenge I faced when making this game was handling the deformation of the terrain. I had to develop a system to efficiently generate (and regenerate) the collision mesh at runtime based on the explosions that deformed the surface. This was quite a challenge because I wasn't aware this had been done before and the algorithm was called Marching Squares, and so I developed the algorithm on my own from scratch.</p>
-			<p>The idea with this competition was that the game would later be published on Intel's "App Up" store (now discontinued). In preparing this game for publishing I discovered that due to NPOT scaling issues, my game wouldn't function correctly on some devices. Accounting for this issue was quite difficult using the DarkGDK graphics API, and I wanted to include some more features for the commercially published version, and so I decided to re-write the game from scratch and release it as version 1.0.</p>
-			<blockquote>
-				<p><strong>Judges</strong>: "Have everything you understand about physics tested to the maximum in this 2D physics-based driving game. It's a tried and tested formula but with a twist. Set in an extra-terrestrial environment with just enough gravity to keep you planet-bound, the camera view is fixed to the orientation of your dune buggy. Rather than lose your vehicle and starting again when you overturn it, your whole world is turned upside down too. You'll have to wrestle with recovering your vehicle whilst baffled by working out the physical aspects in a upturned world."
-				<br/>
-				<br/><strong>Duffy, our Intel judge, reports</strong> "Astrodude scored the highest across the board. Well done graphics, good game play for a netbook...'track pad' swipe for a boost is brilliant."</p>
-			</blockquote>
-			<div class="screenshots">
+			<div class="info">
+				<p><strong>Astrodude (0.3)</strong> is a game I entered into the Intel Netbook Competition, hosted by The Game Creators. I won <a href="http://www.thegamecreators.com/pages/newsletters/newsletter_issue_94.html" target="_blank">1st place</a>, also announced <a href="http://www.gamasutra.com/view/pressreleases/145151/Winners_of_The_Game_Creators_and_Intel_GamesnbspforNotebooks_Competition_Announced.php">HERE</a>.</p>
+				<p>The theme of the competition was to make a game suitable for the new Intel Netbook range, which were basically mini laptops. I decided to make a car physics based dodging game, where you can use the trackpad to 'swipe' the car to dodge obstacles.</p>
+				<p>I did all the programming for this game using C++ with the DarkGDK graphics library, and all the artwork in Photoshop. The biggest challenge I faced when making this game was handling the deformation of the terrain. I had to develop a system to efficiently generate (and regenerate) the collision mesh at runtime based on the explosions that deformed the surface. This was quite a challenge because I wasn't aware this had been done before and the algorithm was called Marching Squares, and so I developed the algorithm on my own from scratch.</p>
+				<p>The idea with this competition was that the game would later be published on Intel's "App Up" store (now discontinued). In preparing this game for publishing I discovered that due to NPOT scaling issues, my game wouldn't function correctly on some devices. Accounting for this issue was quite difficult using the DarkGDK graphics API, and I wanted to include some more features for the commercially published version, and so I decided to re-write the game from scratch and release it as version 1.0.</p>
+				<blockquote>
+					<p><strong>Judges</strong>: "Have everything you understand about physics tested to the maximum in this 2D physics-based driving game. It's a tried and tested formula but with a twist. Set in an extra-terrestrial environment with just enough gravity to keep you planet-bound, the camera view is fixed to the orientation of your dune buggy. Rather than lose your vehicle and starting again when you overturn it, your whole world is turned upside down too. You'll have to wrestle with recovering your vehicle whilst baffled by working out the physical aspects in a upturned world."
+					<br/>
+					<br/><strong>Duffy, our Intel judge, reports</strong> "Astrodude scored the highest across the board. Well done graphics, good game play for a netbook...'track pad' swipe for a boost is brilliant."</p>
+				</blockquote>
+				<img src="Content/A3_A.png" align="right" style="margin: 10px;"/>
 				<img src="Content/A3_B.png"/>
 				<iframe width='300' height='177' src="https://www.youtube.com/embed/KOTEccr7zbY?&theme=dark&autohide=2"frameborder="0"></iframe>
 				<iframe width='300' height='177' src="https://www.youtube.com/embed/mU1RtQrYnWg?&theme=dark&autohide=2"frameborder="0"></iframe>
 			</div>
 		</div>
-		<div class="main" style="background: url('Content/EW_0.png') no-repeat #4F4D4D; color: #EEF;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #4F4D4D">evo.war</h1>
-				<a class="btn" href="http://www.dropbox.com/s/ssa5k9ny50rwmwp/evo_war_1_0.zip?dl=1" target="_blank"><i class="fa fa-download"></i> Download</a>
+		<div class="main expandable" style="background-image: url('Content/EW_0.png'); background-color: #4F4D4D; color: #EEF;" id="EvoWar">
+			<a href="#EvoWar">
+				<h1 style="text-shadow: 0px 0px 5px #4F4D4D;">evo.war</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="center">
+				<a href="Get/EvoWar" target="_blank"><i class="fa fa-download"></i>Get evo.war</a>
 			</div>
-			<p><strong>evo.war</strong> is a game I entered into the Community Competition, hosted by The Game Creators. I won <a href="http://www.thegamecreators.com/pages/newsletters/newsletter_issue_77.html" target="_blank">5th place</a>.</p>
-			<p>I don't think there was any particular theme, so I just experimented with every idea that popped into my head. What I came up with was a shoot-em-up where the enemies 'evolve' based on how easily you were able to kill them. All ships including your own used the same code, except you were able to choose your upgrades, whereas the enemies were just random mutations. In the end this system didn't really make for fun gameplay or enemies that made any visual sense, so I scrapped the evolving enemy part and just hand-made them.</p>
-			<p>I did all programming in this game using C++ with the DarkGDK graphics library. This library doesn't contain any of the fancy feature we now know and love, so developing this game required me to create a UI system from scratch, including a sprite font system. I also developed the ribbon trail (missile trail) system from scratch, which required a lot of mesh manipulation code. I also did some procedural texture work for the progress line, and voronoi upgrade UI picker. The levels are based on text file parsing, and there are many small things I made like a playlist system, particle system, weapon system, modular part handling system, star shadow system, and much more.</p>
-			<blockquote>
-				<p><strong>Judges</strong>: "Evo.war is another fine entry from Darkcoder. The attention to visual detail and innovative game play sets it aside from other entries. The principle behind the game is to take a standard side scrolling shooter in the R-Type style, and collect DNA as you work through the levels. You can then "evolve" your ship using collected DNA creating different designs. Starting as a humble egg-shaped craft, progress through the levels with varying weapon configurations. The game play can be very intense at times, almost frustrating; however the ability to adapt your ship to your preferred playing style is a great advantage."</p>
-			</blockquote>
-			<div class="screenshots">
+			<div class="info">
+				<p><strong>evo.war</strong> is a game I entered into the Community Competition, hosted by The Game Creators. I won <a href="http://www.thegamecreators.com/pages/newsletters/newsletter_issue_77.html" target="_blank">5th place</a>.</p>
+				<p>I don't think there was any particular theme, so I just experimented with every idea that popped into my head. What I came up with was a shoot-em-up where the enemies 'evolve' based on how easily you were able to kill them. All ships including your own used the same code, except you were able to choose your upgrades, whereas the enemies were just random mutations. In the end this system didn't really make for fun gameplay or enemies that made any visual sense, so I scrapped the evolving enemy part and just hand-made them.</p>
+				<p>I did all programming in this game using C++ with the DarkGDK graphics library. This library doesn't contain any of the fancy feature we now know and love, so developing this game required me to create a UI system from scratch, including a sprite font system. I also developed the ribbon trail (missile trail) system from scratch, which required a lot of mesh manipulation code. I also did some procedural texture work for the progress line, and voronoi upgrade UI picker. The levels are based on text file parsing, and there are many small things I made like a playlist system, particle system, weapon system, modular part handling system, star shadow system, and much more.</p>
+				<blockquote>
+					<p><strong>Judges</strong>: "Evo.war is another fine entry from Darkcoder. The attention to visual detail and innovative game play sets it aside from other entries. The principle behind the game is to take a standard side scrolling shooter in the R-Type style, and collect DNA as you work through the levels. You can then "evolve" your ship using collected DNA creating different designs. Starting as a humble egg-shaped craft, progress through the levels with varying weapon configurations. The game play can be very intense at times, almost frustrating; however the ability to adapt your ship to your preferred playing style is a great advantage."</p>
+				</blockquote>
 				<img src="Content/EW_A.jpg"/>
 				<img src="Content/EW_B.jpg"/>
 				<img src="Content/EW_C.jpg"/>
@@ -297,14 +267,15 @@
 				<iframe width='271' height='160' src="https://www.youtube.com/embed/uLrUy9vBkXw?&theme=dark&autohide=2"frameborder="0"></iframe>
 			</div>
 		</div>
-		<div class="main" style="background: url('Content/FEO_0.jpg') no-repeat #000; color: #EEF;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #000">Final Exodus: Online</h1>
-			</div>
-			<p>This is a game I was making using the DarkBASIC Professional software, and was perhaps the last project I attempted with it before moving to C++ and DarkGDK. Although I never finished this game, many of the things I learned and even some of its media lives on in my Asset Store product: Space Graphics Toolkit.</p>
-			<p>The idea behind this game was to make a realtime space combat MMO, with heavy inspiration from the Stargate TV series.</p>
-			<p>I did all the programming for this game, all the 3D artwork, all the shaders, all the UI artwork, and except for the particle animations and planet texture, I did all the 2D artwork too.</p>
-			<div class="screenshots">
+		<div class="main expandable" style="background-image: url('Content/FEO_0.jpg'); background-color: #000; color: #EEF;" id="FinalExodusOnline">
+			<a href="#FinalExodusOnline">
+				<h1 style="text-shadow: 0px 0px 5px #000;">Final Exodus: Online</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="info">
+				<p>This is a game I was making using the DarkBASIC Professional software, and was one of the last projects I attempted with it before moving to C++ and DarkGDK. Although I never finished this game, many of the things I learned and even some of its media lives on in my Asset Store product: Space Graphics Toolkit.</p>
+				<p>The idea behind this game was to make a realtime space combat MMO, with heavy inspiration from the Stargate TV series.</p>
+				<p>I did all the programming for this game, all the 3D artwork, all the shaders, all the UI artwork, and except for the particle animations and planet texture, I did all the 2D artwork too.</p>
 				<img src="Content/FEO_A.jpg"/>
 				<img src="Content/FEO_B.jpg"/>
 				<img src="Content/FEO_C.jpg"/>
@@ -313,25 +284,28 @@
 				<iframe width='271' height='160' src="https://www.youtube.com/embed/q2wBTdeMSDg?&theme=dark&autohide=2"frameborder="0"></iframe>
 			</div>
 		</div>
-		<div class="main" style="background: url('Content/FE_0.jpg') no-repeat #110203; color: #EEF;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #110203">Final Exodus</h1>
-				<a class="btn" href="http://www.dropbox.com/s/ogs8w3ebfec89ee/FinalExodus_1_0.zip?dl=1" target="_blank"><i class="fa fa-download"></i> Download</a>
+		<div class="main expandable" style="background-image: url('Content/FE_0.jpg'); background-color: #110203; color: #EEF;" id="FinalExodus">
+			<a href="#FinalExodus">
+				<h1 style="text-shadow: 0px 0px 5px #110203;">Final Exodus</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="center">
+				<a href="Get/FinalExodus" target="_blank"><i class="fa fa-download"></i>Get Final Exodus</a>
 			</div>
-			<p>This game was made for the Game Dev Competition hosted by The Game Creators. I won <a href="http://www.thegamecreators.com/pages/newsletters/newsletter_issue_51.html#2" target="_blank">1st place</a>.</p>
-			<p>There was no theme to the competition, so I decided to make an open world space RTS, something along the lines of Homeworld. In this game you manage a fleet of ships, some of which can build other ships. You then capture star systems by destroying all enemies in them, and each star system you own generates resources for you. You can then spend these resources on research, upgrades, or new ships. The game is all realtime, with actual bullet physics. You can even zoom into the ships and 'enter' them to assume control, or rely on the AI and your command to control them.</p>
-			<p>I did all the programming in this game using DarkBASIC Professional, and did all 3D models using 3DS Max, and most UI and texture work using Photoshop.</p>
-			<blockquote>
-				<p><strong>Judges</strong>: "The game play at first has a bit of a learning curve. A stronger manual would have helped greatly, but once understood this is a very professional feeling game, with only a few flaws. You can play the game RTS style or take direct control of a ship in your fleet. You can research new technologies, build new ships and capture new systems. The more you have, the more resources are mined from the planet.
-				<br/>
-				<br/>These are the cleanest graphics I've seen in the whole competition - high resolution, no lagged edges, no compression marks. The models are simple yet effective; the Star Wars style firing works well. This is a great example of how good art and media really improves a game.
-				<br/>
-				<br/>The shaders are deployed very well. They are not overly in-your-face, rather subtle enhancements of the existing graphics. They are a great example of how shaders should be deployed in a game. The sound and music work well together, creating the classic feel associated with space games of this type. This is a very polished game. With more development and extra features, I can see this game hitting the shelves. Perhaps some story and character interaction would help aid this game further.
-				<br/>
-				<br/><strong>In Conclusion</strong>
-				<br/>An excellent game and a powerful example of what DarkBASIC Professional can achieve with good solid media behind it."</p>
-			</blockquote>
-			<div class="screenshots">
+			<div class="info">
+				<p>This game was made for the Game Dev Competition hosted by The Game Creators. I won <a href="http://www.thegamecreators.com/pages/newsletters/newsletter_issue_51.html#2" target="_blank">1st place</a>.</p>
+				<p>There was no theme to the competition, so I decided to make an open world space RTS, something along the lines of Homeworld. In this game you manage a fleet of ships, some of which can build other ships. You then capture star systems by destroying all enemies in them, and each star system you own generates resources for you. You can then spend these resources on research, upgrades, or new ships. The game is all realtime, with actual bullet physics. You can even zoom into the ships and 'enter' them to assume control, or rely on the AI and your command to control them.</p>
+				<p>I did all the programming in this game using DarkBASIC Professional, and did all 3D models using 3DS Max, and most UI and texture work using Photoshop.</p>
+				<blockquote>
+					<p><strong>Judges</strong>: "The game play at first has a bit of a learning curve. A stronger manual would have helped greatly, but once understood this is a very professional feeling game, with only a few flaws. You can play the game RTS style or take direct control of a ship in your fleet. You can research new technologies, build new ships and capture new systems. The more you have, the more resources are mined from the planet.
+					<br/>
+					<br/>These are the cleanest graphics I've seen in the whole competition - high resolution, no lagged edges, no compression marks. The models are simple yet effective; the Star Wars style firing works well. This is a great example of how good art and media really improves a game.
+					<br/>
+					<br/>The shaders are deployed very well. They are not overly in-your-face, rather subtle enhancements of the existing graphics. They are a great example of how shaders should be deployed in a game. The sound and music work well together, creating the classic feel associated with space games of this type. This is a very polished game. With more development and extra features, I can see this game hitting the shelves. Perhaps some story and character interaction would help aid this game further.
+					<br/>
+					<br/><strong>In Conclusion</strong>
+					<br/>An excellent game and a powerful example of what DarkBASIC Professional can achieve with good solid media behind it."</p>
+				</blockquote>
 				<img src="Content/FE_A.jpg"/>
 				<img src="Content/FE_B.jpg"/>
 				<img src="Content/FE_C.jpg"/>
@@ -339,22 +313,25 @@
 				<img src="Content/FE_E.jpg"/>
 			</div>
 		</div>
-		<div class="main" style="background: url('Content/PI_0.jpg') no-repeat #CCB57F; color: #111;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #CCB57F">PhysX Island</h1>
-				<a class="btn" href="http://www.dropbox.com/s/j6tx28h0eft1tau/PhysX%20Island.zip?dl=1" target="_blank"><i class="fa fa-download"></i> Download</a>
+		<div class="main expandable" style="background-image: url('Content/PI_0.jpg'); background-color: #CCB57F; color: #111;" id="PhysXIsland">
+			<a href="#PhysXIsland">
+				<h1 style="text-shadow: 0px 0px 5px #CCB57F;">PhysX Island</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="center">
+				<a href="Get/PhysXIsland" target="_blank"><i class="fa fa-download"></i>Get PhysX Island</a>
 			</div>
-			<img src="Content/PI_A.jpg" align="right" style="margin: 10px;"/>
-			<p>This was a game I entered into the PhysX competition, hosted by The Game Creators. I won <a href="http://www.thegamecreators.com/pages/newsletters/newsletter_issue_69.html" target="_blank">1st place</a>.</p>
-			<p>The theme of the competition was to make something showcasing the PhysX physics system. I decided to make a physics sandbox, set on an island that was being invaded by aliens. In my game you could place all kinds of physics props, aliens, and humans, and watch them all battle it out.</p>
-			<p>All programming was done by me, using DarkBASIC Professional.</p>
-			<p>All shaders were written by me, using HLSL.</p>
-			<p>Most 3D models were made by me, using 3DS Max.</p>
-			<p>All UI and some model textures were made by me, using Photoshop.</p>
-			<blockquote>
-				<p><strong>Judges</strong>: "To the victor goes the spoils, and Carlos walks away with the grand prize for a truly excellent all singing, all dancing demo. Sit back and watch it, or get involved interactively. The demo is set on an island paradise, in which you can conjure physics objects all day long. Rain from the sky using real fluids, soft and rigid bodies abound, cloth spawned like magic and everything in between. Do not be surprised if you get carried away creating lots of scenarios to play out on your very own physics island. The visuals are awesome, the help a welcome addition and the whole experience really speaks about the emerging fun to be had with physics."</p>
-			</blockquote>
-			<div class="screenshots">
+			<div class="info">
+				<img src="Content/PI_A.jpg" align="right" style="margin: 10px;"/>
+				<p>This was a game I entered into the PhysX competition, hosted by The Game Creators. I won <a href="http://www.thegamecreators.com/pages/newsletters/newsletter_issue_69.html" target="_blank">1st place</a>.</p>
+				<p>The theme of the competition was to make something showcasing the PhysX physics system. I decided to make a physics sandbox, set on an island that was being invaded by aliens. In my game you could place all kinds of physics props, aliens, and humans, and watch them all battle it out.</p>
+				<p>All programming was done by me, using DarkBASIC Professional.</p>
+				<p>All shaders were written by me, using HLSL.</p>
+				<p>Most 3D models were made by me, using 3DS Max.</p>
+				<p>All UI and some model textures were made by me, using Photoshop.</p>
+				<blockquote>
+					<p><strong>Judges</strong>: "To the victor goes the spoils, and Carlos walks away with the grand prize for a truly excellent all singing, all dancing demo. Sit back and watch it, or get involved interactively. The demo is set on an island paradise, in which you can conjure physics objects all day long. Rain from the sky using real fluids, soft and rigid bodies abound, cloth spawned like magic and everything in between. Do not be surprised if you get carried away creating lots of scenarios to play out on your very own physics island. The visuals are awesome, the help a welcome addition and the whole experience really speaks about the emerging fun to be had with physics."</p>
+				</blockquote>
 				<img src="Content/PI_B.jpg"/>
 				<img src="Content/PI_C.jpg"/>
 				<img src="Content/PI_D.jpg"/>
@@ -363,25 +340,28 @@
 				<iframe width='271' height='160' src="https://www.youtube.com/embed/LUkVQDYRB1Q?&theme=dark&autohide=2" frameborder="0"></iframe>
 			</div>
 		</div>
-		<div class="main" style="background: url('Content/PX_0.jpg') no-repeat #787B7C; color: #EEF;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #787B7C">Paradox</h1>
-				<a class="btn" href="http://www.dropbox.com/s/okjbnymzwr7r29x/Paradox_1_0.zip?dl=1" target="_blank"><i class="fa fa-download"></i> Download</a>
+		<div class="main expandable" style="background-image: url('Content/PX_0.jpg'); background-color: #787B7C; color: #EEF;" id="Paradox">
+			<a href="#Paradox">
+				<h1 style="text-shadow: 0px 0px 5px #787B7C;">Paradox</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="center">
+				<a href="Get/Paradox" target="_blank"><i class="fa fa-download"></i>Get Paradox</a>
 			</div>
-			<p>This is a game I entered into the PhysX competition, hosted by The Game Creators. I won <a href="http://www.thegamecreators.com/pages/newsletters/newsletter_issue_47.html#3" target="_blank">1st place</a>.</p>
-			<p>The theme of the competition was to make a game using the PhysX physics engine. I decided to make a vertically scrolling helicopter shoot-em-up, where all the enemies and level props used physics.</p>
-			<p>Although hard to see, this game features mesh deformation, where the enemy tanks and car props deform as you attack them. It also features basic buoyancy as things fall into the water, a custom particle system, custom UI, and much more.</p>
-			<p>I did all the programming for this game using DarkBASIC Professional, I made all of the 3D models, and much of the 2D and UI artwork too.</p>
-			<p>Most 3D models were made by me, using 3DS Max.</p>
-			<p>All UI and some model textures were made by me, using Photoshop.</p>
-			<blockquote>
-				<p><strong>Judges</strong>: "The team behind Paradox have done an exceptional job with their game. Right from the start it has a very good feel about it. The menu system looks very slick and once in the game the action is non stop. You pilot a helicopter and have to navigate over an area that is packed full of tanks and other enemy machinery that are hell bent on causing your destruction. You have to react quickly and move around fast to avoid getting hit while at the same time trying to take down the enemy.
-				<br/>
-				<br/>There's a lot of detail in this game from the impressive looking water which splashes when fired at, all the objects on the bridge below you such as barrels which you can use to your advantage as they can be blown up and much more. All of this contributes to a fun, addictive game and so far it's been the best use of Dark Physics that we've seen."
-				<br/>
-				<br/><strong>Lee Bambers Review</strong>: "This game has all the tick boxes checked, a polished game and no mistake. With a little work on the difficulty curve, this could be quite an addictive game. Getting the new players into the action slowly, with fewer, larger, weaker targets would encourage level progression, and a series of warnings when health is low plus the ability to 'collect' health will sustain lastability. A top effort!"</p>
-			</blockquote>
-			<div class="screenshots">
+			<div class="info">
+				<p>This is a game I entered into the PhysX competition, hosted by The Game Creators. I won <a href="http://www.thegamecreators.com/pages/newsletters/newsletter_issue_47.html#3" target="_blank">1st place</a>.</p>
+				<p>The theme of the competition was to make a game using the PhysX physics engine. I decided to make a vertically scrolling helicopter shoot-em-up, where all the enemies and level props used physics.</p>
+				<p>Although hard to see, this game features mesh deformation, where the enemy tanks and car props deform as you attack them. It also features basic buoyancy as things fall into the water, a custom particle system, custom UI, and much more.</p>
+				<p>I did all the programming for this game using DarkBASIC Professional, I made all of the 3D models, and much of the 2D and UI artwork too.</p>
+				<p>Most 3D models were made by me, using 3DS Max.</p>
+				<p>All UI and some model textures were made by me, using Photoshop.</p>
+				<blockquote>
+					<p><strong>Judges</strong>: "The team behind Paradox have done an exceptional job with their game. Right from the start it has a very good feel about it. The menu system looks very slick and once in the game the action is non stop. You pilot a helicopter and have to navigate over an area that is packed full of tanks and other enemy machinery that are hell bent on causing your destruction. You have to react quickly and move around fast to avoid getting hit while at the same time trying to take down the enemy.
+					<br/>
+					<br/>There's a lot of detail in this game from the impressive looking water which splashes when fired at, all the objects on the bridge below you such as barrels which you can use to your advantage as they can be blown up and much more. All of this contributes to a fun, addictive game and so far it's been the best use of Dark Physics that we've seen."
+					<br/>
+					<br/><strong>Lee Bambers Review</strong>: "This game has all the tick boxes checked, a polished game and no mistake. With a little work on the difficulty curve, this could be quite an addictive game. Getting the new players into the action slowly, with fewer, larger, weaker targets would encourage level progression, and a series of warnings when health is low plus the ability to 'collect' health will sustain lastability. A top effort!"</p>
+				</blockquote>
 				<img src="Content/PX_A.jpg"/>
 				<img src="Content/PX_B.jpg"/>
 				<img src="Content/PX_C.jpg"/>
@@ -389,15 +369,18 @@
 				<iframe width='271' height='160' src="https://www.youtube.com/embed/mmKn_z81L8M?&theme=dark&autohide=2" frameborder="0"></iframe>
 			</div>
 		</div>
-		<div class="main" style="background: url('Content/PR_0.jpg') no-repeat #E0E0E0; color: #222;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #E0E0E0">Piper</h1>
-				<a class="btn" href="http://www.dropbox.com/s/cj1u7f8z75r09pl/Piper_1_0.zip?dl=1" target="_blank"><i class="fa fa-download"></i> Download</a>
+		<div class="main expandable" style="background-image: url('Content/PR_0.jpg'); background-color: #E0E0E0; color: #222;" id="Piper">
+			<a href="#Piper">
+				<h1 style="text-shadow: 0px 0px 5px #E0E0E0;">Piper</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="center">
+				<a href="Get/Piper" target="_blank"><i class="fa fa-download"></i>Get Piper</a>
 			</div>
-			<p>This game was originally made for the Puzzle Competition, hosted by The Game Creators. I won <a href="http://www.thegamecreators.com/pages/newsletters/newsletter_issue_32.html#2" target="_blank">1st place</a>, and this was the first time one of my games won a programming contest.</p>
-			<p>This game was made using DarkBASIC. I did all programming, and all artwork.</p>
-			<p>I have since re-written this game numerous times, in: DarkBASIC Professional, DarkGDK (C++), Irrlicht (C++), OGRE 3D (C++), and Unity (C#).</p>
-			<div class="screenshots">
+			<div class="info">
+				<p>This game was originally made for the Puzzle Competition, hosted by The Game Creators. I won <a href="http://www.thegamecreators.com/pages/newsletters/newsletter_issue_32.html#2" target="_blank">1st place</a>, and this was the first time one of my games won a programming contest.</p>
+				<p>This game was made using DarkBASIC. I did all programming, and all artwork.</p>
+				<p>I have since re-written this game numerous times, in: DarkBASIC Professional, DarkGDK (C++), Irrlicht (C++), OGRE 3D (C++), and Unity (C#).</p>
 				<img src="Content/PR_A.png"/>
 				<img src="Content/PR_B.png"/>
 				<iframe width='271' height='160' src="https://www.youtube.com/embed/kWozqiD4_4U?&theme=dark&autohide=2"frameborder="0"></iframe>
@@ -405,24 +388,27 @@
 				<img src="Content/PR_D.png"/>
 			</div>
 		</div>
-		<div class="main" style="background: url('Content/OG_0.jpg') no-repeat #40491F; color: #FFF;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #40491F">Operation Genocide</h1>
-				<a class="btn" href="http://www.dropbox.com/s/kr4416dpjtfr4px/Operation%20Genocide.zip?dl=1" target="_blank"><i class="fa fa-download"></i> Download</a>
-				<a class="btn" href="http://www.caiman.us/scripts/fw/f1346.html" target="_blank"><i class="fa fa-external-link"></i> Mirror</a>
+		<div class="main expandable" style="background-image: url('Content/OG_0.jpg'); background-color: #40491F; color: #FFF;" id="OperationGenocide">
+			<a href="#OperationGenocide">
+				<h1 style="text-shadow: 0px 0px 5px #40491F;">Operation Genocide</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="center">
+				<a href="Get/OperationGenocide" target="_blank"><i class="fa fa-download"></i>Get Operation Genocide</a>
+				<a href="Get/OperationGenocide_Mirror" target="_blank"><i class="fa fa-external-link"></i>Mirror</a>
 			</div>
-			<img src="Content/OG_A.jpg" align="right" style="margin: 10px;"/>
-			<p>This was one of the first games I completed.</p>
-			<p>It was made for and entered into the Alienware programming competition hosted by The Game Creators. I won <a href="https://www.thegamecreators.com/pages/newsletters/newsletter_issue_13.html#10" target="_blank">10th place!</a></p>
-			<p>The theme of this competition was to make any game, as long as it featured the alien model they provided.</p>
-			<p>In my game, I used the alien as your companion that helps attack enemies, and gives you some dialogue. I didn't think too hard about what to use the alien model for because I just wanted to implement lots of cool guns and effects.</p>
-			<p>I did all the programming for this game, using DarkBASIC.</p>
-			<p>Besides the one alien model, I did all 3D art and level design for this game using Milkshape 3D.</p>
-			<p>For the guns and aliens, I did all the 2D art using PaintShop Pro.</p>
-			<blockquote>
-				<p><strong>Judges:</strong>"Out of all the FPS style games submitted for this competition, we have to admit that the controls and smoothness of Operation Genocide means it was easily the best of that genre. The collision is perfectly smooth, the guns are great - extremely well modelled with punchy sound effects, shell casing ejection and they just all look the part. There are loads of them too, from Uzi's to sniper rifles. We aren't really sure of the plot, but you start the game on the surface of a planet with a hologram of an alien."</p>
-			</blockquote>
-			<div class="screenshots">
+			<div class="info">
+				<img src="Content/OG_A.jpg" align="right" style="margin: 10px;"/>
+				<p>This was one of the first games I completed.</p>
+				<p>It was made for and entered into the Alienware programming competition hosted by The Game Creators. I won <a href="https://www.thegamecreators.com/pages/newsletters/newsletter_issue_13.html#10" target="_blank">10th place!</a></p>
+				<p>The theme of this competition was to make any game, as long as it featured the alien model they provided.</p>
+				<p>In my game, I used the alien as your companion that helps attack enemies, and gives you some dialogue. I didn't think too hard about what to use the alien model for because I just wanted to implement lots of cool guns and effects.</p>
+				<p>I did all the programming for this game, using DarkBASIC.</p>
+				<p>Besides the one alien model, I did all 3D art and level design for this game using Milkshape 3D.</p>
+				<p>For the guns and aliens, I did all the 2D art using PaintShop Pro.</p>
+				<blockquote>
+					<p><strong>Judges:</strong>"Out of all the FPS style games submitted for this competition, we have to admit that the controls and smoothness of Operation Genocide means it was easily the best of that genre. The collision is perfectly smooth, the guns are great - extremely well modelled with punchy sound effects, shell casing ejection and they just all look the part. There are loads of them too, from Uzi's to sniper rifles. We aren't really sure of the plot, but you start the game on the surface of a planet with a hologram of an alien."</p>
+				</blockquote>
 				<img src="Content/OG_B.jpg"/>
 				<img src="Content/OG_C.jpg"/>
 				<img src="Content/OG_D.jpg"/>
@@ -431,12 +417,13 @@
 				<iframe width='200' height='118' src="https://www.youtube.com/embed/wwlaavmvc7A?&theme=dark&autohide=2"frameborder="0"></iframe>
 			</div>
 		</div>
-		<div class="main" style="background: url('Content/3D_0.jpg') no-repeat #EBEBF7; color: #111;">
-			<div class="links">
-				<h1 class="title" style="text-shadow: 0px 0px 5px #EBEBF7">3D Modelling</h1>
-			</div>
-			<p>Before learning programming I learned 3D modelling, UV mapping, and texturing. Here's a selection of some of those models! As you can see, I liked hard surface modelling. Any time I attempted anything organic it ended up looking like it was melted in the microwave first.</p>
-			<div class="screenshots">
+		<div class="main expandable" style="background-image: url('Content/3D_0.jpg'); background-color: #EBEBF7; color: #111;" id="3D_Modelling">
+			<a href="#3D_Modelling">
+				<h1 style="text-shadow: 0px 0px 5px #EBEBF7;">3D Modelling</h1>
+				<i class="fa fa-angle-down"></i>
+			</a>
+			<div class="info">
+				<p>Before learning programming I learned 3D modelling, UV mapping, and texturing. Here's a selection of some of those models! As you can see, I liked hard surface modelling. Any time I attempted anything organic it ended up looking like it was melted in the microwave first.</p>
 				<img src="Content/3D_A.jpg"/>
 				<img src="Content/3D_B.jpg"/>
 				<img src="Content/3D_C.jpg"/>
