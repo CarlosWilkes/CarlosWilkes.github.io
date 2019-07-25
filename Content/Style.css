@@ -131,14 +131,22 @@ hr {
 	left: 100%;  
 }
 lightbox {
-	cursor: zoom-out;
-	margin: 20px;
+	margin-left: 1em;
+	float: right;
+	transition: border-color 1s;
+	cursor: zoom-in;
 }
 lightbox:nth-of-type(even) {
 	float: left;
 }
 lightbox:nth-of-type(odd) {
 	float: right;
+}
+lightbox img {
+	display: block;
+}
+lightbox:active img + div, lightbox:focus img + div {
+	z-index: 2;
 }
 lightbox::before {
 	display: none;
@@ -149,7 +157,6 @@ lightbox::before {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	z-index: 2;
 }
 lightbox::after {
 	display: none;
@@ -163,31 +170,33 @@ lightbox::after {
 	z-index: 0;
 	background: #333 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAAAwAAAAMADO7oxXAAAA2ElEQVRo3u2ZQQ4CIRAEwT/ynuXhm7QnDyIwIMjMxK7zhK2KsBoMgZD/JkoDAKAqGGPX8aEptwMGaCOegZLyTEh79Nfruf8EGKANA7TZHgAgo03WDg4VqTQYkStzqRw6EXAXz7wHIlryH2udCEiTEcPytTXUI8zJr4iYkf9GyJy8JFaZsyffi6jM2JRvRXQCtsq7/ymxBddbyPUhdv0adf1FtiKiHjG5bS4Al6mISfkXwxEnAkokeSnijeMBg/K9iKWA5Zu53fBmzhsM0MZ9AP8j04YBhBBdnpcx5ojPA/ruAAAAAElFTkSuQmCC) no-repeat center;
 }
-lightbox img + span {
+lightbox img + div {
 	position: fixed;
 	top: 1em;
-	bottom: 0;
-	left: 0;
-	right: 0;
+	bottom: 1em;
+	left: 1em;
+	right: 1em;
 	margin: auto;
 }
-lightbox img + span {
+lightbox img + div > span {
 	background: center / contain no-repeat;
 	width: 100%;
 	height: 100%;
 }
-lightbox img + span {
+lightbox img + div > span {
 	display: none;
 }
-lightbox:active::before, lightbox:active::after,
-lightbox:active img + span, lightbox:focus::before, lightbox:focus::after,
-lightbox:focus img + span {
+lightbox:active::before, lightbox:active::after, lightbox:active img + div > span, lightbox:focus::before, lightbox:focus::after, lightbox:focus img + div > span {
 	display: block;
 }
-lightbox img {
-	display: block;
-	cursor: zoom-in;
+lightbox img + div {
+	opacity: 0;
+	transition: opacity .5s, max-width .5s;
+	max-width: 0;
+	max-height: 100%;
+	cursor: zoom-out;
 }
-lightbox:active img + span, lightbox:focus img + span {
-	z-index: 20;
+lightbox:active img + div, lightbox:focus img + div {
+	opacity: 1;
+	max-width: 100%;
 }
