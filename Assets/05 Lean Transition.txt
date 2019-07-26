@@ -1,3 +1,3 @@
 Lean Transition
 Quickly polish your games using Lean Transition. This asset allows you to easily tween or animate almost anything in your game, making it transition smoothly.
-<a href="http://assetstore.unity.com/packages/slug/144107?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/144107/icon" alt="Lean Transition" width="128" height="128" /></a>
+<a href="http://CarlosWilkes.com/Get/LeanTransition" target="_blank"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/144107/icon" alt="Lean Transition" width="128" height="128" /></a>

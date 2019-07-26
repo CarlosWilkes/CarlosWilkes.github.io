@@ -1,3 +1,3 @@
 Planet Pack - Space Graphics Toolkit
 This pack contains 26 high detail PBR planets, all finished using the powerful planet features of Space Graphics Toolkit (SGT). This is a standalone package, so SGT is not required. You can even use the included features to turn your own planets into beautiful worlds!
-<a href="http://assetstore.unity.com/packages/slug/124578?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/124578/icon" alt="Planet Pack - Space Graphics Toolkit" width="128" height="128" /></a>
+<a href="http://CarlosWilkes.com/Get/PlanetPack" target="_blank"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/124578/icon" alt="Planet Pack - Space Graphics Toolkit" width="128" height="128" /></a>

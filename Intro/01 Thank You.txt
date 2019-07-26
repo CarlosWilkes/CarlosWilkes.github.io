@@ -1,8 +1,10 @@
-Thank you for your support &#x2764;&#xFE0F
-If you haven't already, please consider writing a review. They really help me out!
+Thank you for using {Title} &#x2764;&#xFE0F
+If you haven't already, please consider writing a <a href="http://CarlosWilkes.com/Get/{Link}" target="_blank">review</a>. They really help me out!
 
-If you have any questions, then feel free to send me an <a href="mailto:carlos.wilkes@gmail.com">E-Mail</a>.
+If you have any questions, then feel free to send me an <a href="mailto:carlos.wilkes@gmail.com">E-Mail</a>, or <a href="http://forum.unity.com/members/41960" target="_blank">Private Message</a>.
 
-You can also find me on the <a href="http://forum.unity.com/members/41960">Unity Forums</a>, or <a href="http://twitter.com/CarlosWilkes">Twitter</a>, or <a href="http://youtube.com/user/CarlosWilkes">YouTube</a>.
+You can also ask in the <a href="{Forum}" target="_blank">Forum Thread</a>.
+
+You can also check the <a href="{YouTube}" target="_blank">YouTube Channel</a>.
 
 I'm also available for freelance work if you need help with your projects.
