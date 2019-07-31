@@ -8,8 +8,7 @@ hr {
 	display: inline-block;
 	width: 100%;
 	visibility: hidden;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin: 20px;
 }
 .title {
 	font-size: 50px;
@@ -45,6 +44,34 @@ hr {
 .info {
 	padding: 5%;
 	overflow: hidden;
+}
+.factor {
+	display: inline-block;
+	width: 100%;
+	margin: 10px;
+}
+.factor > p {
+	margin-left: 40px;
+}
+.feature {
+	display: inline-block;
+	width: 100%;
+	margin: 30px;
+}
+.feature > h2 {
+	margin-top: 30px;
+}
+.feature:nth-of-type(even) lightbox {
+	float: left;
+}
+.feature:nth-of-type(odd) lightbox {
+	float: right;
+}
+.feature:nth-of-type(odd) {
+	float: right;
+}
+.feature:nth-of-type(odd) {
+	text-align: right;
 }
 .expandable {
 	background-repeat: no-repeat;
@@ -133,17 +160,12 @@ hr {
 lightbox {
 	margin: 10px;
 	float: right;
-	transition: border-color 1s;
 	cursor: zoom-in;
-}
-lightbox:nth-of-type(even) {
-	float: left;
-}
-lightbox:nth-of-type(odd) {
-	float: right;
+	max-width: 50%;
 }
 lightbox img {
 	display: block;
+	width: 100%;
 }
 lightbox:active img + div, lightbox:focus img + div {
 	z-index: 2;
