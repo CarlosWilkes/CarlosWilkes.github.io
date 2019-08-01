@@ -36,7 +36,7 @@ hr {
 	display: table-cell;
 	vertical-align: middle;
 	font-size: 40px;
-	padding: 25px 85px 25px 85px;
+	padding: 25px 15% 25px 15%;
 }
 .main table {
 	color: inherit;
@@ -49,14 +49,29 @@ hr {
 	display: inline-block;
 	width: 100%;
 	margin: 10px;
+	position: relative;
 }
-.factor > p {
-	margin-left: 40px;
+.factor #s {
+	font-size: 30px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+}
+.factor #h {
+	font-size: 30px;
+	margin-left: 50px;
+	padding: 0;
+	margin-bottom: 0;
+}
+.factor #p {
+	margin-left: 50px;
+	padding: 0;
 }
 .feature {
 	display: inline-block;
 	width: 100%;
-	margin: 30px;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 .feature > h2 {
 	margin-top: 30px;
@@ -158,7 +173,7 @@ hr {
 	left: 100%;  
 }
 lightbox {
-	margin: 10px;
+	margin: 20px;
 	float: right;
 	cursor: zoom-in;
 	max-width: 50%;
