@@ -10,6 +10,18 @@ hr {
 	visibility: hidden;
 	margin: 20px;
 }
+.header {
+	width: 100%;
+	height: 250px;
+	position: relative;
+	color:#FFF;
+}
+.header > * {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
 .title {
 	font-size: 50px;
 	text-align: center;
