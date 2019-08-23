@@ -1,0 +1,13 @@
+{
+"companyName": "PaintIn3D",
+"productName": "PaintIn3D",
+"dataUrl": "P3D.data.unityweb",
+"wasmCodeUrl": "P3D.wasm.code.unityweb",
+"wasmFrameworkUrl": "P3D.wasm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"}
+}
