@@ -144,52 +144,63 @@
 					<a href="Get/PaintIn3D" target="_blank"><i class="fa fa-external-link"></i>Get Paint in 3D</a>
 				</div>
 				<div class="info">
-					<p><strong>Paint in 3D</strong> allows you to paint all the objects in your scene - both in game, and in editor. All features are optimized with GPU accelerated texture painting, so you can enjoy consistent performance, even if you paint your objects one million times!</p>
+					<p>Paint all your objects using <strong>Paint in 3D</strong> - both in game, and in editor. All features have been heavily optimized, making it great for WebGL, mobile, VR, and much more!</p>
 <!-- PaintIn3D -->
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/PaintIn3D/Consistent_t.jpg" alt="Consistent Performance" /><div tabindex="0"><span style="background-image: url('Content/PaintIn3D/Consistent.jpg')" /></div></lightbox>
-						<h2>Consistent Performance</h2> <p>The reason why Paint in 3D runs so fast even if you paint a lot is because the paint is baked into the textures of your object. Your objects already have textures, so why not use them, right? The code also produces no garbage (0 gc alloc), so you don't have to worry about random lag spikes.</p>
+						<h2>So Many Demo Scenes</h2> <p>Paint in 3D includes a long list of tutorial scenes, these take you step-by-step through each feature. Once you've learned how they work, you can see the game demos. These combine multiple features, showing you how to implement painting in a variety of different scenarios.</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/PaintIn3D/Lightning_t.jpg" alt="Lightning Fast Painting" /><div tabindex="0"><span style="background-image: url('Content/PaintIn3D/Lightning.jpg')" /></div></lightbox>
-						<h2>Lightning Fast Painting</h2> <p>Baking paint into textures may sound slow, but the painting code is done 100% on the GPU, which actually makes it incredibly fast. The painting code has also been heavily optimized to minimize state changes by batching paint operations together.</p>
+						<h2>Consistent Performance</h2> <p>When you paint using Paint in 3D, the paint is baked into your textures. This means you can enjoy smooth and consistent framerates, even if you paint your objects millions of times!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/PaintIn3D/Platforms_t.jpg" alt="Mobile & Console & VR Support" /><div tabindex="0"><span style="background-image: url('Content/PaintIn3D/Platforms.jpg')" /></div></lightbox>
-						<h2>Mobile & Console & VR Support</h2> <p>Painting works great on all platforms and devices that support render textures. You can easily set painting up on VR too, with controller paint brushes, spray cans, etc.</p>
+						<h2>In Game & In Editor</h2> <p>Paint in 3D was designed from the start to support painting in game as well as in the editor. Both painting modes work the same way, so it's easy to learn how to use everything!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/PaintIn3D/Skinned_t.jpg" alt="Skinned Mesh Painting" /><div tabindex="0"><span style="background-image: url('Content/PaintIn3D/Skinned.jpg')" /></div></lightbox>
+						<h2>Lightning Fast Painting</h2> <p>Paint in 3D has been heavily optimized with GPU accelerated painting shaders, which makes it incredibly fast. The painting code has also been extensively profiled and tweaked to minimize state changes by batching paint operations together, minimizing GC Alloc by pooling everything, and much more!</p>
+					</div>
+					<div class="feature">
+						<h2>Custom Brushes</h2> <p>Paint in 3D allows you to easily design brushes that combine multiple different shapes, colors, decals, etc. You can use this to create complex brushes to get the exact painting effects you want.</p>
+					</div>
+					<div class="feature">
+						<h2>Dynamic Brushes</h2> <p>Paint in 3D allows you to add modifiers to your brushes, these can make your brushes come alive with dynamic colors, size, angle, etc.</p>
+					</div>
+					<div class="feature">
+						<h2>Cross Platform Support</h2> <p>Paint in 3D was designed from the start to work on as many devices and platforms as possible. It works great on desktop, mobile, VR, and much more! If you ever encounter performance issues then there are many settings you can tweak to speed things up with minimal visual change.</p>
+					</div>
+					<div class="feature">
 						<h2>Skinned Mesh Painting</h2> <p>Paint in 3D allows you to paint animated objects with great performance. Check out the WebGL Demo and see how great the zombie paint looks.</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/PaintIn3D/Seamless_t.jpg" alt="Seamless UV Painting" /><div tabindex="0"><span style="background-image: url('Content/PaintIn3D/Seamless.jpg')" /></div></lightbox>
-						<h2>Seamless UV Painting</h2> <p>If you have a complex mesh it's common to get seams when painting, even when using professional painting software. Paint in 3D solves this with the 'Seam Fixer' tool that comes included. Paint in 3D also makes painting between multiple objects seamless, even if they have different scales.</p>
+						<h2>Collision Painting</h2> <p>Paint in 3D allows you to paint objects when they hit each other. This allows you to add impact marks, scratches, and much more!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/PaintIn3D/Team_t.jpg" alt="Team Based Painting" /><div tabindex="0"><span style="background-image: url('Content/PaintIn3D/Team.jpg')" /></div></lightbox>
-						<h2>Team Based Painting</h2> <p>Paint in 3D comes with an easy to use team based painting feature. Where you can assign a specific color to a specific team, and count how many pixels each team has painted in your scene!</p>
+						<h2>Particle Painting</h2> <p>Paint in 3D allows you to paint objects using particle effects. This is great for making realistic looking spray paint, or smoke that really covers walls, and much more!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/PaintIn3D/Multi_t.jpg" alt="Multi-Texture Painting" /><div tabindex="0"><span style="background-image: url('Content/PaintIn3D/Multi.jpg')" /></div></lightbox>
-						<h2>Multi-Texture Painting</h2> <p>If you have a complex material & shader that has multiple textures that work together, then no problem. Paint in 3D allows you to create brushes that paint multiple textures at the same time, and to give each brush unique settings.</p>
+						<h2>Seamless UV Painting</h2> <p>If you have a complex mesh it's common to get seams when painting, even when using professional painting software. Paint in 3D solves this with the <em>Seam Fixer</em> tool that comes included, that allows you to make the otherwise difficult modifications to remove these seams. Paint in 3D also makes painting between multiple objects seamless, even if they have different scales.</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/PaintIn3D/Full_t.jpg" alt="Full Material Support" /><div tabindex="0"><span style="background-image: url('Content/PaintIn3D/Full.jpg')" /></div></lightbox>
-						<h2>Full Material Support</h2> <p>Paint in 3D not only supports painting all the materials & shaders that come with Unity, but all of your custom ones too! Using the intuitive inspector you can easily pick which materials and textures you want to paint.</p>
+						<h2>Color Counting</h2> <p>Paint in 3D comes with an easy to use system to count how many pixels of a specific color you have painted. This makes it ideal for team based painting games, where you need to see who painted the most.</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/PaintIn3D/Editor_t.jpg" alt="In Game & In Editor" /><div tabindex="0"><span style="background-image: url('Content/PaintIn3D/Editor.jpg')" /></div></lightbox>
-						<h2>In Game & In Editor</h2> <p>Paint in 3D was designed from the start to support painting in game as well as in the editor. This allows you to quickly tweak your textures in the editor, and later paint them in game, using the exact same features.</p>
+						<h2>Multi-Texture Painting</h2> <p>PBR materials often require you to paint Albedo + Metallic + AO maps at the same time. This is easy to set up with Paint in 3D, and can even be customized to work with any other kind of complex material.</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/PaintIn3D/Blending_t.jpg" alt="Blending Modes" /><div tabindex="0"><span style="background-image: url('Content/PaintIn3D/Blending.jpg')" /></div></lightbox>
-						<h2>Blending Modes</h2> <p>You're not limited to painting just normal albedo textures. Paint in 3D has a range of blending modes and settings that allow you to paint any kind of texture you like. For example, additive blending for illumination textures, RGB isolated alpha blending for cutout textures, and much more.</p>
+						<h2>Shader Painting</h2> <p>Paint in 3D allows you to paint all kinds of shaders and materials, including your custom ones. Simply pick the textures you want to paint, the blending mode you want to use, and you're set!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/PaintIn3D/Undo_t.jpg" alt="Undo & Redo" /><div tabindex="0"><span style="background-image: url('Content/PaintIn3D/Undo.jpg')" /></div></lightbox>
-						<h2>Undo & Redo</h2> <p>Full undo and redo support in editor, and at runtime. If you have a complex game then you can easily control this manually with the simple C# API.</p>
+						<h2>Blending Modes</h2> <p>Paint in 3D comes with a wide range of blending modes and settings that allow you to paint any kind of texture you like. For example, additive blending for illumination textures, RGB isolated alpha blending for cutout textures, and much more!</p>
 					</div>
+					<div class="feature">
+						<h2>Undo & Redo</h2> <p>Paint in 3D includes full undo + redo support for both in game and in editor painting. In game painting can be set to use full texture snapshots for fast switching, or paint action replay for low memory usage. Undo & redo can be done globally, or on individual objects, and can be triggered from UI buttons or C# API.</p>
+					</div>
+					<div class="feature">
+						<h2>Mirror Painting</h2> <p>Paint in 3D comes with powerful mirroring features, allowing you to paint both sides of your object at the same time. If you're painting decals with text then they will normally appear backwards, but Paint in 3D can correct that for you automatically!</p>
+					</div>
+					<div class="feature">
+						<h2>Decal Painting</h2> <p>Paint in 3D supports decal painting, allowing you to paint any texture you like on the surface of your objects. You get full control over the color, angle, and even advanced settings like the backface painting and angle limits.</p>
+					</div>
+
 <!-- PaintIn3D -->
 				</div>
 				<div class="center">
@@ -280,69 +291,63 @@ If you have large destructible objects then you need complex collider shapes, bu
 					<p><strong>Lean GUI</strong> is an extension to Unity's UI system, adding many useful components. The new components are also designed to be very flexible, so you can combine them in any way you like.</p>
 <!-- LeanGUI -->
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanGUI/Button_t.jpg" alt="LeanButton" /><div tabindex="0"><span style="background-image: url('Content/LeanGUI/Button.jpg')" /></div></lightbox>
+						<h2>Many Demo Scenes</h2> <p>Lean GUI includes a wide range of tutorial demo scenes, which take you step-by-step through each feature. These scenes contain detailed description text, which explain what is being shown, which components were used, and which settings were used.</p>
+					</div>
+					<div class="feature">
+						<h2>Easy To Use</h2> <p>Lean GUI was designed to be as flexible as possible, while still being easy to use. To achieve this, each component is fully modular, follows Unity’s inspector design style, has intuitively named settings, and includes detailed tooltip text. If you're a programmer then full C# source code is also included, allowing you to create and modify anything you like!</p>
+					</div>
+					<div class="feature">
+						<h2>Long Term Support</h2> <p>Lean assets have received regular updates for over 4 years. Thank you to everyone who was downloaded, rated, reviewed, and provided feedback so far! This asset now supports Unity 2017, 2018, 2019, as well as the Scriptable Rendering Pipelines (SRP).</p>
+					</div>
+					<div class="feature">
 						<h2>LeanButton</h2> <p>Allows you to make responsive buttons that activate as soon as you begin touching them, and perform advanced transitions with just a few clicks!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanGUI/Drag_t.jpg" alt="LeanDrag" /><div tabindex="0"><span style="background-image: url('Content/LeanGUI/Drag.jpg')" /></div></lightbox>
 						<h2>LeanDrag</h2> <p>Allows you to freely drag UI elements around the screen - no need to use a ScrollRect!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanGUI/Tooltip_t.jpg" alt="LeanTooltip + LeanTooltipData" /><div tabindex="0"><span style="background-image: url('Content/LeanGUI/Tooltip.jpg')" /></div></lightbox>
 						<h2>LeanTooltip + LeanTooltipData</h2> <p>Allows you to add tooltips to any UI element!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanGUI/Joystick_t.jpg" alt="LeanJoystick" /><div tabindex="0"><span style="background-image: url('Content/LeanGUI/Joystick.jpg')" /></div></lightbox>
 						<h2>LeanJoystick</h2> <p>Allows you to make on screen joysticks. In both a circle and box shape!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanGUI/Hitbox_t.jpg" alt="LeanHitbox" /><div tabindex="0"><span style="background-image: url('Content/LeanGUI/Hitbox.jpg')" /></div></lightbox>
 						<h2>LeanHitbox</h2> <p>Allows you to change the UI element hitbox so that can be clicked based on the graphic image shape!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanGUI/Orientation_t.jpg" alt="LeanOrientation" /><div tabindex="0"><span style="background-image: url('Content/LeanGUI/Orientation.jpg')" /></div></lightbox>
 						<h2>LeanOrientation</h2> <p>Allows you to make UI elements that change layout between portrait and landscape display modes!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanGUI/Hover_t.jpg" alt="LeanHover" /><div tabindex="0"><span style="background-image: url('Content/LeanGUI/Hover.jpg')" /></div></lightbox>
 						<h2>LeanHover</h2> <p>Allows you to make UI elements that appear when you hover over something!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanGUI/Shake_t.jpg" alt="LeanShake" /><div tabindex="0"><span style="background-image: url('Content/LeanGUI/Shake.jpg')" /></div></lightbox>
 						<h2>LeanShake</h2> <p>Allows you to easily shake UI elements!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanGUI/Pulse_t.jpg" alt="LeanPulse" /><div tabindex="0"><span style="background-image: url('Content/LeanGUI/Pulse.jpg')" /></div></lightbox>
 						<h2>LeanPulse</h2> <p>Allows you to easily make notifications or alerts!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanGUI/Swipe_t.jpg" alt="LeanSwipe" /><div tabindex="0"><span style="background-image: url('Content/LeanGUI/Swipe.jpg')" /></div></lightbox>
 						<h2>LeanSwipe</h2> <p>Allows you to detect when the user swipes on top of the current UI element, allowing you to perform a custom action!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanGUI/Resize_t.jpg" alt="LeanResize" /><div tabindex="0"><span style="background-image: url('Content/LeanGUI/Resize.jpg')" /></div></lightbox>
 						<h2>LeanResize</h2> <p>Allows you easily make UI elements that can be resized!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanGUI/Toggle_t.jpg" alt="LeanToggle" /><div tabindex="0"><span style="background-image: url('Content/LeanGUI/Toggle.jpg')" /></div></lightbox>
 						<h2>LeanToggle</h2> <p>Allows you to make UI elements that can toggle between two states!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanGUI/Switch_t.jpg" alt="LeanSwitch" /><div tabindex="0"><span style="background-image: url('Content/LeanGUI/Switch.jpg')" /></div></lightbox>
 						<h2>LeanSwitch</h2> <p>Allows you to make UI elements that can toggle between any number of states!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanGUI/Window_t.jpg" alt="LeanWindow" /><div tabindex="0"><span style="background-image: url('Content/LeanGUI/Window.jpg')" /></div></lightbox>
 						<h2>LeanWindow</h2> <p>Allows you to make modal windows that can later be closed in the correct order!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanGUI/Selection_t.jpg" alt="LeanSelection + LeanSelectionHighlight" /><div tabindex="0"><span style="background-image: url('Content/LeanGUI/Selection.jpg')" /></div></lightbox>
 						<h2>LeanSelection + LeanSelectionHighlight</h2> <p>Allows you to make custom keyboard navigation selection effects!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanGUI/Safe_t.jpg" alt="LeanSafeArea" /><div tabindex="0"><span style="background-image: url('Content/LeanGUI/Safe.jpg')" /></div></lightbox>
 						<h2>LeanSafeArea</h2> <p>Allows you to make UI elements that take into account notches on mobile device screens!</p>
 					</div>
+
 <!-- LeanGUI -->
 				</div>
 			</div>
@@ -358,44 +363,57 @@ If you have large destructible objects then you need complex collider shapes, bu
 					<p><strong>Lean Touch</strong> allows you to rapidly develop games with consistent input across desktop &amp mobile devices! This lightweight asset comes with many modular components, allowing you to customize them to your exact project needs!</p>
 <!-- LeanTouch -->
 					<div class="feature">
+						<lightbox tabindex="0"><img src="Content/LeanTouch/Scenes_t.jpg" alt="Many Demo Scenes" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouch/Scenes.jpg');" /></div></lightbox>
+						<h2>Many Demo Scenes</h2> <p>Lean Touch includes a wide range of tutorial demo scenes, which take you step-by-step through each feature. These scenes contain detailed description text, which explain what is being shown, which components were used, and which settings were used.</p>
+					</div>
+					<div class="feature">
+						<lightbox tabindex="0"><img src="Content/LeanTouch/Easy_t.jpg" alt="Easy To Use" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouch/Easy.jpg');" /></div></lightbox>
+						<h2>Easy To Use</h2> <p>Lean Touch was designed to be as flexible as possible, while still being easy to use. To achieve this, each component is fully modular, follows Unity’s inspector design style, has intuitively named settings, and includes detailed tooltip text. If you're a programmer then full C# source code is also included, allowing you to create and modify anything you like!</p>
+					</div>
+					<div class="feature">
+						<lightbox tabindex="0"><img src="Content/LeanTouch/Support_t.jpg" alt="Long Term Support" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouch/Support.jpg');" /></div></lightbox>
+						<h2>Long Term Support</h2> <p>Lean Touch has received regular updates for over 4 years. Thank you to everyone who was downloaded, rated, reviewed, and provided feedback so far! This asset now supports Unity 2017, 2018, 2019, as well as the Scriptable Rendering Pipelines (SRP).</p>
+					</div>
+					<div class="feature">
 						<lightbox tabindex="0"><img src="Content/LeanTouch/Simulation_t.jpg" alt="Touch Simulation" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouch/Simulation.jpg');" /></div></lightbox>
-						<h2>Touch Simulation</h2> <p>Allows you to test multi-finger gestures like pinch & twist on desktop, saving you <strong>SO MUCH</strong> development time!</p>
+						<h2>Touch Simulation</h2> <p>Lean Touch allows you to simulate and visualize touch inputs inside the Unity editor. This means you can test complex gestures like pinch and twist without deploying to your mobile device, saving you a lot of development time.</p>
 					</div>
 					<div class="feature">
 						<lightbox tabindex="0"><img src="Content/LeanTouch/Gesture_t.jpg" alt="Gesture Handling" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouch/Gesture.jpg');" /></div></lightbox>
-						<h2>Gesture Handling</h2> <p>Easily detect pinch, swipe, and much more using the built in components or API!</p>
+						<h2>Gesture Handling</h2> <p>Lean Touch handles all the complicated gesture calculations for you. Adding swipe or pinch controls to your game is as simple as adding one component, and linking up to any action you like.</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanTouch/Combined_t.jpg" alt="Combined Inputs" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouch/Combined.jpg');" /></div></lightbox>
-						<h2>Combined Inputs</h2> <p>Set up your controls once, and it will work perfectly on desktop & mobile.</p>
+						<lightbox tabindex="0"><img src="Content/LeanTouch/Combined_t.jpg" alt="Cross Platform" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouch/Combined.jpg');" /></div></lightbox>
+						<h2>Cross Platform</h2> <p>Lean Touch allows you to set up your controls once, and it will automatically work across iOS, Android, and Desktop platforms. Even if you don’t plan to support mobile, this asset allows you to rapidly develop mouse controls, and making a mobile port would be much easier if you ever change your mind!</p>
 					</div>
 					<div class="feature">
 						<lightbox tabindex="0"><img src="Content/LeanTouch/DPI_t.jpg" alt="DPI Handling" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouch/DPI.jpg');" /></div></lightbox>
-						<h2>DPI Handling</h2> <p>Allows your inputs to work the same across large and small devices (e.g. iPad, iPhone).</p>
+						<h2>DPI Handling</h2> <p>Lean Touch automatically calibrates touch control sensitivity based on the current DPI value of your device. This means your controls will work great on iPhone and iPad without manually adjusting settings on a per-device basis.</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanTouch/Support_t.jpg" alt="2D & 3D & UI Support" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouch/Support.jpg');" /></div></lightbox>
-						<h2>2D & 3D & UI Support</h2> <p>Allows you to design inputs for any kind of project.</p>
+						<lightbox tabindex="0"><img src="Content/LeanTouch/Flexible_t.jpg" alt="Extremely Flexible" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouch/Flexible.jpg');" /></div></lightbox>
+						<h2>Extremely Flexible</h2> <p>Lean Touch was designed with <em>all</em> types of projects in mind. This means you can customize the settings for use in 2D, 3D, top-down, side-scrolling, UI only, and much more!</p>
 					</div>
 					<div class="feature">
 						<lightbox tabindex="0"><img src="Content/LeanTouch/Integration_t.jpg" alt="UI Integration" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouch/Integration.jpg');" /></div></lightbox>
-						<h2>UI Integration</h2> <p>Allows you to stop fingers passing through the UI.</p>
+						<h2>UI Integration</h2> <p>Lean Touch automatically detects when your fingers are interacting with the UI, and ignores those fingers. This stops fingers passing through your UI, and keeps your game looking professional. </p>
 					</div>
 					<div class="feature">
 						<lightbox tabindex="0"><img src="Content/LeanTouch/Selection_t.jpg" alt="Object Selection" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouch/Selection.jpg');" /></div></lightbox>
-						<h2>Object Selection</h2> <p>Allows you to easily select objects in 2D, 3D, and UI based games!</p>
+						<h2>Object Selection</h2> <p>Lean Touch includes an easy to use object selection system that allows you to isolate touch controls to selected objects. For example, you can make it so tapping an object selects it, then pinch scales only the selected objects. This system can be customized to work in 2D, 3D, or UI projects, and much more.</p>
 					</div>
 					<div class="feature">
 						<lightbox tabindex="0"><img src="Content/LeanTouch/More_t.jpg" alt="Need More Examples?" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouch/More.jpg');" /></div></lightbox>
-						<h2>Need More Examples?</h2> <p>Over the years many users have requested new demo scenes, and so I released <b><a href="#LeanTouchPlus">Lean Touch+</a></b> which includes them all. Thank you to everyone that has helped support this asset ❤️</p>
+						<h2>Need More Examples?</h2> <p>Over the years many users have requested new components and demo scenes, so I released <strong><a href="http://CarlosWilkes.com#LeanTouchPlus">Lean Touch+</a></strong> which includes them all. If you want GUI specific controls like joysticks then check out <strong><a href="http://CarlosWilkes.com#LeanGUI">Lean GUI</a></strong>!</p>
 					</div>
+
 <!-- LeanTouch -->
 					<div class="center">
 						<a href="Get/LeanTouch" target="_blank"><i class="fa fa-external-link"></i>Get Lean Touch</a>
 					</div>
 				</div>
 			</div>
-			<div class="main expandable" style="background-image: url('Content/LeanTouchPlus/Thumb.png'); background-color: #5BD2FF; color: #FFF;" id="LeanTouchPlus">
+			<div class="main expandable" style="background-image: url('Content/LeanTouchPlus/Thumb.png'); background-color: #0075d0; color: #FFF;" id="LeanTouchPlus">
 				<a href="#LeanTouchPlus">
 					<h1 style="text-shadow: 0px 0px 5px #5BD2FF;">Lean Touch+</h1>
 					<i class="fa fa-angle-down"></i>
@@ -405,6 +423,65 @@ If you have large destructible objects then you need complex collider shapes, bu
 				</div>
 				<div class="info">
 					<p><strong>Lean Touch+</strong> is an extension to the popular <a href="#LeanTouch">Lean Touch</a> asset, adding <strong>MANY</strong> more example scenes, and new modular components.</p>
+<!-- LeanTouchPlus -->
+					<div class="feature">
+						<lightbox tabindex="0"><img src="Content/LeanTouchPlus/Thanks_t.jpg" alt="Thank You" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouchPlus/Thanks.jpg');" /></div></lightbox>
+						<h2>Thank You</h2> <p>Your support has allowed for years of updates! This asset has so many new demo scenes, and now supports Unity 2017, 2018, 2019, as well as the Scriptable Rendering Pipelines (SRP).</p>
+					</div>
+					<div class="feature">
+						<lightbox tabindex="0"><img src="Content/LeanTouchPlus/Shape_t.jpg" alt="Shape Detection" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouchPlus/Shape.jpg');" /></div></lightbox>
+						<h2>Shape Detection</h2> <p>Lean Touch+ includes flexible components and many example scenes of how to detect shapes you draw with your finger. You can detect partially drawn shapes, looped shapes, clockwise or counter clockwise drawing, and much more. There is even a shape editor so you can quickly make your own!</p>
+					</div>
+					<div class="feature">
+						<lightbox tabindex="0"><img src="Content/LeanTouchPlus/Controls_t.jpg" alt="On Screen Controls" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouchPlus/Controls.jpg');" /></div></lightbox>
+						<h2>On Screen Controls</h2> <p>Lean Touch+ includes flexible components and many example scenes of how to create on-screen controls. This includes buttons, which can be made to zoom the camera, move the camera, rotate your objects, and much more. You can even create UI elements that can spawn prefabs when you drag from them. If you need joysticks then you can use <strong><a href="http://carloswilkes.com#LeanGUI">Lean GUI</a></strong> though!</p>
+					</div>
+					<div class="feature">
+						<lightbox tabindex="0"><img src="Content/LeanTouchPlus/Selection_t.jpg" alt="Selection Box" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouchPlus/Selection.jpg');" /></div></lightbox>
+						<h2>Selection Box</h2> <p>Lean Touch+ includes flexible components and many example scenes of how to implement selection boxes often seen in strategy games. These can be used to select any kind of object, and you can even customize the visual appearance in any way you like!</p>
+					</div>
+					<div class="feature">
+						<lightbox tabindex="0"><img src="Content/LeanTouchPlus/Mesh_t.jpg" alt="Mesh Manipulation" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouchPlus/Mesh.jpg');" /></div></lightbox>
+						<h2>Mesh Manipulation</h2> <p>Lean Touch+ includes flexible components and many example scenes of how to manipulate selected objects, including painting the vertex colors, and deforming the vertex positions.</p>
+					</div>
+					<div class="feature">
+						<lightbox tabindex="0"><img src="Content/LeanTouchPlus/Constraints_t.jpg" alt="Constraints" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouchPlus/Constraints.jpg');" /></div></lightbox>
+						<h2>Constraints</h2> <p>Lean Touch+ includes flexible components and many example scenes of how to add position and rotation boundaries to your touch controls. This is great for limiting your camera movement, or drop you dragging an object too far away. Constraints work with box shapes, sphere shapes, capsule shapes, and convex mesh shapes. These constraints can even be combined to make a complex compound shape!</p>
+					</div>
+					<div class="feature">
+						<lightbox tabindex="0"><img src="Content/LeanTouchPlus/Drop_t.jpg" alt="Drag And Drop" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouchPlus/Drop.jpg');" /></div></lightbox>
+						<h2>Drag And Drop</h2> <p>Lean Touch+ includes components and examples for performing drag and drop actions. These are flexible and can be easily customized in any way you like.</p>
+					</div>
+					<div class="feature">
+						<lightbox tabindex="0"><img src="Content/LeanTouchPlus/Physics_t.jpg" alt="Physics" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouchPlus/Physics.jpg');" /></div></lightbox>
+						<h2>Physics</h2> <p>Lean Touch+ includes flexible components and many example scenes of how to perform drag and drop actions. These actions can be made unique to each object, or depend on which object you drop them on, and much more!</p>
+					</div>
+					<div class="feature">
+						<lightbox tabindex="0"><img src="Content/LeanTouchPlus/Orbit_t.jpg" alt="Orbit" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouchPlus/Orbit.jpg');" /></div></lightbox>
+						<h2>Orbit</h2> <p>Lean Touch+ includes flexible components and many example scenes of how to implement various orbital camera systems. These give you control over the orbit angle by dragging across the screen, or tapping on the screen. There are even features to zoom or move the camera in and out, collide with the rest of the scene to prevent view obstruction, mouse wheel control, adjustment of the orbit pivot point, and much more!</p>
+					</div>
+					<div class="feature">
+						<lightbox tabindex="0"><img src="Content/LeanTouchPlus/FPS_t.jpg" alt="First Person" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouchPlus/FPS.jpg');" /></div></lightbox>
+						<h2>First Person</h2> <p>Lean Touch+ includes flexible components and many example scenes of how to implement first person camera systems. Features include tap to look, double finger drag to move, Rigidbody collision, full 6 degrees of freedom, and much more!</p>
+					</div>
+					<div class="feature">
+						<lightbox tabindex="0"><img src="Content/LeanTouchPlus/Flight_t.jpg" alt="Freeflight" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouchPlus/Flight.jpg');" /></div></lightbox>
+						<h2>Freeflight</h2> <p>Lean Touch+ includes flexible components and many example scenes of how to implement free flight camera systems. These systems can be used on the camera, and also third person objects. You can have full 6 degrees of freedom movement with Rigidbody collisions, smooth rotations, and much more!</p>
+					</div>
+					<div class="feature">
+						<lightbox tabindex="0"><img src="Content/LeanTouchPlus/Throw_t.jpg" alt="Throwing" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouchPlus/Throw.jpg');" /></div></lightbox>
+						<h2>Throwing</h2> <p>Lean Touch+ includes flexible components and many example scenes of how to pick up and throw Rigidbody and Rigidbody2D objects. Throws can also be visualized using a throw strength indicator, complex actions like spinning to add torque can easily be added, and much more!</p>
+					</div>
+					<div class="feature">
+						<lightbox tabindex="0"><img src="Content/LeanTouchPlus/Map_t.jpg" alt="Map" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouchPlus/Map.jpg');" /></div></lightbox>
+						<h2>Map</h2> <p>Lean Touch+ includes flexible components and many example scenes of how to implement map navigation. Navigation controls include pan, rotate, and zoom. All navigation controls can be made to work relative to where on the screen your fingers are. These maps can work in 2D, 3D, top-down, and much more!</p>
+					</div>
+					<div class="feature">
+						<lightbox tabindex="0"><img src="Content/LeanTouchPlus/Dial_t.jpg" alt="Dials" /><div tabindex="0"><span style="background-size: auto; background-image: url('Content/LeanTouchPlus/Dial.jpg');" /></div></lightbox>
+						<h2>Dials</h2> <p>Lean Touch+ includes flexible components and many example scenes of how to implement dials, knobs, and levers. These can be interacted with in a fully 3D scene, and can easily be constrained to specific angle ranges. If you need to perform an action when the dial is within a special range (e.g. to open a door), then you can set this up with just a few clicks!</p>
+					</div>
+
+<!-- LeanTouchPlus -->
 				</div>
 			</div>
 			<div class="main expandable" style="background-image: url('Content/LeanPool/Thumb.png'); background-color: #FFF; color: #111;" id="LeanPool">
@@ -419,25 +496,30 @@ If you have large destructible objects then you need complex collider shapes, bu
 					<p><strong>Lean Pool</strong> allows you to quickly optimize the performance of your games. Within minutes you can use this lightweight asset to preload, recycle, and limit the spawning of your prefabs.</p>
 <!-- LeanPool -->
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanPool/Capacity_t.jpg" alt="Capacity" /><div tabindex="0"><span style="background-image: url('Content/LeanPool/Capacity.jpg')" /></div></lightbox>
+						<h2>Many Demo Scenes</h2> <p>Lean Pool includes a wide range of tutorial demo scenes, which take you step-by-step through each feature. These scenes contain detailed description text, which explain what is being shown, which components were used, and which settings were used.</p>
+					</div>
+					<div class="feature">
+						<h2>Easy To Use</h2> <p>Lean Pool was designed to be as flexible as possible, while still being easy to use. To achieve this, each component is fully modular, follows Unity’s inspector design style, has intuitively named settings, and includes detailed tooltip text. If you're a programmer then full C# source code is also included, allowing you to create and modify anything you like!</p>
+					</div>
+					<div class="feature">
+						<h2>Long Term Support</h2> <p>Lean assets have received regular updates for over 4 years. Thank you to everyone who was downloaded, rated, reviewed, and provided feedback so far! This asset now supports Unity 2017, 2018, 2019, as well as the Scriptable Rendering Pipelines (SRP).</p>
+					</div>
+					<div class="feature">
 						<h2>Capacity</h2> <p>If you want to limit how many prefabs can be spawned in your game then you can easily set the <em>Capacity</em> setting.</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanPool/Recycle_t.jpg" alt="Recycle" /><div tabindex="0"><span style="background-image: url('Content/LeanPool/Recycle.jpg')" /></div></lightbox>
 						<h2>Recycle</h2> <p>If you want to recycle prefabs when your <em>Capacity</em> is reached, rather than stop spawning, then you can just enable the <em>Recycle</em> setting.</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanPool/Notifications_t.jpg" alt="Notifications" /><div tabindex="0"><span style="background-image: url('Content/LeanPool/Notifications.jpg')" /></div></lightbox>
 						<h2>Notifications</h2> <p>If you have complex prefabs that need to run special code when spawning or despawning, then the <em>Notification</em> setting allow you to choose from a variety of approaches.</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanPool/Preload_t.jpg" alt="Preload" /><div tabindex="0"><span style="background-image: url('Content/LeanPool/Preload.jpg')" /></div></lightbox>
 						<h2>Preload</h2> <p>If you want to maximize in-game performance then you can use the Preload setting to automatically load up some prefabs at the start of your game.</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanPool/Class_t.jpg" alt="Class Pooling" /><div tabindex="0"><span style="background-image: url('Content/LeanPool/Class.jpg')" /></div></lightbox>
 						<h2>Class Pooling</h2> <p>You can also pool normal C# classes using the LeanClassPool!</p>
 					</div>
+
 <!-- LeanPool -->
 					<div class="center">
 						<a href="Get/LeanPool" target="_blank"><i class="fa fa-external-link"></i>Get Lean Pool</a>
@@ -456,41 +538,48 @@ If you have large destructible objects then you need complex collider shapes, bu
 					<p><strong>Lean Localization</strong> allows you to localize the text, sprites, and much more in just a few clicks. This asset was designed to be as simple to use as possible for both designers, and programmers.</p>
 <!-- LeanLocalization -->
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanLocalization/Text_t.jpg" alt="Text Localization" /><div tabindex="0"><span style="background-image: url('Content/LeanLocalization/Text.jpg')" /></div></lightbox>
+						<h2>Many Demo Scenes</h2> <p>Lean Localization includes a wide range of tutorial demo scenes, which take you step-by-step through each feature. These scenes contain detailed description text, which explain what is being shown, which components were used, and which settings were used.</p>
+					</div>
+					<div class="feature">
+						<h2>Easy To Use</h2> <p>Lean Localization was designed to be as flexible as possible, while still being easy to use. To achieve this, each component is fully modular, follows Unity’s inspector design style, has intuitively named settings, and includes detailed tooltip text. If you're a programmer then full C# source code is also included, allowing you to create and modify anything you like!</p>
+					</div>
+					<div class="feature">
+						<h2>Long Term Support</h2> <p>Lean assets have received regular updates for over 4 years. Thank you to everyone who was downloaded, rated, reviewed, and provided feedback so far! This asset now supports Unity 2017, 2018, 2019, as well as the Scriptable Rendering Pipelines (SRP).</p>
+					</div>
+					<div class="feature">
 						<h2>Text Localization</h2> <p>Just add the <em>LeanLocalizedText</em> component to your UI Text GameObject, and it will automatically localize the text!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanLocalization/Formatting_t.jpg" alt="Text Formatting" /><div tabindex="0"><span style="background-image: url('Content/LeanLocalization/Formatting.jpg')" /></div></lightbox>
-						<h2>Text Formatting</h2> <p>Just add the <em>LeanLocalizedTextFont</em> component to your UI Text GameObject, and it will automatically localize the font!</p>
+						<h2>Font Localization</h2> <p>Just add the <em>LeanLocalizedTextFont</em> component to your UI Text GameObject, and it will automatically localize the font!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanLocalization/Image_t.jpg" alt="Image Localization" /><div tabindex="0"><span style="background-image: url('Content/LeanLocalization/Image.jpg')" /></div></lightbox>
+						<h2>Text Mesh Pro</h2> <p>If you're using Text Mesh Pro then double click the <em>Lean/Localization/TextMeshPro</em> package to add it to your project! You can then use the <em>LeanLocalizedTextMeshProUGUI</em> and <em>LeanLocalizedTextMeshProUGUIFont</em> components!</p>
+					</div>
+					<div class="feature">
+						<h2>Dynamic Values</h2> <p>If your text needs to include dynamic names and numbers then simply add tokens like <em>{AGE}</em> to your text. These will automatically be replaced by values you set in the <em>LeanToken</em> component!</p>
+					</div>
+					<div class="feature">
 						<h2>Image Localization</h2> <p>Just add the <em>LeanLocalizedImage</em> component to your UI Image GameObject, and it will automatically localize the image!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanLocalization/Sprite_t.jpg" alt="Sprite Localization" /><div tabindex="0"><span style="background-image: url('Content/LeanLocalization/Sprite.jpg')" /></div></lightbox>
 						<h2>Sprite Localization</h2> <p>Just add the <em>LeanLocalizedSpriteRenderer</em> component to your Sprite Renderer GameObject, and it will automatically localize the sprite!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanLocalization/Sound_t.jpg" alt="Sound Localization" /><div tabindex="0"><span style="background-image: url('Content/LeanLocalization/Sound.jpg')" /></div></lightbox>
 						<h2>Sound Localization</h2> <p>Just add the <em>LeanLocalizedAudioSource</em> component to your Audio Source GameObject, and it will automatically localize the audio clip!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanLocalization/Import_t.jpg" alt="CSV Import" /><div tabindex="0"><span style="background-image: url('Content/LeanLocalization/Import.jpg')" /></div></lightbox>
 						<h2>CSV Import</h2> <p>If you don't want to add translations in the editor then you can have them automatically load from CSV text file!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanLocalization/Export_t.jpg" alt="CSV Export" /><div tabindex="0"><span style="background-image: url('Content/LeanLocalization/Export.jpg')" /></div></lightbox>
 						<h2>CSV Export</h2> <p>If you added translations in the editor that you want to edit later, then you can easily export them to CSV text files too!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanLocalization/Detection_t.jpg" alt="Language Detection" /><div tabindex="0"><span style="background-image: url('Content/LeanLocalization/Detection.jpg')" /></div></lightbox>
 						<h2>Language Detection</h2> <p>The language of your game will automatically be detected when the user starts the game, you can even pick the method to determine this!</p>
 					</div>
 					<div class="feature">
-						<lightbox tabindex="0"><img src="Content/LeanLocalization/Saving_t.jpg" alt="Language Saving" /><div tabindex="0"><span style="background-image: url('Content/LeanLocalization/Saving.jpg')" /></div></lightbox>
 						<h2>Language Saving</h2> <p>If the user changes the game language while playing, then their new choice will automatically be saved for next time!</p>
 					</div>
+
 <!-- LeanLocalization -->
 					<div class="center">
 						<a href="Get/LeanLocalization" target="_blank"><i class="fa fa-external-link"></i>Get Lean Localization</a>
@@ -508,33 +597,42 @@ If you have large destructible objects then you need complex collider shapes, bu
 				<div class="info">
 					<p>Quickly polish your games using <strong>Lean Transition</strong>. This asset allows you to easily tween or animate almost anything in your game, making it transition smoothly.</p>
 <!-- LeanTransition -->
-					<h2>Editor + Code Support</h2>
-					<p>All features work exactly the same from both C# code, and in the editor.</p>
-					<hr>
-					<h2>Join</h2>
-					<p>Allows you to combine multiple transitions into a sequence (e.g. fade in then fade out).</p>
-					<hr>
-					<h2>Delay</h2>
-					<p>Allows you to insert a delay between transitions.</p>
-					<hr>
-					<h2>Time</h2>
-					<p>Allows you to change where in the game loop the transitions are updated (e.g. Update, FixedUpdate).</p>
-					<hr>
-					<h2>Event</h2>
-					<p>Allows you to perform a custom action after a certain amount of time.</p>
-					<hr>
-					<h2>Insert</h2>
-					<p>Allows you define a sequence of transitions that you can insert into multiple locations, saving you time.</p>
-					<hr>
-					<h2>Queue</h2>
-					<p>Allows you begin a transition after a specific transition has completed.</p>
-					<hr>
-					<h2>Repeater</h2>
-					<p>Allows you to create looping animations.</p>
-					<hr>
-					<h2>Key Press</h2>
-					<p>Allows you begin an animation when you press a specific key.</p>
-					<hr>
+					<div class="feature">
+						<h2>Many Demo Scenes</h2> <p>Lean Transition includes a wide range of tutorial demo scenes, which take you step-by-step through each feature. These scenes contain detailed description text, which explain what is being shown, which components were used, and which settings were used.</p>
+					</div>
+					<div class="feature">
+						<h2>Easy To Use</h2> <p>Lean Transition was designed to be as flexible as possible, while still being easy to use. To achieve this, each component is fully modular, follows Unity’s inspector design style, has intuitively named settings, and includes detailed tooltip text. If you're a programmer then full C# source code is also included, allowing you to create and modify anything you like!</p>
+					</div>
+					<div class="feature">
+						<h2>Long Term Support</h2> <p>Lean assets have received regular updates for over 4 years. Thank you to everyone who was downloaded, rated, reviewed, and provided feedback so far! This asset now supports Unity 2017, 2018, 2019, as well as the Scriptable Rendering Pipelines (SRP).</p>
+					</div>
+					<div class="feature">
+						<h2>Editor + Code Support</h2> <p>All features work exactly the same from both C# code, and in the editor.</p>
+					</div>
+					<div class="feature">
+						<h2>Join</h2> <p>Allows you to combine multiple transitions into a sequence (e.g. fade in then fade out).</p>
+					</div>
+					<div class="feature">
+						<h2>Delay</h2> <p>Allows you to insert a delay between transitions.</p>
+					</div>
+					<div class="feature">
+						<h2>Time</h2> <p>Allows you to change where in the game loop the transitions are updated (e.g. Update, FixedUpdate).</p>
+					</div>
+					<div class="feature">
+						<h2>Event</h2> <p>Allows you to perform a custom action after a certain amount of time.</p>
+					</div>
+					<div class="feature">
+						<h2>Insert</h2> <p>Allows you define a sequence of transitions that you can insert into multiple locations, saving you time.</p>
+					</div>
+					<div class="feature">
+						<h2>Queue</h2> <p>Allows you begin a transition after a specific transition has completed.</p>
+					</div>
+					<div class="feature">
+						<h2>Repeater</h2> <p>Allows you to create looping animations.</p>
+					</div>
+					<div class="feature">
+						<h2>Key Press</h2> <p>Allows you begin an animation when you press a specific key.</p>
+					</div>
 
 <!-- LeanTransition -->
 					<div class="center">
