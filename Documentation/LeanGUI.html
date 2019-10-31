@@ -29,18 +29,18 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h1 style="font-size: 75px; color: #FFF; text-align: center; vertical-align: middle; line-height: 100px;">Lean GUI</h1>
 </div>
 <div style="position: absolute; left: 350px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
-<a name="-142588"></a><h2>Thank you for using Lean GUI &#x2764;&#xFE0F</h2>
+<a name="-63894"></a><h2>Thank you for using Lean GUI &#x2764;&#xFE0F</h2>
 <p>If you haven't already, please consider writing a <a href="http://CarlosWilkes.com/Get/LeanGUI" target="_blank">review</a>. They really help me out!</p><p>If you have any questions, then feel free to send me an <a href="mailto:carlos.wilkes@gmail.com">E-Mail</a>, or <a href="http://forum.unity.com/members/41960" target="_blank">Private Message</a>.</p><p>You can also ask in the <a href="http://carloswilkes.com/Forum/LeanGUI" target="_blank">Forum Thread</a>.</p><p>I'm also available for freelance work if you need help with your projects.</p>
 <br><br>
-<a name="-142594"></a><h2>How do I upgrade?</h2>
+<a name="-63900"></a><h2>How do I upgrade?</h2>
 <p>First, make sure you <b>back up</b> your project files.</p><p>Next, install the latest version.</p><p>If for some reason the latest updates breaks your project (e.g. errors in the console), then try deleting the root folder for this asset, and reinstalling it.</p><p>If it still doesn't work then go back to your previous version, and let me know what the errors are, so I can fix it.</p>
 <br><br>
 <div style="">
-<a name="28048"></a><h2>What is Lean GUI?</h2>
+<a name="29598"></a><h2>What is Lean GUI?</h2>
 <p>Lean GUI is an extension to Unity's UI system, adding many useful components.</p><p>The new components are also designed to be very flexible, so you can combine them in any way you like.</p>
 <br><br></div>
 <div style="">
-<a name="27490"></a><h2>How do I get started?</h2>
+<a name="28992"></a><h2>How do I get started?</h2>
 <p>Simply go through all the demo scenes in the Lean/GUI/Examples folder!</p><p>Most of the demo scenes introduce one new feature at a time, allowing you to clearly understand what is being done.</p><p>The description at the bottom also tells you in detail which components or settings were added/changed to achieve the effects seen.</p><p>To understand what a specific component setting does, just hover your mouse over it to see the tooltip. You can also click the documentation button at the top right of the component.</p>
 </div>
 <br><br>
@@ -81,28 +81,34 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Unity sounds only emanate from a single point source. This is great for explosions and footsteps, but quite often you need something more advanced. Volumetric Audio is an easy to use package that allows you to define boxes, spheres, capsules, paths, or meshes that sounds can emanate from.</p><br><br><br><br>
 <br><br>
 <h1>Versions</h1>
-<a name="29282"></a><h2>1.0.7</h2>
+<a name="30008"></a><h2>1.0.9</h2>
+<p>Fixed <b>LeanSwipe.SwipeTransitions</b> not being called.<br>Fixed <b>LeanTooltip.OnHide</b> not being called.<br>Updated <b>Common</b> library code.<br>Updated demo scene design.<br></p>
+<br><br>
+<a name="29194"></a><h2>1.0.8</h2>
+<p>Fixed <b>LeanJoystick.OnDown</b> event.<br>Fixed <b>LeanJoystick.OnUp</b> event.<br>Improved all component tooltips and comments.<br></p>
+<br><br>
+<a name="30832"></a><h2>1.0.7</h2>
 <p>Added <b>LeanButton.DragThreshold</b> setting.<br></p>
 <br><br>
-<a name="29910"></a><h2>1.0.6</h2>
+<a name="31442"></a><h2>1.0.6</h2>
 <p>Updated Common library code.<br></p>
 <br><br>
-<a name="28764"></a><h2>1.0.5</h2>
+<a name="30314"></a><h2>1.0.5</h2>
 <p>Updated documentation.<br></p>
 <br><br>
-<a name="29622"></a><h2>1.0.4</h2>
+<a name="31172"></a><h2>1.0.4</h2>
 <p>Fixed tooltip rendering.<br></p>
 <br><br>
-<a name="27956"></a><h2>1.0.3</h2>
+<a name="29494"></a><h2>1.0.3</h2>
 <p>Added "Interactable" to LeanJoystick.<br></p>
 <br><br>
-<a name="27930"></a><h2>1.0.2</h2>
+<a name="29468"></a><h2>1.0.2</h2>
 <p>Included LeanTransition again.<br>Added Horizontal + Vertical joysticks to "14 Joystick" demo scene.<br></p>
 <br><br>
-<a name="29640"></a><h2>1.0.1</h2>
+<a name="31202"></a><h2>1.0.1</h2>
 <p>Fixed LeanSelectionManager error in 2019.1.5f1~.<br>Added "Safe Area" demo scene.<br></p>
 <br><br>
-<a name="27782"></a><h2>1.0.0</h2>
+<a name="29296"></a><h2>1.0.0</h2>
 <p>Initial release.<br></p>
 <br><br>
 <br><br>
@@ -114,9 +120,9 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h2>DragThreshold</h2>
 <p>If your finger presses down on the button and drags more than this many pixels, then selection will be cancelled.<br><br>-1 = Unlimited drag distance.<br><br>0 = Until the finger exits the button graphic.</p>
 <br><h2>NormalTransitions</h2>
-<p>This allows you to perform a transition when there are no longer any fingers touching the button.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>Graphic.color Transition (LeanGraphicColor)</b> component can be used to change the color back to normal.</p>
+<p>This allows you to perform a transition when there are no longer any fingers touching the button.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>LeanGraphicColor (Graphic.color Transition)</b> component can be used to change the color back to normal.</p>
 <br><h2>DownTransitions</h2>
-<p>This allows you to perform a transition when a finger begins touching the button.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>Graphic.color Transition (LeanGraphicColor)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here must be reverted in the <b>Normal Transitions</b> setting using a matching transition component.</div></p>
+<p>This allows you to perform a transition when a finger begins touching the button.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>LeanGraphicColor (Graphic.color Transition)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here must be reverted in the <b>Normal Transitions</b> setting using a matching transition component.</div></p>
 <br><h2>ClickTransitions</h2>
 <p>This allows you to perform a transition when you click or tap on this button.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>Play Sound Transition (LeanPlaySound)</b> component can be used to play a click sound.</p>
 <br><h2>OnDown</h2>
@@ -128,7 +134,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <a name="LeanDrag"></a><h2>LeanDrag</h2>
 <p>This component allows you to drag the specified RectTransform when you drag on this UI element.</p>
 <div style="padding-left: 75px;"><br><h2>Target</h2>
-<p>If you want a different RectTransform to be moved while dragging on this UI element, then specify it here.<br><br>This allows you to turn the current UI element into a drag handle.</p>
+<p>If you want a different RectTransform to be moved while dragging on this UI element, then specify it here. This allows you to turn the current UI element into a drag handle.</p>
 <br><h2>Horizontal</h2>
 <p>Should you be able to drag horizontally?</p>
 <br><h2>HorizontalClamp</h2>
@@ -150,9 +156,9 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h2>VerticalMagnet</h2>
 <p>If you want the position to be magnetized toward the min/max value, then this allows you to set the speed.<br><br>-1 = no magnet.</p>
 <br><h2>BeginTransitions</h2>
-<p>This allows you to perform a transition when this element begins being dragged.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>Graphic.color Transition (LeanGraphicColor)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here must be reverted in the <b>Normal Transitions</b> setting using a matching transition component.</div></p>
+<p>This allows you to perform a transition when this element begins being dragged.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>LeanGraphicColor (Graphic.color Transition)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here must be reverted in the <b>Normal Transitions</b> setting using a matching transition component.</div></p>
 <br><h2>EndTransitions</h2>
-<p>This allows you to perform a transition when this element ends being dragged.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>Graphic.color Transition (LeanGraphicColor)</b> component can be used to change the color.</p>
+<p>This allows you to perform a transition when this element ends being dragged.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>LeanGraphicColor (Graphic.color Transition)</b> component can be used to change the color.</p>
 <br><h2>OnBegin</h2>
 <p>This allows you to perform an actions when this element begins being dragged.</p>
 <br><h2>OnEnd</h2>
@@ -198,7 +204,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h2>Handle</h2>
 <p>If you want to see where the joystick handle is, then make a child UI element, and set its RectTransform here.</p>
 <br><h2>Dampening</h2>
-<p>This allows you to control how quickly the joystick handle position updates (-1 = instant).<br><br><div class="tip"><strong>NOTE:</strong>&emsp; This is for visual purposes only, the actual joystick <b>ScaledValue</b> will instantly update.</div></p>
+<p>This allows you to control how quickly the joystick handle position updates<br><br>-1 = instant.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; This is for visual purposes only, the actual joystick <b>ScaledValue</b> will instantly update.</div></p>
 <br><h2>SnapWhileHeld</h2>
 <p>If you only want the smooth <b>Dampening</b> to apply when the joystick is returning to the center, then you can enable this.</p>
 <br><h2>RelativeToOrigin</h2>
@@ -208,9 +214,9 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h2>ScaledValue</h2>
 <p>The -1..1 x/y position of the joystick relative to the Size or Radius.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; When using a circle joystick, these values are normalized, and thus will never reach 1,1 on both axes. This prevents faster diagonal movement.</div></p>
 <br><h2>DownTransitions</h2>
-<p>This allows you to perform a transition when a finger begins touching the joystick.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>Graphic.color Transition (LeanGraphicColor)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here must be reverted in the <b>Up Transitions</b> setting using a matching transition component.</div></p>
+<p>This allows you to perform a transition when a finger begins touching the joystick.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>LeanGraphicColor (Graphic.color Transition)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here must be reverted in the <b>Up Transitions</b> setting using a matching transition component.</div></p>
 <br><h2>UpTransitions</h2>
-<p>This allows you to perform a transition when a finger stops touching the joystick.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>Graphic.color Transition (LeanGraphicColor)</b> component can be used to change the color.</p>
+<p>This allows you to perform a transition when a finger stops touching the joystick.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>LeanGraphicColor (Graphic.color Transition)</b> component can be used to change the color.</p>
 <br><h2>OnDown</h2>
 <p>This allows you to perform an action when a finger begins touching the joystick.</p>
 <br><h2>OnSet</h2>
@@ -282,9 +288,9 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h2>LocalScaleP</h2>
 <p>The RectTransform.localScale value when in portrait mode.</p>
 <br><h2>LandscapeTransitions</h2>
-<p>This allows you to perform a transition when the orientation changes to landscape.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>Graphic.color Transition (LeanGraphicColor)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here must be reverted in the <b>Portrait Transitions</b> setting using a matching transition component.</div></p>
+<p>This allows you to perform a transition when the orientation changes to landscape.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>LeanGraphicColor (Graphic.color Transition)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here must be reverted in the <b>Portrait Transitions</b> setting using a matching transition component.</div></p>
 <br><h2>PortraitTransitions</h2>
-<p>This allows you to perform a transition when the orientation changes to portrait.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>Graphic.color Transition (LeanGraphicColor)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here must be reverted in the <b>Landscape Transitions</b> setting using a matching transition component.</div></p>
+<p>This allows you to perform a transition when the orientation changes to portrait.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>LeanGraphicColor (Graphic.color Transition)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here must be reverted in the <b>Landscape Transitions</b> setting using a matching transition component.</div></p>
 <br><h2>OnLandscape</h2>
 <p>This event will be invoked when the orientation changes to landscape.</p>
 <br><h2>OnPortrait</h2>
@@ -310,7 +316,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h2>Timing</h2>
 <p>This allows you to choose where in the game loop this pulse will update.</p>
 <br><h2>PulseTransitions</h2>
-<p>This allows you to perform an animation when this UI element pulses.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>Play Sound Transition (LeanPlaySound)</b> component can be used to play a pulse sound.</p>
+<p>This allows you to perform an animation when this UI element pulses.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>LeanPlaySound (Play Sound Transition)</b> component can be used to play a pulse sound.</p>
 <br><h2>OnPulse</h2>
 <p>This allows you to perform an action when this UI element pulses.</p>
 <br><h2>[CONTEXT] Try Pulse</h2>
@@ -370,9 +376,9 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <a name="LeanSelection"></a><h2>LeanSelection</h2>
 <p>This component allows you to perform a transition when this UI element is selected.</p>
 <div style="padding-left: 75px;"><br><h2>SelectTransitions</h2>
-<p>This allows you to perform a transition when this UI element is selected.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>Graphic.color Transition (LeanGraphicColor)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here must be reverted in the <b>Deselect Transitions</b> setting using a matching transition component.</div></p>
+<p>This allows you to perform a transition when this UI element is selected.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>LeanGraphicColor (Graphic.color Transition)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here must be reverted in the <b>Deselect Transitions</b> setting using a matching transition component.</div></p>
 <br><h2>DeselectTransitions</h2>
-<p>This allows you to perform a transition when this UI element is deselected.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>Graphic.color Transition (LeanGraphicColor)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here must be reverted in the <b>Select Transitions</b> setting using a matching transition component.</div></p>
+<p>This allows you to perform a transition when this UI element is deselected.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>LeanGraphicColor (Graphic.color Transition)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here must be reverted in the <b>Select Transitions</b> setting using a matching transition component.</div></p>
 </div><br>
 <br><br>
 <a name="LeanSelectionHighlight"></a><h2>LeanSelectionHighlight</h2>
@@ -380,9 +386,9 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <div style="padding-left: 75px;"><br><h2>WorldCamera</h2>
 <p>The camera rendering the target transform/position.<br><br>None = MainCamera.</p>
 <br><h2>ShowTransitions</h2>
-<p>This allows you to perform a transition when the highlight begins.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>Graphic.color Transition (LeanGraphicColor)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here must be reverted in the <b>Hide Transitions</b> setting using a matching transition component.</div></p>
+<p>This allows you to perform a transition when the highlight begins.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>LeanGraphicColor (Graphic.color Transition)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here must be reverted in the <b>Hide Transitions</b> setting using a matching transition component.</div></p>
 <br><h2>HideTransitions</h2>
-<p>This allows you to perform a transition when the highlight ends.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>Graphic.color Transition (LeanGraphicColor)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here must be reverted in the <b>Show Transitions</b> setting using a matching transition component.</div></p>
+<p>This allows you to perform a transition when the highlight ends.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>LeanGraphicColor (Graphic.color Transition)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here must be reverted in the <b>Show Transitions</b> setting using a matching transition component.</div></p>
 <br><h2>OnShow</h2>
 <p>This allows you to perform an action when the highlight starts.</p>
 <br><h2>OnHide</h2>
@@ -446,7 +452,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h2>MaximumRange</h2>
 <p>360 = full circle<br><br>180 = half circle<br><br>90 = quarter circle</p>
 <br><h2>SwipeTransitions</h2>
-<p>This allows you to perform a transition when you swipe this UI element.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>Play Sound Transition (LeanPlaySound)</b> component can be used to play a click sound.</p>
+<p>This allows you to perform a transition when you swipe this UI element.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>LeanPlaySound (Play Sound Transition)</b> component can be used to play a click sound.</p>
 <br><h2>OnSwipe</h2>
 <p>This allows you to perform an action when you swipe this UI element.</p>
 </div><br>
@@ -460,7 +466,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h2>States</h2>
 <p>This stores a list of all switch transition states. This controls how many states can be switched between.<br><br>For example, if you want to be able to switch between 4 states, then make sure the size of this list = 4.</p>
 <br><h2>ChangedStateTransitions</h2>
-<p>This allows you to perform a transition when this switch changes to a different state.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>Play Sound Transition (LeanPlaySound)</b> component can be used to play a switch sound.</p>
+<p>This allows you to perform a transition when this switch changes to a different state.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>LeanPlaySound (Play Sound Transition)</b> component can be used to play a switch sound.</p>
 <br><h2>OnChangedState</h2>
 <p>This allows you to perform an action when this switch changes to a different state.</p>
 <br><h2>Switch</h2>
@@ -478,9 +484,9 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h2>TurnOffSiblings</h2>
 <p>If you enable this, then any sibling GameObjects (i.e. same parent GameObject) will automatically be turned off.<br><br>This allows you to make radio boxes, or force only one panel to show at a time, etc.</p>
 <br><h2>OnTransitions</h2>
-<p>This allows you to perform a transition when this toggle turns on.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>Graphic.color Transition (LeanGraphicColor)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here should be reverted in the <b>Off Transitions</b> setting using a matching transition component.</div></p>
+<p>This allows you to perform a transition when this toggle turns on.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>LeanGraphicColor (Graphic.color Transition)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here should be reverted in the <b>Off Transitions</b> setting using a matching transition component.</div></p>
 <br><h2>OffTransitions</h2>
-<p>This allows you to perform a transition when this toggle turns off.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>Graphic.color Transition (LeanGraphicColor)</b> component can be used to change the color.</p>
+<p>This allows you to perform a transition when this toggle turns off.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>LeanGraphicColor (Graphic.color Transition)</b> component can be used to change the color.</p>
 <br><h2>OnOn</h2>
 <p>This allows you to perform an action when this toggle turns on.</p>
 <br><h2>OnOff</h2>
@@ -514,9 +520,9 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h2>ShowDelay</h2>
 <p>This allows you to delay how quickly the tooltip will appear or switch.</p>
 <br><h2>ShowTransitions</h2>
-<p>This allows you to perform a transition when this tooltip appears.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>Graphic.color Transition (LeanGraphicColor)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here should be reverted in the <b>Hide Transitions</b> setting using a matching transition component.</div></p>
+<p>This allows you to perform a transition when this tooltip appears.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>LeanGraphicColor (Graphic.color Transition)</b> component can be used to change the color.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Any transitions you perform here should be reverted in the <b>Hide Transitions</b> setting using a matching transition component.</div></p>
 <br><h2>HideTransitions</h2>
-<p>This allows you to perform a transition when this tooltip hides.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>Graphic.color Transition (LeanGraphicColor)</b> component can be used to change the color.</p>
+<p>This allows you to perform a transition when this tooltip hides.<br><br>You can create a new transition GameObject by right clicking the transition name, and selecting <b>Create</b>.<br><br>For example, the <b>LeanGraphicColor (Graphic.color Transition)</b> component can be used to change the color.</p>
 <br><h2>OnShow</h2>
 <p>This allows you to perform an action when this tooltip appears.</p>
 <br><h2>OnHide</h2>
@@ -542,7 +548,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h2>CloseKey</h2>
 <p>This allows you to set the key that must be pressed to close the window on top.</p>
 <br><h2>EmptyWindow</h2>
-<p>If every window is closed and you press the close key, this window will be opened.<br><br>This can be used to open an options menu.</p>
+<p>If every window is closed and you press the close key, this window will be opened. This can be used to open an options menu.</p>
 <br><h2>WindowOrder</h2>
 <p>This stores a list of all opened windows, in order of opening, so they can be closed in reverse order.</p>
 <br><h2>[CONTEXT] Close All</h2>
@@ -554,10 +560,10 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 </div>
 <div style="position: absolute; width: 310px; left: 0px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
 <h2 style="padding-bottom: 20px;">Index</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-142588">Thank you for using Lean GUI &#x2764;&#xFE0F</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-142594">How do I upgrade?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#28048">What is Lean GUI?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#27490">How do I get started?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-63894">Thank you for using Lean GUI &#x2764;&#xFE0F</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-63900">How do I upgrade?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#29598">What is Lean GUI?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#28992">How do I get started?</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Assets</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#1">Lean Touch</a></p>
@@ -573,14 +579,16 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#11">Volumetric Audio</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Versions</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#29282">1.0.7</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#29910">1.0.6</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#28764">1.0.5</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#29622">1.0.4</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#27956">1.0.3</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#27930">1.0.2</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#29640">1.0.1</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#27782">1.0.0</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#30008">1.0.9</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#29194">1.0.8</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#30832">1.0.7</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#31442">1.0.6</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#30314">1.0.5</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#31172">1.0.4</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#29494">1.0.3</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#29468">1.0.2</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#31202">1.0.1</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#29296">1.0.0</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Components</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanButton">LeanButton</a></p>
