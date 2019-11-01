@@ -29,68 +29,95 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h1 style="font-size: 75px; color: #FFF; text-align: center; vertical-align: middle; line-height: 100px;">Lean GUI Shapes</h1>
 </div>
 <div style="position: absolute; left: 350px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
-<a name="-116284"></a><h2>Thank you for your support &#x2764;&#xFE0F</h2>
-<p>If you haven't already, please consider writing a review. They really help me out!</p><p>If you have any questions, then feel free to send me an <a href="mailto:carlos.wilkes@gmail.com">E-Mail</a>.</p><p>You can also find me on the <a href="http://forum.unity.com/members/41960">Unity Forums</a>, or <a href="http://twitter.com/CarlosWilkes">Twitter</a>, or <a href="http://youtube.com/user/CarlosWilkes">YouTube</a>.</p><p>I'm also available for freelance work if you need help with your projects.</p>
+<a name="-87736"></a><h2>Thank you for using Lean GUI Shapes &#x2764;&#xFE0F</h2>
+<p>If you haven't already, please consider writing a <a href="http://CarlosWilkes.com/Get/LeanGUIShapes" target="_blank">review</a>. They really help me out!</p><p>If you have any questions, then feel free to send me an <a href="mailto:carlos.wilkes@gmail.com">E-Mail</a>, or <a href="http://forum.unity.com/members/41960" target="_blank">Private Message</a>.</p><p>You can also ask in the <a href="http://CarlosWilkes.com/Forum/LeanGUIShapes" target="_blank">Forum Thread</a>.</p><p>I'm also available for freelance work if you need help with your projects.</p>
 <br><br>
-<a name="-116290"></a><h2>How do I upgrade?</h2>
+<a name="-87742"></a><h2>How do I upgrade?</h2>
 <p>First, make sure you <b>back up</b> your project files.</p><p>Next, install the latest version.</p><p>If for some reason the latest updates breaks your project (e.g. errors in the console), then try deleting the root folder for this asset, and reinstalling it.</p><p>If it still doesn't work then go back to your previous version, and let me know what the errors are, so I can fix it.</p>
 <br><br>
 <div style="">
-<a name="-106662"></a><h2>What is Lean GUI Shapes?</h2>
-<p>Lean GUI is an extension to Unity's UI system, adding many useful components.</p><p>The new components are also designed to be very flexible, so you can combine them in any way you like.</p>
+<a name="33352"></a><h2>What is Lean GUI Shapes?</h2>
+<p><b>Lean GUI Shapes</b> is an extension to Unity's UI system, adding many useful components for drawing UI shapes.</p><p>These shapes are procedurally generated based on a few simple settings, reducing texture memory usage, and allow you to quickly iterate different designs.</p>
 <br><br></div>
 <div style="">
-<a name="-106600"></a><h2>How do I get started?</h2>
-<p>Simply go through all the demo scenes in the Lean/GUI/Examples folder!</p><p>Most of the demo scenes introduce one new feature at a time, allowing you to clearly understand what is being done.</p><p>The description at the bottom also tells you in detail which components or settings were added/changed to achieve the effects seen.</p><p>To understand what a specific component setting does, just hover your mouse over it to see the tooltip. You can also click the documentation button at the top right of the component.</p>
+<a name="32714"></a><h2>Does this require Lean GUI?</h2>
+<p>Nope, Lean GUI is just used for some example scenes.</p><p>Feel free to delete it if you don't want to use it!</p><div class="tip"><strong>NOTE:</strong>&emsp;Lean Transition is also not required.</div>
+<br><br></div>
+<div style="">
+<a name="33638"></a><h2>How do I get started?</h2>
+<p>Simply go through all the demo scenes in the Lean/GUI Shapes/Examples folder!</p><p>Most of the demo scenes introduce one new feature at a time, allowing you to clearly understand what is being done.</p><p>The description at the bottom also tells you in detail which components or settings were added/changed to achieve the effects seen.</p><p>To understand what a specific component setting does, just hover your mouse over it to see the tooltip. You can also click the documentation button at the top right of the component.</p>
+<br><br></div>
+<div style="">
+<a name="34626"></a><h2>How do I make a point?</h2>
+<p>First you need to add the <b>LeanPoint</b> component to your scene:</p><div class="tip"><strong>METHOD 1</strong>&emsp;From your menu bar, select <strong>GameObject > Lean > GUI > Point</strong>.</div><div class="tip"><strong>METHOD 2</strong>&emsp;Right click inside the Hierarchy window, and go to <strong>Lean > GUI > Point</strong>.</div><div class="tip"><strong>METHOD 3</strong>&emsp;Create a new GameObject, and add the component <strong>Lean > GUI > Point</strong>.</div><p>You should now see a new GameObject called <b>'LeanPoint'</b> with the LeanPoint component selected.</p><p>If you want this point to follow a <b>GameObject</b> in the scene, simply drag and drop it into the <b>Anchor</b> setting.</p><div class="tip"><strong>NOTE:</strong>&emsp;The anchored Transform can be in the 2D, 3D, or even in the UI.</div><p>Next, you need to add a <b>Graphic</b> to your point GameObject. For example, the <b>Image</b> or <b>LeanBox</b> component.</p><div class="tip"><strong>NOTE:</strong>&emsp;The <b>LeanPoint</b> component takes over the <b>RectTransform</b> component's <b>Position</b> (anchoredPosition) setting.</div>
+<br><br></div>
+<div style="">
+<a name="33270"></a><h2>How do I make a line?</h2>
+<p>First you need to add the <b>LeanLine</b> component to your scene:</p><div class="tip"><strong>METHOD 1</strong>&emsp;From your menu bar, select <strong>GameObject > Lean > GUI > Line</strong>.</div><div class="tip"><strong>METHOD 2</strong>&emsp;Right click inside the Hierarchy window, and go to <strong>Lean > GUI > Line</strong>.</div><div class="tip"><strong>METHOD 3</strong>&emsp;Create a new GameObject, and add the component <strong>Lean > GUI > Line</strong>.</div><p>You should now see a new GameObject called <b>'LeanLine'</b> with the LeanLine component selected.</p><p>If you want this line to follow <b>GameObjects</b> in the scene, simply drag and drop them into the <b>AnchorA</b> and <b>AnchorB</b> settings.</p><div class="tip"><strong>NOTE:</strong>&emsp;The anchored Transforms can be in the 2D, 3D, or even in the UI.</div><p>Next, you need to add a <b>Graphic</b> to your line GameObject. For example, the <b>Image</b> or <b>LeanBox</b> component.</p><div class="tip"><strong>NOTE:</strong>&emsp;The <b>LeanLine</b> component takes over the <b>RectTransform</b> component's <b>Height</b> (sizeDelta.y), and <b>Rotation</b> (localRotation) settings.</div>
+<br><br></div>
+<div style="">
+<a name="34682"></a><h2>How do I make a box?</h2>
+<p>First you need to add the <b>LeanBox</b> component to your scene:</p><div class="tip"><strong>METHOD 1</strong>&emsp;From your menu bar, select <strong>GameObject > Lean > GUI > Box</strong>.</div><div class="tip"><strong>METHOD 2</strong>&emsp;Right click inside the Hierarchy window, and go to <strong>Lean > GUI > Box</strong>.</div><div class="tip"><strong>METHOD 3</strong>&emsp;Create a new GameObject, and add the component <strong>Lean > GUI > Box</strong>.</div><p>You should now see a new GameObject called <b>'LeanBox'</b> with the LeanBox component selected.</p><p>That it's, feel free to experiment with its visual settings like <b>Radius</b>!</p>
+<br><br></div>
+<div style="">
+<a name="33718"></a><h2>How do I make a polygon?</h2>
+<p>First you need to add the <b>LeanPolygon</b> component to your scene:</p><div class="tip"><strong>METHOD 1</strong>&emsp;From your menu bar, select <strong>GameObject > Lean > GUI > Polygon</strong>.</div><div class="tip"><strong>METHOD 2</strong>&emsp;Right click inside the Hierarchy window, and go to <strong>Lean > GUI > Polygon</strong>.</div><div class="tip"><strong>METHOD 3</strong>&emsp;Create a new GameObject, and add the component <strong>Lean > GUI > Polygon</strong>.</div><p>You should now see a new GameObject called <b>'LeanPolygon'</b> with the LeanPolygon component selected.</p><div class="tip"><strong>NOTE:</strong>&emsp;<b>LeanPolygon</b> begins with no points. You can manually populate some from the <b>Points</b> list in the inspector, by setting it to 3 or more.</div><p>To edit the polygon shape inside the <b>Scene</b> tab, you can click the <b>'Edit Points'</b> button in the <b>LeanPolygon</b> component inspector.</p><div class="tip"><strong>MOVE</strong>&emsp;Click and drag a point (green) to move it.</div><div class="tip"><strong>CREATE</strong>&emsp;Click and drag an edge between two points (yellow) to split and move it.</div><div class="tip"><strong>DELETE</strong>&emsp;Click a point (red) to delete it.</div><p>This editor works just like the <b>PolygonCollider2D</b> editor.</p><div class="tip"><strong>NOTE:</strong>&emsp;Your polygon points must go <b>Clockwise</b> around the permieter of your shape.</div><div class="tip"><strong>NOTE:</strong>&emsp;Each line between consecutive points in your shape cannot intersect or overlap another line.</div><div class="tip"><strong>NOTE:</strong>&emsp;If you increase the <b>Thickness</b> or <b>Blur</b> values too much, then the generated shape will overlap itself and look incorrect. This can be improved by increasing the distance between points in your shape.</div>
 </div>
 <br><br>
 <h1>Assets</h1>
-<p>Here's a list of all my other assets, please check them out!</p><p>You can also view this list on <a href = "http://assetstore.unity.com/publishers/1513?aid=1101l4Jks">my Asset Store page</a>.</p><br><br>
-<div style="float: left; padding-right: 20px;"><a href="http://assetstore.unity.com/packages/slug/30111?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/30111/icon" alt="Lean Touch" width="128" height="128" /></a></div>
+<p>Here's a list of all my other assets, please check them out!</p><p>You can also view this list on <a href="http://CarlosWilkes.com/Get/Assets" target="_blank">my Asset Store page</a>.</p><br><br>
+<div style="float: left; padding-right: 20px;"><a href="http://CarlosWilkes.com/Get/LeanTouch" target="_blank"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/30111/icon" alt="Lean Touch" width="128" height="128" /></a></div>
 <a name="1"></a><h2>Lean Touch</h2>
 <p>Rapidly develop your game with consistent input across desktop & mobile using Lean Touch. This lightweight asset comes with many modular components, allowing you to customize them to your exact project needs!</p><br><br><br><br>
-<div style="float: left; padding-right: 20px;"><a href="http://assetstore.unity.com/packages/slug/72356?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/72356/icon" alt="Lean Touch+" width="128" height="128" /></a></div>
+<div style="float: left; padding-right: 20px;"><a href="http://CarlosWilkes.com/Get/LeanTouchPlus" target="_blank"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/72356/icon" alt="Lean Touch+" width="128" height="128" /></a></div>
 <a name="2"></a><h2>Lean Touch+</h2>
 <p>Lean Touch+ is an extension to the popular Lean Touch asset, adding many more example scenes.</p><br><br><br><br>
-<div style="float: left; padding-right: 20px;"><a href="http://assetstore.unity.com/packages/slug/28504?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/28504/icon" alt="Lean Localization" width="128" height="128" /></a></div>
+<div style="float: left; padding-right: 20px;"><a href="http://CarlosWilkes.com/Get/LeanLocalization" target="_blank"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/28504/icon" alt="Lean Localization" width="128" height="128" /></a></div>
 <a name="3"></a><h2>Lean Localization</h2>
 <p>Lean Localization is a localization library that's designed to be as simple to use as possible for both designers, and programmers.</p><br><br><br><br>
-<div style="float: left; padding-right: 20px;"><a href="http://assetstore.unity.com/packages/slug/35666?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/35666/icon" alt="Lean Pool" width="128" height="128" /></a></div>
+<div style="float: left; padding-right: 20px;"><a href="http://CarlosWilkes.com/Get/LeanPool" target="_blank"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/35666/icon" alt="Lean Pool" width="128" height="128" /></a></div>
 <a name="4"></a><h2>Lean Pool</h2>
 <p>Quickly optimize the performance of your games using Lean Pool. Within minutes you can use this lightweight asset to preload, recycle, and limit the spawning of your prefabs.</p><br><br><br><br>
-<div style="float: left; padding-right: 20px;"><a href="http://assetstore.unity.com/packages/slug/144107?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/144107/icon" alt="Lean Transition" width="128" height="128" /></a></div>
+<div style="float: left; padding-right: 20px;"><a href="http://CarlosWilkes.com/Get/LeanTransition" target="_blank"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/144107/icon" alt="Lean Transition" width="128" height="128" /></a></div>
 <a name="5"></a><h2>Lean Transition</h2>
 <p>Quickly polish your games using Lean Transition. This asset allows you to easily tween or animate almost anything in your game, making it transition smoothly.</p><br><br><br><br>
-<div style="float: left; padding-right: 20px;"><a href="http://assetstore.unity.com/packages/slug/72138?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/72138/icon" alt="Lean GUI" width="128" height="128" /></a></div>
+<div style="float: left; padding-right: 20px;"><a href="http://CarlosWilkes.com/Get/LeanGUI" target="_blank"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/72138/icon" alt="Lean GUI" width="128" height="128" /></a></div>
 <a name="6"></a><h2>Lean GUI</h2>
 <p>Lean GUI is a colllection of components that extend Unity's GUI system, allowing you to rapidly enhance the user experience (UX) of your game's UI.</p><br><br><br><br>
-<div style="float: left; padding-right: 20px;"><a href="http://assetstore.unity.com/packages/slug/26286?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/26286/icon" alt="Paint in 3D" width="128" height="128" /></a></div>
+<div style="float: left; padding-right: 20px;"><a href="http://CarlosWilkes.com/Get/PaintIn3D" target="_blank"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/26286/icon" alt="Paint in 3D" width="128" height="128" /></a></div>
 <a name="7"></a><h2>Paint in 3D</h2>
 <p>Paint all your objects using <strong>Paint in 3D</strong> - both in game, and in editor. All features are optimized with GPU accelerated texture painting, so you can enjoy consistent performance, even if you paint your objects one million times!</p><br><br><br><br>
-<div style="float: left; padding-right: 20px;"><a href="http://assetstore.unity.com/packages/slug/18125?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/18125/icon" alt="Destructible 2D" width="128" height="128" /></a></div>
+<div style="float: left; padding-right: 20px;"><a href="http://CarlosWilkes.com/Get/Destructible2D" target="_blank"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/18125/icon" alt="Destructible 2D" width="128" height="128" /></a></div>
 <a name="8"></a><h2>Destructible 2D</h2>
 <p>Unlock the full potential of your 2D games using Destructible 2D, this asset allows you to quickly convert all your boring solid sprites into fully destructible ones!</p><br><br><br><br>
-<div style="float: left; padding-right: 20px;"><a href="http://assetstore.unity.com/packages/slug/4160?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/4160/icon" alt="Space Graphics Toolkit" width="128" height="128" /></a></div>
+<div style="float: left; padding-right: 20px;"><a href="http://CarlosWilkes.com/Get/SpaceGraphicsToolkit" target="_blank"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/4160/icon" alt="Space Graphics Toolkit" width="128" height="128" /></a></div>
 <a name="9"></a><h2>Space Graphics Toolkit</h2>
 <p>Quickly make the space scene of your dreams using Space Graphics Toolkit. This huge collection of space effects can be customized and combined in any way you like, allowing you to quickly make realistic or fantasy worlds. Each feature has been heavily optimized to run on almost any device and platform.</p><br><br><br><br>
-<div style="float: left; padding-right: 20px;"><a href="http://assetstore.unity.com/packages/slug/124578?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/124578/icon" alt="Planet Pack - Space Graphics Toolkit" width="128" height="128" /></a></div>
+<div style="float: left; padding-right: 20px;"><a href="http://CarlosWilkes.com/Get/PlanetPack" target="_blank"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/124578/icon" alt="Planet Pack - Space Graphics Toolkit" width="128" height="128" /></a></div>
 <a name="10"></a><h2>Planet Pack - Space Graphics Toolkit</h2>
 <p>This pack contains 26 high detail PBR planets, all finished using the powerful planet features of Space Graphics Toolkit (SGT). This is a standalone package, so SGT is not required. You can even use the included features to turn your own planets into beautiful worlds!</p><br><br><br><br>
-<div style="float: left; padding-right: 20px;"><a href="http://assetstore.unity.com/packages/slug/17125?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/17125/icon" alt="Volumetric Audio" width="128" height="128" /></a></div>
+<div style="float: left; padding-right: 20px;"><a href="http://CarlosWilkes.com/Get/VolumetricAudio" target="_blank"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/17125/icon" alt="Volumetric Audio" width="128" height="128" /></a></div>
 <a name="11"></a><h2>Volumetric Audio</h2>
 <p>Unity sounds only emanate from a single point source. This is great for explosions and footsteps, but quite often you need something more advanced. Volumetric Audio is an easy to use package that allows you to define boxes, spheres, capsules, paths, or meshes that sounds can emanate from.</p><br><br><br><br>
 <br><br>
 <h1>Versions</h1>
-<a name="-106628"></a><h2>1.0.0</h2>
+<a name="34492"></a><h2>1.0.0</h2>
 <p>Initial release.<br></p>
 <br><br>
 <br><br>
 <h1>Components</h1>
-<a name="LeanAnchor"></a><h2>!MISSING = LeanAnchor!</h2>
-
+<a name="LeanAnchor"></a><h2>LeanAnchor</h2>
+<p>This class allows you to define an anchor point in the scene based on a <b>Transform</b> and offsets, or a 3D point.<br><br>This is used by components like <b>LeanPoint</b> and <b>LeanLine</b>.</p>
+<div style="padding-left: 75px;"><br><h2>Transform</h2>
+<p>If you want this anchor to follow a <b>Transform</b>, then set it here.</p>
+<br><h2>LocalOffset</h2>
+<p>This allows you to set the local offset of the anchor relative to the <b>Transform</b>.<br><br>If no <b>Transform</b> is set, then this will be the world space position.</p>
+<br><h2>PixelOffset</h2>
+<p>This allows you to set the pixel offset of the anchor on the screen.</p>
+</div><br>
 <br><br>
 <a name="LeanBox"></a><h2>LeanBox</h2>
-<p>This component allows you to create custom GUI panels.</p>
+<p>This component allows you to create UI elements with a box shape.</p>
 <div style="padding-left: 75px;"><br><h2>Blur</h2>
 <p>This allows you to set the blur radius in local space.</p>
 <br><h2>Thickness</h2>
@@ -98,54 +125,73 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h2>Detail</h2>
 <p>This allows you to set the base detail of the box corners.</p>
 <br><h2>DetailTL</h2>
-<p>This allows you to manually override the detail of the top left corner of this box.\n-1 = No Override</p>
+<p>This allows you to manually override the detail of the top left corner of this box.<br><br>-1 = No Override</p>
 <br><h2>DetailTR</h2>
-<p>This allows you to manually override the detail of the top right corner of this box.\n-1 = No Override</p>
+<p>This allows you to manually override the detail of the top right corner of this box.<br><br>-1 = No Override</p>
 <br><h2>DetailBL</h2>
-<p>This allows you to manually override the radius of the bottom left corner of this box.\n-1 = No Override</p>
+<p>This allows you to manually override the radius of the bottom left corner of this box.<br><br>-1 = No Override</p>
 <br><h2>DetailBR</h2>
-<p>This allows you to manually override the detail of the bottom right corner of this box.\n-1 = No Override</p>
+<p>This allows you to manually override the detail of the bottom right corner of this box.<br><br>-1 = No Override</p>
 <br><h2>Radius</h2>
 <p>This allows you to set the base radius of the box corners.</p>
 <br><h2>RadiusTL</h2>
-<p>This allows you to manually override the radius of the top left corner of this box.\n-1 = No Override</p>
+<p>This allows you to manually override the radius of the top left corner of this box.<br><br>-1 = No Override</p>
 <br><h2>RadiusTR</h2>
-<p>This allows you to manually override the radius of the top right corner of this box.\n-1 = No Override</p>
+<p>This allows you to manually override the radius of the top right corner of this box.<br><br>-1 = No Override</p>
 <br><h2>RadiusBL</h2>
-<p>This allows you to manually override the radius of the bottom left corner of this box.\n-1 = No Override</p>
+<p>This allows you to manually override the radius of the bottom left corner of this box.<br><br>-1 = No Override</p>
 <br><h2>RadiusBR</h2>
-<p>This allows you to manually override the radius of the bottom right corner of this box.\n-1 = No Override</p>
+<p>This allows you to manually override the radius of the bottom right corner of this box.<br><br>-1 = No Override</p>
 </div><br>
 <br><br>
-<a name="LeanHelper"></a><h2>!MISSING = LeanHelper!</h2>
-
+<a name="LeanLine"></a><h2>LeanLine</h2>
+<p>This component allows you to draw a UI element between two points in the scene (e.g. 3D objects).<br><br><div class="tip"><strong>NOTE:</strong>&emsp; To see the line you also need to add a <b>Graphic</b> to your line GameObject, like <b>LeanBox</b> or <b>Image</b>.</div></p>
+<div style="padding-left: 75px;"><br><h2>WorldCamera</h2>
+<p>The camera rendering the target transform/position.<br><br>None/Null = The <b>MainCamera</b> will be used.</p>
+<br><h2>AnchorA</h2>
+<p>The start point of the <b>RectTransform</b> will be placed at this anchor point.</p>
+<br><h2>AnchorB</h2>
+<p>The end point of the <b>RectTransform</b> will be placed at this anchor point.</p>
+<br><h2>[CONTEXT] Update Line</h2>
+<p>This method forces the <b>RectTransform</b> settings to update based on the current line settings.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; This is automatically called in <b>LateUpdate</b>, but you can manually call it if you have modified it after this, but before the canvas is drawn.</div></p>
+</div><br>
 <br><br>
-<a name="LeanLine"></a><h2>!MISSING = LeanLine!</h2>
-
-<br><br>
-<a name="LeanPoint"></a><h2>!MISSING = LeanPoint!</h2>
-
+<a name="LeanPoint"></a><h2>LeanPoint</h2>
+<p>This component allows you to draw a UI element on top of a point in the scene (e.g. 3D object).<br><br><div class="tip"><strong>NOTE:</strong>&emsp; To see the point you also need to add a <b>Graphic</b> to your point GameObject, like <b>LeanBox</b> or <b>Image</b>.</div></p>
+<div style="padding-left: 75px;"><br><h2>WorldCamera</h2>
+<p>The camera rendering the target transform/position.<br><br>None/Null = The <b>MainCamera</b> will be used.</p>
+<br><h2>Anchor</h2>
+<p>The <b>RectTransform</b> will be placed above this anchor point.</p>
+<br><h2>[CONTEXT] Update Point</h2>
+<p>This method forces the <b>RectTransform</b> settings to update based on the current line settings.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; This is automatically called in <b>LateUpdate</b>, but you can manually call it if you have modified it after this, but before the canvas is drawn.</div></p>
+</div><br>
 <br><br>
 <a name="LeanPolygon"></a><h2>LeanPolygon</h2>
-<p>This component allows you to create custom GUI panels.</p>
+<p>This component allows you to create UI elements with a custom polygon shape.</p>
 <div style="padding-left: 75px;"><br><h2>Blur</h2>
 <p>This allows you to set the blur radius in local space.</p>
 <br><h2>Thickness</h2>
 <p>This allows you to set the thickness of the border in local space.</p>
 <br><h2>Points</h2>
-<p></p>
+<p>This list stores all polygon points in local space.</p>
 </div><br>
 <br><br>
-<a name="LeanTriangulation"></a><h2>!MISSING = LeanTriangulation!</h2>
-
+<a name="LeanTriangulation"></a><h2>LeanTriangulation</h2>
+<p>This class calculates a triangulation for a given list of vertices.<br><br>This is used by the <b>LeanPolygon</b> component.</p>
+<div style="padding-left: 75px;"></div><br>
 <br><br>
 </div>
 <div style="position: absolute; width: 310px; left: 0px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
 <h2 style="padding-bottom: 20px;">Index</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-116284">Thank you for your support &#x2764;&#xFE0F</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-116290">How do I upgrade?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-106662">What is Lean GUI Shapes?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-106600">How do I get started?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-87736">Thank you for using Lean GUI Shapes &#x2764;&#xFE0F</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-87742">How do I upgrade?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#33352">What is Lean GUI Shapes?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#32714">Does this require Lean GUI?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#33638">How do I get started?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#34626">How do I make a point?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#33270">How do I make a line?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#34682">How do I make a box?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#33718">How do I make a polygon?</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Assets</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#1">Lean Touch</a></p>
@@ -161,16 +207,15 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#11">Volumetric Audio</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Versions</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-106628">1.0.0</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#34492">1.0.0</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Components</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanAnchor">!MISSING = LeanAnchor!</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanAnchor">LeanAnchor</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanBox">LeanBox</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanHelper">!MISSING = LeanHelper!</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanLine">!MISSING = LeanLine!</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanPoint">!MISSING = LeanPoint!</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanLine">LeanLine</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanPoint">LeanPoint</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanPolygon">LeanPolygon</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanTriangulation">!MISSING = LeanTriangulation!</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanTriangulation">LeanTriangulation</a></p>
 </div>
 <div style="background-color: #0075D0; position: absolute; left: 0px; right: 0px; bottom: 0px; height: 20px;">
 </div>
