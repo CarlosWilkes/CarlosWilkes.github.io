@@ -29,18 +29,18 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h1 style="font-size: 75px; color: #FFF; text-align: center; vertical-align: middle; line-height: 100px;">Lean Transition</h1>
 </div>
 <div style="position: absolute; left: 350px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
-<a name="-36912"></a><h2>Thank you for using Lean Transition &#x2764;&#xFE0F</h2>
+<a name="-32830"></a><h2>Thank you for using Lean Transition &#x2764;&#xFE0F</h2>
 <p>If you haven't already, please consider writing a <a href="http://CarlosWilkes.com/Get/LeanTransition" target="_blank">review</a>. They really help me out!</p><p>If you have any questions, then feel free to send me an <a href="mailto:carlos.wilkes@gmail.com">E-Mail</a>, or <a href="http://forum.unity.com/members/41960" target="_blank">Private Message</a>.</p><p>You can also ask in the <a href="http://carloswilkes.com/Forum/LeanTransition" target="_blank">Forum Thread</a>.</p><p>I'm also available for freelance work if you need help with your projects.</p>
 <br><br>
-<a name="-36918"></a><h2>How do I upgrade?</h2>
+<a name="-32836"></a><h2>How do I upgrade?</h2>
 <p>First, make sure you <b>back up</b> your project files.</p><p>Next, install the latest version.</p><p>If for some reason the latest updates breaks your project (e.g. errors in the console), then try deleting the root folder for this asset, and reinstalling it.</p><p>If it still doesn't work then go back to your previous version, and let me know what the errors are, so I can fix it.</p>
 <br><br>
 <div style="">
-<a name="22778"></a><h2>What is Lean Transition?</h2>
+<a name="13200"></a><h2>What is Lean Transition?</h2>
 <p>Lean Transition allows you to smoothly animate GameObject and Component settings from their current values, to new values.</p><p>Transitions can be as simple as fading menus in and out, to complex sequences with many different branches.</p><p>Transitions can be set up in the editor, as well as from code, using exactly the same procedure!</p>
 <br><br></div>
 <div style="">
-<a name="23028"></a><h2>How do I use it?</h2>
+<a name="13432"></a><h2>How do I use it?</h2>
 <br><br></div>
 <div style="padding-left: 75px;">
 <h2>Editor</h2>
@@ -57,7 +57,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>It's as simple as that!</p><div class="tip"><strong>NOTE:</strong>&emsp;All Lean Transition extension methods are named like this with <b>Transition</b> added to the end, so it should be really easy to find them.</div><div class="tip"><strong>NOTE:</strong>&emsp;Not all values have transitions. If you feel like I've missed an important one then please contect me so I can implement it!</div>
 <br><br></div>
 <div style="">
-<a name="23424"></a><h2>How do I combine transitions to make a sequence?</h2>
+<a name="13834"></a><h2>How do I combine transitions to make a sequence?</h2>
 <br><br></div>
 <div style="padding-left: 75px;">
 <h2>Editor</h2>
@@ -69,7 +69,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <div class="code"><pre>transform.</br>	localPositionTransition(new Vector3(10, 10, 10), 0.5f).</br>	JoinTransition().</br>	localPositionTransition(new Vector3(1, 1, 1), 0.5f);</pre></div>
 <br><br></div>
 <div style="">
-<a name="22744"></a><h2>How do I add a delay between transitions?</h2>
+<a name="13172"></a><h2>How do I add a delay between transitions?</h2>
 <br><br></div>
 <div style="padding-left: 75px;">
 <h2>Editor</h2>
@@ -81,7 +81,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <div class="code"><pre>transform.</br>	localPositionTransition(new Vector3(10, 10, 10), 0.5f).</br>	JoinDelayTransition(5.0f).</br>	localPositionTransition(new Vector3(1, 1, 1), 0.5f);</pre></div>
 <br><br></div>
 <div style="">
-<a name="22988"></a><h2>How do I insert transitions to save time?</h2>
+<a name="13380"></a><h2>How do I insert transitions to save time?</h2>
 <br><br></div>
 <div style="padding-left: 75px;">
 <h2>Editor</h2>
@@ -93,7 +93,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <div class="code"><pre>transform.</br>	localPositionTransition(new Vector3(10, 10, 10), 0.5f).</br>	JoinInsertTransition(gameObjectWithTransitions).</br>	localPositionTransition(new Vector3(1, 1, 1), 0.5f);</pre></div>
 <br><br></div>
 <div style="">
-<a name="23332"></a><h2>How do I delay or insert without joining?</h2>
+<a name="13760"></a><h2>How do I delay or insert without joining?</h2>
 <p>The <b>JoinDelay</b> and <b>JoinInsert</b> features are same as <b>Delay</b> and <b>Insert</b>, except they automatically have a <b>Join</b> placed at the start and end.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -105,7 +105,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Instead of calling the <b>JoinDelayTransition()</b> method, you can manually call the <b>JoinTransition()</b> and <b>DelayTransition()</b> methods.</p><p>Instead of calling the <b>JoinInsertTransition()</b> method, you can manually call the <b>JoinTransition()</b> and <b>InsertTransition()</b> methods.</p>
 <br><br></div>
 <div style="">
-<a name="21954"></a><h2>How do I change the transition timing?</h2>
+<a name="12328"></a><h2>How do I change the transition timing?</h2>
 <p>By default, all transitions are executed in <b>Update</b>, using <b>Unscaled Time</b>.</p><p>To change this, simply modify the settings of the <b>LeanTransition</b> component in your scene. If your scene doesn't contain this component, then make a new GameObject and add it.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -117,7 +117,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Simply call the TimeTransition() method, and all transitions after it will use the specified time.</p><div class="tip"><strong>NOTE:</strong>&emsp;To reset the transition time you must call the <b>LeanTransition.ResetTiming</b> method, or call the <b>TimeTransition()</b> method with <b>LeanTime.Default</b>.</div>
 <br><br></div>
 <div style="">
-<a name="23834"></a><h2>How do I perform a custom action?</h2>
+<a name="14256"></a><h2>How do I perform a custom action?</h2>
 <br><br></div>
 <div style="padding-left: 75px;">
 <h2>Editor</h2>
@@ -166,25 +166,28 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Unity sounds only emanate from a single point source. This is great for explosions and footsteps, but quite often you need something more advanced. Volumetric Audio is an easy to use package that allows you to define boxes, spheres, capsules, paths, or meshes that sounds can emanate from.</p><br><br><br><br>
 <br><br>
 <h1>Versions</h1>
-<a name="-33910"></a><h2>1.0.6</h2>
+<a name="-13976"></a><h2>1.0.7</h2>
+<p>Fixed bug in LeanHelper.cs that prevents making builds.<br></p>
+<br><br>
+<a name="12700"></a><h2>1.0.6</h2>
 <p>Updated <b>Common</b> library code.<br></p>
 <br><br>
-<a name="23098"></a><h2>1.0.5</h2>
+<a name="13526"></a><h2>1.0.5</h2>
 <p>Fixed issue where transitions wouldn't stop when exiting play mode.<br>Updated <b>Common</b> library code.<br>Updated demo scene design.<br></p>
 <br><br>
-<a name="22556"></a><h2>1.0.4</h2>
+<a name="12984"></a><h2>1.0.4</h2>
 <p>Fixed <b>LeanPlaySound</b> auto fill button.<br>Improved inspector code.<br>Improved code comments.<br></p>
 <br><br>
-<a name="23302"></a><h2>1.0.3</h2>
+<a name="13730"></a><h2>1.0.3</h2>
 <p>Added <b>Auto Fill</b> button to transition components.<br></p>
 <br><br>
-<a name="21932"></a><h2>1.0.2</h2>
+<a name="12282"></a><h2>1.0.2</h2>
 <p>Updated documentation.<br></p>
 <br><br>
-<a name="23926"></a><h2>1.0.1</h2>
+<a name="14324"></a><h2>1.0.1</h2>
 <p>Added Transform.position transition.<br>Fixed bug when adding multiple events to the same object.<br>Allowed LeanPlayer.Speed to be toggled off.<br></p>
 <br><br>
-<a name="21920"></a><h2>1.0.0</h2>
+<a name="12264"></a><h2>1.0.0</h2>
 <p>First release.<br></p>
 <br><br>
 <br><br>
@@ -486,16 +489,16 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 </div>
 <div style="position: absolute; width: 310px; left: 0px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
 <h2 style="padding-bottom: 20px;">Index</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-36912">Thank you for using Lean Transition &#x2764;&#xFE0F</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-36918">How do I upgrade?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#22778">What is Lean Transition?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23028">How do I use it?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23424">How do I combine transitions to make a sequence?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#22744">How do I add a delay between transitions?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#22988">How do I insert transitions to save time?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23332">How do I delay or insert without joining?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#21954">How do I change the transition timing?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23834">How do I perform a custom action?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-32830">Thank you for using Lean Transition &#x2764;&#xFE0F</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-32836">How do I upgrade?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13200">What is Lean Transition?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13432">How do I use it?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13834">How do I combine transitions to make a sequence?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13172">How do I add a delay between transitions?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13380">How do I insert transitions to save time?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13760">How do I delay or insert without joining?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#12328">How do I change the transition timing?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14256">How do I perform a custom action?</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Assets</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#1">Lean Touch</a></p>
@@ -511,13 +514,14 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#11">Volumetric Audio</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Versions</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-33910">1.0.6</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23098">1.0.5</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#22556">1.0.4</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23302">1.0.3</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#21932">1.0.2</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23926">1.0.1</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#21920">1.0.0</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-13976">1.0.7</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#12700">1.0.6</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13526">1.0.5</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#12984">1.0.4</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13730">1.0.3</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#12282">1.0.2</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14324">1.0.1</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#12264">1.0.0</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Components</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanEase">LeanEase</a></p>
