@@ -29,26 +29,26 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h1 style="font-size: 75px; color: #FFF; text-align: center; vertical-align: middle; line-height: 100px;">Lean Touch</h1>
 </div>
 <div style="position: absolute; left: 350px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
-<a name="-52420"></a><h2>Thank you for using Lean Touch &#x2764;&#xFE0F</h2>
+<a name="-442524"></a><h2>Thank you for using Lean Touch &#x2764;&#xFE0F</h2>
 <p>If you haven't already, please consider writing a <a href="http://CarlosWilkes.com/Get/LeanTouch" target="_blank">review</a>. They really help me out!</p><p>If you have any questions, then feel free to send me an <a href="mailto:carlos.wilkes@gmail.com">E-Mail</a>, or <a href="http://forum.unity.com/members/41960" target="_blank">Private Message</a>.</p><p>You can also ask in the <a href="http://carloswilkes.com/Forum/LeanTouch" target="_blank">Forum Thread</a>.</p><p>I'm also available for freelance work if you need help with your projects.</p>
 <br><br>
-<a name="-52426"></a><h2>How do I upgrade?</h2>
+<a name="-442530"></a><h2>How do I upgrade?</h2>
 <p>First, make sure you <b>back up</b> your project files.</p><p>Next, install the latest version.</p><p>If for some reason the latest updates breaks your project (e.g. errors in the console), then try deleting the root folder for this asset, and reinstalling it.</p><p>If it still doesn't work then go back to your previous version, and let me know what the errors are, so I can fix it.</p>
 <br><br>
 <div style="">
-<a name="24548"></a><h2>What is Lean Touch?</h2>
+<a name="44326"></a><h2>What is Lean Touch?</h2>
 <p>When you create mobile games you often want to make use of multi touch gestures, like pinch and twist.</p><p>However, Unity makes this difficult to do, because they only provide the Input.touches array. This requires you to do all the calculations yourself.</p><p>With LeanTouch you no longer have to worry about these issues, because all the touch gesture calculations are done for you in a very simple and elegant way.</p><p>LeanTouch also allows you to simulate multi touch gestures on desktop, so you don't have to waste lots of time deploying to your mobile devices while you setup your input.</p>
 <br><br></div>
 <div style="">
-<a name="24978"></a><h2>How do I get started?</h2>
+<a name="44774"></a><h2>How do I get started?</h2>
 <p>First you need to add the LeanTouch component to your scene:</p><div class="tip"><strong>METHOD 1</strong>&emsp;From your menu bar, select <strong>GameObject > Lean > Touch</strong>.</div><div class="tip"><strong>METHOD 2</strong>&emsp;Right click inside the Hierarchy window, and go to <strong>Lean > Touch</strong>.</div><div class="tip"><strong>METHOD 3</strong>&emsp;Create a new GameObject, and add the component <strong>Lean > Touch</strong>.</div><p>You should now see a new GameObject called <b>'LeanTouch'</b> with the LeanTouch component selected.</p><p>When you enter play mode, this component will automatically convert all mouse and touch input into an easy to use format.</p><p>Remember that scripts using Lean Touch only work when there is a LeanTouch component active in your scene, so make sure to add one to every scene (or carry it over with DontDestroyOnLoad).</p>
 <br><br></div>
 <div style="">
-<a name="25472"></a><h2>How do I use Lean Touch without code?</h2>
+<a name="45226"></a><h2>How do I use Lean Touch without code?</h2>
 <p>Lean Touch comes with many example components to do common tasks.</p><p>For example, if you want to spawn a prefab when a finger touches the screen, you can begin by making a new GameObject, and adding the <b>LeanSpawn</b> component.</p><p>Inside this component, you'll see it has the <b>Prefab</b> setting. You can browse or drag and drop your desired prefab here.</p><p>Next, you can add the LeanFingerTap component. Inside this component, you'll see it has the <b>OnFinger</b> event.</p><p>To link this event to the prefab spawning, you need to click the plus <b>+</b> button below where it says <b>List is Empty</b>, and in the bottom left box that says <b>None (Object)</b>, you need to drag and drop the LeanSpawn component you added earlier.</p><p>Next, you need to click the <b>No Function</b> dropdown, and select the <b>LeanSpawn > Dynamic LeanFinger > Spawn</b> function. You can now hit play, and tapping a finger (or clicking) on the screen will spawn your prefab.</p><p>There are many other components that work in similar ways that can be connected together using only the editor. To find out how these work, I recommend you browse through the demo scenes and look at the GameObjects to see what's going on.</p>
 <br><br></div>
 <div style="">
-<a name="25270"></a><h2>How do I use Lean Touch with C#?</h2>
+<a name="45060"></a><h2>How do I use Lean Touch with C#?</h2>
 <p>You can access all finger data from the <b>Lean.Touch.LeanTouch</b> class.</p><p>The easiest way to begin is by hooking into the static events it exposes.</p><p>For example, if you want to perform an action when a finger touches the screen, you can hook into the <b>Lean.Touch.LeanTouch.OnFingerDown</b> event. This event gets called every time a finger begins touching the screen, and gets passed a <b>Lean.Touch.LeanFinger</b> instance as a parameter. It's recommended you hook into these events from <b>OnEnable</b>, and unhook from <b>OnDisable</b>.</p>
 <div class="code"><pre>public class MyCoolScript : MonoBehaviour</br>{</br>	void OnEnable()</br>	{</br>		Lean.Touch.LeanTouch.OnFingerTap += HandleFingerTap;</br>	}</br></br>	void OnDisable()</br>	{</br>		Lean.Touch.LeanTouch.OnFingerTap -= HandleFingerTap;</br>	}</br></br>	void HandleFingerTap(Lean.Touch.LeanFinger finger)</br>	{</br>		Debug.Log("You just tapped the screen with finger " + finger.Index + " at " + finger.ScreenPosition);</br>	}</br>}</pre></div>
 <p>To see what other events are available, I recommend you read the <b>LeanTouch.cs</b>, script and its comments.</p><p>Another way to access finger data is to poll it directly from the <b>Lean.Touch.LeanTouch.Fingers</b> static list. This list stores all fingers that are currently touching the screen, and you can use this data at any time (e.g. Update) to quickly handle input.</p>
@@ -56,13 +56,13 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>If you need to modify or exclude certain fingers then I highly recommend you use the <b>Lean.Touch.LeanTouch.GetFingers(...)</b> method, which has common filter options, and will return a temporary list that you can further filter without breaking LeanTouch.</p>
 <br><br></div>
 <div style="">
-<a name="25878"></a><h2>How do I handle multi-finger gestures (e.g. Pinch, Twist) from C#?</h2>
+<a name="45608"></a><h2>How do I handle multi-finger gestures (e.g. Pinch, Twist) from C#?</h2>
 <p>The <b>Lean.Touch.LeanGesture</b> class makes this very easy.</p><p>For example, if you want to find how many degrees the fingers were twisted in the last frame, you can call:</p>
 <div class="code"><pre>Lean.Touch.LeanGesture.GetTwistDegrees()</pre></div>
 <p>This method will automatically calculate it from all fingers. This method also has an overload that allows you to pass a specific list of fingers if you don't want to use them all.</p><p>To see what other gestures are available, I recommend you read the <b>LeanGesture.cs</b> script and its comments.</p>
 <br><br></div>
 <div style="">
-<a name="23524"></a><h2>Why are my inputs delayed by one frame?</h2>
+<a name="43236"></a><h2>Why are my inputs delayed by one frame?</h2>
 <p>The main <b>LeanTouch</b> component updates and sends all events from inside the <b>Update</b> method. If you’re using components that also use <b>Update</b> (e.g. many of the Example components), then there can be scenarios where your components are using old input data, and everything will be delayed by one frame.</p><p>To fix this, you must manually adjust the <b>Script Execution Order</b> of these components, so that the <b>LeanTouch</b> component executes before your other ones.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -82,37 +82,37 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Click Apply, and enjoy!</p>
 <br><br></div>
 <div style="">
-<a name="23618"></a><h2>How do I stop my touch controls from going through my UI from C#?</h2>
+<a name="43336"></a><h2>How do I stop my touch controls from going through my UI from C#?</h2>
 <p>If you hook into any of the <b>Lean.Touch.LeanTouch.OnFinger___</b> events, you will get a <b>Lean.Touch.LeanFinger</b> instance. This class has the <b>IsOverGui</b> and <b>StartedOverGui</b> values you can check.</p>
 <div class="code"><pre>public class MyCoolScript : MonoBehaviour</br>{</br>	void OnEnable()</br>	{</br>		Lean.Touch.LeanTouch.OnFingerTap += HandleFingerTap;</br>	}</br></br>	void OnDisable()</br>	{</br>		Lean.Touch.LeanTouch.OnFingerTap -= HandleFingerTap;</br>	}</br></br>	void HandleFingerTap(Lean.Touch.LeanFinger finger)</br>	{</br>		if (finger.IsOverGui)</br>		{</br>			Debug.Log("You just tapped the screen on top of the GUI!");</br>		}</br>	}</br>}</pre></div>
 <p>If you're polling from <b>Lean.Touch.LeanTouch.Fingers</b> and want to quickly remove fingers that are touching the GUI, you can instead get the fingers from the <b>Lean.Touch.LeanTouch.GetFingers</b> method, which has a setting to quickly exclude these, as well as restrict it to a certain amount of fingers.</p>
 <br><br></div>
 <div style="">
-<a name="23988"></a><h2>Why do I have to keep typing Lean.Touch. before everything?</h2>
+<a name="43682"></a><h2>Why do I have to keep typing Lean.Touch. before everything?</h2>
 <p>To improve organization, all Lean Touch classes are inside the <b>Lean.Touch</b> namespace.</p><p>If you don't like typing <b>Lean.Touch.</b> each time, then you can add the following code to the top of your source file:</p>
 <div class="code"><pre>using Lean.Touch;</pre></div>
 <p>You can now just call <b>LeanTouch.PointOverGui(...)</b> etc.</p>
 <div class="code"><pre>using UnityEngine;</br>using Lean.Touch;</br></br>public class MyCoolScript : MonoBehaviour</br>{</br>	void OnEnable()</br>	{</br>		LeanTouch.OnFingerTap += HandleFingerTap;</br>	}</br></br>	void OnDisable()</br>	{</br>		LeanTouch.OnFingerTap -= HandleFingerTap;</br>	}</br></br>	void HandleFingerTap(LeanFinger finger)</br>	{</br>		if (finger.IsOverGui)</br>		{</br>			Debug.Log("You just tapped the screen on top of the GUI!");</br>		}</br>	}</br>}</pre></div>
 <br><br></div>
 <div style="">
-<a name="24864"></a><h2>What is Lean Touch+?</h2>
+<a name="44654"></a><h2>What is Lean Touch+?</h2>
 <p>Lean Touch+ is the paid version of Lean Touch.</p><p>It has the same features as Lean Touch, but comes with MANY more examples that show you how to implement features found in many modern games and applications.</p>
 <p><a href="https://assetstore.unity.com/packages/tools/input-management/lean-touch-72356?aid=1101l4Jks"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/72356/icon" alt="Lean Touch+" width="128" height="128" /></a></p>
 <br><br></div>
 <div style="">
-<a name="25852"></a><h2>Can I request a new demo scene?</h2>
+<a name="45582"></a><h2>Can I request a new demo scene?</h2>
 <p>Yes, if you have an idea for a demo scene that doesn't come with LeanTouch or LeanTouch+ then please request it via e-mail above.</p><p>Just make sure your demo scene idea doesn't require another asset or library, because I can't include those in this package!</p><p>If I like your demo scene idea then I'll even send you a free copy of Lean Touch+</p>
 <br><br></div>
 <div style="">
-<a name="24274"></a><h2>How does the Screen Depth inspector setting work?</h2>
+<a name="43986"></a><h2>How does the Screen Depth inspector setting work?</h2>
 <p>Fingers touching the screen only have a 2D XY coordinate, but many touch interactions require calculating a 3D XYZ point (e.g. <b>LeanCameraDrag</b>). This inspector setting/class handles this conversion, and is flexible enough to support 2D games, 3D games, perspective 2D games, and much more.</p><p>Understanding exactly how this works and how it can be used in your games is difficult, so I recommend you examine the demo scenes to see how they are set up.</p><p>The way it can work with all these different scene types is via the dropdown box, and associated settings.</p><p><strong>Fixed Distance</strong> - This setting calculates a position in front of the current camera at the finger position, where the <b>Distance</b> setting is the distance from the camera in world space the point is pushed away. This setting is suitable for scenarios where your foreground objects should always appear the same distance to the camera, even if your camera can move or rotate.</p><p><strong>Depth Intercept</strong> - This setting calculates a ray in front of the current camera at the finger position, and finds the point where this ray intercepts a plane lying on the XY axes with the specified Z position. This setting is suitable for normal 2D games. If you're using standard 2D settings then a Z value of 0 should be used, but this can be adjusted for specific situations, because 2D sprites in Unity can be placed at any Z position and still work.</p><p><strong>Physics Raycast</strong> - This setting calculates a ray in front of the current camera at the finger position, and finds the point where this ray hits the physics scene. This setting is suitable for 3D games where you need to spawn something on an object or similar.</p><p><strong>Plane Intercept</strong> - This setting works similar to Depth Intercept, but allows you to specify a custom </b>LeanPlane</b> that can point in any direction, and optionally allows you to constrain or snap the final values.</p><p><strong>Path Closest</strong> - This setting works similar to Depth Intercept, but it will find the closest point along the specified <b>LeanPath</b> to the screen point.</p><p><strong>Auto Distance</strong> - This setting works similar to Fixed Distance, but the distance will be automatically calculated based on the depth of the current GameObject. This setting is suitable for scenarios where objects in your scene can appear at arbitrary dstances to the camera.</p><p><strong>Height Intercept</strong> - This setting works similar to Depth Intercept, but the ray will intercept against a flat plane lying on the XZ axes. This setting is suitable for 3D games in a top-down scenario, where the playing field is flat.</p>
 <br><br></div>
 <div style="">
-<a name="24494"></a><h2>Why do I have to link up so many components?</h2>
+<a name="44260"></a><h2>Why do I have to link up so many components?</h2>
 <p>There are two main types of components in LeanTouch: self-contained components, and separated components.</p><p>An example of a self-contained component is <b>LeanTranslate</b>. This component has code to detect which fingers you want to use for the translation, and also has code to process the finger data and convert them it into a translation movement.</p><p>An example of separated components are <b>LeanFingerTap</b> and <b>LeanSpawn</b>. These components must be linked together to work. Where <b>LeanFingerTap</b> detects when a finger taps the screen, and in the editor you must connect its <b>OnWorldTo</b> event to the <b>LeanSpawn.Spawn</b> method.</p><p>In earlier versions of LeanTouch, most components were self-contained like <b>LeanTranslate</b>. This allowed users to quickly add touch controls to their games, but this made it difficult to customize the controls. Users would have to ask me to make changes, or they would have to modify the code themselves, this wasted a lot of time.</p><p>To save time and make Lean Touch more flexible, almost all new features use this separated component system. To make this new system easy to learn I've made lots of demo scenes showing you how to combine each component in different ways.</p>
 <br><br></div>
 <div style="">
-<a name="25786"></a><h2>Why do all my objects move at the same time?</h2>
+<a name="45534"></a><h2>Why do all my objects move at the same time?</h2>
 <p>Most LeanTouch components are designed to work on their own, or with selection. If you have many objects set to work on their own then touching the screen will cause them all to move at the same time.</p><p>To fix this, you need to make your objects work using selection. To do this, just add the <b>LeanSelectable</b> component to each of your objects. You'll then notice each LeanTouch component comes with the <b>Required Selectable</b> setting, this setting can be used to turn off the current component if the specified selectable isn't selected. You can drag and drop the <b>LeanSelectable</b> component you added earlier into these fields.</p><p>Once done, you need to tell LeanTouch how you want to select your objects. The simplest way to do this is by adding the <b>LeanFingerTap</b> and <b>LeanSelect</b> components to your scene. You can then connect the <b>LeanFingerTap.OnFinger</b> event to the <b>LeanSelect.SelectScreenPosition</b> function. By default the LeanSelect component is designed to select 2D objects, if you want to select 3D objects then change the <b>Select Using</b> setting to <b>Raycast 3D</b>.</p><p>This can be a little difficult to understand, so I recommend you look at the <b>Select3D/Select2D/SelectUI</b> demo scenes. These scenes are already correctly setup with selection, and the description text at the bottom describes how it's set up.</p><p>You can also have press selection as seen in the <b>Press2D/Press3D/PressUI</b> demo scenes, or isolation selection as seen in the <b>Isolate2D/Isolate3D/IsolateUI</b> demo scenes.</p>
 </div>
 <br><br>
@@ -156,28 +156,31 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Unity sounds only emanate from a single point source. This is great for explosions and footsteps, but quite often you need something more advanced. Volumetric Audio is an easy to use package that allows you to define boxes, spheres, capsules, paths, or meshes that sounds can emanate from.</p><br><br><br><br>
 <br><br>
 <h1>Versions</h1>
-<a name="23952"></a><h2>2.0.7</h2>
+<a name="43130"></a><h2>2.0.8</h2>
+<p>Modified <b>LeanSpawn</b> to spawn at the current <b>Transform.position</b> by default.<br>Fixed <b>LeanSelect</b> when using a perspective camera and selecting 2D objects.<br>Added <b>LeanDragCamera.Inertia</b> setting.<br>Updated common library code.<br></p>
+<br><br>
+<a name="43634"></a><h2>2.0.7</h2>
 <p>Fixed inspector expand buttons in UI Elements.<br>Fixed <b>LeanDragTranslate</b> being slow in some scenarios.<br>Fixed <b>LeanTwistRotate</b> being slow in some scenarios.<br>Fixed <b>LeanPinchScale</b> being slow in some scenarios.<br></p>
 <br><br>
-<a name="24114"></a><h2>2.0.6</h2>
+<a name="43802"></a><h2>2.0.6</h2>
 <p>Fixed bug in LeanHelper.cs that prevents making builds.<br></p>
 <br><br>
-<a name="24420"></a><h2>2.0.5</h2>
+<a name="44168"></a><h2>2.0.5</h2>
 <p>Updated <b>Common</b> library code.<br></p>
 <br><br>
-<a name="25504"></a><h2>2.0.4</h2>
+<a name="45264"></a><h2>2.0.4</h2>
 <p>Fixed <b>LeanTouch.OnFingerUp</b> not being called in some scenarios.<br>Renamed <b>TapSpawnCount</b> demo scene to <b>TapSpawnDouble</b>.<br></p>
 <br><br>
-<a name="24238"></a><h2>2.0.3</h2>
+<a name="43962"></a><h2>2.0.3</h2>
 <p>Fixed <b>LeanDragTranslate</b> when using screen space UI.<br>Fixed <b>LeanPinchScale</b> when using screen space UI.<br>Fixed <b>LeanTwistRotate</b> when using screen space UI.<br></p>
 <br><br>
-<a name="25658"></a><h2>2.0.2</h2>
+<a name="45394"></a><h2>2.0.2</h2>
 <p>Fixed <b>LeanSelectable.IsolateSelectingFingers</b> when using <b>RequiredFingerCount</b>.<br>Fixed Added <b>LeanSelectableBehaviour</b> error when missing LeanSelectable.<br>Added <b>LeanSelectable.Register</b> for manual registration.<br>Added <b>LeanSelectable.Unregister</b> for manual unregistration.<br>Added <b>LeanTouch.OnFingerInactive</b> event.<br></p>
 <br><br>
-<a name="25862"></a><h2>2.0.1</h2>
+<a name="45592"></a><h2>2.0.1</h2>
 <p>Added <b>LeanFinger.OnFingerOld</b> event.<br>Added <b>LeanFingerOld</b> component.<br>Added <b>FingerOld</b> demo scene.<br>Moved <b>LeanFingerHeld</b> to LeanTouch+.<br></p>
 <br><br>
-<a name="25708"></a><h2>2.0.0</h2>
+<a name="45456"></a><h2>2.0.0</h2>
 <p></p><div class="tip"><strong>NOTE:</strong>&emsp;This is a <b>MAJOR</b> update to LeanTouch. I recommend you only use this in new projects.</div><p>Redesigned all demo scenes.<br>Added smoothing/dampening to all components.<br>Renamed <b>LeanCameraMove</b> to <b>LeanDragCamera</b>.<br>Renamed <b>LeanCameraZoom</b> to <b>LeanPinchCamera</b>.<br>Moved <b>LeanPinchCamera</b> to LeanTouch+<br>Renamed <b>LeanRotate</b> to <b>LeanTwistRotate</b>.<br>Renamed <b>LeanTranslate</b> to <b>LeanDragRotate</b>.<br>Renamed <b>LeanScale</b> to <b>LeanPinchScale</b>.<br>Renamed <b>LeanCanvasArrow</b> to <b>LeanRoll</b>.<br>Added <b>LeanInfoText</b> component.<br>Rewrote <b>LeanFingerDown</b> component events.<br>Rewrote <b>LeanFingerHeld</b> component events.<br>Rewrote <b>LeanFingerSet</b> component events.<br>Rewrote <b>LeanFingerSwipe</b> component events.<br>Rewrote <b>LeanFingerTap</b> component events.<br>Rewrote <b>LeanFingerUp</b> component events.<br>Added <b>LeanFingerFilter</b> class for common filtering.<br></p>
 <br><br>
 <br><br>
@@ -514,6 +517,8 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>The movement speed will be multiplied by this.<br><br>-1 = Inverted Controls.</p>
 <br><h2>Dampening</h2>
 <p>If you want this component to change smoothly over time, then this allows you to control how quick the changes reach their target value.<br><br>-1 = Instantly change.<br><br>1 = Slowly change.<br><br>10 = Quickly change.</p>
+<br><h2>Inertia</h2>
+<p>This allows you to control how much momenum is retained when the dragging fingers are all released.</p>
 <br><h2>[CONTEXT] Move To Selection</h2>
 <p>This method moves the current GameObject to the center point of all selected objects.</p>
 <br><h2>AddFinger</h2>
@@ -818,6 +823,8 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>If you select an already selected selectable, what should happen?</p>
 <br><h2>AutoDeselect</h2>
 <p>Automatically deselect everything if nothing was selected?</p>
+<br><h2>MaxScreenDistance</h2>
+<p>When using the <b>ScreenDistance</b> selection mode, this allows you to set how many scaled pixels from the mouse/finger you can select.</p>
 </div><br>
 <br><br>
 <a name="LeanSelectable"></a><h2>LeanSelectable</h2>
@@ -913,7 +920,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <div style="padding-left: 75px;"><br><h2>Prefab</h2>
 <p>The prefab that this component can spawn.</p>
 <br><h2>Spawn</h2>
-<p>This will spawn <b>Prefab</b>.</p>
+<p>This will spawn <b>Prefab</b> at the current <b>Transform.position</b>.</p>
 <br><h2>Spawn</h2>
 <p>This will spawn <b>Prefab</b> at the specified position in world space.</p>
 </div><br>
@@ -989,21 +996,21 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 </div>
 <div style="position: absolute; width: 310px; left: 0px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
 <h2 style="padding-bottom: 20px;">Index</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-52420">Thank you for using Lean Touch &#x2764;&#xFE0F</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-52426">How do I upgrade?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#24548">What is Lean Touch?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#24978">How do I get started?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25472">How do I use Lean Touch without code?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25270">How do I use Lean Touch with C#?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25878">How do I handle multi-finger gestures (e.g. Pinch, Twist) from C#?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23524">Why are my inputs delayed by one frame?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23618">How do I stop my touch controls from going through my UI from C#?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23988">Why do I have to keep typing Lean.Touch. before everything?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#24864">What is Lean Touch+?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25852">Can I request a new demo scene?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#24274">How does the Screen Depth inspector setting work?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#24494">Why do I have to link up so many components?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25786">Why do all my objects move at the same time?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-442524">Thank you for using Lean Touch &#x2764;&#xFE0F</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-442530">How do I upgrade?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#44326">What is Lean Touch?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#44774">How do I get started?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#45226">How do I use Lean Touch without code?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#45060">How do I use Lean Touch with C#?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#45608">How do I handle multi-finger gestures (e.g. Pinch, Twist) from C#?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#43236">Why are my inputs delayed by one frame?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#43336">How do I stop my touch controls from going through my UI from C#?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#43682">Why do I have to keep typing Lean.Touch. before everything?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#44654">What is Lean Touch+?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#45582">Can I request a new demo scene?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#43986">How does the Screen Depth inspector setting work?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#44260">Why do I have to link up so many components?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#45534">Why do all my objects move at the same time?</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Assets</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#1">Lean Touch</a></p>
@@ -1020,14 +1027,15 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#12">Volumetric Audio</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Versions</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23952">2.0.7</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#24114">2.0.6</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#24420">2.0.5</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25504">2.0.4</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#24238">2.0.3</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25658">2.0.2</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25862">2.0.1</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25708">2.0.0</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#43130">2.0.8</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#43634">2.0.7</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#43802">2.0.6</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#44168">2.0.5</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#45264">2.0.4</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#43962">2.0.3</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#45394">2.0.2</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#45592">2.0.1</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#45456">2.0.0</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Components</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanFinger">LeanFinger</a></p>
