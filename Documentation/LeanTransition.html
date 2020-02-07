@@ -29,18 +29,18 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h1 style="font-size: 75px; color: #FFF; text-align: center; vertical-align: middle; line-height: 100px;">Lean Transition</h1>
 </div>
 <div style="position: absolute; left: 350px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
-<a name="-32042"></a><h2>Thank you for using Lean Transition &#x2764;&#xFE0F</h2>
+<a name="-500626"></a><h2>Thank you for using Lean Transition &#x2764;&#xFE0F</h2>
 <p>If you haven't already, please consider writing a <a href="http://CarlosWilkes.com/Get/LeanTransition" target="_blank">review</a>. They really help me out!</p><p>If you have any questions, then feel free to send me an <a href="mailto:carlos.wilkes@gmail.com">E-Mail</a>, or <a href="http://forum.unity.com/members/41960" target="_blank">Private Message</a>.</p><p>You can also ask in the <a href="http://carloswilkes.com/Forum/LeanTransition" target="_blank">Forum Thread</a>.</p><p>I'm also available for freelance work if you need help with your projects.</p>
 <br><br>
-<a name="-32048"></a><h2>How do I upgrade?</h2>
+<a name="-500632"></a><h2>How do I upgrade?</h2>
 <p>First, make sure you <b>back up</b> your project files.</p><p>Next, install the latest version.</p><p>If for some reason the latest updates breaks your project (e.g. errors in the console), then try deleting the root folder for this asset, and reinstalling it.</p><p>If it still doesn't work then go back to your previous version, and let me know what the errors are, so I can fix it.</p>
 <br><br>
 <div style="">
-<a name="14698"></a><h2>What is Lean Transition?</h2>
+<a name="30486"></a><h2>What is Lean Transition?</h2>
 <p>Lean Transition allows you to smoothly animate GameObject and Component settings from their current values, to new values.</p><p>Transitions can be as simple as fading menus in and out, to complex sequences with many different branches.</p><p>Transitions can be set up in the editor, as well as from code, using exactly the same procedure!</p>
 <br><br></div>
 <div style="">
-<a name="14966"></a><h2>How do I use it?</h2>
+<a name="30748"></a><h2>How do I use it?</h2>
 <br><br></div>
 <div style="padding-left: 75px;">
 <h2>Editor</h2>
@@ -57,7 +57,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>It's as simple as that!</p><div class="tip"><strong>NOTE:</strong>&emsp;All Lean Transition extension methods are named like this with <b>Transition</b> added to the end, so it should be really easy to find them.</div><div class="tip"><strong>NOTE:</strong>&emsp;Not all values have transitions. If you feel like I've missed an important one then please contect me so I can implement it!</div>
 <br><br></div>
 <div style="">
-<a name="15380"></a><h2>How do I combine transitions to make a sequence?</h2>
+<a name="31174"></a><h2>How do I combine transitions to make a sequence?</h2>
 <br><br></div>
 <div style="padding-left: 75px;">
 <h2>Editor</h2>
@@ -69,7 +69,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <div class="code"><pre>transform.</br>	localPositionTransition(new Vector3(10, 10, 10), 0.5f).</br>	JoinTransition().</br>	localPositionTransition(new Vector3(1, 1, 1), 0.5f);</pre></div>
 <br><br></div>
 <div style="">
-<a name="14670"></a><h2>How do I add a delay between transitions?</h2>
+<a name="30464"></a><h2>How do I add a delay between transitions?</h2>
 <br><br></div>
 <div style="padding-left: 75px;">
 <h2>Editor</h2>
@@ -81,7 +81,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <div class="code"><pre>transform.</br>	localPositionTransition(new Vector3(10, 10, 10), 0.5f).</br>	JoinDelayTransition(5.0f).</br>	localPositionTransition(new Vector3(1, 1, 1), 0.5f);</pre></div>
 <br><br></div>
 <div style="">
-<a name="14908"></a><h2>How do I insert transitions to save time?</h2>
+<a name="30696"></a><h2>How do I insert transitions to save time?</h2>
 <br><br></div>
 <div style="padding-left: 75px;">
 <h2>Editor</h2>
@@ -93,7 +93,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <div class="code"><pre>transform.</br>	localPositionTransition(new Vector3(10, 10, 10), 0.5f).</br>	JoinInsertTransition(gameObjectWithTransitions).</br>	localPositionTransition(new Vector3(1, 1, 1), 0.5f);</pre></div>
 <br><br></div>
 <div style="">
-<a name="15306"></a><h2>How do I delay or insert without joining?</h2>
+<a name="31094"></a><h2>How do I delay or insert without joining?</h2>
 <p>The <b>JoinDelay</b> and <b>JoinInsert</b> features are same as <b>Delay</b> and <b>Insert</b>, except they automatically have a <b>Join</b> placed at the start and end.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -105,7 +105,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Instead of calling the <b>JoinDelayTransition()</b> method, you can manually call the <b>JoinTransition()</b> and <b>DelayTransition()</b> methods.</p><p>Instead of calling the <b>JoinInsertTransition()</b> method, you can manually call the <b>JoinTransition()</b> and <b>InsertTransition()</b> methods.</p>
 <br><br></div>
 <div style="">
-<a name="13892"></a><h2>How do I change the transition timing?</h2>
+<a name="29644"></a><h2>How do I change the transition timing?</h2>
 <p>By default, all transitions are executed in <b>Update</b>, using <b>Unscaled Time</b>.</p><p>To change this, simply modify the settings of the <b>LeanTransition</b> component in your scene. If your scene doesn't contain this component, then make a new GameObject and add it.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -117,7 +117,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Simply call the TimeTransition() method, and all transitions after it will use the specified time.</p><div class="tip"><strong>NOTE:</strong>&emsp;To reset the transition time you must call the <b>LeanTransition.ResetTiming</b> method, or call the <b>TimeTransition()</b> method with <b>LeanTime.Default</b>.</div>
 <br><br></div>
 <div style="">
-<a name="15868"></a><h2>How do I perform a custom action?</h2>
+<a name="31622"></a><h2>How do I perform a custom action?</h2>
 <br><br></div>
 <div style="padding-left: 75px;">
 <h2>Editor</h2>
@@ -169,34 +169,37 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Unity sounds only emanate from a single point source. This is great for explosions and footsteps, but quite often you need something more advanced. Volumetric Audio is an easy to use package that allows you to define boxes, spheres, capsules, paths, or meshes that sounds can emanate from.</p><br><br><br><br>
 <br><br>
 <h1>Versions</h1>
-<a name="15030"></a><h2>1.0.9</h2>
+<a name="30386"></a><h2>1.1.0</h2>
+<p>Transitions with quaternions now show euler angles in inspector.<br>JoinDelay Transition (LeanJoinDelay) now accepts a negative delay time.<br>All nested transitions now begin after the last transition in the parent completes.<br>Updated component documentation link.<br>Renamed <b>auto fill</b> button to <b>fill</b>.<br>Fill button is now always visible for component that can be filled.<br>Added <b>Time</b> demo scene.<br>Added <b>Transform.position.x</b> transition.<br>Added <b>Transform.position.y</b> transition.<br>Added <b>Transform.position.z</b> transition.<br>Added <b>Material float</b> transition.<br>Added <b>Material color</b> transition.<br>Added <b>Material vector</b> transition.<br>Added transition class name to component path name.<br>Organized transition component names into folders.<br></p>
+<br><br>
+<a name="30812"></a><h2>1.0.9</h2>
 <p>Fixed transition timing implementation.<br>Fixed <b>auto fill</b> button not appearing for transitions without targets.<br>Added <b>Time.timeScale</b> transition.<br>Updated common library code.<br></p>
 <br><br>
-<a name="14398"></a><h2>1.0.8</h2>
+<a name="30210"></a><h2>1.0.8</h2>
 <p>Fixed inspector expand buttons in UI Elements.<br></p>
 <br><br>
-<a name="15096"></a><h2>1.0.7</h2>
+<a name="30872"></a><h2>1.0.7</h2>
 <p>Fixed bug in LeanHelper.cs that prevents making builds.<br></p>
 <br><br>
-<a name="14180"></a><h2>1.0.6</h2>
+<a name="30016"></a><h2>1.0.6</h2>
 <p>Updated <b>Common</b> library code.<br></p>
 <br><br>
-<a name="15048"></a><h2>1.0.5</h2>
+<a name="30836"></a><h2>1.0.5</h2>
 <p>Fixed issue where transitions wouldn't stop when exiting play mode.<br>Updated <b>Common</b> library code.<br>Updated demo scene design.<br></p>
 <br><br>
-<a name="14476"></a><h2>1.0.4</h2>
+<a name="30306"></a><h2>1.0.4</h2>
 <p>Fixed <b>LeanPlaySound</b> auto fill button.<br>Improved inspector code.<br>Improved code comments.<br></p>
 <br><br>
-<a name="15246"></a><h2>1.0.3</h2>
+<a name="31052"></a><h2>1.0.3</h2>
 <p>Added <b>Auto Fill</b> button to transition components.<br></p>
 <br><br>
-<a name="13864"></a><h2>1.0.2</h2>
+<a name="29616"></a><h2>1.0.2</h2>
 <p>Updated documentation.<br></p>
 <br><br>
-<a name="15948"></a><h2>1.0.1</h2>
+<a name="31708"></a><h2>1.0.1</h2>
 <p>Added Transform.position transition.<br>Fixed bug when adding multiple events to the same object.<br>Allowed LeanPlayer.Speed to be toggled off.<br></p>
 <br><br>
-<a name="13840"></a><h2>1.0.0</h2>
+<a name="29592"></a><h2>1.0.0</h2>
 <p>First release.<br></p>
 <br><br>
 <br><br>
@@ -239,6 +242,8 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>If this transition is chained to another, then this tells you which will begin after this finishes.</p>
 <br><h2>Skip</h2>
 <p>If a transition is marked as skipped, then it won't call Begin or Update any more, but will otherwise act as normal and not be removed. This is so any transition chain can still work as expected.</p>
+<br><h2>Remaining</h2>
+<p>This tells you how many seconds remain until this state completes.</p>
 <br><h2>BeginAfter</h2>
 <p>If you want this transition to begin after another completes, then call this method.</p>
 </div><br>
@@ -388,15 +393,15 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <div style="padding-left: 75px;"></div><br>
 <br><br>
 <a name="LeanGameObjectSetActive"></a><h2>LeanGameObjectSetActive</h2>
-<p>This component allows you to transition the specified GameObject.SetActive to the target value.</p>
+<p>This component will call <b>GameObject.SetActive</b> with the specified <b>Active</b> state when this transition completes.</p>
 <div style="padding-left: 75px;"></div><br>
 <br><br>
 <a name="LeanSpriteRendererColor"></a><h2>LeanSpriteRendererColor</h2>
-<p>This component allows you to transition the specified SpriteRenderer.color to the target value.</p>
+<p>This component allows you to transition the specified <b>SpriteRenderer.color</b> to the target value.</p>
 <div style="padding-left: 75px;"></div><br>
 <br><br>
 <a name="LeanTransformEulerAngles"></a><h2>LeanTransformEulerAngles</h2>
-<p>This component allows you to transition the specified Transform.eulerAngles to the target value.</p>
+<p>This component allows you to transition the specified <b>Transform.eulerAngles</b> to the target value.</p>
 <div style="padding-left: 75px;"></div><br>
 <br><br>
 <a name="LeanTransformLocalEulerAngles"></a><h2>LeanTransformLocalEulerAngles</h2>
@@ -429,6 +434,18 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><br>
 <a name="LeanTransformPosition"></a><h2>LeanTransformPosition</h2>
 <p>This component allows you to transition the specified Transform.position to the target value.</p>
+<div style="padding-left: 75px;"></div><br>
+<br><br>
+<a name="LeanTransformPositionX"></a><h2>LeanTransformPositionX</h2>
+<p>This component allows you to transition the specified <b>Transform.position.x</b> to the target value.</p>
+<div style="padding-left: 75px;"></div><br>
+<br><br>
+<a name="LeanTransformPositionY"></a><h2>LeanTransformPositionY</h2>
+<p>This component allows you to transition the specified <b>Transform.position.y</b> to the target value.</p>
+<div style="padding-left: 75px;"></div><br>
+<br><br>
+<a name="LeanTransformPositionZ"></a><h2>LeanTransformPositionZ</h2>
+<p>This component allows you to transition the specified <b>Transform.position.z</b> to the target value.</p>
 <div style="padding-left: 75px;"></div><br>
 <br><br>
 <a name="LeanTransformRotate"></a><h2>LeanTransformRotate</h2>
@@ -496,7 +513,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <div style="padding-left: 75px;"></div><br>
 <br><br>
 <a name="LeanRectTransformSetAsLastSibling"></a><h2>LeanRectTransformSetAsLastSibling</h2>
-<p>This component allows you to transition the specified RectTransform.SetAsLastSibling to the target value.</p>
+<p>This component calls the <b>RectTransform.SetAsLastSibling</b> method when this transition completes.</p>
 <div style="padding-left: 75px;"></div><br>
 <br><br>
 <a name="LeanRectTransformSizeDelta"></a><h2>LeanRectTransformSizeDelta</h2>
@@ -510,16 +527,16 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 </div>
 <div style="position: absolute; width: 310px; left: 0px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
 <h2 style="padding-bottom: 20px;">Index</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-32042">Thank you for using Lean Transition &#x2764;&#xFE0F</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-32048">How do I upgrade?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14698">What is Lean Transition?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14966">How do I use it?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#15380">How do I combine transitions to make a sequence?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14670">How do I add a delay between transitions?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14908">How do I insert transitions to save time?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#15306">How do I delay or insert without joining?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13892">How do I change the transition timing?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#15868">How do I perform a custom action?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-500626">Thank you for using Lean Transition &#x2764;&#xFE0F</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-500632">How do I upgrade?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#30486">What is Lean Transition?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#30748">How do I use it?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#31174">How do I combine transitions to make a sequence?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#30464">How do I add a delay between transitions?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#30696">How do I insert transitions to save time?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#31094">How do I delay or insert without joining?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#29644">How do I change the transition timing?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#31622">How do I perform a custom action?</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Assets</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#1">Lean Touch</a></p>
@@ -536,16 +553,17 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#12">Volumetric Audio</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Versions</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#15030">1.0.9</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14398">1.0.8</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#15096">1.0.7</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14180">1.0.6</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#15048">1.0.5</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#14476">1.0.4</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#15246">1.0.3</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13864">1.0.2</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#15948">1.0.1</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13840">1.0.0</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#30386">1.1.0</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#30812">1.0.9</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#30210">1.0.8</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#30872">1.0.7</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#30016">1.0.6</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#30836">1.0.5</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#30306">1.0.4</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#31052">1.0.3</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#29616">1.0.2</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#31708">1.0.1</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#29592">1.0.0</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Components</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanEase">LeanEase</a></p>
@@ -578,6 +596,9 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanTransformLocalRotation">LeanTransformLocalRotation</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanTransformLocalScale">LeanTransformLocalScale</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanTransformPosition">LeanTransformPosition</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanTransformPositionX">LeanTransformPositionX</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanTransformPositionY">LeanTransformPositionY</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanTransformPositionZ">LeanTransformPositionZ</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanTransformRotate">LeanTransformRotate</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanTransformRotation">LeanTransformRotation</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanTransformTranslate">LeanTransformTranslate</a></p>
