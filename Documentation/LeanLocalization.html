@@ -29,18 +29,18 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h1 style="font-size: 75px; color: #FFF; text-align: center; vertical-align: middle; line-height: 100px;">Lean Localization</h1>
 </div>
 <div style="position: absolute; left: 350px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
-<a name="-427796"></a><h2>Thank you for using Lean Localization &#x2764;&#xFE0F</h2>
+<a name="-48050"></a><h2>Thank you for using Lean Localization &#x2764;&#xFE0F</h2>
 <p>If you haven't already, please consider writing a <a href="http://CarlosWilkes.com/Get/LeanLocalization" target="_blank">review</a>. They really help me out!</p><p>If you have any questions, then feel free to send me an <a href="mailto:carlos.wilkes@gmail.com">E-Mail</a>, or <a href="http://forum.unity.com/members/41960" target="_blank">Private Message</a>.</p><p>You can also ask in the <a href="http://carloswilkes.com/Forum/LeanLocalization" target="_blank">Forum Thread</a>.</p><p>I'm also available for freelance work if you need help with your projects.</p>
 <br><br>
-<a name="-427802"></a><h2>How do I upgrade?</h2>
+<a name="-48056"></a><h2>How do I upgrade?</h2>
 <p>First, make sure you <b>back up</b> your project files.</p><p>Next, install the latest version.</p><p>If for some reason the latest updates breaks your project (e.g. errors in the console), then try deleting the root folder for this asset, and reinstalling it.</p><p>If it still doesn't work then go back to your previous version, and let me know what the errors are, so I can fix it.</p>
 <br><br>
 <div style="">
-<a name="35574"></a><h2>What is Lean Localization?</h2>
+<a name="23968"></a><h2>What is Lean Localization?</h2>
 <p>Lean Localization is a lightweight localization asset, allowing you to easily add language-specific text, images, and much more.</p>
 <br><br></div>
 <div style="">
-<a name="36856"></a><h2>How do I use it?</h2>
+<a name="25296"></a><h2>How do I use it?</h2>
 <br><br></div>
 <div style="min-height: 200px;padding-left: 75px;">
 <h2>Step 1 - Add Lean Localization</h2>
@@ -73,7 +73,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>That's it, your game will now automatically update based on your translations!</p>
 <br><br></div>
 <div style="">
-<a name="36266"></a><h2>How do I change language?</h2>
+<a name="24672"></a><h2>How do I change language?</h2>
 <p>There are multiple ways to do this.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -91,28 +91,28 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <div class="code"><pre>Lean.Localization.LeanLocalization.CurrentLanguage = "English";</pre></div>
 <br><br></div>
 <div style="">
-<a name="35444"></a><h2>How do I Get a Translation From C# Code?</h2>
+<a name="23856"></a><h2>How do I Get a Translation From C# Code?</h2>
 <p>If you just want to get translated text, then you can call:</p>
 <div class="code"><pre>Lean.Localization.LeanLocalization.GetTranslationText("YourPhraseNameHere");</pre></div>
 <p>If you want a Unity Object (e.g. Sprite), then you can call:</p>
 <div class="code"><pre>Lean.Localization.LeanLocalization.GetTranslationObject<Sprite>("YourPhraseNameHere");</pre></div>
 <br><br></div>
 <div style="">
-<a name="36676"></a><h2>How do I Add to the Language List?</h2>
+<a name="25128"></a><h2>How do I Add to the Language List?</h2>
 <p>If you're not happy with the default language selection, then you can open LeanLocalization.cs, and edit the AddPresetLanguage list starting on line line 14. For example:</p>
 <div class="code"><pre>AddPresetLanguage("Korean", "ko", "ko-KR");</pre></div>
 <p>Where the first string is the language name, and the other strings are all culture names associated with that language.</p>
 <br><br></div>
 <div style="">
-<a name="35168"></a><h2>How do I Localize Other Components?</h2>
+<a name="23556"></a><h2>How do I Localize Other Components?</h2>
 <p>To localize more components, simply implement the <b>LeanLocalizedBehavior</b> base class in your own components.</p><p>This class has the <b>UpdateTranslation(LeanTranslation translation);</b> method, where the specified <b>translation</b> will be null if it doesn't exist. If it does exist then you can read the <b>translation.Data</b> value, you can then cast this to the required type before use.</p><p>Take a look at the code for <b>LeanLocalizedSpriteRenderer</b> to see just how easy this is.</p><div class="tip"><strong>NOTE:</strong>&emsp;<b>translation.Data</b> is a <b>System.Object</b>, so you must verify it's type before casting it out.</div>
 <br><br></div>
 <div style="">
-<a name="34828"></a><h2>How do I better organize my translations?</h2>
+<a name="23222"></a><h2>How do I better organize my translations?</h2>
 <p>The more translations you add to your project, the more difficult Lean Localization can be to use, because the translation name dropdown list will become increasingly long.</p><p>To fix this, you can organize your translations into groups.</p><p>To do this, simply add forward slashes to your translation names when creating them.</p><div class="tip"><strong>EXAMPLE:</strong>&emsp;MyGroup/MyTranslation</div><p>When using a translation name dropdown, this will automatically place <b>MyTranslation</b> into a group called <b>MyGroup</b>.</p><div class="tip"><strong>NOTE:</strong>&emsp;If you change the name of a translation after you created it, then any components that point to that translation name will point to the old and now non-existent translation. You must manually update these.</div>
 <br><br></div>
 <div style="">
-<a name="34784"></a><h2>How do I use prefabs?</h2>
+<a name="23166"></a><h2>How do I use prefabs?</h2>
 <p>If you have many translations or use many scenes then you may want to use prefabs instead of placing everything in the scene.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -132,7 +132,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Done!</p><p>Your localizations should now be automatically loaded from prefabs, giving you better performance, and improved organization.</p><div class="tip"><strong>NOTE:</strong>&emsp;If your prefab points to an asset folder, then you must view the <b>LeanLocalization</b> inspector to force the folder contents to update. Folder contents like this can only be accessed in the editor, so you must do this to trigger its update.</div><p>If you have many <b>LeanLocalization</b> components in different scenes, then this may be tedious to do. To fix this you can make your <b>LeanLocalization</b> component itself a prefab too, so you only have to view the prefab itself to trigger the update.</p>
 <br><br></div>
 <div style="">
-<a name="35116"></a><h2>How do I use tokens?</h2>
+<a name="23516"></a><h2>How do I use tokens?</h2>
 <p>Tokens allow you to find and replace text. For example, if you want to include the player's name inside a localized text field, then the tokens feature allows you to do this.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -150,11 +150,11 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Your translated text should now automatically have any tokens replaced.</p><p>You can also change the value of a token in game using the <b>LeanToken.SetValue</b> method.</p><div class="tip"><strong>NOTE:</strong>&emsp;If you want to be able to change a token value and have it persist across multiple scenes, then you should place the token in a prefab, and add it to the <b>LeanLocalization.Prefabs</b> list.</div>
 <br><br></div>
 <div style="">
-<a name="37026"></a><h2>What are Cultures?</h2>
+<a name="25466"></a><h2>What are Cultures?</h2>
 <p>Cultures allow you to associate language codes with language names. For example, English might be associated with en-GB, en-US, etc.</p><p>When you start your application the current device language code will be loaded, and the associated language will be chosen.</p><div class="tip"><strong>NOTE:</strong>&emsp;The LeanLocalization component's <b>DetectLanguage</b> setting defines how the initial language name or culture name will be picked.</div>
 <br><br></div>
 <div style="">
-<a name="37074"></a><h2>Why can you only translate Text, Object, and Sprite?</h2>
+<a name="25568"></a><h2>Why can you only translate Text, Object, and Sprite?</h2>
 <p>Internally, the <b>LeanPhrase</b> component only stores <b>Text</b> (string) and <b>Object</b> (UnityEngine.Object) types.</p><p>Sprites in the Unity project window are stored as children of their source image. This means when you drag and drop a sprite, you're usually dragging and dropping the parent image, which may give you undesired behaviour when you drag it into an <b>Object</b> field.</p><p>To avoid any unexpected behaviour, I added the additional <b>Sprite</b> setting, so you can drag and drop the sprite's parent image, and Unity will automatically drop the sprite in.</p><p>This issue doesn't occur for most other scenarios, so you can use the <b>Object</b> type for everything else like <b>Mesh</b>, <b>Material</b>, etc.</p>
 </div>
 <br><br>
@@ -198,22 +198,25 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Unity sounds only emanate from a single point source. This is great for explosions and footsteps, but quite often you need something more advanced. Volumetric Audio is an easy to use package that allows you to define boxes, spheres, capsules, paths, or meshes that sounds can emanate from.</p><br><br><br><br>
 <br><br>
 <h1>Versions</h1>
-<a name="35394"></a><h2>1.3.5</h2>
+<a name="25134"></a><h2>1.3.6</h2>
+<p>Added <b>LeanLocalizedTextMeshPro</b> to <b>TextMeshPro</b> package.<br>Added <b>LeanLocalizedTextMeshProFont</b> to <b>TextMeshPro</b> package.<br></p>
+<br><br>
+<a name="23788"></a><h2>1.3.5</h2>
 <p>Fixed <b>LeanToken</b> inspector changes not automatically updating text.<br>Updated common library code.<br></p>
 <br><br>
-<a name="36976"></a><h2>1.3.4</h2>
+<a name="25422"></a><h2>1.3.4</h2>
 <p>Fixed inspector expand buttons in UI Elements.<br></p>
 <br><br>
-<a name="34630"></a><h2>1.3.3</h2>
+<a name="23006"></a><h2>1.3.3</h2>
 <p>Fixed bug where <b>LeanLocalization.CurrentLanguage</b> wouldn't save unless it was changed in game.<br></p>
 <br><br>
-<a name="36794"></a><h2>1.3.2</h2>
+<a name="25234"></a><h2>1.3.2</h2>
 <p>Fixed bug in LeanHelper.cs that prevents making builds.<br></p>
 <br><br>
-<a name="35382"></a><h2>1.3.1</h2>
+<a name="23776"></a><h2>1.3.1</h2>
 <p>Updated <b>Common</b> library code.<br></p>
 <br><br>
-<a name="36828"></a><h2>1.3.0</h2>
+<a name="25268"></a><h2>1.3.0</h2>
 <p>Updated <b>Common</b> library code.<br>Updated demo scene design.<br></p>
 <br><br>
 <br><br>
@@ -323,19 +326,19 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 </div>
 <div style="position: absolute; width: 310px; left: 0px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
 <h2 style="padding-bottom: 20px;">Index</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-427796">Thank you for using Lean Localization &#x2764;&#xFE0F</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-427802">How do I upgrade?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#35574">What is Lean Localization?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#36856">How do I use it?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#36266">How do I change language?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#35444">How do I Get a Translation From C# Code?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#36676">How do I Add to the Language List?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#35168">How do I Localize Other Components?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#34828">How do I better organize my translations?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#34784">How do I use prefabs?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#35116">How do I use tokens?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#37026">What are Cultures?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#37074">Why can you only translate Text, Object, and Sprite?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-48050">Thank you for using Lean Localization &#x2764;&#xFE0F</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-48056">How do I upgrade?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23968">What is Lean Localization?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25296">How do I use it?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#24672">How do I change language?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23856">How do I Get a Translation From C# Code?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25128">How do I Add to the Language List?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23556">How do I Localize Other Components?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23222">How do I better organize my translations?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23166">How do I use prefabs?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23516">How do I use tokens?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25466">What are Cultures?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25568">Why can you only translate Text, Object, and Sprite?</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Assets</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#1">Lean Touch</a></p>
@@ -352,12 +355,13 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#12">Volumetric Audio</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Versions</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#35394">1.3.5</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#36976">1.3.4</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#34630">1.3.3</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#36794">1.3.2</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#35382">1.3.1</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#36828">1.3.0</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25134">1.3.6</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23788">1.3.5</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25422">1.3.4</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23006">1.3.3</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25234">1.3.2</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23776">1.3.1</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25268">1.3.0</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Components</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanHelper">LeanHelper</a></p>

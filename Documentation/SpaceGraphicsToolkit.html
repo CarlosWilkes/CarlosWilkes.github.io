@@ -29,14 +29,14 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h1 style="font-size: 75px; color: #FFF; text-align: center; vertical-align: middle; line-height: 100px;">Space Graphics Toolkit</h1>
 </div>
 <div style="position: absolute; left: 350px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
-<a name="-2548134"></a><h2>Thank you for using Space Graphics Toolkit &#x2764;&#xFE0F</h2>
+<a name="-1414"></a><h2>Thank you for using Space Graphics Toolkit &#x2764;&#xFE0F</h2>
 <p>If you haven't already, please consider writing a <a href="http://CarlosWilkes.com/Get/SpaceGraphicsToolkit" target="_blank">review</a>. They really help me out!</p><p>If you have any questions, then feel free to send me an <a href="mailto:carlos.wilkes@gmail.com">E-Mail</a>, or <a href="http://forum.unity.com/members/41960" target="_blank">Private Message</a>.</p><p>You can also ask in the <a href="http://CarlosWilkes.com/Forum/SpaceGraphicsToolkit" target="_blank">Forum Thread</a>.</p><p>You can also check the <a href="http://youtube.com/user/CarlosWilkes/videos" target="_blank">YouTube Channel</a>.</p><p>I'm also available for freelance work if you need help with your projects.</p>
 <br><br>
-<a name="-2548140"></a><h2>How do I upgrade?</h2>
+<a name="-1420"></a><h2>How do I upgrade?</h2>
 <p>First, make sure you <b>back up</b> your project files.</p><p>Next, install the latest version.</p><p>If for some reason the latest updates breaks your project (e.g. errors in the console), then try deleting the root folder for this asset, and reinstalling it.</p><p>If it still doesn't work then go back to your previous version, and let me know what the errors are, so I can fix it.</p>
 <br><br>
 <div style="">
-<a name="103652"></a><h2>What is Space Graphics Toolkit?</h2>
+<a name="6190"></a><h2>What is Space Graphics Toolkit?</h2>
 <p>Space Graphics Toolkit (SGT) is a large collection of components, shaders, and graphical effects that can be combined in any way you like to make impressive space scenes.</p><p>This asset is split into <b>Feature</b> and <b>Pack</b> folders.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -48,16 +48,16 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p><b>Pack</b> folders contain mostly media and example scenes for a group of SGT features. For example, the <b>Alien Worlds Pack</b> contains a selection of alien planet textures, materials, and demo scenes.</p>
 <br><br></div>
 <div style="">
-<a name="103670"></a><h2>Where do I get more packs?</h2>
+<a name="6220"></a><h2>Where do I get more packs?</h2>
 <p>To reduce file size, I only include a few examples in the main asset. This allows me to release updates more efficiently. To get more, click the links below.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
 <h2>[FREE] Alien Worlds Pack</h2>
-<p>This pack contains a selection of realistic looking planets with an alien theme.</p><p>You can download it from <a href="https://bitbucket.org/Darkcoder/spacegraphicstoolkitpacks/downloads/AlienWorldsPack_3_5_8.unitypackage">HERE</a>.</p><div class="tip"><strong>NOTE:</strong>&emsp;This pack requires the full Space Graphics Toolkit asset to function.</div>
+<p>This pack contains a selection of realistic looking planets with an alien theme.</p><p>You can download it from <a href="https://bitbucket.org/Darkcoder/spacegraphicstoolkitpacks/downloads/AlienWorldsPack_3_7_0.unitypackage">HERE</a>.</p><div class="tip"><strong>NOTE:</strong>&emsp;This pack requires the full Space Graphics Toolkit asset to function.</div>
 <br><br></div>
 <div style="padding-left: 75px;">
 <h2>[FREE] Solar System Pack</h2>
-<p>This pack contains all major solar system bodies, including the Moon and multiple versions of The Sun.</p><p>You can download it from <a href="https://bitbucket.org/Darkcoder/spacegraphicstoolkitpacks/downloads/SolarSystemPack_3_6_3.unitypackage">HERE</a>.</p><div class="tip"><strong>NOTE:</strong>&emsp;This pack requires the full Space Graphics Toolkit asset to function.</div>
+<p>This pack contains all major solar system bodies, including the Moon and multiple versions of The Sun.</p><p>You can download it from <a href="https://bitbucket.org/Darkcoder/spacegraphicstoolkitpacks/downloads/SolarSystemPack_3_7_0.unitypackage">HERE</a>.</p><div class="tip"><strong>NOTE:</strong>&emsp;This pack requires the full Space Graphics Toolkit asset to function.</div>
 <br><br></div>
 <div style="padding-left: 75px;">
 <h2>[FREE] Star Pack</h2>
@@ -68,27 +68,27 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>This pack contains 25 high resolution planets across a wide range of planet types. The main SGT asset only contains 2, so this pack is great if you want lots more planets.</p><p>You can find more information about it from <a href="http://assetstore.unity.com/packages/slug/124578?aid=1101l4Jks">HERE</a>.</p><div class="tip"><strong>NOTE:</strong>&emsp;This is a standalone asset, so it does <b>NOT</b> require SGT.</div>
 <br><br></div>
 <div style="">
-<a name="104062"></a><h2>Why does each feature require so many components?</h2>
+<a name="6550"></a><h2>Why does each feature require so many components?</h2>
 <p>Many SGT features are rendered using a combination of components. For example, the <b>Accretion</b> feature (animated accretion disc) is rendered using the <b>SgtAccretion</b>, <b>SgtAccretionMesh</b>, and <b>SgtAccretionNearTex</b> components.</p><p>The main reason why these components are separate is to improve code organization, but this system also allows you to optimize your scene. If you click the context menu button (gear icon) at the top right of these components, you'll notice you have the option to <b>Export Mesh</b>, <b>Export Texture</b>, or similar. For example, the <b>SgtAccretionMesh</b> component's context menu has the <b>Export Mesh</b> option. This allows you to save the generated accretion disc mesh as an asset, so you can now remove this component, and drag and drop your saved mesh into the <b>SgtAccretion</b> component's <b>Mesh</b> setting.</p><p>Doing this allows you to improve performance of your scene, because the <b>SgtAccretionMesh</b> component no longer has to generate a new mesh each time you add an accretion disc to your scene. The downside of course is that you can no longer adjust the mesh settings, so it may not be suitable for your project if you need to be able to control the generation settings in game.</p><p>For more information about which components can export what meshes/textures/etc, look at the documentation specific to the feature you're interested in.</p>
 <br><br></div>
 <div style="">
-<a name="103400"></a><h2>How do I use this from C#?</h2>
+<a name="5950"></a><h2>How do I use this from C#?</h2>
 <p>Most features of SGT work the same in the editor as they do from C# code, including the identifiers for each setting. For example, to add an atmosphere to a planet just add the <b>SgtAtmosphere</b> component, as you would do in the editor.</p><p>The biggest difference is that editing an inspector setting will automatically update the component state, whereas doing this from code won't. This is because the settings are fields, and so the component doesn't know the value changed.</p><p>It would be possible to automatically update the components using a property, but I didn't want to introduce performance issues if you need to update many settings at the same time, or increase complexity of the code using some kind of dirty marking system.</p><p>Therefore, to change component settings and update them, you can either:</p><div class="tip"><strong>Method 1</strong>&emsp;Call the <b>SetXXX</b> method that automatically updates the component state. For example, the <b>SgtAtmosphere</b> component has the <b>SetColor</b> method, which can be used instead of setting the <b>Color</b> field directly. Keep in mind that this instantly updates the component, so you shouldn't use multiple <b>Set</b> methods in a row.</div><div class="tip"><strong>Method 2</strong>&emsp;Call the <b>UpdateXXX</b> method after you update the fields. For example, the <b>SgtAtmosphere</b> has the <b>UpdateMaterials</b> method, which you can call after updating fields that depend on the material state. To find which <b>Update</b> method you need to call to update a specific field, you can look at the inspector code at the top of the source file for the component, or see the <b>Set</b> method code associated with the field.</div>
 <br><br></div>
 <div style="">
-<a name="103968"></a><h2>Are scriptable render pipelines (SRP) supported?</h2>
+<a name="6458"></a><h2>Are scriptable render pipelines (SRP) supported?</h2>
 <p>LWRP/URP is fully supported, and HDRP is mostly supported (currently being worked on).</p><p>After you've enabled a scriptable rendering pipeline in your <b>Graphics</b> settings:</p><div class="tip"><strong>STEP 1</strong>&emsp; Go to to the <b>Space Graphics Toolkit > Features > Shared > Resources</b> folder.</div><div class="tip"><strong>STEP 2</strong>&emsp; Select the <b>SgtRenderingPipeline</b> asset.</div><div class="tip"><strong>STEP 3</strong>&emsp; Click the <b>Switch To Scriptable Pipeline</b> button.</div><div class="tip"><strong>DONE</strong>&emsp; SGT has now been converted to use SRP.</div><p>If you decide to go back to the standard rendering pipeline, then you can click the <b>Switch To Standard Pipeline</b> button.</p><div class="tip"><strong>NOTE:</strong>&emsp;If you want to use LWRP/URP with the SgtSingulairty feature (black holes), then you must enable the <b>Opaque Texture</b> setting in your pipeline settings asset.</div>
 <br><br></div>
 <div style="">
-<a name="103924"></a><h2>Is VR supported?</h2>
+<a name="6426"></a><h2>Is VR supported?</h2>
 <p>Yes, this asset has been developed and tested in VR, and supports both multi-pass & single-pass rendering modes.</p><div class="tip"><strong>NOTE:</strong>&emsp;Some features of SGT will need modification to look good in VR. For example, many of the demo scenes uses static star backgrounds (e.g. <b>SgtBackdrop</b>), which you can replace with fully 3D ones with the <b>SgtStarfieldElliptical</b> component.</div><p>You can see the <b>VR Stars</b> demo scene for an example of how starfields can be set up to create an immersive scene.</p>
 <br><br></div>
 <div style="">
-<a name="103734"></a><h2>Does this work on mobile/console/WebGL/etc?</h2>
-<p>Yes, all features of this asset have been written with compatibility in mind, and have been heavily optimized to run on almost any device and platform, while still giving impressive visual results.</p><p>The only <i>heavy</i> feature that should be used with care is <b>SgtTerrain</b> (dynamic planet LOD), because it can require a lot of resources to generate and render. This component has many settings to reduce triangle couunt for lower end decides though.</p>
+<a name="6272"></a><h2>Does this work on mobile/console/WebGL/etc?</h2>
+<p>Yes, all features of this asset have been written with compatibility in mind, and have been heavily optimized to run on almost any device and platform, while still giving impressive visual results.</p><p>The only <i>heavy</i> feature that should be used with care is the <b>SgtDynamicPlanet</b> component, because it can quickly generate a lot of triangles. This component has many settings to reduce triangle count for lower end decides though.</p>
 <br><br></div>
 <div style="">
-<a name="103748"></a><h2>Accretion</h2>
+<a name="6298"></a><h2>Accretion</h2>
 <p>The <b>Accretion</b> feature allows you to create accretion discs. An accretion disc is a swirling vortex of matter falling toward a massive body like a star, or black hole.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -104,7 +104,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>While the segment splitting improves depth sorting against objects in the center, it won't always fix it 100%.</p><p>To improve this you can try increasing the <b>SgtAccretionMesh.BoundsShift</b> setting, or increasing the <b>Segments</b> setting in both components.</p>
 <br><br></div>
 <div style="">
-<a name="103088"></a><h2>Atmosphere</h2>
+<a name="5576"></a><h2>Atmosphere</h2>
 <p>The <b>Atmosphere</b> feature allows you to add a volumetric atmosphere above a planet's surface.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -136,7 +136,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>By default, the <b>SgtAtmosphere</b> component only applies atmospheric fog to the planet surface. If you have objects on the surface of your planet then they will not receive any fog. This usually isn't an issue for planet objects that are near the camera (e.g. player spaceship), but if you need to place an object on your planet and move far away, then you probably want fog to be applied to it. To do this, simply drag and drop the <b>MeshRenderer</b> you want into the <b>SgtSharedMaterial.Renderers</b> list attached to your SgtAtmosphere GameObject.</p>
 <br><br></div>
 <div style="">
-<a name="103356"></a><h2>Aurora</h2>
+<a name="5892"></a><h2>Aurora</h2>
 <p>The <b>Aurora</b> feature allows you to add a animated aurora ribbons above a planet's surface.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -144,7 +144,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Begin by right clicking in your Hierarchy and selecting: <b>Space Graphics Toolkit > Aurora</b></p><p>Or from the menu bar: <b>GameObject > Space Graphics Toolkit > Aurora</b></p><div class="tip"><strong>NOTE:</strong>&emsp;If you want to add this on top of an existing GameObject (e.g. your planet), then right click your object, or select it before using the menu.</div><p>Your scene should now contain a new selected GameObject called <b>Aurora</b> with the <b>SgtAurora</b> component.</p><p>Next, you can click the the <b>"Add MainTex"</b> button. This will add the <b>SgtAuroraMainTex</b> component to your Aurora GameObject.</p><div class="tip"><strong>NOTE:</strong>&emsp;There are <b>many</b> settings in these components, and it's not always easy to explain what they do. To understand what they do I recommend you read the individual documentation for each setting (or read the tooltips), and then adjust it to see what visual change it makes. This is easiest to do if you open the aurora feature example scenes.</div>
 <br><br></div>
 <div style="">
-<a name="103898"></a><h2>Backdrop</h2>
+<a name="6406"></a><h2>Backdrop</h2>
 <p>The <b>Backdrop</b> feature allows you to make background stars, clouds, and other visuals. This is achieved using static billboards that face and always follow the camera. These are very good for backgrounds because:</p><p>1 - They are very efficient to render, because there is very little overdraw (unless you increase the individual billboard size too much).</p><p>2 - Each billboard can have its own texture, so even when you zoom in there is exceptional detail, unlike with skyboxes.</p><p>3 - They look great in VR, because the billboards are static and look consistent from all angles, unlike particle billboards.</p><p>4 - They consume very little memory, because each billboard is just 4 vertices.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -160,7 +160,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>When billboards get too small they tend to flicker, which looks bad. The <b>SgtBackdrop.ClampSize</b> setting can be used to avoid this by limiting the size, and any billboards falling under this size will be faded proportional to the size they would otherwise have been.</p>
 <br><br></div>
 <div style="">
-<a name="103062"></a><h2>Belt</h2>
+<a name="5550"></a><h2>Belt</h2>
 <p>The <b>Belt</b> feature allows you to make rings of asteroids that orbit in circles. These asteroids are rendered with such high performance that you can have tens of thousands of them at once, but this does come with the limitation that you can't interact with them.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -168,7 +168,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Begin by right clicking in your Hierarchy and selecting: <b>Space Graphics Toolkit > Belt Simple</b></p><p>Or from the menu bar: <b>GameObject > Space Graphics Toolkit > Belt Simple</b></p><div class="tip"><strong>NOTE:</strong>&emsp;If you want to add this on top of an existing GameObject (e.g. your planet), then right click your object, or select it before using the menu.</div><p>Your scene should now contain a new selected GameObject called <b>"Belt Simple"</b> with the <b>SgtBeltSimple</b> component.</p><div class="tip"><strong>NOTE:</strong>&emsp;There are <b>many</b> settings in this component. To understand what they do I recommend you read the individual documentation for each setting (or read the tooltips), and then adjust it to see what visual change it makes. This is easiest to do if you open the belt example scenes.</div>
 <br><br></div>
 <div style="">
-<a name="102916"></a><h2>Billboard</h2>
+<a name="5416"></a><h2>Billboard</h2>
 <p>The <b>Billboard</b> feature allows you to make quads that always face the camera. This is useful for rendering distant stars that you can never land on, but still want to have look good when fairly close. While billboards are typically very simple, their implementation in SGT gives you lots of advanced features, like tracking the camera's roll, fading out behind solid objects, and rotation to avoid distortion when not looking at them directly.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -188,11 +188,11 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>You may notice the second billboard layer you added looks great from some angles, but it shines through all foreground objects (e.g. planets), which makes it look bad.</p><p>To fix this, begin by changing the <b>Layer</b> of all your billboard GameObjects to <b>Ignore Raycast</b>.</p><p>Next, right click your <b>Hierarchy</b> window and select <b>Space Graphics Toolkit > Depth Camera</b>, your scene should now have a <b>Depth Camera</b> GameObject.</p><p>Next, add the <b>SgtDepthScale</b> component to your second billboard layer. This component will use the Depth Camera you added earlier to</p><p>calculate how much it should shrink the current GameObject based on the optical thickness (occlusion) between the camera, and the light flare.</p><p>If you play your game, your first light flare should always be visible and look the same, and your second layer should now grow and shrink based on what's in front.</p><p>If not, try adjusting the <b>SgtDepthCamera</b> component's <b>Size</b> setting. This value is in world space and should correspond to your scene scale.</p><p>You can also examine the <b>Sprite Billboard Flare</b> demo scenes to see how they're setup.</p>
 <br><br></div>
 <div style="">
-<a name="103252"></a><h2>Cloudsphere</h2>
+<a name="5752"></a><h2>Cloudsphere</h2>
 <p>The <b>Cloudsphere</b> feature allows you to add a layer of clouds around your planets.</p><p>To understand how this works, I recommend you check out the demo scenes inside the <b>Features/Cloudsphere</b> folder.</p>
 <br><br></div>
 <div style="">
-<a name="103116"></a><h2>Corona</h2>
+<a name="5604"></a><h2>Corona</h2>
 <p>The <b>Corona</b> feature allows you to add a volumetric atmosphere above a star's surface.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -220,7 +220,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>If you want the surface of your star to be procedurally animated, then you can use one of the materials in the <b>Star Pack/Materials</b> folder/directory. If you want to customize the material then I recommend you duplicate one of these materials first.</p><p>To use it, simply find the <b>MeshRenderer</b> component in the inspector window for your Sphere GameObject, expand the <b>Materials</b> array, and</p><p>drag and drop your new material over the <b>Element 0</b> slot.</p>
 <br><br></div>
 <div style="">
-<a name="102964"></a><h2>Debris</h2>
+<a name="5470"></a><h2>Debris</h2>
 <p>The <b>Debris</b> feature allows you to procedurally spawn debris/dust/asteroids and other small objects around the camera.</p><p>This feature comes with two debris spawning components, which both implement debris spawning using different strategies.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -232,7 +232,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>The <b>SgtDebrisGrid</b> component implements debris spawning where the positions are procedurally chosen. This approach is ideal if you want a consistent distribution of static debris that look the same when returning to the same location.</p><p>One thing you should keep in mind when using this approach is that debris spawning performance is proportional to your camera movement speed.</p>
 <br><br></div>
 <div style="">
-<a name="103822"></a><h2>Flare</h2>
+<a name="6366"></a><h2>Flare</h2>
 <p>The <b>Flare</b> feature allows you to generate star flares that can be combined with the <b>Billboard</b> feature. These flares are generated using a combination of a custom mesh, and a gradient texture. This allows you to generate very large and detailed flares that use very little GPU memory, unlike typical billboard textures.</p><p>Most of the SGT demo scenes have impressive looking star billboards that use the Sprite Renderer component with a large texture. You can</p><p>replace these by deleting the Sprite Renderer component, and following the steps below to replace it.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -256,7 +256,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>By default the flare will render like a normal transparent object, but to make it look really bright it should render in front of everything. To do this, change the <b>Z Test</b> setting to <b>Always</b>, and change the <b>Render Queue</b> setting to <b>Overlay (4000)</b>.</p><p>If you do this then I recommend you also use the <b>SgtDepthScale</b> component combined with <b>SgtDepthCamera</b>, and set the flare's layer to <b>Ignore Raycast</b>. You can read the <b>Camera Depth Flares</b> tutorial inside the <b>Bonus Pack</b> for more information.</p>
 <br><br></div>
 <div style="">
-<a name="103322"></a><h2>Jovian</h2>
+<a name="5828"></a><h2>Jovian</h2>
 <p>The <b>Jovian</b> feature allows you to create volumetric gas giant planets.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -280,23 +280,31 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>If you want this planet to cast shadows using the SGT shadow system (e.g. so it can cast on rings), then add the <b>SgtShadowSphere</b> component alongside the SgtJovian component.</p><p>To make the shadows look correct the <b>Radius Min/Max</b> values should be similar to the <b>SgtJovian</b> component's <b>Radius</b> setting.</p>
 <br><br></div>
 <div style="">
-<a name="102662"></a><h2>Lightning</h2>
+<a name="5154"></a><h2>Lightning</h2>
 <p>The <b>Lightning</b> feature allows you to add an animated lightning effect to your planet. The lightning is procedurally spawned around the planet, and the animation is defined by the texture, giving you very high performance.</p><p>To understand how this works, I recommend you check out the demo scenes inside the <b>Features/Lightning</b> folder.</p>
 <br><br></div>
 <div style="">
-<a name="102760"></a><h2>Planet</h2>
-<p>The <b>Planet</b> feature comes with an advanced planet shader. This shader combines standard planet textures (e.g. Albedo + Normal), and greatly enhances them with an advanced detail texturing system, as well as a dynamic water level system.</p><div class="tip"><strong>NOTE:</strong>&emsp;For best results this shader should be used with one of the <b>Geosphere__(Planet)</b> meshes inside the <b>Features/Planet/Examples</b> folder. These meshes contain additional UV data used by this shader to produce seamless detail textures.</div>
+<a name="Planet"></a><h2>Planet</h2>
+<p>The <b>Planet</b> feature allows you to render terrestrial planets like Earth, Mars, etc.</p><p>The <b>SGT Planet</b> shader is specifically designed for rendering high quality planets. Using an Albedo, Normal, and Height texture as a base, this shader can greatly enhance them with distortionless detail textures, a dynamic water level, and much more.</p><p>The <b>SgtStaticPlanet</b> component allows you to quickly make planets that look good at medium to far distances. These planets are based on a single mesh, and can be deformed using a heightmap to make them look more interesting. </p><p>The <b>SgtDynamicPlanet</b> component allows you to make planets that look good from space all the way down to the surface. These planets are based on a dynamic mesh that increases in detail based on camera distance.</p><div class="tip"><strong>NOTE:</strong>&emsp;If your planets are large (e.g. more than 1km radius), then you should integrate the floating origin system (<b>Universe</b> feature) into your scene, otherwise you will get floating precision issues that cause the rendering to break down.</div>
 <br><br></div>
 <div style="padding-left: 75px;">
-<h2>Shader Settings</h2>
-<p><b>Albedo (RGB) Smoothness (A)</b></p><p>This is the main texture, where the albedo color is stored in the RGB channels, and the PBR Smoothness is stored in the alpha channel.</p><p>This texture should use equirectangular (cylindrical) projection, and have Wrap Mode = Repeat on the U axis.</p><p><b>Night Lights</b></p><p>This is the emissive texture for the planet's dark side. This should match the albedo mapping.</p><p><b>Night Sharpness</b></p><p>This allows you to control how sharp the transition between no night lights and full night lights is.</p><p><b>Night Offset</b></p><p>This allows you to control how far into the light side the night lights will appear.</p><p><b>Normal Map</b></p><p>This is the normal map. This should match the albedo mapping.</p><p><b>Normal Map Scale</b></p><p>This allows you to dampen or strengthen the normal map effect.</p><p><b>Ice (R) Height (A)</b></p><p>This is the additional data map, where the ice mask is stored in the red channel, and the height is stored in the alpha channel.</p><p>For now, the AO map is stored in the green channel, and the slope map is stored in the blue channel, but these are currently unused.</p><p><b>Main Color</b></p><p>This allows you to tint the terrain color.</p><p><b>Metallic</b></p><p>This allows you to control the PBR metallic setting of the whole planet (usually 0).</p><p><b>Smoothness</b></p><p>This allows you control the PBR smoothness of the whole planet (usually 1).</p><p><b>Detail Map (RGB)</b></p><p>This allows you to control where the detail textures are applied, where the red channel is detail map A, the green channel is detail map B, and</p><p>the blue channel is the transition to the planet poles. This should match the albedo mapping.</p><p><b>Detail Tiling</b></p><p>This allows you control the amount of times the detail textures are tiled along the surface.</p><p><b>Detail Map A</b></p><p>This allows you to set the first detail normal map.</p><p><b>Detail Scale A</b></p><p>The allows you to reduce or increase the normal map strength.</p><p><b>Detail Map B</b></p><p>This allows you to set the second detail normal map.</p><p><b>Detail Scale B</b></p><p>The allows you to reduce or increase the normal map strength.</p><p><b>Water</b></p><p>If you enable this then your planet will be given water.</p><p>Keep in mind this feature uses the terrain height, you must set the <b>"Ice (R) Height (A)"</b> texture with valid alpha.</p><p><b>Ice Over Water</b></p><p>If you want ice to always appear above water on your planet regardless of water level then you can enable this.</p><p>Keep in mind this feature uses the ice map, you must set the <b>"Ice (R) Height (A)"</b> texture with valid red.</p><p><b>Water Tiling</b></p><p>This allows you to set the amount of times the water normal map is tiled around the planet.</p><p><b>Water Level</b></p><p>This allows you to control the water level, where 0 is no water, and 1 is full water. You can set this higher than 1 because water is transparent and a value of 1 may still reveal some land.</p><p><b>Water Color</b></p><p>This allows you set the water color lookup table texture, where the left side is used along the shore, and the right side is used in the deep ocean.</p><p><b>Water Color Scale</b></p><p>This allows you to set how quickly the water color texture goes to the deep ocean color on the right side.</p><p><b>Water Normal Map</b></p><p>This allows you to set the normal used by the water.</p><p><b>Water Normal Scale</b></p><p>The allows you to reduce or increase the normal map strength.</p><p><b>Water Sharpness</b></p><p>This allows you to set how quickly the water hides the underwater terrain.</p><p><b>Water Metallic</b></p><p>This allows you to set the PBR metallic of the water (usually 0)</p><p><b>Water Smoothness</b></p><p>This allows you to set the PBR smoothness of the water (usually 1)</p><p><b>Water Emission</b></p><p>This allows you to set the brightness of the water. This is useful if you want lava to glow.</p>
+<h2>SGT Planet Shader</h2>
+<p>This shader allows you to render high quality planets. You can access it by making a new material, and selecting the <b>Space Graphics Toolkit/SGT Planet</b> shader.</p><div class="tip"><strong>NOTE:</strong>&emsp;Due to Shader Graph limitations, the night light feature of this shader only works with the standard render pipeline.</div><p><b>Color</b></p><p>This allows you to tint the terrain color.</p><p><b>Metallic</b></p><p>This allows you to control the PBR metallic setting of the whole planet (usually 0).</p><p><b>Smoothness</b></p><p>This allows you control the PBR smoothness of the whole planet (usually 1).</p><p><b>Albedo (RGB) Smoothness (A)</b></p><p>This is the main texture, where the albedo color is stored in the RGB channels, and the PBR Smoothness is stored in the alpha channel.</p><p>This texture should use equirectangular (cylindrical) projection, and have Wrap Mode = Repeat on the U axis.</p><p><b>Normal Map</b></p><p>This is the normal map. This should match the albedo mapping.</p><p><b>Normal Map Scale</b></p><p>This allows you to dampen or strengthen the normal map effect.</p><p><b>Height (A)</b></p><p>This is the height map, where the height is stored in the alpha channel.</p><div class="tip"><strong>NOTE:</strong>&emsp;The RGB channels of this texture aren't used by this shader, but they can be used as splat maps for object placement, heightmap detail during mesh generation, etc.</div><p><b>Night Lights (RGB)</b></p><p>This is the emissive texture for the planet's dark side. This should match the albedo mapping.</p><p><b>Night Sharpness</b></p><p>This allows you to control how sharp the transition between no night lights and full night lights is.</p><p><b>Night Offset</b></p><p>This allows you to control how far into the light side the night lights will appear.</p><p><b>Detail Mask (RG)</b></p><p>This allows you to control where the detail textures are applied, where the red channel is detail map A, the green channel is detail map B, and</p><p>the blue channel is the transition to the planet poles. This should match the albedo mapping.</p><p><b>Detail Tiling</b></p><p>This allows you control the amount of times the detail textures are tiled along the surface.</p><p><b>Detail Map A</b></p><p>This allows you to set the first detail normal map.</p><p><b>Detail Scale A</b></p><p>The allows you to reduce or increase the normal map strength.</p><p><b>Detail Map B</b></p><p>This allows you to set the second detail normal map.</p><p><b>Detail Scale B</b></p><p>The allows you to reduce or increase the normal map strength.</p><p><b>Water Level</b></p><p>This allows you to control the water level, where 0 is no water, and 1 is full water. You can set this higher than 1 because water is transparent and a value of 1 may still reveal some land.</p><p><b>Water Tiling</b></p><p>This allows you to set the amount of times the water normal map is tiled around the planet.</p><p><b>Water Color</b></p><p>This allows you set the water color lookup table texture, where the left side is used along the shore, and the right side is used in the deep ocean.</p><p><b>Water Color Scale</b></p><p>This allows you to set how quickly the water color texture goes to the deep ocean color on the right side.</p><p><b>Water Normal Map</b></p><p>This allows you to set the normal used by the water.</p><p><b>Water Normal Scale</b></p><p>The allows you to reduce or increase the normal map strength.</p><p><b>Water Distortion</b></p><p>This allows you to control how much the water normal is deformed over time. This is used to make the water surface look active and have waves.</p><p><b>Water Metallic</b></p><p>This allows you to set the PBR metallic of the water (usually 0)</p><p><b>Water Smoothness</b></p><p>This allows you to set the PBR smoothness of the water (usually 1)</p><p><b>Water Emission</b></p><p>This allows you to set the brightness of the water. This is useful if you want lava to glow.</p><p><b>Coast Detail Map (A)</b></p><p>This allows you to apply a detail texture to the coastline of the water using the texture alpha channel.</p><p><b>Coast Detail Scale</b></p><p>This allows you to set the strength of the coastline detail map influence.</p><p><b>Coast Sharpness</b></p><p>This allows you to set how quickly the water hides the underwater terrain.</p>
+<br><br></div>
+<div style="padding-left: 75px;">
+<h2>Static Planet</h2>
+<p>The <b>SgtStaticPlanet</b> component can be used to combine a <b>Mesh</b> and <b>Material</b>, and render them out as a planet.</p><p>While it's possible to do this manually with a <b>MeshFilter</b> and <b>MeshRenderer</b> components, this component also adds additional UV data to the mesh so it can seamlessly tile detail textures around the surface without polar distortion.</p><div class="tip"><strong>NOTE:</strong>&emsp;The material should use the <b>SGT Planet</b> shader, otherwise the <b>WaterLevel</b> setting will not work properly.</div><div class="tip"><strong>NOTE:</strong>&emsp;This component bakes the water level into the mesh, so it can be expensive to change this in game. It's especially expensive if you specify a <b>MeshCollider</b>.</div><p>For further information I recommend you go through the demo scenes in the <b>Planet</b> feature folder.</p>
+<br><br></div>
+<div style="padding-left: 75px;">
+<h2>Dynamic Planet</h2>
+<p>The <b>SgtDynamicPlanet</b> component can be used to render a <b>Material</b> on a dynamically generated mesh that increases in detail based on the camera position.</p><div class="tip"><strong>NOTE:</strong>&emsp;The material should use the <b>SGT Planet</b> shader, otherwise the <b>WaterLevel</b> setting will not work properly.</div><div class="tip"><strong>NOTE:</strong>&emsp;This component bakes the water level into the mesh, so changing it requires the whole planet mesh to be regenerated.</div><p>The <b>SgtDynamicPlanetObject</b> component can be used to snap a <b>Transform</b> to the planet surface.</p><p>The <b>SgtDynamicPlanetDetail</b> component can be used to enhance the heightmap data with procedural noise when you get closer to the surface.</p><p>The <b>SgtDynamicPlanetCollider</b> component can be used to add <b>MeshCollider</b>s to the planet as you get closer.</p><p>The <b>SgtDynamicPlanetSpawner</b> component can be used to spawn prefabs to the planet as you get closer.</p><p>For further information I recommend you go through the demo scenes in the <b>Planet</b> feature folder.</p>
 <br><br></div>
 <div style="">
-<a name="103148"></a><h2>Prominence</h2>
+<a name="5642"></a><h2>Prominence</h2>
 <p>The <b>Prominence</b> feature allows you to render animated streaks coming off the surface of your stars. This feature can also be used to render fictional vortex like effects.</p><p>To understand how this works, I recommend you check out the demo scenes inside the <b>Features/Prominence</b> folder.</p>
 <br><br></div>
 <div style="">
-<a name="103260"></a><h2>Ring</h2>
+<a name="5760"></a><h2>Ring</h2>
 <p>The <b>Ring</b> feature allows you to add high detail planetary rings to your planets.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -324,11 +332,19 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>If you want this ring to cast shadows using the SGT shadow system (e.g. so it can cast on planets), then add the <b>SgtShadowRing</b> component to the same GameObject as the SgtRing component.</p><p>To make the shadows look correct the <b>Radius Min/Max</b> values should be similar to the <b>SgtRingMesh</b> component's <b>Radius Min/Max</b> settings.</p>
 <br><br></div>
 <div style="">
-<a name="103380"></a><h2>Singularity</h2>
-<p>The <b>Singularity</b> feature allows you to add black holes to your scene that simulate light bending from their strong gravitational force.</p><p>To understand how this works, I recommend you check out the demo scenes inside the <b>Features/Singularity</b> folder.</p>
+<a name="5934"></a><h2>Singularity</h2>
+<p>The <b>Singularity</b> feature allows you to add gravitational lensing effects to you scene. This is where dense objects can cause light to bend around them, as seen around black holes.</p><p>This feature is implementated in two ways, using the the <b>SgtSingularity</b>, and the <b>SgtLens</b> components.</p><p>The main difference between these two implementations is that <b>SgtLens</b> can give you more accurate results, but because it's rendered from a single point it cannot accurately render objects that are close to it (due to a high degree of parallax). Since the cubemap is baked for rendering, it also means the subemap must be updated if your scene changes, which can be expensive to do. Therefore, if your scene is frequently changing, or there are objects nearby to the black hole, then you should use <b>SgtSingularity</b> instead.</p>
+<br><br></div>
+<div style="padding-left: 75px;">
+<h2>Singularity</h2>
+<p>The <b>SgtSingularity</b> component is a screen space (camera) effect, which means it can run fast and give consistent quality, but it can't warp pixels that are off screen (e.g. behind the camera).</p><div class="tip"><strong>NOTE:</strong>&emsp;If you're using LWRP/URP, then you must go to your <b>LightweightRenderPipelineAsset</b> settings, and enable <b>General > Opaque Texture</b>.</div>
+<br><br></div>
+<div style="padding-left: 75px;">
+<h2>Lens</h2>
+<p>The <b>SgtLens</b> component is a world space (cubemap) effect, which means it's slow to update, but it can rener very quickly, and it can warp pixels in any direction, including behind the camera.</p>
 <br><br></div>
 <div style="">
-<a name="102618"></a><h2>Spacetime</h2>
+<a name="5104"></a><h2>Spacetime</h2>
 <p>The <b>Spacetime</b> feature allows you to render a grid that can be deformed by gravitational bodies, including gravitational waves from orbiting black holes.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -356,35 +372,15 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>You now have a basic spacetime set up. To show the spacetime curvature of planets and such, just add the Spacetime Well as a child to your planet, and watch it deform the grid as it moves.</p>
 <br><br></div>
 <div style="">
-<a name="103558"></a><h2>Star</h2>
+<a name="6120"></a><h2>Star</h2>
 <p>The <b>Star</b> feature includes a star surface shader that renders with procedural animation, giving you full control over its visuals to make any kind of star surface you like.</p><p>To make your own, simply make a new <b>Material</b> with the <b>Space Graphics Toolkit/Star</b> shader, and adjust the settings as you like.</p><div class="tip"><strong>NOTE:</strong>&emsp;I recommend you keep the <b>NoiseTex</b> and <b>Noise Step</b> settings as they are.</div><p>Feel free to experiment with the other settings to see what visual changes is makes. You can always look at the example star materials to get some ideas.</p>
 <br><br></div>
 <div style="">
-<a name="103572"></a><h2>Starfield</h2>
+<a name="6146"></a><h2>Starfield</h2>
 <p>The <b>Starfield</b> feature allows you render a wide range of effects involving a large amount of stars. For example, elliptical galaxies, spiral galaxies, and even starfield warp effects.</p><p>To understand how these work, I recommend you look at the demo scenes inside the <b>Features/Starfield</b> folder.</p>
 <br><br></div>
 <div style="">
-<a name="103156"></a><h2>Terrain</h2>
-<p>The <b>Terrain</b> feature allows you to generate a planet or star surface whose mesh dynamically subdivides based on camera proximity. This allows you to make terrains that look good up close, without using too many triangles compared to a static mesh. This feature also comes with components to procedurally spawn objects on the terrain surface, deform the height using noise, and much more.</p><div class="tip"><strong>NOTE:</strong>&emsp;This feature is designed to make high detailed surface meshes with some procedural generation, it's not designed to generate realistic 1:1 scale planets like Earth or even the Moon.</div>
-<br><br></div>
-<div style="padding-left: 75px;">
-<h2>Making a Terrain</h2>
-<p>Begin by right clicking in your Hierarchy and selecting: <b>Space Graphics Toolkit > Terrain</b></p><p>Or from the menu bar selecting: <b>GameObject > Space Graphics Toolkit > Terrain</b></p><p>Your scene should now contain a new selected GameObject called <b>Terrain</b> with the <b>SgtTerrain</b> component.</p><p>You should then set the <b>SgtTerrain.MaterialSgtTerrain</b> to the material of your choosing.</p><div class="tip"><strong>NOTE:</strong>&emsp;For performance reasons terrains use cube mapped UV data, not equirectangular (cylindrical) projection. So you cannot use the normal materials you put on sphere planets. Follow the <b>Creating Cube Textures</b> documentation to learn how to convert them and use the <b>SgtTerrainCubeMaterials</b> component to assign them.</div>
-<br><br></div>
-<div style="padding-left: 75px;">
-<h2>Adding LOD</h2>
-<p>By default a terrain won't have any LOD. To add some, you need to fill the <b>SgtTerrain.Distances</b> list.</p><p>If you click the <b>Add Distance</b> button, then either a distance of 1 will be added, or half the value of the last distance in the list will be added.</p><p>The distance values are are local space, so if your terrain has a scale of 1,1,1, and it is in the root of your Hierarchy, then a distance of 100 means a distance of 100 meters is required for any terrain surfaces with the current LOD level to split into 4 smaller children. These children then use the next LOD distance to calculate if they should split or not.</p>
-<br><br></div>
-<div style="padding-left: 75px;">
-<h2>Adding Height</h2>
-<p>By default the terrain is just a round sphere. To add height, you can set the <b>SgtTerrain.HeightMap</b> setting.</p><div class="tip"><strong>NOTE:</strong>&emsp;This texture must be marked as readable in the texture import settings.</div><div class="tip"><strong>NOTE:</strong>&emsp;This texture should be use equirectangular (cylindrical) projection.</div>
-<br><br></div>
-<div style="padding-left: 75px;">
-<h2>Spawning Objects</h2>
-<p>If you want to procedurally spawn objects like trees on your terrain then you can add the <b>SgtTerrainSpawner</b> component.</p><p>The <b>SgtTerrainSpawner.Prefabs</b> list can contain any prefab with the <b>SgtTerrainObject</b> component attached. This component is used to manage object pooling, procedural scaling, and other features.</p><p>The <b>SgtTerrainSpawner.Depth</b> setting allows you to set which LOD depth you want the objects to appear on. If you set this to 1 then your terrain surface must split at least once for the objects to appear.</p><p>The <b>SgtTerrainSpawner.Probability</b> setting is used to procedurally choose if an object is spawned on the current terrain surface if it's on the correct depth. This probability is checked multiple times until it either fails or it reaches the <b>SgtTerrainSpawner.SpawnCountMax</b> setting.</p><p>You can also set the <b>SgtTerrainSpawner.HeightMin/Max</b> settings to control the heights that objects can be spawned on. This is in local space and corresponds to the <b>SgtTerrain.Radius</b> setting + any height modifications.</p>
-<br><br></div>
-<div style="">
-<a name="103016"></a><h2>Thruster</h2>
+<a name="5516"></a><h2>Thruster</h2>
 <p>The <b>Thruster</b> feature allows you to create spaceship thrusters that apply Newtonian forces to your spaceship, as well as render a basic thruster effect.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -408,7 +404,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>You now have a basic thruster that can add forces to your spaceships.</p><p>To control the thrusters based on user input, you need to write a simple script that stores a reference to each <b>SgtThruster</b> you have, and adjust the Throttle value (e.g. 0 to 1) based on these inputs.</p>
 <br><br></div>
 <div style="">
-<a name="104006"></a><h2>Universe</h2>
+<a name="6508"></a><h2>Universe</h2>
 <p>The <b>Universe</b> feature allows you implement a floating origin system into your scene.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -421,15 +417,19 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><br></div>
 <div style="padding-left: 75px;">
 <h2>Basic Setup</h2>
-<p>At the most basic level, you just need to add the <b>SgtFloatingCamera</b> camera to your camera GameObject (e.g. Main Camera), and the <b>SgtFloatingObject</b> component to all your other GameObjects (e.g. spaceship, planet, character, enemy, asteroid).</p><p>Once done, you will see that when your camera moves more than (default) 100 units away from the origin, its position snaps back to the origin.</p><p>All floating objects in your scene will also snap back based on the snap distance.</p><div class="tip"><strong>NOTE:</strong>&emsp;If you add the <b>SgtFloatingObject</b> component to a GameObject, if it has any parents, make sure none of them also have the <b>SgtFloatingObject</b> component. If they do, they will both snap, compounding the effect for the child. You should keep all floating objects separate.</div>
+<p>At the most basic level, you just need to add the <b>SgtFloatingCamera</b> camera to your camera GameObject (e.g. Main Camera), and the <b>SgtFloatingObject</b> component to all your other GameObjects (e.g. spaceship, planet, character, enemy, asteroid).</p><p>Once done, you will see that when your camera moves more than (default) 100 units away from the origin, its position snaps back to the origin, and all objects in your scene will shift by the same amount.</p><div class="tip"><strong>NOTE:</strong>&emsp;You cannot nest <b>SgtFloatingObject</b> and <b>SgtFloatingCamera</b> components (e.g. parent & child). If you want one to follow the other then you must separate them, and use the <b>SgtFloatingFollow</b> component to connect them again. While it's technically possible to support this, it makes the code a lot more complicated and will result in reduced performance.</div>
 <br><br></div>
 <div style="padding-left: 75px;">
 <h2>Handling Snaps</h2>
-<p>If you need to update a script whenever the camera snaps, you can hook into the <b>SgtFloatingCamera.OnSnap</b> event. This event tells you which camera snapped, and how many world space units it snapped.</p><p>You can also hook into the <b>OnSnap</b> event from the <b>SgtFloatingObject</b> component.</p>
+<p>If you need to update a script whenever the camera snaps, you can hook into the <b>SgtFloatingCamera.OnSnap</b> event. This event gives you a reference to the <b>SgtFloatingCamera</b>, and gives you a <b>Vector3</b> containing the world space distance that the scene shifted.</p><p>If your script stores world space positions, then you must hook into this event and increment your values by this world space delta the event gives you.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
 <h2>High Precision Positions</h2>
-<p>The basic camera and object setup described above works well for very large scenes (e.g. millions of kilometers), but because the positions are still stored in the Transform.position values, it's insufficient if you need scenes that are gigantic (e.g. millions of lightyears). If you need scenes this large or even up to the size of the observable universe we live in, then you need to use high precision positions.</p><p>To enable this, tick the <b>Use Origin</b> setting in your <b>SgtFloatingCamera</b> component, this should add a new <b>Floating Origin</b> GameObject to your scene.</p><p>Next, add the <b>SgtFloatingPoint</b> component alongside all your <b>SgtFloatingObject</b> components.</p><p>This <b>SgtFloatingPoint</b> component used by both the camera and your objects stores a high precision universal position. The position is stored using Local X/Y/Z and Global X/Y/Z values. The local values are equivalent to unity world space units (meters), and the global values are equivalent to 50000000 units (meters) each. Each time a local value exceeds this 50000000 value, it will reset and increment the global value.</p><p>When combined and used to their maximum, this allows them to accurately store positions of +- 461168601842738790400000000 meters, which is +- 48745559677 light years, or 4.87 billion light years, which is greater than the 46.6 billion light year radius of the observable universe.</p><div class="tip"><strong>NOTE:</strong>&emsp;Using the high precision origin for the camera introduces the limitation that you cannot parent the camera to another GameObject, unless the parent is just for organizational purposes (e.g. it doesn't move or rotate). If you need to parent the camera to something, I recommend you use the <b>SgtFollow</b> component on your camera, this can be setup to follow another GameObject, with a given offset. The reason for this limitation is that the camera is now driven by the <b>SgtFloatingPoint</b> and <b>SgtFloatingOrigin</b> components.</div>
+<p>You may have noticed that both the <b>SgtFloatingCamera</b> and <b>SgtFloatingObject</b> components store the <b>Local X/Y/Z</b> and <b>Global X/Y/Z</b> values. These values are known as the <b>SgtPosition</b> values, and they allow your objects to be positioned anywhere in the universe with high accuracy.</p><p>The local values are equivalent to unity world space units (meters), and the global values are equivalent to 50000000 units (meters) each. Each time a local value exceeds this +- 50000000 value it will reset to 0, and increment the global value.</p><p>When combined and used to their limit, these values can precisely store the position of an object +- 461168601842738790400000000 meters across each axis. This is equivalent to +- 48745559677 light years, or 48.7 billion light years, which is greater than the 46.6 billion light year radius of the observable universe.</p>
+<br><br></div>
+<div style="padding-left: 75px;">
+<h2>Spawning Hierarchy</h2>
+<p>The universe is massive, and it's unrealistic to have all bodies in the universe active at the same time (e.g. galaxies, stars, planets, moons), because your computer would explode. However, you can still create a full universe if you design this in the right way.</p><p>The key to this is spawning everything in a hierarchy. For example:</p><p>1 - Spawn a few galaxies.</p><p>2 - When the camera gets close to a galaxy, spawn some billboard sprites inside that represent massive star clusters.</p><p>3 - When the camera gets close to one of these clusters, spawn some smaller clusters inside the massive cluster.</p><p>4 - When the camera gets close to one of these smaller clusters, spawn even smaller clusters inside this.</p><p>5 - When the camera gets close to this even smaller cluster, you can now spawn some actual 3D stars.</p><p>6 - When the camera gets close to one of these stars, spawn some planets around it.</p><p>7 - When the camera gets close to one of these planets, spawn some moons, and so on...</p><p>If you design this well, then your scene should have no more than a few hundred objects active at the same time, yet still give the illusion of having millions of billions of planets.</p><p>All of this can be implemented using the <b>SgtSpawner___</b> components, which can spawn prefabs in a specific distribution when the camera gets within the <b>Range</b> you specify.</p>
 </div>
 <br><br>
 <h1>Assets</h1>
@@ -472,28 +472,31 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Unity sounds only emanate from a single point source. This is great for explosions and footsteps, but quite often you need something more advanced. Volumetric Audio is an easy to use package that allows you to define boxes, spheres, capsules, paths, or meshes that sounds can emanate from.</p><br><br><br><br>
 <br><br>
 <h1>Versions</h1>
-<a name="102890"></a><h2>3.6.9</h2>
+<a name="6064"></a><h2>3.7.0</h2>
+<p>Moved main build to Unity <b>2018.4.0f1</b>.<br>Added new <b>Planet</b> demo scenes.<br>Added new <b>Universe</b> demo scenes.<br>Added <b>Eath Sized Planet</b> demo scene.<br>Added <b>SgtFloatingWarpPin.FloatingCamera</b> setting.<br>Added <b>SgtFloatingWarpPin.WorldCamera</b> setting.<br>Added <b>SgtFloatingSpawner.Range</b> setting.<br><b>SgtFloatingCamera</b> no longer needs to be attached to a <b>Camera</b>.<br><b>SgtFloatingCamera</b> snapping attempt moved from pre-render to LateUpdate.<br>Moved <b>Terrain</b> features to <b>Planet</b> folder.<br>Merged <b>SgtMeshDisplacer</b> into <b>SgtPlanet</b>.<br>Merged <b>SgtPlanetMeshConverter</b> into <b>SgtPlanet</b>.<br>Renamed <b>SgtPlanet</b> to <b>SgtStaticPlanet</b>.<br>Rewrote <b>SgtTerrain</b> to be faster and handle larger scale planets.<br>Renamed <b>SgtTerrain</b> to <b>SgtDynamicPlanet</b>.<br>Changed <b>SgtCameraMove.MouseSensitivity</b> to modify movement speed.<br>Merged <b>SgtFloatingPoint</b> into <b>SgtFloatingCamera</b>.<br>Merged <b>SgtFloatingPoint</b> into <b>SgtFloatingObject</b>.<br>Merged <b>SgtFloatingSpawnable</b> into <b>SgtFloatingObject</b>.<br>Removed <b>SgtFloatingLod</b> component.<br>Removed <b>SgtFloatingOrigin</b> component.<br>Removed <b>SgtFloatingCamera.Scale</b> setting.<br>Improved <b>SgtFloatingCamera</b> snap behavior with larger planets.<br>Added <b>SgtFloatingFollow</b> component.<br>Fixed <b>SgtJovian</b> error with <b>_MainTex</b> property.<br></p>
+<br><br>
+<a name="5396"></a><h2>3.6.9</h2>
 <p>Fixed <b>SgtStarfieldElliptical.StarRadiusBias</b> being 0 by default.<br>Improved <b>Billboard5</b> texture resolution.<br>Improved <b>Billboard6</b> texture resolution.<br>Changed <b>SgtInputManager</b> from a component to a normal class.<br>Updated all demo scenes.<br>Added <b>Basic Pack/Elliptical Galaxy</b> demo scene.<br>Added <b>Basic Pack/Spiral Galaxy</b> demo scene.<br>Added <b>Basic Pack/Nebula</b> demo scene.<br>Added <b>Starfield/Box</b> demo scene.<br>Added <b>Starfield/Box Offset</b> demo scene.<br>Added <b>Starfield/Box Colors</b> demo scene.<br>Added <b>Starfield/Box Clouds</b> demo scene.<br>Added <b>Starfield/Box BlendMode</b> demo scene.<br>Added <b>Starfield/Box PowerRGB</b> demo scene.<br>Added <b>Starfield/Box ClampSize</b> demo scene.<br>Added <b>Starfield/Box Layering</b> demo scene.<br>Added <b>Starfield/Elliptical</b> demo scene.<br>Added <b>Starfield/Elliptical Symmetry</b> demo scene.<br>Added <b>Starfield/Elliptical Offset</b> demo scene.<br>Added <b>Starfield/Elliptical Bias</b> demo scene.<br>Added <b>Starfield/Elliptical Layering</b> demo scene.<br>Added <b>Starfield/Spiral</b> demo scene.<br>Added <b>Starfield/Spiral Rotation</b> demo scene.<br>Added <b>Starfield/Spiral Arm Count</b> demo scene.<br>Added <b>Starfield/Spiral Twist</b> demo scene.<br>Added <b>Starfield/Spiral Thickness Inner</b> demo scene.<br>Added <b>Starfield/Spiral Thickness Outer</b> demo scene.<br>Added <b>Starfield/Spiral Layering</b> demo scene.<br>Added <b>Starfield/Nebula</b> demo scene.<br>Added <b>Starfield/Nebula Height Source</b> demo scene.<br>Added <b>Starfield/Nebula Scale Source</b> demo scene.<br>Added <b>Starfield/Nebula Jitter</b> demo scene.<br>Added <b>Starfield/Nebula HorizontalBrightness</b> demo scene.<br>Added <b>Starfield/Nebula Layering</b> demo scene.<br>Added <b>Starfield/Infinite</b> demo scene.<br>Added <b>Starfield/Infinite Far</b> demo scene.<br>Added <b>Starfield/Infinite Warp</b> demo scene.<br>Added <b>Starfield/Infinite Dust</b> demo scene.<br>Added <b>Starfield/Infinite Dust Near</b> demo scene.<br>Added <b>Starfield/Infinite Floating Camera</b> demo scene.<br>Added <b>Starfield/Infinite Floating Origin</b> demo scene.<br></p>
 <br><br>
-<a name="103460"></a><h2>3.6.8</h2>
+<a name="6022"></a><h2>3.6.8</h2>
 <p>Fixed <b>Accretion Disk</b> billboard flare rendering.<br>Fixed <b>SgtShadowLayer</b> flickering with SRP.<br>Fixed <b>SgtDebrisGrid</b> spawning code.<br>Fixed default <b>SgtStarfieldElliptical.Bias</b> value.<br>Enabled demo scene billboard <b>Roll To Camera</b> for VR compatibility.<br>Changed <b>Additive Overlay</b> shader render queue for SRP compatibility.<br>Added <b>SgtAtmosphere.AmbientColor</b> setting for greater control and SRP compatibility.<br>Added <b>SgtBelt.AmbientColor</b> setting for greater control and SRP compatibility.<br>Added <b>SgtCloudsphere.AmbientColor</b> setting for greater control and SRP compatibility.<br>Added <b>SgtJovian.AmbientColor</b> setting for greater control and SRP compatibility.<br>Added <b>SgtRing.AmbientColor</b> setting for greater control and SRP compatibility.<br>Added <b>Rendering Pipeline Switcher</b> tool to root SGT folder.<br>Added Single-Pass VR support to <b>SgtSingularity</b>.<br>Added SRP compatibility to <b>SgtSingularity</b>.<br>Added <b>SgtStarfield.ClampSize</b> feature.<br>Added <b>VR Stars</b> demo scene to <b>Basic Pack</b>.<br>Added <b>Water Level</b> demo scene to <b>Basic Pack</b>.<br></p>
 <br><br>
-<a name="104074"></a><h2>3.6.7</h2>
+<a name="6562"></a><h2>3.6.7</h2>
 <p>SgtFloatingOrbit no longer notifies of position changes if they didn't occur.<br>Improved SRP support for components that depend on camera information.<br>Fixed Planet Pack 1 dependencies.<br></p>
 <br><br>
-<a name="103002"></a><h2>3.6.6</h2>
+<a name="5490"></a><h2>3.6.6</h2>
 <p>Updated documentation.<br>Added SgtSimpleOrbit.<br>Added SgtThrusterControls.<br></p>
 <br><br>
-<a name="102680"></a><h2>3.6.5</h2>
+<a name="5184"></a><h2>3.6.5</h2>
 <p>Updated documentation.<br>Improved Debris demo scenes and documentation.<br></p>
 <br><br>
-<a name="103974"></a><h2>3.6.4</h2>
+<a name="6470"></a><h2>3.6.4</h2>
 <p>Added night light support to the Planet shader.<br>Added new demo scenes for the Debris feature.<br>Updated Solar System Pack link.<br></p>
 <br><br>
-<a name="102716"></a><h2>3.6.3</h2>
+<a name="5220"></a><h2>3.6.3</h2>
 <p>Fixed shadow casting calculations.<br>Improved component consistency.<br>Redesigned documentation.<br></p>
 <br><br>
-<a name="103442"></a><h2>3.6.2</h2>
+<a name="5980"></a><h2>3.6.2</h2>
 <p>Updated Solar System Pack for better realism.<br>Added automatic floating origin support to SgtStarfieldInfinite.<br>Added SgtCamera.UseOrigin setting for floating origin compatibility.<br>Added SgtStarfield.StretchLimit to improve warp effects at high speed.<br></p>
 <br><br>
 <br><br>
@@ -1542,40 +1545,150 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>The random sprite used by the lightning.</p>
 </div><br>
 <br><br>
-<a name="SgtMeshDisplacer"></a><h2>SgtMeshDisplacer</h2>
-<p>This component converts a normal spherical mesh into one displaced by a heightmap.</p>
-<div style="padding-left: 75px;"><br><h2>OriginalMesh</h2>
-<p>The original mesh we want to displace.</p>
+<a name="SgtDynamicPlanet"></a><h2>SgtDynamicPlanet</h2>
+<p>This component allows you to create a planet with dynamic LOD, where the surface mesh detail increases as your camera gets closer to the surface.</p>
+<div style="padding-left: 75px;"><br><h2>Instances</h2>
+<p>This stores all active and enabled <b>SgtTerrain</b> instances in the scene.</p>
+<br><h2>Radius</h2>
+<p>The distance between the center and edge of the planet in local space.</p>
+<br><h2>SmallestTriangleSize</h2>
+<p>When at the surface of the planet, how big should each triangle be?<br><br><div class="tip"><strong>NOTE:</strong>&emsp; This is an approximation. The final size of the triangle will depend on your planet radius, and will be a power of two.</div></p>
+<br><h2>Material</h2>
+<p>This allows you to set the material applied to the terrain surface.</p>
+<br><h2>SharedMaterial</h2>
+<p>If you want to apply a shared material (e.g. atmosphere) to this terrain, then specify it here.</p>
+<br><h2>Observer</h2>
+<p>The LOD will be based on the distance to this <b>Transform</b>.<br><br>None = Main Camera.</p>
+<br><h2>Detail</h2>
+<p>The higher this value, the more triangles will be in view.</p>
+<br><h2>Boost</h2>
+<p>The higher you set this, the higher the detail will appear from orbit.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; The surface detail will remain the same, this only impacts distant LOD splitting.</div></p>
+<br><h2>MaxSplitsPerFrame</h2>
+<p>This allows you to control the speed of the LOD generation. The higher you set this, the lower the performance.</p>
 <br><h2>Heightmap</h2>
-<p>The height map texture used to displace the mesh (Height must be stored in alpha channel).</p>
-<br><h2>Encoding</h2>
-<p>The way the height data is stored in the texture.</p>
-<br><h2>InnerRadius</h2>
-<p>The mesh radius represented by a 0 alpha value.</p>
-<br><h2>OuterRadius</h2>
-<p>The mesh radius represented by a 255 alpha value.</p>
-<br><h2>HeightmapCutoff</h2>
-<p>If you want to bake in the water height, then set the cutoff level here.</p>
-<br><h2>ZeroCutoff</h2>
-<p>Make all samples below the cutoff have a height of 0?</p>
-<br><h2>[CONTEXT] Export Mesh</h2>
-<p>This method allows you to export the generated mesh as an asset.<br><br>Once done, you can remove this component, and set the <b>MeshFilter</b> component's <b>Mesh</b> setting using the exported asset.</p>
+<p>The heightmap texture, where the height data is stored in the alpha channel.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; This should use an Equirectangular projection.</div><div class="tip"><strong>NOTE:</strong>&emsp; This texture should be marked as readable.</div></p>
+<br><h2>Displacement</h2>
+<p>The maximum height displacement applied to the planet mesh when the heightmap alpha value is 1.</p>
+<br><h2>WaterLevel</h2>
+<p>The current water level.<br><br>0 = Radius.<br><br>1 = Radius + Displacement.</p>
+<br><h2>ClampWater</h2>
+<p>If you enable this then the water will not rise, instead the terrain will shrink down.</p>
+<br><h2>NormalFadeRange</h2>
+<p>Normals bend incorrectly on high detail planets, so it's a good idea to fade them out. This allows you to set the camera distance at which the normals begin to fade out in local space.</p>
+<br><h2>GetDepth</h2>
+<p>This method tells you the LOD level where triangles are closest to the specified triangle size.</p>
 </div><br>
 <br><br>
-<a name="SgtPlanet"></a><h2>SgtPlanet</h2>
-<p>This component rotates the current GameObject.</p>
-<div style="padding-left: 75px;"><br><h2>Dampening</h2>
-<p>The speed the values changes (-1 = instant).</p>
+<a name="SgtDynamicPlanetChunk"></a><h2>SgtDynamicPlanetChunk</h2>
+<p>This class stores data for a terrain chunk that can be split into 4 smaller chunks.</p>
+<div style="padding-left: 75px;"><br><h2>QUADS</h2>
+<p>The amount of rows & columns of quads in each chunk.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; This should be a multiple of 2.</div></p>
+<br><h2>VERTS</h2>
+<p>The amount of rows & columns of vertices in each chunk.</p>
+<br><h2>VERTS_COUNT</h2>
+<p>Vertices in the main chunk surface + skirt.</p>
+<br><h2>POINTS</h2>
+<p>The amount of rows & columns of direction & height data.</p>
+<br><h2>LAST_POINT</h2>
+<p>The last index in the points array.</p>
+<br><h2>STEP</h2>
+<p>The 0..1 amount each vertex traverses across the chunk surface.</p>
 </div><br>
 <br><br>
-<a name="SgtPlanetMeshConverter"></a><h2>SgtPlanetMeshConverter</h2>
-<p>This component converts a normal spherical mesh into one suitable for the SGT Planet shader.</p>
-<div style="padding-left: 75px;"><br><h2>OriginalMesh</h2>
-<p>The original mesh we want to displace.</p>
-<br><h2>CapScale</h2>
-<p>The UV scale of the cap.</p>
-<br><h2>[CONTEXT] Export Mesh</h2>
-<p>This method allows you to export the generated mesh as an asset.</p>
+<a name="SgtDynamicPlanetCollider"></a><h2>SgtDynamicPlanetCollider</h2>
+<p>This component allows you to add colliders to a terrain at the specified triangle size.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; The geometry at that level must generate before the collider can appear there.</div></p>
+<div style="padding-left: 75px;"><br><h2>TriangleSize</h2>
+<p>How big should each triangle be?<br><br><div class="tip"><strong>NOTE:</strong>&emsp; This is an approximation. The final size of the triangle will depend on your planet radius, and will be a power of two.</div></p>
+<br><h2>Layer</h2>
+<p>The GameObject layer the colliders will use.</p>
+<br><h2>Material</h2>
+<p>The physics material the colliders will use.</p>
+</div><br>
+<br><br>
+<a name="SgtDynamicPlanetDetail"></a><h2>SgtDynamicPlanetDetail</h2>
+<p>This component allows to displace the height of a terrain using procedural noise based on a splat map texture.</p>
+<div style="padding-left: 75px;"><br><h2>Splat</h2>
+<p>The splat texture used to control the contribution of the detail settings below.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; This should use an Equirectangular projection.</div><div class="tip"><strong>NOTE:</strong>&emsp; This texture should be marked as readable.</div></p>
+<br><h2>Channel</h2>
+<p>This allows you to choose which color channel from the splat texture that will be used.</p>
+<br><h2>Style</h2>
+<p>This allows you to choose the type of noise applied from the splat map.</p>
+<br><h2>Frequency</h2>
+<p>This allows you to control the frequency/tiling of the detail applied from the red channel of the splat texture.</p>
+<br><h2>Octaves</h2>
+<p>This allows you to control the levels of detail applied from the red channel of the splat texture.</p>
+<br><h2>Strength</h2>
+<p>This allows you to control the height displacement of detail applied from the red channel of the splat texture.</p>
+</div><br>
+<br><br>
+<a name="SgtDynamicPlanetModifier"></a><h2>SgtDynamicPlanetModifier</h2>
+<p>This is the base class for any component that modifies the terrain.</p>
+<div style="padding-left: 75px;"></div><br>
+<br><br>
+<a name="SgtDynamicPlanetObject"></a><h2>SgtDynamicPlanetObject</h2>
+<p>This component keeps the current <b>Transform</b> locked to the surface of the planet below it.</p>
+<div style="padding-left: 75px;"><br><h2>Planet</h2>
+<p>This allows you to specify which planet this object will snap to.<br><br>None = Closest.</p>
+<br><h2>Offset</h2>
+<p>This allows you to move the object up based on the surface normal in world space.</p>
+<br><h2>Radius</h2>
+<p>The surface normal will be calculated using this sample radius in world space. Larger values = Smoother.</p>
+<br><h2>SnapIn</h2>
+<p>This allows you to control where in the game loop the object position will be snapped.</p>
+<br><h2>[CONTEXT] Snap Now</h2>
+<p>This method updates the position and rotation of the current <b>Transform</b>.</p>
+</div><br>
+<br><br>
+<a name="SgtDynamicPlanetSpawner"></a><h2>SgtDynamicPlanetSpawner</h2>
+<p>This component allows you to spawn prefabs on the terrain at the specified triangle size.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; The geometry at that level must generate before the prefab can spawn there.</div></p>
+<div style="padding-left: 75px;"><br><h2>TriangleSize</h2>
+<p>How big should each triangle be?<br><br><div class="tip"><strong>NOTE:</strong>&emsp; This is an approximation. The final size of the triangle will depend on your planet radius, and will be a power of two.</div></p>
+<br><h2>Splat</h2>
+<p>The splat texture used to control the amount of prefabs that get spawned.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; This should use an Equirectangular projection.</div><div class="tip"><strong>NOTE:</strong>&emsp; This texture should be marked as readable.</div></p>
+<br><h2>Channel</h2>
+<p>This allows you to choose which color channel from the splat texture that will be used.</p>
+<br><h2>Prefab</h2>
+<p>The prefab that will be spawned.</p>
+<br><h2>Rotate</h2>
+<p>How should the spawned prefab be rotated?</p>
+<br><h2>Count</h2>
+<p>The maximum amount of prefabs that can be spawned on the current chunk when the splat value is at maximum.</p>
+</div><br>
+<br><br>
+<a name="SgtDynamicPlanetVisual"></a><h2>SgtDynamicPlanetVisual</h2>
+<p>This class combines many <b>SgtTerrainChunk</b> instances, and can draw them together in a single batch.</p>
+<div style="padding-left: 75px;"><br><h2>BATCH_SIZE</h2>
+<p>The amount of chunks that can be batched into one visual.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; This should be at least 4.</div></p>
+<br><h2>INDICES</h2>
+<p>The index data used by each mesh.</p>
+</div><br>
+<br><br>
+<a name="SgtDynamicPlanet_Job"></a><h2>SgtDynamicPlanet</h2>
+<p>This class contains job specific methods for the <b>SgtDynamicPlanet</b> class.</p>
+<div style="padding-left: 75px;"></div><br>
+<br><br>
+<a name="SgtStaticPlanet"></a><h2>SgtStaticPlanet</h2>
+<p>This component allows you to render a planet that has been displaced with a heightmap, and has a dynamic water level.</p>
+<div style="padding-left: 75px;"><br><h2>Mesh</h2>
+<p>The sphere mesh used to render the planet.</p>
+<br><h2>MeshCollider</h2>
+<p>If you want the generated mesh to have a matching collider, you can specify it here.</p>
+<br><h2>Radius</h2>
+<p>The radius of the planet in local space.</p>
+<br><h2>Material</h2>
+<p>The material used to render the planet. For best results, this should use the SGT Planet shader.</p>
+<br><h2>SharedMaterial</h2>
+<p>If you want to apply a shared material (e.g. atmosphere) to this terrain, then specify it here.</p>
+<br><h2>Heightmap</h2>
+<p>The heightmap texture, where the height data is stored in the alpha channel.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; This should use an Equirectangular projection.</div><div class="tip"><strong>NOTE:</strong>&emsp; This texture should be marked as readable.</div></p>
+<br><h2>Displacement</h2>
+<p>The maximum height displacement applied to the planet mesh when the heightmap alpha value is 1.</p>
+<br><h2>WaterLevel</h2>
+<p>The current water level.<br><br>0 = Radius.<br><br>1 = Radius + Displacement.</p>
+<br><h2>ClampWater</h2>
+<p>If you enable this then the water will not rise, instead the terrain will shrink down.</p>
+<br><h2>[CONTEXT] Rebuild</h2>
+<p>This method causes the planet mesh to update based on the current settings. You should call this after you finish modifying them.</p>
 </div><br>
 <br><br>
 <a name="SgtProminence"></a><h2>SgtProminence</h2>
@@ -1782,14 +1895,6 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>This class allows you to quickly exit play mode or close the application by skipping code when quitting is true.</p>
 <div style="padding-left: 75px;"></div><br>
 <br><br>
-<a name="SgtBoundsD"></a><h2>SgtBoundsD</h2>
-<p>This implements Bounds using the double data type.</p>
-<div style="padding-left: 75px;"></div><br>
-<br><br>
-<a name="SgtBoundsL"></a><h2>SgtBoundsL</h2>
-<p>This implements Bounds using the long data type.</p>
-<div style="padding-left: 75px;"></div><br>
-<br><br>
 <a name="SgtCamera"></a><h2>SgtCamera</h2>
 <p>This component monitors the attached Camera for modifications in roll angle, and stores the total change.</p>
 <div style="padding-left: 75px;"><br><h2>RollAngle</h2>
@@ -1840,6 +1945,18 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><br>
 <a name="SgtLinkedBehaviour"></a><h2>SgtLinkedBehaviour&lt;T&gt;</h2>
 <p>This class allows for quick registering and unregistering of class instances that can then be quickly looped through</p>
+<div style="padding-left: 75px;"></div><br>
+<br><br>
+<a name="SgtLong3"></a><h2>SgtLong3</h2>
+<p>This implements Vector3 using the long data type.</p>
+<div style="padding-left: 75px;"></div><br>
+<br><br>
+<a name="SgtLongBounds"></a><h2>SgtLongBounds</h2>
+<p>This implements Bounds using the long data type.</p>
+<div style="padding-left: 75px;"></div><br>
+<br><br>
+<a name="SgtLongRect"></a><h2>SgtLongRect</h2>
+<p>This implements a Rect using the long data type.</p>
 <div style="padding-left: 75px;"></div><br>
 <br><br>
 <a name="SgtPoolClass"></a><h2>SgtPoolClass&lt;T&gt;</h2>
@@ -1903,10 +2020,6 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <div style="padding-left: 75px;"><br><h2>Quads</h2>
 <p>The quads this belongs to. If this is null then this GameObject will automatically be destroyed.</p>
 </div><br>
-<br><br>
-<a name="SgtRectL"></a><h2>SgtRectL</h2>
-<p>This implements a Rect using the long data type.</p>
-<div style="padding-left: 75px;"></div><br>
 <br><br>
 <a name="SgtRenderingPipeline"></a><h2>SgtRenderingPipeline</h2>
 <p>This object allows you to switch SGT material shaders between standard shader usage, and scriptable render pipelines (SRP) shaders.</p>
@@ -2032,21 +2145,31 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>The material that will be applied to all renderers.</p>
 </div><br>
 <br><br>
-<a name="SgtVector2D"></a><h2>SgtVector2D</h2>
-<p>This implements Vector2 using the double data type.</p>
-<div style="padding-left: 75px;"></div><br>
-<br><br>
-<a name="SgtVector3D"></a><h2>SgtVector3D</h2>
-<p>This implements Vector3 using the double data type.</p>
-<div style="padding-left: 75px;"></div><br>
-<br><br>
-<a name="SgtVector3L"></a><h2>SgtVector3L</h2>
-<p>This implements Vector3 using the long data type.</p>
-<div style="padding-left: 75px;"></div><br>
-<br><br>
-<a name="SgtVector4D"></a><h2>SgtVector4D</h2>
-<p>This implements Vector4 using the double data type.</p>
-<div style="padding-left: 75px;"></div><br>
+<a name="SgtLens"></a><h2>SgtLens</h2>
+<p>This component allows you to add a gravitational lensing effect to your scene, as seen around black holes, and other dense bodies.<br><br>The lens effect works similar to reflection probes, and uses a cubemap as a source for the texture data.<br><br>This means it renders very fast, works consistently across the screen, and can simulate lensing in any direction.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; Updating the cubemap texture can be expensive, and the effect won't work so well if you have rendered objects to the lens center.</div></p>
+<div style="padding-left: 75px;"><br><h2>Mesh</h2>
+<p>The mesh used to render the lens effect. This should be a sphere.</p>
+<br><h2>Resolution</h2>
+<p>This allows you to set the width & height of each face in the cubemap this component renders.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; The higher you set this, the higher the visual quality, but the more expensive the texture updates will be.</div></p>
+<br><h2>Range</h2>
+<p>This allows you to set the world space distance where the specified resolution will be used. Each time the distance doubles, the resolution will be halved.<br><br>0 = Ignore distance, and use a fixed resolution.</p>
+<br><h2>Interval</h2>
+<p>This allows you to control how often the cubemap texture updates in seconds.<br><br>-1 = Manual only.<br><br>0 = Every frame.<br><br>2 = Every two seconds.</p>
+<br><h2>FadeOuter</h2>
+<p>This allows you to control how the edge of the effect fades away into the normal scene. There will usually be some difference between the actual scene and the spatially distored scene rendered from the cubemap, and this can hide that transition.</p>
+<br><h2>WarpOuter</h2>
+<p>This allows you control how far from the outer edge the spatial distortion begins.</p>
+<br><h2>WarpStrength</h2>
+<p>This allows you control the strength of the spatial distortion at the event horizon. Higher values will cause the light to bend around, allowing you to see backwards.</p>
+<br><h2>HoleSize</h2>
+<p>This allows you to set the size of the black hole disc.</p>
+<br><h2>HoleEdge</h2>
+<p>This allows you to control the thickness of the black hole disc (event horizon).</p>
+<br><h2>CachedCamera</h2>
+<p>This property gives you the <b>Camera</b> alongside this component.</p>
+<br><h2>CachedMaterial</h2>
+<p>This property gives you the <b>Material</b> used by this component when rendering</p>
+</div><br>
 <br><br>
 <a name="SgtSingularity"></a><h2>SgtSingularity</h2>
 <p>This component allows you to render a singularity/black hole.</p>
@@ -2382,122 +2505,6 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>The original pulse offset (requires AllowPulse).</p>
 </div><br>
 <br><br>
-<a name="SgtTerrain"></a><h2>SgtTerrain</h2>
-<p>This component allows you to make a planet or star whose surface is procedurally generated, and has LOD based on camera (or another Transform) distance.</p>
-<div style="padding-left: 75px;"><br><h2>Material</h2>
-<p>The base material for the terrain. If you're using one material per face or something more complex then use the SgtTerrainMaterial or SgtTerraimCubeMaterials component instead.</p>
-<br><h2>SharedMaterial</h2>
-<p>If you want to apply a shared material (e.g. atmosphere) to this terrain, then specify it here.</p>
-<br><h2>HeightMap</h2>
-<p>This allows you to set the texture used to read height data from. The height data is read from the alpha channel.</p>
-<br><h2>HeightScale</h2>
-<p>This allows you to set the strength of the height map samples, where maximum alpha (255) increases the terrain height by this amount.</p>
-<br><h2>MaskMap</h2>
-<p>This allows you to set the detail texture mask, where the red channel is used for DetailMapA, and the green channel is used for DetailMapB.</p>
-<br><h2>DetailTiling</h2>
-<p>The allows you to set how many times the detail textures are tiled along the planet surface.</p>
-<br><h2>DetailMapA</h2>
-<p>This allows you to set the detail texture, where the alpha channel is used as the height source.</p>
-<br><h2>DetailScaleA</h2>
-<p>This allows you to set the detail texture strength, where maximum alpha (255) increases the terrain height by this amount.</p>
-<br><h2>DetailMapB</h2>
-<p>This allows you to set the detail texture, where the alpha channel is used as the height source.</p>
-<br><h2>DetailScaleB</h2>
-<p>This allows you to set the detail texture strength, where maximum alpha (255) increases the terrain height by this amount.</p>
-<br><h2>TargetMainCamera</h2>
-<p>If you want the LOD to update based on the distance to the main camera, then enable this.</p>
-<br><h2>Targets</h2>
-<p>If you want the LOD to update based on the distance to other transforms, then set them here.</p>
-<br><h2>Radius</h2>
-<p>The base radius of the terrain. This can be deformed by another component like SgtTerrainSimplex.</p>
-<br><h2>Normals</h2>
-<p>The strategy used to generate the normal maps. FixedStep uses the NormalStep setting as the sample distance. QuadStep uses the current quad size as the sample distance.</p>
-<br><h2>NormalStep</h2>
-<p>This allows you to set the sample distance when calculating the surface normal of a given point. A higher value leads to smoother results.</p>
-<br><h2>NormalStrength</h2>
-<p>This allows you to adjust the overall effect of surface normals.</p>
-<br><h2>Subdivisions</h2>
-<p>The detail of each LOD level.</p>
-<br><h2>Budget</h2>
-<p>The maximum amount of time that can be spent updating the terrain each frame in seconds.</p>
-<br><h2>CenterMesh</h2>
-<p>If you have a large planet then your terrain faces should be centered.</p>
-<br><h2>ForceCPU</h2>
-<p>Terrains will be generated using Compute Shaders if possible, but this can force them to use CPU.</p>
-<br><h2>CenterBounds</h2>
-<p>Should the bounds match the size of the terrain?</p>
-<br><h2>MaxColliderDepth</h2>
-<p>The maximum LOD depth that colliders will be generated for (0 = none).</p>
-<br><h2>Distances</h2>
-<p>The LOD distances in local space, these should be sorted from high to low.</p>
-</div><br>
-<br><br>
-<a name="SgtTerrainCompute"></a><h2>SgtTerrainCompute</h2>
-<p>This class handles the GPU and CPU fallback for the SgtTerrain compute shader.</p>
-<div style="padding-left: 75px;"></div><br>
-<br><br>
-<a name="SgtTerrainFace"></a><h2>SgtTerrainFace</h2>
-<p>This component stores information about a particular terrain face, which can then subdivide/split into 4 child faces.</p>
-<div style="padding-left: 75px;"></div><br>
-<br><br>
-<a name="SgtTerrainLevel"></a><h2>SgtTerrainLevel</h2>
-<p>This class stores LOD data for each terrain detail level.</p>
-<div style="padding-left: 75px;"></div><br>
-<br><br>
-<a name="SgtTerrainModifier"></a><h2>SgtTerrainModifier</h2>
-<p>This is the base class for all components that modify or need to update with an SgtTerrain.</p>
-<div style="padding-left: 75px;"></div><br>
-<br><br>
-<a name="SgtTerrainNeighbour"></a><h2>SgtTerrainNeighbour</h2>
-<p>This struct stores information about which terrain face is next to the current one.</p>
-<div style="padding-left: 75px;"></div><br>
-<br><br>
-<a name="SgtTerrainObject"></a><h2>SgtTerrainObject</h2>
-<p>This component can be added to prefabs to make them spawnable with the SgtTerrainSpawner.</p>
-<div style="padding-left: 75px;"><br><h2>OnSpawn</h2>
-<p>Called when this object is spawned (if pooling is enabled).</p>
-<br><h2>OnDespawn</h2>
-<p>Called when this object is despawned (if pooling is enabled).</p>
-<br><h2>Pool</h2>
-<p>Can this object be pooled?</p>
-<br><h2>ScaleMin</h2>
-<p>The minimum scale this prefab is multiplied by when spawned.</p>
-<br><h2>ScaleMax</h2>
-<p>The maximum scale this prefab is multiplied by when spawned.</p>
-<br><h2>AlignToNormal</h2>
-<p>How far from the center the height samples are taken to align to the surface normal in world coordinates (0 = no alignment).</p>
-<br><h2>Renderers</h2>
-<p>If this prefab is spawned on a terrain with an atmosphere, you can set the renderers you want to have use the atmosphere material here.</p>
-<br><h2>Prefab</h2>
-<p>The prefab this was instantiated from.</p>
-</div><br>
-<br><br>
-<a name="SgtTerrainPlane"></a><h2>SgtTerrainPlane</h2>
-<p>This component generates a plane undernearth the current GameObject on top of the nearest terrain surface, allowing you to use physics on terrains without colliders.</p>
-<div style="padding-left: 75px;"><br><h2>Detail</h2>
-<p>The rows/columns of the collider plane.</p>
-<br><h2>Size</h2>
-<p>The size of the plane in world space.</p>
-</div><br>
-<br><br>
-<a name="SgtTerrainSpawner"></a><h2>SgtTerrainSpawner</h2>
-<p>This component allows you to spawn SgtTerrainObject prefabs on the surface of the terrain.</p>
-<div style="padding-left: 75px;"><br><h2>Depth</h2>
-<p>The patch depth required for these objects to spawn.</p>
-<br><h2>Seed</h2>
-<p>This allows you to set the random seed used during procedural generation.</p>
-<br><h2>SpawnProbability</h2>
-<p>This decides how many prefabs get spawned based on a random 0..1 sample on the x axis.</p>
-<br><h2>SpawnCountMax</h2>
-<p>The maximum amount of objects that can spawn on each level if all probability checks hit.</p>
-<br><h2>HeightMin</h2>
-<p>The minimum terrain height required for these prefabs to spawn.</p>
-<br><h2>HeightMax</h2>
-<p>The maximum terrain height required for these prefabs to spawn.</p>
-<br><h2>Prefabs</h2>
-<p>The prefabs we want to spawn on the terrain patch.</p>
-</div><br>
-<br><br>
 <a name="SgtThruster"></a><h2>SgtThruster</h2>
 <p>This component allows you to create simple thrusters that can apply forces to Rigidbodies based on their position. You can also use sprites to change the graphics.</p>
 <div style="padding-left: 75px;"><br><h2>Throttle</h2>
@@ -2540,50 +2547,56 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><br>
 <a name="SgtFloatingCamera"></a><h2>SgtFloatingCamera</h2>
 <p>This component marks the current GameObject as a camera. This means as soon as the transform.position strays too far from the origin (0,0,0), it will snap back to the origin.<br><br>After it snaps back, the SnappedPoint field will be updated with the current position of the SgtFloatingOrigin component.</p>
-<div style="padding-left: 75px;"><br><h2>Scale</h2>
-<p>The scale of this camera (e.g. 10 = objects should be 10% of normal size, 100 = 1%, etc)</p>
-<br><h2>SnapDistance</h2>
+<div style="padding-left: 75px;"><br><h2>SnapDistance</h2>
 <p>When the transform.position.magnitude exceeds this value, the position will be snapped back to the origin.</p>
 <br><h2>Vector3></h2>
 <p>Called when this camera's position snaps back to the origin (Vector3 = delta).</p>
-<br><h2>UseOrigin</h2>
-<p>This allows you to set the universal position of this camera. If you don't set this then standard position shifting will be used.</p>
 <br><h2>SnappedPoint</h2>
 <p>Every time this camera's position gets snapped, its position at that time is stored here. This allows other objects to correctly position themselves relative to this.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; This requires you to use the SgtFloatingOrigin component.</div></p>
-<br><h2>TryGetCamera</h2>
-<p>This will find the active and enabled camera with the matching scale, or return false.</p>
-<br><h2>IsRendering</h2>
-<p>This will return true if the attached Camera's culling mask includes the specified group.</p>
+<br><h2>TryGetInstance</h2>
+<p>This method will fill the instance with the first active and enabled <b>SgtFloatingCamera</b> instance in the scene and return true, or return false.</p>
 <br><h2>GetPosition</h2>
 <p>This gives you the universal SgtPosition of the input camera-relative world space position.</p>
 <br><h2>CalculatePosition</h2>
 <p>This gives you the camera-relative position of the input SgtPosition in world space.</p>
+<br><h2>[CONTEXT] Try Snap</h2>
+<p>If the current <b>Transform.position</b> has strayed too far from the origin, this method will then call <b>Snap</b>.</p>
+<br><h2>[CONTEXT] Snap</h2>
+<p>This method will reset the current <b>Transform</b> to 0,0,0 then update all <b>SgtFloatingObjects</b> in the scene.</p>
+</div><br>
+<br><br>
+<a name="SgtFloatingFollow"></a><h2>SgtFloatingFollow</h2>
+<p>This component makes the current <b>SgtPoint</b> follow the <b>Target SgtPoint</b>.<br><br>This is useful because you can't parent/child <b>SgtPoint</b> components like <b>SgtFloatingCamera</b> and <b>SgtFloatingObject</b>.</p>
+<div style="padding-left: 75px;"><br><h2>Target</h2>
+<p></p>
+<br><h2>Dampening</h2>
+<p>How quickly this point follows the target.<br><br>-1 = instant.</p>
+<br><h2>Rotate</h2>
+<p></p>
+<br><h2>LocalPosition</h2>
+<p>This allows you to specify a positional offset relative to the <b>Target</b>.</p>
+<br><h2>LocalRotation</h2>
+<p>This allows you to specify a rotational offset relative to the <b>Target</b>.</p>
 </div><br>
 <br><br>
 <a name="SgtFloatingLight"></a><h2>SgtFloatingLight</h2>
 <p>This component will rotate the current GameObject toward the SgtFloatingOrigin point. This makes directional lights compatible with the floating origin system.</p>
 <div style="padding-left: 75px;"></div><br>
 <br><br>
-<a name="SgtFloatingLod"></a><h2>SgtFloatingLod</h2>
-<p>This component will automatically spawn & despawn a prefab based on its float origin distance to the SgtFloatingOrigin.</p>
-<div style="padding-left: 75px;"><br><h2>DistanceMin</h2>
-<p>The minimum spawning distance in meters.</p>
-<br><h2>Prefab</h2>
-<p>The object that will be spawned when within distance.</p>
-<br><h2>DistanceMax</h2>
-<p>The maximum spawning distance in meters.</p>
-<br><h2>Clone</h2>
-<p>The currently spawned clone.</p>
-<br><h2>EnableInEditor</h2>
-<p>Spawn or despawn the LOD in the editor?</p>
-</div><br>
-<br><br>
 <a name="SgtFloatingObject"></a><h2>SgtFloatingObject</h2>
-<p>This component allows you to turn a normal GameObject into one that works with the floating origin system.<br><br>Keep in mind the transform.position will be altered based on camera movement, so certain components may not work correctly without modification.<br><br>For example, if you make this GameObject lerp between two Vector3 positions, then those positions will be incorrect when the floating origin snaps to a new position.<br><br>To correctly handle this scenario, you need to hook into the SgtFloatingCamera.OnPositionChanged event, and calculate new positions using the CalculatePosition method from the passed SgtFloatingCamera instance.</p>
-<div style="padding-left: 75px;"><br><h2>OnSnap</h2>
-<p>This is called each time this object's position snaps.</p>
-<br><h2>Point</h2>
-<p>This allows you to set the universal position of this object. If you don't set this then standard position shifting will be used.</p>
+<p>This component turns a normal <b>GameObject + Transform</b> into one that works with the floating origin system.<br><br>Keep in mind the <b>Transform.position</b> value will be altered based on camera movement, so certain components may not work correctly without modification.<br><br>For example, if you make this <b>Transform.position</b> between two positions, then those positions will be incorrect when the floating origin snaps to a new position.<br><br>To correctly handle this scenario, you must hook into the either this component's <b>OnSnap</b> event, or the static <b>SgtFloatingCamera.OnPositionChanged</b> event, and offset your position values from the given <b>Vector3</b> delta.</p>
+<div style="padding-left: 75px;"><br><h2>Seed</h2>
+<p>This allows you to set the random seed used during procedural generation. If this object is spawned from an <b>SgtFloatingSpawner___</b> component, then this will automatically be set.</p>
+<br><h2>OnSpawn</h2>
+<p>If this object is spawned from an <b>SgtFloatingSpawner___</b> component, then it will be given a seed and this event will be invoked.<br><br>int = Seed.</p>
+<br><h2>OnDistance</h2>
+<p>This event is called every <b>Update</b> with the current distance to the camera.</p>
+<br><h2>[CONTEXT] Reset Position</h2>
+<p>This method allows you to reset the <b>Position</b>, which will then be calculated in <b>Start</b>, or when you manually call the <b>DerivePosition</b> method.<br><br>You should use this if your object is part of a prefab, and you want to spawn it using <b>Transform.position</b> values.</p>
+<br><h2>[CONTEXT] Derive Position</h2>
+<p>This method will calculate the <b>Position</b> based on the current <b>Transform.position</b> value relative to the current <b>SgtFloatingCamera</b>.</p>
+<br><h2>InvokeOnSpawn</h2>
+<p>You can call this method to invoke the OnSpawn method.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; This should only be called from an <b>SgtFloatingSpawner___</b> component.</div></p>
 </div><br>
 <br><br>
 <a name="SgtFloatingOrbit"></a><h2>SgtFloatingOrbit</h2>
@@ -2614,24 +2627,16 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>The color of the orbit ring as it goes around the orbit.</p>
 </div><br>
 <br><br>
-<a name="SgtFloatingOrigin"></a><h2>SgtFloatingOrigin</h2>
-<p>This component marks the attached SgtFloatingPoint as the floating origin system's main point.</p>
-<div style="padding-left: 75px;"><br><h2>currentPointSet</h2>
-<p>Is CurrentPoint non-null?</p>
-<br><h2>currentPoint</h2>
-<p>If there is an active and enabled SgtFloatingOrigin instance, its attached SgtFloatingPoint will be set here.</p>
-</div><br>
-<br><br>
 <a name="SgtFloatingPoint"></a><h2>SgtFloatingPoint</h2>
 <p>This component wraps SgtPosition into a component, and defines a single point in the floating origin system.<br><br>Normal transform position coordinates are stored using floats (Vector3), but SgtPosition coordinates are stored using a long and a double pair.<br><br>The long is used to specify the current grid cell, and the double is used to specify the high precision relative offset to the grid cell.<br><br>Combined, these values allow simulation of the whole observable universe.</p>
 <div style="padding-left: 75px;"><br><h2>Position</h2>
-<p>The position wrapped by this component.</p>
+<p>The position wrapped by this component.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; If you modify this then you must call the <b>PositionChanged</b> method after.</div></p>
 <br><h2>OnPositionChanged</h2>
-<p>Whenever the Position values are modified, this gets called. This is useful for components that depend on this position being known at all times (e.g. SgtFloatingOrbit).</p>
+<p>Whenever the <b>Position</b> values are modified, this gets called. This is useful for components that depend on this position being known at all times (e.g. SgtFloatingOrbit).</p>
 <br><h2>PositionChanged</h2>
-<p>Call this method after you've finished modifying the Position, and it will notify all event listeners.</p>
-<br><h2>[CONTEXT] Derive Position</h2>
-<p>If you're upgrading a normal SgtFloatingObject to one that uses SgtFloatingPoint, this method will automatically calculate the Position based on the origin.</p>
+<p>Call this method after you've finished modifying the <b>Position</b>, and it will notify all event listeners.</p>
+<br><h2>SetPosition</h2>
+<p>This method allows you to change the whole <b>Position</b> state, and it will automatically call the <b>PositionChanged</b> method if the position is different.</p>
 </div><br>
 <br><br>
 <a name="SgtFloatingRoot"></a><h2>SgtFloatingRoot</h2>
@@ -2640,30 +2645,20 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><br>
 <a name="SgtFloatingScaler"></a><h2>SgtFloatingScaler</h2>
 <p>This component scales the current SgtFloatingObject based on its distance to the SgtFloatingOrigin.<br><br>This scaling allows you to see the object from a greater distance than usual, which is very useful for star/planet/etc billboards you need to see from a distance.</p>
-<div style="padding-left: 75px;"><br><h2>BaseScale</h2>
-<p>The scale of the object when at DistanceMin.</p>
-<br><h2>ScaleMultiplier</h2>
-<p>Scale is multiplied by this, allowing you to more easily tweak large scales.</p>
-<br><h2>DistanceMin</h2>
-<p>The distance where the scaling begins.</p>
-<br><h2>DistanceMax</h2>
-<p>The distance where the scaling stops.</p>
-</div><br>
-<br><br>
-<a name="SgtFloatingSpawnable"></a><h2>SgtFloatingSpawnable</h2>
-<p>This component allows the current GameObject to be spawned using the SgtFloatingSpawner___ components.</p>
-<div style="padding-left: 75px;"><br><h2>Seed</h2>
-<p>This allows you to set the random seed used during procedural generation. If this object is spawned from an SgtFloatingSpawner___ component, then this will automatically be set.</p>
-<br><h2>OnSpawn</h2>
-<p>This event gets called when this opened is spawned (int = seed).</p>
+<div style="padding-left: 75px;"><br><h2>CachedObject</h2>
+<p>The <b>SgtFloatingObject</b> component alongside this component.</p>
 </div><br>
 <br><br>
 <a name="SgtFloatingSpawner"></a><h2>SgtFloatingSpawner</h2>
 <p>This is the base class for all floating origin spawners, providing a useful methods for spawning and handling prefabs.</p>
-<div style="padding-left: 75px;"><br><h2>Category</h2>
+<div style="padding-left: 75px;"><br><h2>Range</h2>
+<p>The camera must be within this range for this spawner to activate.</p>
+<br><h2>Category</h2>
 <p>If you want to define prefabs externally, then you can use the SgtSpawnList component with a matching Category name.</p>
 <br><h2>Prefabs</h2>
 <p>If you aren't using a spawn list category, or just want to augment the spawn list, then define the prefabs you want to spawn here.</p>
+<br><h2>CachedObject</h2>
+<p>The <b>SgtFloatingObject</b> component alongside this component.</p>
 </div><br>
 <br><br>
 <a name="SgtFloatingSpawnerOrbit"></a><h2>SgtFloatingSpawnerOrbit</h2>
@@ -2703,11 +2698,13 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 </div><br>
 <br><br>
 <a name="SgtFloatingSpeedometer"></a><h2>SgtFloatingSpeedometer</h2>
-<p>This component monitors Point for changes, and outputs the speed of those changes to the Title text.</p>
+<p>This component monitors the specified <b>SgtFloatingCamera</b> or <b>SgtFloatingObject</b> point for position changes, and outputs the speed of those changes to the <b>OnString</b> event.</p>
 <div style="padding-left: 75px;"><br><h2>Point</h2>
 <p>The point whose speed will be monitored.</p>
-<br><h2>Title</h2>
-<p>The speed will be output to this component.</p>
+<br><h2>Format</h2>
+<p>The format of the speed text.</p>
+<br><h2>OnString</h2>
+<p>Each time the speed updates this event will fire, which you can link to update UI text.</p>
 </div><br>
 <br><br>
 <a name="SgtFloatingTarget"></a><h2>SgtFloatingTarget</h2>
@@ -2776,8 +2773,20 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><br>
 <a name="SgtPosition"></a><h2>SgtPosition</h2>
 <p>This class stores a coordinate in the floating origin system, and provides methods to manipulate them.</p>
-<div style="padding-left: 75px;"><br><h2>CellSize</h2>
+<div style="padding-left: 75px;"><br><h2>CELL_SIZE</h2>
 <p>When the LocalX/Y/Z values exceed this value, the Global/X/Y/Z values will be modified to account for it, creating a grid system<br><br>The universe is 4.4e+26~ meters in radius<br><br>A long stores up to +- 9.2e+18~<br><br>Divide them, and you get 47696652.0723<br><br>Thus the below value allows you to simulate a universe that is larger than the current observable universe</p>
+<br><h2>LocalX</h2>
+<p>The position in meters along the X axis, relative to the current global cell position.</p>
+<br><h2>LocalY</h2>
+<p>The position in meters along the Y axis, relative to the current global cell position.</p>
+<br><h2>LocalZ</h2>
+<p>The position in meters along the Z axis, relative to the current global cell position.</p>
+<br><h2>GlobalX</h2>
+<p>The current grid cell along the X axis. Each grid cell is equal to 50000000 meters.</p>
+<br><h2>GlobalY</h2>
+<p>The current grid cell along the Y axis. Each grid cell is equal to 50000000 meters.</p>
+<br><h2>GlobalZ</h2>
+<p>The current grid cell along the Z axis. Each grid cell is equal to 50000000 meters.</p>
 </div><br>
 <br><br>
 <a name="SgtSpawnList"></a><h2>SgtSpawnList</h2>
@@ -2791,37 +2800,36 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 </div>
 <div style="position: absolute; width: 310px; left: 0px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
 <h2 style="padding-bottom: 20px;">Index</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-2548134">Thank you for using Space Graphics Toolkit &#x2764;&#xFE0F</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-2548140">How do I upgrade?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103652">What is Space Graphics Toolkit?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103670">Where do I get more packs?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#104062">Why does each feature require so many components?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103400">How do I use this from C#?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103968">Are scriptable render pipelines (SRP) supported?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103924">Is VR supported?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103734">Does this work on mobile/console/WebGL/etc?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103748">Accretion</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103088">Atmosphere</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103356">Aurora</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103898">Backdrop</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103062">Belt</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#102916">Billboard</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103252">Cloudsphere</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103116">Corona</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#102964">Debris</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103822">Flare</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103322">Jovian</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#102662">Lightning</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#102760">Planet</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103148">Prominence</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103260">Ring</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103380">Singularity</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#102618">Spacetime</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103558">Star</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103572">Starfield</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103156">Terrain</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103016">Thruster</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#104006">Universe</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-1414">Thank you for using Space Graphics Toolkit &#x2764;&#xFE0F</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-1420">How do I upgrade?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6190">What is Space Graphics Toolkit?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6220">Where do I get more packs?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6550">Why does each feature require so many components?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5950">How do I use this from C#?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6458">Are scriptable render pipelines (SRP) supported?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6426">Is VR supported?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6272">Does this work on mobile/console/WebGL/etc?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6298">Accretion</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5576">Atmosphere</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5892">Aurora</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6406">Backdrop</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5550">Belt</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5416">Billboard</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5752">Cloudsphere</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5604">Corona</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5470">Debris</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6366">Flare</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5828">Jovian</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5154">Lightning</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Planet">Planet</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5642">Prominence</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5760">Ring</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5934">Singularity</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5104">Spacetime</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6120">Star</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6146">Starfield</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5516">Thruster</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6508">Universe</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Assets</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#1">Lean Touch</a></p>
@@ -2838,14 +2846,15 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#12">Volumetric Audio</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Versions</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#102890">3.6.9</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103460">3.6.8</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#104074">3.6.7</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103002">3.6.6</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#102680">3.6.5</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103974">3.6.4</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#102716">3.6.3</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#103442">3.6.2</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6064">3.7.0</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5396">3.6.9</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6022">3.6.8</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6562">3.6.7</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5490">3.6.6</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5184">3.6.5</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6470">3.6.4</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5220">3.6.3</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5980">3.6.2</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Components</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtAccretion">SgtAccretion</a></p>
@@ -2900,9 +2909,16 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtJovianScatteringTex">SgtJovianScatteringTex</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtLightning">SgtLightning</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtLightningSpawner">SgtLightningSpawner</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtMeshDisplacer">SgtMeshDisplacer</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtPlanet">SgtPlanet</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtPlanetMeshConverter">SgtPlanetMeshConverter</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtDynamicPlanet">SgtDynamicPlanet</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtDynamicPlanetChunk">SgtDynamicPlanetChunk</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtDynamicPlanetCollider">SgtDynamicPlanetCollider</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtDynamicPlanetDetail">SgtDynamicPlanetDetail</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtDynamicPlanetModifier">SgtDynamicPlanetModifier</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtDynamicPlanetObject">SgtDynamicPlanetObject</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtDynamicPlanetSpawner">SgtDynamicPlanetSpawner</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtDynamicPlanetVisual">SgtDynamicPlanetVisual</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtDynamicPlanet_Job">SgtDynamicPlanet</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtStaticPlanet">SgtStaticPlanet</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtProminence">SgtProminence</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtProminenceModel">SgtProminenceModel</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtRing">SgtRing</a></p>
@@ -2912,8 +2928,6 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtRingModel">SgtRingModel</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtRingNearTex">SgtRingNearTex</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtBehaviour">SgtBehaviour</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtBoundsD">SgtBoundsD</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtBoundsL">SgtBoundsL</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtCamera">SgtCamera</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtCameraState">SgtCameraState</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtDepthTextureMode">SgtDepthTextureMode</a></p>
@@ -2925,13 +2939,15 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtLight">SgtLight</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtLightPointer">SgtLightPointer</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtLinkedBehaviour">SgtLinkedBehaviour&lt;T&gt;</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtLong3">SgtLong3</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtLongBounds">SgtLongBounds</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtLongRect">SgtLongRect</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtPoolClass">SgtPoolClass&lt;T&gt;</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtPoolComponent">SgtPoolComponent</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtPoolObject">SgtPoolObject</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtProcedural">SgtProcedural</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtQuads">SgtQuads</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtQuadsModel">SgtQuadsModel</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtRectL">SgtRectL</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtRenderingPipeline">SgtRenderingPipeline</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtRenderQueue">SgtRenderQueue</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtSeedAttribute">SgtSeedAttribute</a></p>
@@ -2947,10 +2963,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtShapeSphere">SgtShapeSphere</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtShapeTorus">SgtShapeTorus</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtSharedMaterial">SgtSharedMaterial</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtVector2D">SgtVector2D</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtVector3D">SgtVector3D</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtVector3L">SgtVector3L</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtVector4D">SgtVector4D</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtLens">SgtLens</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtSingularity">SgtSingularity</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtSingularityModel">SgtSingularityModel</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtSpacetime">SgtSpacetime</a></p>
@@ -2965,29 +2978,18 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtStarfieldNebula">SgtStarfieldNebula</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtStarfieldSpiral">SgtStarfieldSpiral</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtStarfieldStar">SgtStarfieldStar</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtTerrain">SgtTerrain</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtTerrainCompute">SgtTerrainCompute</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtTerrainFace">SgtTerrainFace</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtTerrainLevel">SgtTerrainLevel</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtTerrainModifier">SgtTerrainModifier</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtTerrainNeighbour">SgtTerrainNeighbour</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtTerrainObject">SgtTerrainObject</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtTerrainPlane">SgtTerrainPlane</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtTerrainSpawner">SgtTerrainSpawner</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtThruster">SgtThruster</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtThrusterRoll">SgtThrusterRoll</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtThrusterScale">SgtThrusterScale</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtFloatingCamera">SgtFloatingCamera</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtFloatingFollow">SgtFloatingFollow</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtFloatingLight">SgtFloatingLight</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtFloatingLod">SgtFloatingLod</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtFloatingObject">SgtFloatingObject</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtFloatingOrbit">SgtFloatingOrbit</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtFloatingOrbitVisual">SgtFloatingOrbitVisual</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtFloatingOrigin">SgtFloatingOrigin</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtFloatingPoint">SgtFloatingPoint</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtFloatingRoot">SgtFloatingRoot</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtFloatingScaler">SgtFloatingScaler</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtFloatingSpawnable">SgtFloatingSpawnable</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtFloatingSpawner">SgtFloatingSpawner</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtFloatingSpawnerOrbit">SgtFloatingSpawnerOrbit</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtFloatingSpawnerRing">SgtFloatingSpawnerRing</a></p>
