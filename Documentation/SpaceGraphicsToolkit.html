@@ -29,14 +29,14 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h1 style="font-size: 75px; color: #FFF; text-align: center; vertical-align: middle; line-height: 100px;">Space Graphics Toolkit</h1>
 </div>
 <div style="position: absolute; left: 350px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
-<a name="-1414"></a><h2>Thank you for using Space Graphics Toolkit &#x2764;&#xFE0F</h2>
+<a name="-1956"></a><h2>Thank you for using Space Graphics Toolkit &#x2764;&#xFE0F</h2>
 <p>If you haven't already, please consider writing a <a href="http://CarlosWilkes.com/Get/SpaceGraphicsToolkit" target="_blank">review</a>. They really help me out!</p><p>If you have any questions, then feel free to send me an <a href="mailto:carlos.wilkes@gmail.com">E-Mail</a>, or <a href="http://forum.unity.com/members/41960" target="_blank">Private Message</a>.</p><p>You can also ask in the <a href="http://CarlosWilkes.com/Forum/SpaceGraphicsToolkit" target="_blank">Forum Thread</a>.</p><p>You can also check the <a href="http://youtube.com/user/CarlosWilkes/videos" target="_blank">YouTube Channel</a>.</p><p>I'm also available for freelance work if you need help with your projects.</p>
 <br><br>
-<a name="-1420"></a><h2>How do I upgrade?</h2>
+<a name="-1962"></a><h2>How do I upgrade?</h2>
 <p>First, make sure you <b>back up</b> your project files.</p><p>Next, install the latest version.</p><p>If for some reason the latest updates breaks your project (e.g. errors in the console), then try deleting the root folder for this asset, and reinstalling it.</p><p>If it still doesn't work then go back to your previous version, and let me know what the errors are, so I can fix it.</p>
 <br><br>
 <div style="">
-<a name="6190"></a><h2>What is Space Graphics Toolkit?</h2>
+<a name="13482"></a><h2>What is Space Graphics Toolkit?</h2>
 <p>Space Graphics Toolkit (SGT) is a large collection of components, shaders, and graphical effects that can be combined in any way you like to make impressive space scenes.</p><p>This asset is split into <b>Feature</b> and <b>Pack</b> folders.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -48,7 +48,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p><b>Pack</b> folders contain mostly media and example scenes for a group of SGT features. For example, the <b>Alien Worlds Pack</b> contains a selection of alien planet textures, materials, and demo scenes.</p>
 <br><br></div>
 <div style="">
-<a name="6220"></a><h2>Where do I get more packs?</h2>
+<a name="Packs"></a><h2>Where do I get more packs?</h2>
 <p>To reduce file size, I only include a few examples in the main asset. This allows me to release updates more efficiently. To get more, click the links below.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -68,27 +68,27 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>This pack contains 25 high resolution planets across a wide range of planet types. The main SGT asset only contains 2, so this pack is great if you want lots more planets.</p><p>You can find more information about it from <a href="http://assetstore.unity.com/packages/slug/124578?aid=1101l4Jks">HERE</a>.</p><div class="tip"><strong>NOTE:</strong>&emsp;This is a standalone asset, so it does <b>NOT</b> require SGT.</div>
 <br><br></div>
 <div style="">
-<a name="6550"></a><h2>Why does each feature require so many components?</h2>
+<a name="13842"></a><h2>Why does each feature require so many components?</h2>
 <p>Many SGT features are rendered using a combination of components. For example, the <b>Accretion</b> feature (animated accretion disc) is rendered using the <b>SgtAccretion</b>, <b>SgtAccretionMesh</b>, and <b>SgtAccretionNearTex</b> components.</p><p>The main reason why these components are separate is to improve code organization, but this system also allows you to optimize your scene. If you click the context menu button (gear icon) at the top right of these components, you'll notice you have the option to <b>Export Mesh</b>, <b>Export Texture</b>, or similar. For example, the <b>SgtAccretionMesh</b> component's context menu has the <b>Export Mesh</b> option. This allows you to save the generated accretion disc mesh as an asset, so you can now remove this component, and drag and drop your saved mesh into the <b>SgtAccretion</b> component's <b>Mesh</b> setting.</p><p>Doing this allows you to improve performance of your scene, because the <b>SgtAccretionMesh</b> component no longer has to generate a new mesh each time you add an accretion disc to your scene. The downside of course is that you can no longer adjust the mesh settings, so it may not be suitable for your project if you need to be able to control the generation settings in game.</p><p>For more information about which components can export what meshes/textures/etc, look at the documentation specific to the feature you're interested in.</p>
 <br><br></div>
 <div style="">
-<a name="5950"></a><h2>How do I use this from C#?</h2>
+<a name="13242"></a><h2>How do I use this from C#?</h2>
 <p>Most features of SGT work the same in the editor as they do from C# code, including the identifiers for each setting. For example, to add an atmosphere to a planet just add the <b>SgtAtmosphere</b> component, as you would do in the editor.</p><p>The biggest difference is that editing an inspector setting will automatically update the component state, whereas doing this from code won't. This is because the settings are fields, and so the component doesn't know the value changed.</p><p>It would be possible to automatically update the components using a property, but I didn't want to introduce performance issues if you need to update many settings at the same time, or increase complexity of the code using some kind of dirty marking system.</p><p>Therefore, to change component settings and update them, you can either:</p><div class="tip"><strong>Method 1</strong>&emsp;Call the <b>SetXXX</b> method that automatically updates the component state. For example, the <b>SgtAtmosphere</b> component has the <b>SetColor</b> method, which can be used instead of setting the <b>Color</b> field directly. Keep in mind that this instantly updates the component, so you shouldn't use multiple <b>Set</b> methods in a row.</div><div class="tip"><strong>Method 2</strong>&emsp;Call the <b>UpdateXXX</b> method after you update the fields. For example, the <b>SgtAtmosphere</b> has the <b>UpdateMaterials</b> method, which you can call after updating fields that depend on the material state. To find which <b>Update</b> method you need to call to update a specific field, you can look at the inspector code at the top of the source file for the component, or see the <b>Set</b> method code associated with the field.</div>
 <br><br></div>
 <div style="">
-<a name="6458"></a><h2>Are scriptable render pipelines (SRP) supported?</h2>
+<a name="SRP"></a><h2>Are scriptable render pipelines (SRP) supported?</h2>
 <p>LWRP/URP is fully supported, and HDRP is mostly supported (currently being worked on).</p><p>After you've enabled a scriptable rendering pipeline in your <b>Graphics</b> settings:</p><div class="tip"><strong>STEP 1</strong>&emsp; Go to to the <b>Space Graphics Toolkit > Features > Shared > Resources</b> folder.</div><div class="tip"><strong>STEP 2</strong>&emsp; Select the <b>SgtRenderingPipeline</b> asset.</div><div class="tip"><strong>STEP 3</strong>&emsp; Click the <b>Switch To Scriptable Pipeline</b> button.</div><div class="tip"><strong>DONE</strong>&emsp; SGT has now been converted to use SRP.</div><p>If you decide to go back to the standard rendering pipeline, then you can click the <b>Switch To Standard Pipeline</b> button.</p><div class="tip"><strong>NOTE:</strong>&emsp;If you want to use LWRP/URP with the SgtSingulairty feature (black holes), then you must enable the <b>Opaque Texture</b> setting in your pipeline settings asset.</div>
 <br><br></div>
 <div style="">
-<a name="6426"></a><h2>Is VR supported?</h2>
+<a name="VR"></a><h2>Is VR supported?</h2>
 <p>Yes, this asset has been developed and tested in VR, and supports both multi-pass & single-pass rendering modes.</p><div class="tip"><strong>NOTE:</strong>&emsp;Some features of SGT will need modification to look good in VR. For example, many of the demo scenes uses static star backgrounds (e.g. <b>SgtBackdrop</b>), which you can replace with fully 3D ones with the <b>SgtStarfieldElliptical</b> component.</div><p>You can see the <b>VR Stars</b> demo scene for an example of how starfields can be set up to create an immersive scene.</p>
 <br><br></div>
 <div style="">
-<a name="6272"></a><h2>Does this work on mobile/console/WebGL/etc?</h2>
+<a name="13564"></a><h2>Does this work on mobile/console/WebGL/etc?</h2>
 <p>Yes, all features of this asset have been written with compatibility in mind, and have been heavily optimized to run on almost any device and platform, while still giving impressive visual results.</p><p>The only <i>heavy</i> feature that should be used with care is the <b>SgtDynamicPlanet</b> component, because it can quickly generate a lot of triangles. This component has many settings to reduce triangle count for lower end decides though.</p>
 <br><br></div>
 <div style="">
-<a name="6298"></a><h2>Accretion</h2>
+<a name="Accretion"></a><h2>Accretion</h2>
 <p>The <b>Accretion</b> feature allows you to create accretion discs. An accretion disc is a swirling vortex of matter falling toward a massive body like a star, or black hole.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -104,7 +104,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>While the segment splitting improves depth sorting against objects in the center, it won't always fix it 100%.</p><p>To improve this you can try increasing the <b>SgtAccretionMesh.BoundsShift</b> setting, or increasing the <b>Segments</b> setting in both components.</p>
 <br><br></div>
 <div style="">
-<a name="5576"></a><h2>Atmosphere</h2>
+<a name="Atmosphere"></a><h2>Atmosphere</h2>
 <p>The <b>Atmosphere</b> feature allows you to add a volumetric atmosphere above a planet's surface.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -136,7 +136,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>By default, the <b>SgtAtmosphere</b> component only applies atmospheric fog to the planet surface. If you have objects on the surface of your planet then they will not receive any fog. This usually isn't an issue for planet objects that are near the camera (e.g. player spaceship), but if you need to place an object on your planet and move far away, then you probably want fog to be applied to it. To do this, simply drag and drop the <b>MeshRenderer</b> you want into the <b>SgtSharedMaterial.Renderers</b> list attached to your SgtAtmosphere GameObject.</p>
 <br><br></div>
 <div style="">
-<a name="5892"></a><h2>Aurora</h2>
+<a name="Aurora"></a><h2>Aurora</h2>
 <p>The <b>Aurora</b> feature allows you to add a animated aurora ribbons above a planet's surface.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -144,7 +144,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Begin by right clicking in your Hierarchy and selecting: <b>Space Graphics Toolkit > Aurora</b></p><p>Or from the menu bar: <b>GameObject > Space Graphics Toolkit > Aurora</b></p><div class="tip"><strong>NOTE:</strong>&emsp;If you want to add this on top of an existing GameObject (e.g. your planet), then right click your object, or select it before using the menu.</div><p>Your scene should now contain a new selected GameObject called <b>Aurora</b> with the <b>SgtAurora</b> component.</p><p>Next, you can click the the <b>"Add MainTex"</b> button. This will add the <b>SgtAuroraMainTex</b> component to your Aurora GameObject.</p><div class="tip"><strong>NOTE:</strong>&emsp;There are <b>many</b> settings in these components, and it's not always easy to explain what they do. To understand what they do I recommend you read the individual documentation for each setting (or read the tooltips), and then adjust it to see what visual change it makes. This is easiest to do if you open the aurora feature example scenes.</div>
 <br><br></div>
 <div style="">
-<a name="6406"></a><h2>Backdrop</h2>
+<a name="Backdrop"></a><h2>Backdrop</h2>
 <p>The <b>Backdrop</b> feature allows you to make background stars, clouds, and other visuals. This is achieved using static billboards that face and always follow the camera. These are very good for backgrounds because:</p><p>1 - They are very efficient to render, because there is very little overdraw (unless you increase the individual billboard size too much).</p><p>2 - Each billboard can have its own texture, so even when you zoom in there is exceptional detail, unlike with skyboxes.</p><p>3 - They look great in VR, because the billboards are static and look consistent from all angles, unlike particle billboards.</p><p>4 - They consume very little memory, because each billboard is just 4 vertices.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -160,7 +160,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>When billboards get too small they tend to flicker, which looks bad. The <b>SgtBackdrop.ClampSize</b> setting can be used to avoid this by limiting the size, and any billboards falling under this size will be faded proportional to the size they would otherwise have been.</p>
 <br><br></div>
 <div style="">
-<a name="5550"></a><h2>Belt</h2>
+<a name="Belt"></a><h2>Belt</h2>
 <p>The <b>Belt</b> feature allows you to make rings of asteroids that orbit in circles. These asteroids are rendered with such high performance that you can have tens of thousands of them at once, but this does come with the limitation that you can't interact with them.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -168,7 +168,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Begin by right clicking in your Hierarchy and selecting: <b>Space Graphics Toolkit > Belt Simple</b></p><p>Or from the menu bar: <b>GameObject > Space Graphics Toolkit > Belt Simple</b></p><div class="tip"><strong>NOTE:</strong>&emsp;If you want to add this on top of an existing GameObject (e.g. your planet), then right click your object, or select it before using the menu.</div><p>Your scene should now contain a new selected GameObject called <b>"Belt Simple"</b> with the <b>SgtBeltSimple</b> component.</p><div class="tip"><strong>NOTE:</strong>&emsp;There are <b>many</b> settings in this component. To understand what they do I recommend you read the individual documentation for each setting (or read the tooltips), and then adjust it to see what visual change it makes. This is easiest to do if you open the belt example scenes.</div>
 <br><br></div>
 <div style="">
-<a name="5416"></a><h2>Billboard</h2>
+<a name="Billboard"></a><h2>Billboard</h2>
 <p>The <b>Billboard</b> feature allows you to make quads that always face the camera. This is useful for rendering distant stars that you can never land on, but still want to have look good when fairly close. While billboards are typically very simple, their implementation in SGT gives you lots of advanced features, like tracking the camera's roll, fading out behind solid objects, and rotation to avoid distortion when not looking at them directly.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -188,11 +188,11 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>You may notice the second billboard layer you added looks great from some angles, but it shines through all foreground objects (e.g. planets), which makes it look bad.</p><p>To fix this, begin by changing the <b>Layer</b> of all your billboard GameObjects to <b>Ignore Raycast</b>.</p><p>Next, right click your <b>Hierarchy</b> window and select <b>Space Graphics Toolkit > Depth Camera</b>, your scene should now have a <b>Depth Camera</b> GameObject.</p><p>Next, add the <b>SgtDepthScale</b> component to your second billboard layer. This component will use the Depth Camera you added earlier to</p><p>calculate how much it should shrink the current GameObject based on the optical thickness (occlusion) between the camera, and the light flare.</p><p>If you play your game, your first light flare should always be visible and look the same, and your second layer should now grow and shrink based on what's in front.</p><p>If not, try adjusting the <b>SgtDepthCamera</b> component's <b>Size</b> setting. This value is in world space and should correspond to your scene scale.</p><p>You can also examine the <b>Sprite Billboard Flare</b> demo scenes to see how they're setup.</p>
 <br><br></div>
 <div style="">
-<a name="5752"></a><h2>Cloudsphere</h2>
+<a name="Cloudsphere"></a><h2>Cloudsphere</h2>
 <p>The <b>Cloudsphere</b> feature allows you to add a layer of clouds around your planets.</p><p>To understand how this works, I recommend you check out the demo scenes inside the <b>Features/Cloudsphere</b> folder.</p>
 <br><br></div>
 <div style="">
-<a name="5604"></a><h2>Corona</h2>
+<a name="Corona"></a><h2>Corona</h2>
 <p>The <b>Corona</b> feature allows you to add a volumetric atmosphere above a star's surface.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -220,7 +220,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>If you want the surface of your star to be procedurally animated, then you can use one of the materials in the <b>Star Pack/Materials</b> folder/directory. If you want to customize the material then I recommend you duplicate one of these materials first.</p><p>To use it, simply find the <b>MeshRenderer</b> component in the inspector window for your Sphere GameObject, expand the <b>Materials</b> array, and</p><p>drag and drop your new material over the <b>Element 0</b> slot.</p>
 <br><br></div>
 <div style="">
-<a name="5470"></a><h2>Debris</h2>
+<a name="Debris"></a><h2>Debris</h2>
 <p>The <b>Debris</b> feature allows you to procedurally spawn debris/dust/asteroids and other small objects around the camera.</p><p>This feature comes with two debris spawning components, which both implement debris spawning using different strategies.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -232,7 +232,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>The <b>SgtDebrisGrid</b> component implements debris spawning where the positions are procedurally chosen. This approach is ideal if you want a consistent distribution of static debris that look the same when returning to the same location.</p><p>One thing you should keep in mind when using this approach is that debris spawning performance is proportional to your camera movement speed.</p>
 <br><br></div>
 <div style="">
-<a name="6366"></a><h2>Flare</h2>
+<a name="Flare"></a><h2>Flare</h2>
 <p>The <b>Flare</b> feature allows you to generate star flares that can be combined with the <b>Billboard</b> feature. These flares are generated using a combination of a custom mesh, and a gradient texture. This allows you to generate very large and detailed flares that use very little GPU memory, unlike typical billboard textures.</p><p>Most of the SGT demo scenes have impressive looking star billboards that use the Sprite Renderer component with a large texture. You can</p><p>replace these by deleting the Sprite Renderer component, and following the steps below to replace it.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -256,7 +256,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>By default the flare will render like a normal transparent object, but to make it look really bright it should render in front of everything. To do this, change the <b>Z Test</b> setting to <b>Always</b>, and change the <b>Render Queue</b> setting to <b>Overlay (4000)</b>.</p><p>If you do this then I recommend you also use the <b>SgtDepthScale</b> component combined with <b>SgtDepthCamera</b>, and set the flare's layer to <b>Ignore Raycast</b>. You can read the <b>Camera Depth Flares</b> tutorial inside the <b>Bonus Pack</b> for more information.</p>
 <br><br></div>
 <div style="">
-<a name="5828"></a><h2>Jovian</h2>
+<a name="Jovian"></a><h2>Jovian</h2>
 <p>The <b>Jovian</b> feature allows you to create volumetric gas giant planets.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -280,7 +280,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>If you want this planet to cast shadows using the SGT shadow system (e.g. so it can cast on rings), then add the <b>SgtShadowSphere</b> component alongside the SgtJovian component.</p><p>To make the shadows look correct the <b>Radius Min/Max</b> values should be similar to the <b>SgtJovian</b> component's <b>Radius</b> setting.</p>
 <br><br></div>
 <div style="">
-<a name="5154"></a><h2>Lightning</h2>
+<a name="Lightning"></a><h2>Lightning</h2>
 <p>The <b>Lightning</b> feature allows you to add an animated lightning effect to your planet. The lightning is procedurally spawned around the planet, and the animation is defined by the texture, giving you very high performance.</p><p>To understand how this works, I recommend you check out the demo scenes inside the <b>Features/Lightning</b> folder.</p>
 <br><br></div>
 <div style="">
@@ -300,11 +300,11 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>The <b>SgtDynamicPlanet</b> component can be used to render a <b>Material</b> on a dynamically generated mesh that increases in detail based on the camera position.</p><div class="tip"><strong>NOTE:</strong>&emsp;The material should use the <b>SGT Planet</b> shader, otherwise the <b>WaterLevel</b> setting will not work properly.</div><div class="tip"><strong>NOTE:</strong>&emsp;This component bakes the water level into the mesh, so changing it requires the whole planet mesh to be regenerated.</div><p>The <b>SgtDynamicPlanetObject</b> component can be used to snap a <b>Transform</b> to the planet surface.</p><p>The <b>SgtDynamicPlanetDetail</b> component can be used to enhance the heightmap data with procedural noise when you get closer to the surface.</p><p>The <b>SgtDynamicPlanetCollider</b> component can be used to add <b>MeshCollider</b>s to the planet as you get closer.</p><p>The <b>SgtDynamicPlanetSpawner</b> component can be used to spawn prefabs to the planet as you get closer.</p><p>For further information I recommend you go through the demo scenes in the <b>Planet</b> feature folder.</p>
 <br><br></div>
 <div style="">
-<a name="5642"></a><h2>Prominence</h2>
+<a name="Prominence"></a><h2>Prominence</h2>
 <p>The <b>Prominence</b> feature allows you to render animated streaks coming off the surface of your stars. This feature can also be used to render fictional vortex like effects.</p><p>To understand how this works, I recommend you check out the demo scenes inside the <b>Features/Prominence</b> folder.</p>
 <br><br></div>
 <div style="">
-<a name="5760"></a><h2>Ring</h2>
+<a name="Ring"></a><h2>Ring</h2>
 <p>The <b>Ring</b> feature allows you to add high detail planetary rings to your planets.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -332,7 +332,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>If you want this ring to cast shadows using the SGT shadow system (e.g. so it can cast on planets), then add the <b>SgtShadowRing</b> component to the same GameObject as the SgtRing component.</p><p>To make the shadows look correct the <b>Radius Min/Max</b> values should be similar to the <b>SgtRingMesh</b> component's <b>Radius Min/Max</b> settings.</p>
 <br><br></div>
 <div style="">
-<a name="5934"></a><h2>Singularity</h2>
+<a name="Singularity"></a><h2>Singularity</h2>
 <p>The <b>Singularity</b> feature allows you to add gravitational lensing effects to you scene. This is where dense objects can cause light to bend around them, as seen around black holes.</p><p>This feature is implementated in two ways, using the the <b>SgtSingularity</b>, and the <b>SgtLens</b> components.</p><p>The main difference between these two implementations is that <b>SgtLens</b> can give you more accurate results, but because it's rendered from a single point it cannot accurately render objects that are close to it (due to a high degree of parallax). Since the cubemap is baked for rendering, it also means the subemap must be updated if your scene changes, which can be expensive to do. Therefore, if your scene is frequently changing, or there are objects nearby to the black hole, then you should use <b>SgtSingularity</b> instead.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -344,7 +344,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>The <b>SgtLens</b> component is a world space (cubemap) effect, which means it's slow to update, but it can rener very quickly, and it can warp pixels in any direction, including behind the camera.</p>
 <br><br></div>
 <div style="">
-<a name="5104"></a><h2>Spacetime</h2>
+<a name="Spacetime"></a><h2>Spacetime</h2>
 <p>The <b>Spacetime</b> feature allows you to render a grid that can be deformed by gravitational bodies, including gravitational waves from orbiting black holes.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -372,15 +372,15 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>You now have a basic spacetime set up. To show the spacetime curvature of planets and such, just add the Spacetime Well as a child to your planet, and watch it deform the grid as it moves.</p>
 <br><br></div>
 <div style="">
-<a name="6120"></a><h2>Star</h2>
+<a name="Star"></a><h2>Star</h2>
 <p>The <b>Star</b> feature includes a star surface shader that renders with procedural animation, giving you full control over its visuals to make any kind of star surface you like.</p><p>To make your own, simply make a new <b>Material</b> with the <b>Space Graphics Toolkit/Star</b> shader, and adjust the settings as you like.</p><div class="tip"><strong>NOTE:</strong>&emsp;I recommend you keep the <b>NoiseTex</b> and <b>Noise Step</b> settings as they are.</div><p>Feel free to experiment with the other settings to see what visual changes is makes. You can always look at the example star materials to get some ideas.</p>
 <br><br></div>
 <div style="">
-<a name="6146"></a><h2>Starfield</h2>
+<a name="Starfield"></a><h2>Starfield</h2>
 <p>The <b>Starfield</b> feature allows you render a wide range of effects involving a large amount of stars. For example, elliptical galaxies, spiral galaxies, and even starfield warp effects.</p><p>To understand how these work, I recommend you look at the demo scenes inside the <b>Features/Starfield</b> folder.</p>
 <br><br></div>
 <div style="">
-<a name="5516"></a><h2>Thruster</h2>
+<a name="Thruster"></a><h2>Thruster</h2>
 <p>The <b>Thruster</b> feature allows you to create spaceship thrusters that apply Newtonian forces to your spaceship, as well as render a basic thruster effect.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -404,7 +404,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>You now have a basic thruster that can add forces to your spaceships.</p><p>To control the thrusters based on user input, you need to write a simple script that stores a reference to each <b>SgtThruster</b> you have, and adjust the Throttle value (e.g. 0 to 1) based on these inputs.</p>
 <br><br></div>
 <div style="">
-<a name="6508"></a><h2>Universe</h2>
+<a name="Universe"></a><h2>Universe</h2>
 <p>The <b>Universe</b> feature allows you implement a floating origin system into your scene.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -472,31 +472,31 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Unity sounds only emanate from a single point source. This is great for explosions and footsteps, but quite often you need something more advanced. Volumetric Audio is an easy to use package that allows you to define boxes, spheres, capsules, paths, or meshes that sounds can emanate from.</p><br><br><br><br>
 <br><br>
 <h1>Versions</h1>
-<a name="6064"></a><h2>3.7.0</h2>
+<a name="13356"></a><h2>3.7.0</h2>
 <p>Moved main build to Unity <b>2018.4.0f1</b>.<br>Added new <b>Planet</b> demo scenes.<br>Added new <b>Universe</b> demo scenes.<br>Added <b>Eath Sized Planet</b> demo scene.<br>Added <b>SgtFloatingWarpPin.FloatingCamera</b> setting.<br>Added <b>SgtFloatingWarpPin.WorldCamera</b> setting.<br>Added <b>SgtFloatingSpawner.Range</b> setting.<br><b>SgtFloatingCamera</b> no longer needs to be attached to a <b>Camera</b>.<br><b>SgtFloatingCamera</b> snapping attempt moved from pre-render to LateUpdate.<br>Moved <b>Terrain</b> features to <b>Planet</b> folder.<br>Merged <b>SgtMeshDisplacer</b> into <b>SgtPlanet</b>.<br>Merged <b>SgtPlanetMeshConverter</b> into <b>SgtPlanet</b>.<br>Renamed <b>SgtPlanet</b> to <b>SgtStaticPlanet</b>.<br>Rewrote <b>SgtTerrain</b> to be faster and handle larger scale planets.<br>Renamed <b>SgtTerrain</b> to <b>SgtDynamicPlanet</b>.<br>Changed <b>SgtCameraMove.MouseSensitivity</b> to modify movement speed.<br>Merged <b>SgtFloatingPoint</b> into <b>SgtFloatingCamera</b>.<br>Merged <b>SgtFloatingPoint</b> into <b>SgtFloatingObject</b>.<br>Merged <b>SgtFloatingSpawnable</b> into <b>SgtFloatingObject</b>.<br>Removed <b>SgtFloatingLod</b> component.<br>Removed <b>SgtFloatingOrigin</b> component.<br>Removed <b>SgtFloatingCamera.Scale</b> setting.<br>Improved <b>SgtFloatingCamera</b> snap behavior with larger planets.<br>Added <b>SgtFloatingFollow</b> component.<br>Fixed <b>SgtJovian</b> error with <b>_MainTex</b> property.<br></p>
 <br><br>
-<a name="5396"></a><h2>3.6.9</h2>
+<a name="12688"></a><h2>3.6.9</h2>
 <p>Fixed <b>SgtStarfieldElliptical.StarRadiusBias</b> being 0 by default.<br>Improved <b>Billboard5</b> texture resolution.<br>Improved <b>Billboard6</b> texture resolution.<br>Changed <b>SgtInputManager</b> from a component to a normal class.<br>Updated all demo scenes.<br>Added <b>Basic Pack/Elliptical Galaxy</b> demo scene.<br>Added <b>Basic Pack/Spiral Galaxy</b> demo scene.<br>Added <b>Basic Pack/Nebula</b> demo scene.<br>Added <b>Starfield/Box</b> demo scene.<br>Added <b>Starfield/Box Offset</b> demo scene.<br>Added <b>Starfield/Box Colors</b> demo scene.<br>Added <b>Starfield/Box Clouds</b> demo scene.<br>Added <b>Starfield/Box BlendMode</b> demo scene.<br>Added <b>Starfield/Box PowerRGB</b> demo scene.<br>Added <b>Starfield/Box ClampSize</b> demo scene.<br>Added <b>Starfield/Box Layering</b> demo scene.<br>Added <b>Starfield/Elliptical</b> demo scene.<br>Added <b>Starfield/Elliptical Symmetry</b> demo scene.<br>Added <b>Starfield/Elliptical Offset</b> demo scene.<br>Added <b>Starfield/Elliptical Bias</b> demo scene.<br>Added <b>Starfield/Elliptical Layering</b> demo scene.<br>Added <b>Starfield/Spiral</b> demo scene.<br>Added <b>Starfield/Spiral Rotation</b> demo scene.<br>Added <b>Starfield/Spiral Arm Count</b> demo scene.<br>Added <b>Starfield/Spiral Twist</b> demo scene.<br>Added <b>Starfield/Spiral Thickness Inner</b> demo scene.<br>Added <b>Starfield/Spiral Thickness Outer</b> demo scene.<br>Added <b>Starfield/Spiral Layering</b> demo scene.<br>Added <b>Starfield/Nebula</b> demo scene.<br>Added <b>Starfield/Nebula Height Source</b> demo scene.<br>Added <b>Starfield/Nebula Scale Source</b> demo scene.<br>Added <b>Starfield/Nebula Jitter</b> demo scene.<br>Added <b>Starfield/Nebula HorizontalBrightness</b> demo scene.<br>Added <b>Starfield/Nebula Layering</b> demo scene.<br>Added <b>Starfield/Infinite</b> demo scene.<br>Added <b>Starfield/Infinite Far</b> demo scene.<br>Added <b>Starfield/Infinite Warp</b> demo scene.<br>Added <b>Starfield/Infinite Dust</b> demo scene.<br>Added <b>Starfield/Infinite Dust Near</b> demo scene.<br>Added <b>Starfield/Infinite Floating Camera</b> demo scene.<br>Added <b>Starfield/Infinite Floating Origin</b> demo scene.<br></p>
 <br><br>
-<a name="6022"></a><h2>3.6.8</h2>
+<a name="13314"></a><h2>3.6.8</h2>
 <p>Fixed <b>Accretion Disk</b> billboard flare rendering.<br>Fixed <b>SgtShadowLayer</b> flickering with SRP.<br>Fixed <b>SgtDebrisGrid</b> spawning code.<br>Fixed default <b>SgtStarfieldElliptical.Bias</b> value.<br>Enabled demo scene billboard <b>Roll To Camera</b> for VR compatibility.<br>Changed <b>Additive Overlay</b> shader render queue for SRP compatibility.<br>Added <b>SgtAtmosphere.AmbientColor</b> setting for greater control and SRP compatibility.<br>Added <b>SgtBelt.AmbientColor</b> setting for greater control and SRP compatibility.<br>Added <b>SgtCloudsphere.AmbientColor</b> setting for greater control and SRP compatibility.<br>Added <b>SgtJovian.AmbientColor</b> setting for greater control and SRP compatibility.<br>Added <b>SgtRing.AmbientColor</b> setting for greater control and SRP compatibility.<br>Added <b>Rendering Pipeline Switcher</b> tool to root SGT folder.<br>Added Single-Pass VR support to <b>SgtSingularity</b>.<br>Added SRP compatibility to <b>SgtSingularity</b>.<br>Added <b>SgtStarfield.ClampSize</b> feature.<br>Added <b>VR Stars</b> demo scene to <b>Basic Pack</b>.<br>Added <b>Water Level</b> demo scene to <b>Basic Pack</b>.<br></p>
 <br><br>
-<a name="6562"></a><h2>3.6.7</h2>
+<a name="13854"></a><h2>3.6.7</h2>
 <p>SgtFloatingOrbit no longer notifies of position changes if they didn't occur.<br>Improved SRP support for components that depend on camera information.<br>Fixed Planet Pack 1 dependencies.<br></p>
 <br><br>
-<a name="5490"></a><h2>3.6.6</h2>
+<a name="12782"></a><h2>3.6.6</h2>
 <p>Updated documentation.<br>Added SgtSimpleOrbit.<br>Added SgtThrusterControls.<br></p>
 <br><br>
-<a name="5184"></a><h2>3.6.5</h2>
+<a name="12476"></a><h2>3.6.5</h2>
 <p>Updated documentation.<br>Improved Debris demo scenes and documentation.<br></p>
 <br><br>
-<a name="6470"></a><h2>3.6.4</h2>
+<a name="13762"></a><h2>3.6.4</h2>
 <p>Added night light support to the Planet shader.<br>Added new demo scenes for the Debris feature.<br>Updated Solar System Pack link.<br></p>
 <br><br>
-<a name="5220"></a><h2>3.6.3</h2>
+<a name="12512"></a><h2>3.6.3</h2>
 <p>Fixed shadow casting calculations.<br>Improved component consistency.<br>Redesigned documentation.<br></p>
 <br><br>
-<a name="5980"></a><h2>3.6.2</h2>
+<a name="13272"></a><h2>3.6.2</h2>
 <p>Updated Solar System Pack for better realism.<br>Added automatic floating origin support to SgtStarfieldInfinite.<br>Added SgtCamera.UseOrigin setting for floating origin compatibility.<br>Added SgtStarfield.StretchLimit to improve warp effects at high speed.<br></p>
 <br><br>
 <br><br>
@@ -2800,36 +2800,36 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 </div>
 <div style="position: absolute; width: 310px; left: 0px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
 <h2 style="padding-bottom: 20px;">Index</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-1414">Thank you for using Space Graphics Toolkit &#x2764;&#xFE0F</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-1420">How do I upgrade?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6190">What is Space Graphics Toolkit?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6220">Where do I get more packs?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6550">Why does each feature require so many components?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5950">How do I use this from C#?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6458">Are scriptable render pipelines (SRP) supported?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6426">Is VR supported?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6272">Does this work on mobile/console/WebGL/etc?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6298">Accretion</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5576">Atmosphere</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5892">Aurora</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6406">Backdrop</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5550">Belt</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5416">Billboard</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5752">Cloudsphere</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5604">Corona</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5470">Debris</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6366">Flare</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5828">Jovian</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5154">Lightning</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-1956">Thank you for using Space Graphics Toolkit &#x2764;&#xFE0F</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-1962">How do I upgrade?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13482">What is Space Graphics Toolkit?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Packs">Where do I get more packs?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13842">Why does each feature require so many components?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13242">How do I use this from C#?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SRP">Are scriptable render pipelines (SRP) supported?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#VR">Is VR supported?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13564">Does this work on mobile/console/WebGL/etc?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Accretion">Accretion</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Atmosphere">Atmosphere</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Aurora">Aurora</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Backdrop">Backdrop</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Belt">Belt</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Billboard">Billboard</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Cloudsphere">Cloudsphere</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Corona">Corona</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Debris">Debris</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Flare">Flare</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Jovian">Jovian</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Lightning">Lightning</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Planet">Planet</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5642">Prominence</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5760">Ring</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5934">Singularity</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5104">Spacetime</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6120">Star</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6146">Starfield</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5516">Thruster</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6508">Universe</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Prominence">Prominence</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Ring">Ring</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Singularity">Singularity</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Spacetime">Spacetime</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Star">Star</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Starfield">Starfield</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Thruster">Thruster</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#Universe">Universe</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Assets</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#1">Lean Touch</a></p>
@@ -2846,15 +2846,15 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#12">Volumetric Audio</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Versions</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6064">3.7.0</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5396">3.6.9</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6022">3.6.8</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6562">3.6.7</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5490">3.6.6</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5184">3.6.5</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#6470">3.6.4</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5220">3.6.3</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#5980">3.6.2</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13356">3.7.0</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#12688">3.6.9</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13314">3.6.8</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13854">3.6.7</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#12782">3.6.6</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#12476">3.6.5</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13762">3.6.4</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#12512">3.6.3</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#13272">3.6.2</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Components</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#SgtAccretion">SgtAccretion</a></p>
