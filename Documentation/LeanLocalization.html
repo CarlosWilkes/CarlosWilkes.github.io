@@ -29,18 +29,18 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br><h1 style="font-size: 75px; color: #FFF; text-align: center; vertical-align: middle; line-height: 100px;">Lean Localization</h1>
 </div>
 <div style="position: absolute; left: 350px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
-<a name="-48050"></a><h2>Thank you for using Lean Localization &#x2764;&#xFE0F</h2>
+<a name="-54676"></a><h2>Thank you for using Lean Localization &#x2764;&#xFE0F</h2>
 <p>If you haven't already, please consider writing a <a href="http://CarlosWilkes.com/Get/LeanLocalization" target="_blank">review</a>. They really help me out!</p><p>If you have any questions, then feel free to send me an <a href="mailto:carlos.wilkes@gmail.com">E-Mail</a>, or <a href="http://forum.unity.com/members/41960" target="_blank">Private Message</a>.</p><p>You can also ask in the <a href="http://carloswilkes.com/Forum/LeanLocalization" target="_blank">Forum Thread</a>.</p><p>I'm also available for freelance work if you need help with your projects.</p>
 <br><br>
-<a name="-48056"></a><h2>How do I upgrade?</h2>
+<a name="-54682"></a><h2>How do I upgrade?</h2>
 <p>First, make sure you <b>back up</b> your project files.</p><p>Next, install the latest version.</p><p>If for some reason the latest updates breaks your project (e.g. errors in the console), then try deleting the root folder for this asset, and reinstalling it.</p><p>If it still doesn't work then go back to your previous version, and let me know what the errors are, so I can fix it.</p>
 <br><br>
 <div style="">
-<a name="23968"></a><h2>What is Lean Localization?</h2>
+<a name="24012"></a><h2>What is Lean Localization?</h2>
 <p>Lean Localization is a lightweight localization asset, allowing you to easily add language-specific text, images, and much more.</p>
 <br><br></div>
 <div style="">
-<a name="25296"></a><h2>How do I use it?</h2>
+<a name="25322"></a><h2>How do I use it?</h2>
 <br><br></div>
 <div style="min-height: 200px;padding-left: 75px;">
 <h2>Step 1 - Add Lean Localization</h2>
@@ -73,7 +73,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>That's it, your game will now automatically update based on your translations!</p>
 <br><br></div>
 <div style="">
-<a name="24672"></a><h2>How do I change language?</h2>
+<a name="24686"></a><h2>How do I change language?</h2>
 <p>There are multiple ways to do this.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -91,28 +91,28 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <div class="code"><pre>Lean.Localization.LeanLocalization.CurrentLanguage = "English";</pre></div>
 <br><br></div>
 <div style="">
-<a name="23856"></a><h2>How do I Get a Translation From C# Code?</h2>
+<a name="23894"></a><h2>How do I Get a Translation From C# Code?</h2>
 <p>If you just want to get translated text, then you can call:</p>
 <div class="code"><pre>Lean.Localization.LeanLocalization.GetTranslationText("YourPhraseNameHere");</pre></div>
 <p>If you want a Unity Object (e.g. Sprite), then you can call:</p>
 <div class="code"><pre>Lean.Localization.LeanLocalization.GetTranslationObject<Sprite>("YourPhraseNameHere");</pre></div>
 <br><br></div>
 <div style="">
-<a name="25128"></a><h2>How do I Add to the Language List?</h2>
+<a name="25148"></a><h2>How do I Add to the Language List?</h2>
 <p>If you're not happy with the default language selection, then you can open LeanLocalization.cs, and edit the AddPresetLanguage list starting on line line 14. For example:</p>
 <div class="code"><pre>AddPresetLanguage("Korean", "ko", "ko-KR");</pre></div>
 <p>Where the first string is the language name, and the other strings are all culture names associated with that language.</p>
 <br><br></div>
 <div style="">
-<a name="23556"></a><h2>How do I Localize Other Components?</h2>
+<a name="23582"></a><h2>How do I Localize Other Components?</h2>
 <p>To localize more components, simply implement the <b>LeanLocalizedBehavior</b> base class in your own components.</p><p>This class has the <b>UpdateTranslation(LeanTranslation translation);</b> method, where the specified <b>translation</b> will be null if it doesn't exist. If it does exist then you can read the <b>translation.Data</b> value, you can then cast this to the required type before use.</p><p>Take a look at the code for <b>LeanLocalizedSpriteRenderer</b> to see just how easy this is.</p><div class="tip"><strong>NOTE:</strong>&emsp;<b>translation.Data</b> is a <b>System.Object</b>, so you must verify it's type before casting it out.</div>
 <br><br></div>
 <div style="">
-<a name="23222"></a><h2>How do I better organize my translations?</h2>
+<a name="23242"></a><h2>How do I better organize my translations?</h2>
 <p>The more translations you add to your project, the more difficult Lean Localization can be to use, because the translation name dropdown list will become increasingly long.</p><p>To fix this, you can organize your translations into groups.</p><p>To do this, simply add forward slashes to your translation names when creating them.</p><div class="tip"><strong>EXAMPLE:</strong>&emsp;MyGroup/MyTranslation</div><p>When using a translation name dropdown, this will automatically place <b>MyTranslation</b> into a group called <b>MyGroup</b>.</p><div class="tip"><strong>NOTE:</strong>&emsp;If you change the name of a translation after you created it, then any components that point to that translation name will point to the old and now non-existent translation. You must manually update these.</div>
 <br><br></div>
 <div style="">
-<a name="23166"></a><h2>How do I use prefabs?</h2>
+<a name="23192"></a><h2>How do I use prefabs?</h2>
 <p>If you have many translations or use many scenes then you may want to use prefabs instead of placing everything in the scene.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -132,7 +132,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Done!</p><p>Your localizations should now be automatically loaded from prefabs, giving you better performance, and improved organization.</p><div class="tip"><strong>NOTE:</strong>&emsp;If your prefab points to an asset folder, then you must view the <b>LeanLocalization</b> inspector to force the folder contents to update. Folder contents like this can only be accessed in the editor, so you must do this to trigger its update.</div><p>If you have many <b>LeanLocalization</b> components in different scenes, then this may be tedious to do. To fix this you can make your <b>LeanLocalization</b> component itself a prefab too, so you only have to view the prefab itself to trigger the update.</p>
 <br><br></div>
 <div style="">
-<a name="23516"></a><h2>How do I use tokens?</h2>
+<a name="23542"></a><h2>How do I use tokens?</h2>
 <p>Tokens allow you to find and replace text. For example, if you want to include the player's name inside a localized text field, then the tokens feature allows you to do this.</p>
 <br><br></div>
 <div style="padding-left: 75px;">
@@ -150,11 +150,11 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Your translated text should now automatically have any tokens replaced.</p><p>You can also change the value of a token in game using the <b>LeanToken.SetValue</b> method.</p><div class="tip"><strong>NOTE:</strong>&emsp;If you want to be able to change a token value and have it persist across multiple scenes, then you should place the token in a prefab, and add it to the <b>LeanLocalization.Prefabs</b> list.</div>
 <br><br></div>
 <div style="">
-<a name="25466"></a><h2>What are Cultures?</h2>
+<a name="25480"></a><h2>What are Cultures?</h2>
 <p>Cultures allow you to associate language codes with language names. For example, English might be associated with en-GB, en-US, etc.</p><p>When you start your application the current device language code will be loaded, and the associated language will be chosen.</p><div class="tip"><strong>NOTE:</strong>&emsp;The LeanLocalization component's <b>DetectLanguage</b> setting defines how the initial language name or culture name will be picked.</div>
 <br><br></div>
 <div style="">
-<a name="25568"></a><h2>Why can you only translate Text, Object, and Sprite?</h2>
+<a name="25600"></a><h2>Why can you only translate Text, Object, and Sprite?</h2>
 <p>Internally, the <b>LeanPhrase</b> component only stores <b>Text</b> (string) and <b>Object</b> (UnityEngine.Object) types.</p><p>Sprites in the Unity project window are stored as children of their source image. This means when you drag and drop a sprite, you're usually dragging and dropping the parent image, which may give you undesired behaviour when you drag it into an <b>Object</b> field.</p><p>To avoid any unexpected behaviour, I added the additional <b>Sprite</b> setting, so you can drag and drop the sprite's parent image, and Unity will automatically drop the sprite in.</p><p>This issue doesn't occur for most other scenarios, so you can use the <b>Object</b> type for everything else like <b>Mesh</b>, <b>Material</b>, etc.</p>
 </div>
 <br><br>
@@ -198,25 +198,28 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>Unity sounds only emanate from a single point source. This is great for explosions and footsteps, but quite often you need something more advanced. Volumetric Audio is an easy to use package that allows you to define boxes, spheres, capsules, paths, or meshes that sounds can emanate from.</p><br><br><br><br>
 <br><br>
 <h1>Versions</h1>
-<a name="25134"></a><h2>1.3.6</h2>
+<a name="24282"></a><h2>1.3.7</h2>
+<p>Fixed <b>LeanLocalization.SetCurrentLanguage</b> bug.<br></p>
+<br><br>
+<a name="25154"></a><h2>1.3.6</h2>
 <p>Added <b>LeanLocalizedTextMeshPro</b> to <b>TextMeshPro</b> package.<br>Added <b>LeanLocalizedTextMeshProFont</b> to <b>TextMeshPro</b> package.<br></p>
 <br><br>
-<a name="23788"></a><h2>1.3.5</h2>
+<a name="23820"></a><h2>1.3.5</h2>
 <p>Fixed <b>LeanToken</b> inspector changes not automatically updating text.<br>Updated common library code.<br></p>
 <br><br>
-<a name="25422"></a><h2>1.3.4</h2>
+<a name="25442"></a><h2>1.3.4</h2>
 <p>Fixed inspector expand buttons in UI Elements.<br></p>
 <br><br>
-<a name="23006"></a><h2>1.3.3</h2>
+<a name="23020"></a><h2>1.3.3</h2>
 <p>Fixed bug where <b>LeanLocalization.CurrentLanguage</b> wouldn't save unless it was changed in game.<br></p>
 <br><br>
-<a name="25234"></a><h2>1.3.2</h2>
+<a name="25260"></a><h2>1.3.2</h2>
 <p>Fixed bug in LeanHelper.cs that prevents making builds.<br></p>
 <br><br>
-<a name="23776"></a><h2>1.3.1</h2>
+<a name="23814"></a><h2>1.3.1</h2>
 <p>Updated <b>Common</b> library code.<br></p>
 <br><br>
-<a name="25268"></a><h2>1.3.0</h2>
+<a name="25294"></a><h2>1.3.0</h2>
 <p>Updated <b>Common</b> library code.<br>Updated demo scene design.<br></p>
 <br><br>
 <br><br>
@@ -239,106 +242,216 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p>This class allows you to quickly make custom inspectors with common features.</p>
 <div style="padding-left: 75px;"></div><br>
 <br><br>
-<a name="IPoolable"></a><h2>IPoolable</h2>
-<p>If you implement this interface in a component on your pooled prefab, then the OnSpawn and OnDespawn methods will be automatically called when the associated LeanGameObjectPool.Notification = PoolableInterface.</p>
+<a name="ILocalizationHandler"></a><h2>ILocalizationHandler</h2>
+<p>This interface can be implemented by any component that needs to listen for localization changes.</p>
 <div style="padding-left: 75px;"></div><br>
 <br><br>
-<a name="LeanClassPool"></a><h2>LeanClassPool&lt;T&gt;</h2>
-<p>This class allows you to pool normal C# classes, for example:<br><br>var foo = Lean.Pool.LeanClassPool<Foo>.Spawn() ?? new Foo();<br><br>Lean.Pool.LeanClassPool<Foo>.Despawn(foo);</p>
-<div style="padding-left: 75px;"><br><h2>Spawn</h2>
-<p>This will either return a pooled class instance, or null. If an instance it found, onSpawn will be called with it. NOTE: onSpawn is expected to not be null.</p>
-<br><h2>Spawn</h2>
-<p>This will either return a pooled class instance, or null.<br><br>All pooled classes will be checked with match to see if they qualify.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; match is expected to not be null.</div></p>
-<br><h2>Spawn</h2>
-<p>This will either return a pooled class instance, or null.<br><br>All pooled classes will be checked with match to see if they qualify.<br><br>If an instance it found, onSpawn will be called with it.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; match is expected to not be null.</div><div class="tip"><strong>NOTE:</strong>&emsp; onSpawn is expected to not be null.</div></p>
-<br><h2>Despawn</h2>
-<p>This will pool the passed class instance.</p>
-<br><h2>Despawn</h2>
-<p>This will pool the passed class instance.<br><br>If you need to perform despawning code then you can do that via onDespawn.</p>
+<a name="LeanLanguage"></a><h2>LeanLanguage</h2>
+<p>This class stores information about a single language, and any of its optional cultures.</p>
+<div style="padding-left: 75px;"><br><h2>Cultures</h2>
+<p>This culture names for this language (e.g. en-GB, en-US).</p>
 </div><br>
 <br><br>
-<a name="LeanGameObjectPool"></a><h2>LeanGameObjectPool</h2>
-<p>This component allows you to pool GameObjects, giving you a very fast alternative to Instantiate and Destroy.<br><br>Pools also have settings to preload, recycle, and set the spawn capacity, giving you lots of control over your spawning.</p>
+<a name="LeanLanguageCSV"></a><h2>LeanLanguageCSV</h2>
+<p>This component will load localizations from a CSV file. By default they should be in the format:<br><br>Phrase Name Here = Translation Here // Optional Comment Here<br><br><div class="tip"><strong>NOTE:</strong>&emsp; This component only handles loading one CSV file from one language. If you have multiple languages, then you must make multiple CSV files for each, and a matching <b>LeanLanguageCSV</b> component to load each.</div></p>
+<div style="padding-left: 75px;"><br><h2>Source</h2>
+<p>The text asset that contains all the translations.</p>
+<br><h2>Language</h2>
+<p>The language of the translations in the source file.</p>
+<br><h2>Separator</h2>
+<p>The string separating the phrase name from the translation.</p>
+<br><h2>NewLine</h2>
+<p>The string denoting a new line within a translation.</p>
+<br><h2>Comment</h2>
+<p>The (optional) string separating the translation from the comment.<br><br>Empty = No Comments.</p>
+<br><h2>Cache</h2>
+<p>This allows you to control when the CSV file is loaded or unloaded. The lower down you set this, the lower your app's memory usage will be. However, setting it too low means you can miss translations if you haven't translated absolutely every phrase in every language, so I recommend you use <b>LoadImmediately</b> unless you have LOTS of translations.<br><br>LoadImmediately = Regardless of the language, the CSV will load when this compenent activates, and then it will be kept in memory until this component is destroyed.<br><br>LazyLoad = The CSV file will only load when the <b>CurrentLanguage</b> or <b>DefaultLanguage</b> matches the CSV language, and then it will be kept in memory until this component is destroyed.<br><br>LazyLoadAndUnload = Like <b>LazyLoad</b>, but translations will be unloaded if the <b>CurrentLanguage</b> or <b>DefaultLanguage</b> differs from the CSV language.<br><br>LazyLoadAndUnloadPrimaryOnly = Like <b>LazyLoadAndUnload</b>, but only the <b>CurrentLanguage</b> will be used, the <b>DefaultLanguage</b> will be ignored.</p>
+<br><h2>Entries</h2>
+<p>This stores all currently loaded translations from this CSV file.</p>
+<br><h2>[CONTEXT] Clear</h2>
+<p>This will unload all translations from this component.</p>
+<br><h2>[CONTEXT] Load From Source</h2>
+<p>This will load all translations from the CSV file into this component.</p>
+<br><h2>[CONTEXT] Export Text Asset</h2>
+<p>This exports all text phrases in the LeanLocalization component for the Language specified by this component.</p>
+</div><br>
+<br><br>
+<a name="LeanLanguageNameAttribute"></a><h2>LeanLanguageNameAttribute</h2>
+<p>This attribute allows you to modify a normal string field into one that has a dropdown list that allows you to pick a language.</p>
+<div style="padding-left: 75px;"></div><br>
+<br><br>
+<a name="LeanLocalization"></a><h2>LeanLocalization</h2>
+<p>This component manages a global list of translations for easy access.<br><br>Translations are gathered from the <b>prefabs</b> list, as well as from any active and enabled <b>LeanSource</b> components in the scene.</p>
 <div style="padding-left: 75px;"><br><h2>Instances</h2>
-<p>All active and enabled pools in the scene.</p>
-<br><h2>Prefab</h2>
-<p>The prefab this pool controls.</p>
-<br><h2>Notification</h2>
-<p>If you need to peform a special action when a prefab is spawned or despawned, then this allows you to control how that action is performed.<br><br><div class="tip"><strong>None</strong>&emsp;If you use this then you must rely on the OnEnable and OnDisable messages.</div><div class="tip"><strong>SendMessage</strong>&emsp;The prefab clone is sent the OnSpawn and OnDespawn messages.</div><div class="tip"><strong>BroadcastMessage</strong>&emsp;The prefab clone and all its children are sent the OnSpawn and OnDespawn messages.</div><div class="tip"><strong>IPoolable</strong>&emsp;The prefab clone's components implementing IPoolable are called.</div><div class="tip"><strong>Broadcast IPoolable</strong>&emsp;The prefab clone and all its child components implementing IPoolable are called.</div></p>
-<br><h2>Preload</h2>
-<p>Should this pool preload some clones?</p>
-<br><h2>Capacity</h2>
-<p>Should this pool have a maximum amount of spawnable clones?</p>
-<br><h2>Recycle</h2>
-<p>If the pool reaches capacity, should new spawns force older ones to despawn?</p>
-<br><h2>Persist</h2>
-<p>Should this pool be marked as DontDestroyOnLoad?</p>
-<br><h2>Stamp</h2>
-<p>Should the spawned clones have their clone index appended to their name?</p>
-<br><h2>Warnings</h2>
-<p>Should detected issues be output to the console?</p>
-<br><h2>TryFindPoolByPrefab</h2>
-<p>Find the pool responsible for handling the specified prefab.</p>
-<br><h2>TryFindPoolByClone</h2>
-<p>Find the pool responsible for handling the specified prefab clone.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; This can be an expensive operation if you have many large pools.</div></p>
-<br><h2>Spawned</h2>
-<p>Returns the amount of spawned clones.</p>
-<br><h2>Despawned</h2>
-<p>Returns the amount of despawned clones.</p>
-<br><h2>Total</h2>
-<p>Returns the total amount of spawned and despawned clones.</p>
-<br><h2>Spawn</h2>
-<p>This will either spawn a previously despanwed/preloaded clone, recycle one, create a new one, or return null.</p>
-<br><h2>TrySpawn</h2>
-<p>This will either spawn a previously despanwed/preloaded clone, recycle one, create a new one, or return null.</p>
-<br><h2>[CONTEXT] Despawn Oldest</h2>
-<p>This will despawn the oldest prefab clone that is still spawned.</p>
-<br><h2>[CONTEXT] Despawn All</h2>
-<p>This method will despawn all currently spawned prefabs managed by this pool.</p>
-<br><h2>Despawn</h2>
-<p>This will either instantly despawn the specified gameObject, or delay despawn it after t seconds.</p>
-<br><h2>[CONTEXT] Preload One More</h2>
-<p>This method will create an additional prefab clone and add it to the despawned list.</p>
-<br><h2>[CONTEXT] Preload All</h2>
-<p>This will preload the pool based on the Preload setting.</p>
+<p>All active and enabled LeanLocalization components.</p>
+<br><h2>LeanTranslation></h2>
+<p>Dictionary of all the phrase names mapped to their current translations.</p>
+<br><h2>DefaultLanguage</h2>
+<p>If the application is started and no language has been loaded or auto detected, this language will be used.</p>
+<br><h2>DetectLanguage</h2>
+<p>How should the cultures be used to detect the user's device language?</p>
+<br><h2>SaveLanguage</h2>
+<p>Automatically save/load the CurrentLanguage selection to PlayerPrefs? (can be cleared with ClearSave context menu option)</p>
+<br><h2>OnLocalizationChanged</h2>
+<p>Called when the language or translations change.</p>
+<br><h2>Languages</h2>
+<p>This stores all languages and their aliases managed by this LeanLocalization instance.</p>
+<br><h2>Prefabs</h2>
+<p>This stores all prefabs and folders managed by this LeanLocalization instance.</p>
+<br><h2>CurrentSaveLanguage</h2>
+<p>Does at least one localization have 'SaveLanguage' set?</p>
+<br><h2>CurrentLanguage</h2>
+<p>Change the current language of this instance?</p>
+<br><h2>RegisterToken</h2>
+<p>When rebuilding translations this method is called from any <b>LeanSource</b> components that define a token.</p>
+<br><h2>RegisterTranslation</h2>
+<p>When rebuilding translations this method is called from any <b>LeanSource</b> components that define a transition.</p>
+<br><h2>SetCurrentLanguage</h2>
+<p>This sets the current language using the specified string.</p>
+<br><h2>SetCurrentLanguage</h2>
+<p>This sets the current language using the specified index based on the Languages list, where 0 is the first language.</p>
+<br><h2>AddPrefab</h2>
+<p>This adds the specified UnityEngine.Object to this LeanLocalization instance, allowing it to be registered as a prefab.</p>
+<br><h2>AddLanguage</h2>
+<p>This adds a new language to this LeanLocalization instance, with the specified name and cultures.</p>
+<br><h2>AddTokenToFirst</h2>
+<p>This calls AddToken on the first active and enabled LeanLocalization instance, or creates one first.</p>
+<br><h2>AddToken</h2>
+<p>This creates a new token with the specified name, and adds it to the current GameObject.</p>
+<br><h2>SetToken</h2>
+<p>This allows you to set the value of the token with the specified name.<br><br>If no token exists and allowCreation is enabled, then one will be created for you.</p>
+<br><h2>GetToken</h2>
+<p>This allows you to get the value of the token with the specified name.<br><br>If no token exists, then the defaultValue will be returned.</p>
+<br><h2>AddPhraseToFirst</h2>
+<p>This calls AddPhrase on the first active and enabled LeanLocalization instance, or creates one first.</p>
+<br><h2>AddPhrase</h2>
+<p>This creates a new phrase with the specified name, and adds it to the current GameObject.</p>
+<br><h2>GetTranslation</h2>
+<p>This will return the translation with the specified name, or null if none was found.</p>
+<br><h2>GetTranslationText</h2>
+<p>This will return the translated string with the specified name, or the fallback if none is found.</p>
+<br><h2>GetTranslationObject<T></h2>
+<p>This will return the translated UnityEngine.Object with the specified name, or the fallback if none is found.</p>
+<br><h2>UpdateTranslations</h2>
+<p>This rebuilds the dictionary used to quickly map phrase names to translations for the current language.</p>
+<br><h2>DelayUpdateTranslations</h2>
+<p>If you call this method, then UpdateTranslations will be called next Update.</p>
 </div><br>
 <br><br>
-<a name="LeanPool"></a><h2>LeanPool</h2>
-<p>This class handles the association between a spawned prefab, and the LeanGameObjectPool component that manages it.</p>
-<div style="padding-left: 75px;"><br><h2>LeanGameObjectPool></h2>
-<p>This stores all references between a spawned GameObject and its pool.</p>
-<br><h2>Spawn<T></h2>
-<p>This allows you to spawn a prefab via Component.</p>
-<br><h2>Spawn<T></h2>
-<p>This allows you to spawn a prefab via Component.</p>
-<br><h2>Spawn</h2>
-<p>This allows you to spawn a prefab via GameObject.</p>
-<br><h2>Spawn</h2>
-<p>This allows you to spawn a prefab via GameObject.</p>
-<br><h2>DespawnAll</h2>
-<p>This will despawn all pool clones.</p>
-<br><h2>Despawn</h2>
-<p>This allows you to despawn a clone via Component, with optional delay.</p>
-<br><h2>Despawn</h2>
-<p>This allows you to despawn a clone via GameObject, with optional delay.</p>
+<a name="LeanLocalizedBehaviour"></a><h2>LeanLocalizedBehaviour</h2>
+<p>This component simplifies the updating process, extend it if you want to cause a specific object to get localized</p>
+<div style="padding-left: 75px;"><br><h2>TranslationName</h2>
+<p>This is the name of the translation this script uses.</p>
+<br><h2>[CONTEXT] Update Localization</h2>
+<p>If you call this then this component will update using the translation for the specified phrase.</p>
 </div><br>
+<br><br>
+<a name="LeanPhrase"></a><h2>LeanPhrase</h2>
+<p>This contains data about each phrase, which is then translated into different languages.</p>
+<div style="padding-left: 75px;"><br><h2>Language</h2>
+<p>The language of this translation.</p>
+<br><h2>Text</h2>
+<p>The translated text.</p>
+<br><h2>Object</h2>
+<p>The translated object (e.g. language specific texture).</p>
+<br><h2>TryFindTranslation</h2>
+<p>This will return the translation of this phrase for the specified language.</p>
+<br><h2>AddEntry</h2>
+<p>Add a new translation to this phrase for the specified language, or return the current one.</p>
+</div><br>
+<br><br>
+<a name="LeanPrefab"></a><h2>LeanPrefab</h2>
+<p>This class stores a reference to an object (e.g. folder) in your project that contains LeanSource components so they can be registered.</p>
+<div style="padding-left: 75px;"></div><br>
+<br><br>
+<a name="LeanSource"></a><h2>LeanSource</h2>
+<p>This is the base class used for all translation sources. When a translation source is built, it will populate the <b>LeanLocalization</b> class with its translation data.</p>
+<div style="padding-left: 75px;"></div><br>
+<br><br>
+<a name="LeanToken"></a><h2>LeanToken</h2>
+<p>The class stores a token name (e.g. "AGE"), allowing it to be replaced with the token value (e.g. "20").<br><br>To use the token in your text, simply include the token name surrounded by braces (e.g. "I am {AGE} years old!")</p>
+<div style="padding-left: 75px;"><br><h2>Value</h2>
+<p>This is the current value/text for this token. When this changes, it will automatically update all localizations that use this token.</p>
+<br><h2>SetValue</h2>
+<p>This method allows you to set <b>Value</b> from an inspector event using a <b>float</b> value.</p>
+<br><h2>SetValue</h2>
+<p>This method allows you to set <b>Value</b> from an inspector event using a <b>string</b> value.</p>
+<br><h2>SetValue</h2>
+<p>This method allows you to set <b>Value</b> from an inspector event using an <b>int</b> value.</p>
+</div><br>
+<br><br>
+<a name="LeanTranslation"></a><h2>LeanTranslation</h2>
+<p>This contains the translated value for the current language, and other associated data.</p>
+<div style="padding-left: 75px;"><br><h2>Name</h2>
+<p>The name of this translation.</p>
+<br><h2>Data</h2>
+<p>The data of this translation (e.g. string or Object).<br><br><div class="tip"><strong>NOTE:</strong>&emsp; This is a System.Object, so you must correctly cast it back before use.</div></p>
+<br><h2>Primary</h2>
+<p>If Data has been filled with data for the primary language, then this will be set to true.</p>
+<br><h2>Entries</h2>
+<p>This stores a list of all LeanSource instances that are currently managing the current value of this translation in the current language.<br><br><div class="tip"><strong>NOTE:</strong>&emsp; If this is empty then no LeanSource of this name is localized for the current language.</div></p>
+<br><h2>FormatText</h2>
+<p>This returns Text with all tokens substituted using the LeanLocalization.Tokens list.</p>
+</div><br>
+<br><br>
+<a name="LeanTranslationNameAttribute"></a><h2>LeanTranslationNameAttribute</h2>
+<p>This attribute allows you to select a translation from all the localizations in the scene.</p>
+<div style="padding-left: 75px;"></div><br>
+<br><br>
+<a name="LeanLocalizedAudioSource"></a><h2>LeanLocalizedAudioSource</h2>
+<p>This component will update an AudioSource component with localized text, or use a fallback if none is found.</p>
+<div style="padding-left: 75px;"></div><br>
+<br><br>
+<a name="LeanLocalizedDropdown"></a><h2>LeanLocalizedDropdown</h2>
+<p>This component will update a UI.Text component with localized text, or use a fallback if none is found.</p>
+<div style="padding-left: 75px;"><br><h2>[CONTEXT] Update Localization</h2>
+<p>If you call this then this component will update using the translation for the specified phrase.</p>
+</div><br>
+<br><br>
+<a name="LeanLocalizedImage"></a><h2>LeanLocalizedImage</h2>
+<p>This component will update an Image component with a localized sprite, or use a fallback if none is found</p>
+<div style="padding-left: 75px;"></div><br>
+<br><br>
+<a name="LeanLocalizedRenderer"></a><h2>LeanLocalizedRenderer</h2>
+<p>This component will update a Renderer component's sharedMaterial with a localized material, or use a fallback if none is found.</p>
+<div style="padding-left: 75px;"></div><br>
+<br><br>
+<a name="LeanLocalizedSpriteRenderer"></a><h2>LeanLocalizedSpriteRenderer</h2>
+<p>This component will update a SpriteRenderer component with a localized sprite, or use a fallback if none is found</p>
+<div style="padding-left: 75px;"></div><br>
+<br><br>
+<a name="LeanLocalizedText"></a><h2>LeanLocalizedText</h2>
+<p>This component will update a UI.Text component with localized text, or use a fallback if none is found.</p>
+<div style="padding-left: 75px;"></div><br>
+<br><br>
+<a name="LeanLocalizedTextFont"></a><h2>LeanLocalizedTextFont</h2>
+<p>This component will update a Text component's Font with a localized font, or use a fallback if none is found.</p>
+<div style="padding-left: 75px;"></div><br>
+<br><br>
+<a name="LeanLocalizedTextMesh"></a><h2>LeanLocalizedTextMesh</h2>
+<p>This component will update a TMPro.TextMeshProUGUI component with localized text, or use a fallback if none is found.</p>
+<div style="padding-left: 75px;"></div><br>
+<br><br>
+<a name="LeanLocalizedTextMeshFont"></a><h2>LeanLocalizedTextMeshFont</h2>
+<p>This component will update a TextMesh component's Font with a localized font, or use a fallback if none is found.</p>
+<div style="padding-left: 75px;"></div><br>
 <br><br>
 </div>
 <div style="position: absolute; width: 310px; left: 0px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
 <h2 style="padding-bottom: 20px;">Index</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-48050">Thank you for using Lean Localization &#x2764;&#xFE0F</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-48056">How do I upgrade?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23968">What is Lean Localization?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25296">How do I use it?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#24672">How do I change language?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23856">How do I Get a Translation From C# Code?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25128">How do I Add to the Language List?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23556">How do I Localize Other Components?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23222">How do I better organize my translations?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23166">How do I use prefabs?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23516">How do I use tokens?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25466">What are Cultures?</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25568">Why can you only translate Text, Object, and Sprite?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-54676">Thank you for using Lean Localization &#x2764;&#xFE0F</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#-54682">How do I upgrade?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#24012">What is Lean Localization?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25322">How do I use it?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#24686">How do I change language?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23894">How do I Get a Translation From C# Code?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25148">How do I Add to the Language List?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23582">How do I Localize Other Components?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23242">How do I better organize my translations?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23192">How do I use prefabs?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23542">How do I use tokens?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25480">What are Cultures?</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25600">Why can you only translate Text, Object, and Sprite?</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Assets</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#1">Lean Touch</a></p>
@@ -355,21 +468,39 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#12">Volumetric Audio</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Versions</h2>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25134">1.3.6</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23788">1.3.5</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25422">1.3.4</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23006">1.3.3</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25234">1.3.2</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23776">1.3.1</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25268">1.3.0</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#24282">1.3.7</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25154">1.3.6</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23820">1.3.5</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25442">1.3.4</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23020">1.3.3</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25260">1.3.2</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#23814">1.3.1</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#25294">1.3.0</a></p>
 <br><br>
 <h2 style="padding-bottom: 20px;">Components</h2>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanHelper">LeanHelper</a></p>
 <p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanInspector">LeanInspector&lt;T&gt;</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#IPoolable">IPoolable</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanClassPool">LeanClassPool&lt;T&gt;</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanGameObjectPool">LeanGameObjectPool</a></p>
-<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanPool">LeanPool</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#ILocalizationHandler">ILocalizationHandler</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanLanguage">LeanLanguage</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanLanguageCSV">LeanLanguageCSV</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanLanguageNameAttribute">LeanLanguageNameAttribute</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanLocalization">LeanLocalization</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanLocalizedBehaviour">LeanLocalizedBehaviour</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanPhrase">LeanPhrase</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanPrefab">LeanPrefab</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanSource">LeanSource</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanToken">LeanToken</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanTranslation">LeanTranslation</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanTranslationNameAttribute">LeanTranslationNameAttribute</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanLocalizedAudioSource">LeanLocalizedAudioSource</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanLocalizedDropdown">LeanLocalizedDropdown</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanLocalizedImage">LeanLocalizedImage</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanLocalizedRenderer">LeanLocalizedRenderer</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanLocalizedSpriteRenderer">LeanLocalizedSpriteRenderer</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanLocalizedText">LeanLocalizedText</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanLocalizedTextFont">LeanLocalizedTextFont</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanLocalizedTextMesh">LeanLocalizedTextMesh</a></p>
+<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanLocalizedTextMeshFont">LeanLocalizedTextMeshFont</a></p>
 </div>
 <div style="background-color: #0075D0; position: absolute; left: 0px; right: 0px; bottom: 0px; height: 20px;">
 </div>
