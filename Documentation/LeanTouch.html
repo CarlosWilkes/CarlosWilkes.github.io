@@ -99,7 +99,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 	<br><br>
 	<br><br>
 	<h1>Versions</h1>
-	<div style="overflow:hidden;"><a name="2.1.2"></a><h2>2.1.2</h2><p>Reverted <b>LeanSelect</b> component's <b>Overlap2D</b> selection implementation.<br>Added <b>Intersect2D</b> selection mode to <b>LeanSelect</b> component.</p><br><br></div><div style="overflow:hidden;"><a name="2.1.1"></a><h2>2.1.1</h2><p>Restructured all demo scenes to be easier to use.<br>Renamed <b>LeanFingerDown.OnPosition</b> to <b>OnWorld</b>.<br>Renamed <b>LeanFingerTap.OnPosition</b> to <b>OnWorld</b>.<br>Changed <b>LeanTouch</b> default execution order to -100.<br>Changed default <b>LeanTouch.GuiLayers</b> to <b>UI</b> only.</p><br><br></div><div style="overflow:hidden;"><a name="2.1.0"></a><h2>2.1.0</h2><p>Moved main build to Unity 2018.4.0f1.<br>Updated documentation.<br>Added asmdef.</p><br><br></div><div style="overflow:hidden;"><a name="2.0.9"></a><h2>2.0.9</h2><p>Improved <b>LeanDragCamera.Inertia</b> implementation.<br>Added <b>LeanDragTranslate.Inertia</b> setting.<br>Fixed <b>LeanSelect</b> Raycast order.</p><br><br></div><div style="overflow:hidden;"><a name="2.0.8"></a><h2>2.0.8</h2><p>Modified <b>LeanSpawn</b> to spawn at the current <b>Transform.position</b> by default.<br>Fixed <b>LeanSelect</b> when using a perspective camera and selecting 2D objects.<br>Added <b>LeanDragCamera.Inertia</b> setting.<br>Updated common library code.</p><br><br></div><div style="overflow:hidden;"><a name="2.0.7"></a><h2>2.0.7</h2><p>Fixed inspector expand buttons in UI Elements.<br>Fixed <b>LeanDragTranslate</b> being slow in some scenarios.<br>Fixed <b>LeanTwistRotate</b> being slow in some scenarios.<br>Fixed <b>LeanPinchScale</b> being slow in some scenarios.</p><br><br></div><div style="overflow:hidden;"><a name="2.0.6"></a><h2>2.0.6</h2><p>Fixed bug in LeanHelper.cs that prevents making builds.</p><br><br></div><div style="overflow:hidden;"><a name="2.0.5"></a><h2>2.0.5</h2><p>Updated <b>Common</b> library code.</p><br><br></div><div style="overflow:hidden;"><a name="2.0.4"></a><h2>2.0.4</h2><p>Fixed <b>LeanTouch.OnFingerUp</b> not being called in some scenarios.<br>Renamed <b>TapSpawnCount</b> demo scene to <b>TapSpawnDouble</b>.</p><br><br></div><div style="overflow:hidden;"><a name="2.0.3"></a><h2>2.0.3</h2><p>Fixed <b>LeanDragTranslate</b> when using screen space UI.<br>Fixed <b>LeanPinchScale</b> when using screen space UI.<br>Fixed <b>LeanTwistRotate</b> when using screen space UI.</p><br><br></div><div style="overflow:hidden;"><a name="2.0.2"></a><h2>2.0.2</h2><p>Fixed <b>LeanSelectable.IsolateSelectingFingers</b> when using <b>RequiredFingerCount</b>.<br>Fixed Added <b>LeanSelectableBehaviour</b> error when missing LeanSelectable.<br>Added <b>LeanSelectable.Register</b> for manual registration.<br>Added <b>LeanSelectable.Unregister</b> for manual unregistration.<br>Added <b>LeanTouch.OnFingerInactive</b> event.</p><br><br></div><div style="overflow:hidden;"><a name="2.0.1"></a><h2>2.0.1</h2><p>Added <b>LeanFinger.OnFingerOld</b> event.<br>Added <b>LeanFingerOld</b> component.<br>Added <b>FingerOld</b> demo scene.<br>Moved <b>LeanFingerHeld</b> to LeanTouch+.</p><br><br></div><div style="overflow:hidden;"><a name="2.0.0"></a><h2>2.0.0</h2><div class="tip"><strong>NOTE</strong>&emsp; This is a <b>MAJOR</b> update to LeanTouch. I recommend you only use this in new projects.</div><p>Redesigned all demo scenes.<br>Added smoothing/dampening to all components.<br>Renamed <b>LeanCameraMove</b> to <b>LeanDragCamera</b>.<br>Renamed <b>LeanCameraZoom</b> to <b>LeanPinchCamera</b>.<br>Moved <b>LeanPinchCamera</b> to LeanTouch+<br>Renamed <b>LeanRotate</b> to <b>LeanTwistRotate</b>.<br>Renamed <b>LeanTranslate</b> to <b>LeanDragRotate</b>.<br>Renamed <b>LeanScale</b> to <b>LeanPinchScale</b>.<br>Renamed <b>LeanCanvasArrow</b> to <b>LeanRoll</b>.<br>Added <b>LeanInfoText</b> component.<br>Rewrote <b>LeanFingerDown</b> component events.<br>Rewrote <b>LeanFingerHeld</b> component events.<br>Rewrote <b>LeanFingerSet</b> component events.<br>Rewrote <b>LeanFingerSwipe</b> component events.<br>Rewrote <b>LeanFingerTap</b> component events.<br>Rewrote <b>LeanFingerUp</b> component events.<br>Added <b>LeanFingerFilter</b> class for common filtering.</p><br><br></div>
+	<div style="overflow:hidden;"><a name="2.1.2"></a><h2>2.1.2</h2><p>Moved main build to Unity <b>2018.4.13f1</b>.<br>Added support for new input system.<br>Added <b>Intersect2D</b> selection mode to <b>LeanSelect</b> component.<br>Reverted <b>LeanSelect</b> component's <b>Overlap2D</b> selection implementation.<br>Extended <b>LeanTouch.OnFingerSet</b> to also invoke on the last frame a finger touches the screen.<br>Renamed <b>LeanTouch.OnFingerSet</b> to <b>LeanTouch.OnFingerUpdate</b>.<br>Renamed <b>LeanFingerSet</b> to <b>LeanFingerUpdate</b>.<br>Moved many components to <b>Extras</b> folder.</p><br><br></div><div style="overflow:hidden;"><a name="2.1.1"></a><h2>2.1.1</h2><p>Restructured all demo scenes to be easier to use.<br>Renamed <b>LeanFingerDown.OnPosition</b> to <b>OnWorld</b>.<br>Renamed <b>LeanFingerTap.OnPosition</b> to <b>OnWorld</b>.<br>Changed <b>LeanTouch</b> default execution order to -100.<br>Changed default <b>LeanTouch.GuiLayers</b> to <b>UI</b> only.</p><br><br></div><div style="overflow:hidden;"><a name="2.1.0"></a><h2>2.1.0</h2><p>Moved main build to Unity 2018.4.0f1.<br>Updated documentation.<br>Added asmdef.</p><br><br></div><div style="overflow:hidden;"><a name="2.0.9"></a><h2>2.0.9</h2><p>Improved <b>LeanDragCamera.Inertia</b> implementation.<br>Added <b>LeanDragTranslate.Inertia</b> setting.<br>Fixed <b>LeanSelect</b> Raycast order.</p><br><br></div><div style="overflow:hidden;"><a name="2.0.8"></a><h2>2.0.8</h2><p>Modified <b>LeanSpawn</b> to spawn at the current <b>Transform.position</b> by default.<br>Fixed <b>LeanSelect</b> when using a perspective camera and selecting 2D objects.<br>Added <b>LeanDragCamera.Inertia</b> setting.<br>Updated common library code.</p><br><br></div><div style="overflow:hidden;"><a name="2.0.7"></a><h2>2.0.7</h2><p>Fixed inspector expand buttons in UI Elements.<br>Fixed <b>LeanDragTranslate</b> being slow in some scenarios.<br>Fixed <b>LeanTwistRotate</b> being slow in some scenarios.<br>Fixed <b>LeanPinchScale</b> being slow in some scenarios.</p><br><br></div><div style="overflow:hidden;"><a name="2.0.6"></a><h2>2.0.6</h2><p>Fixed bug in LeanHelper.cs that prevents making builds.</p><br><br></div><div style="overflow:hidden;"><a name="2.0.5"></a><h2>2.0.5</h2><p>Updated <b>Common</b> library code.</p><br><br></div><div style="overflow:hidden;"><a name="2.0.4"></a><h2>2.0.4</h2><p>Fixed <b>LeanTouch.OnFingerUp</b> not being called in some scenarios.<br>Renamed <b>TapSpawnCount</b> demo scene to <b>TapSpawnDouble</b>.</p><br><br></div><div style="overflow:hidden;"><a name="2.0.3"></a><h2>2.0.3</h2><p>Fixed <b>LeanDragTranslate</b> when using screen space UI.<br>Fixed <b>LeanPinchScale</b> when using screen space UI.<br>Fixed <b>LeanTwistRotate</b> when using screen space UI.</p><br><br></div><div style="overflow:hidden;"><a name="2.0.2"></a><h2>2.0.2</h2><p>Fixed <b>LeanSelectable.IsolateSelectingFingers</b> when using <b>RequiredFingerCount</b>.<br>Fixed Added <b>LeanSelectableBehaviour</b> error when missing LeanSelectable.<br>Added <b>LeanSelectable.Register</b> for manual registration.<br>Added <b>LeanSelectable.Unregister</b> for manual unregistration.<br>Added <b>LeanTouch.OnFingerInactive</b> event.</p><br><br></div><div style="overflow:hidden;"><a name="2.0.1"></a><h2>2.0.1</h2><p>Added <b>LeanFinger.OnFingerOld</b> event.<br>Added <b>LeanFingerOld</b> component.<br>Added <b>FingerOld</b> demo scene.<br>Moved <b>LeanFingerHeld</b> to LeanTouch+.</p><br><br></div><div style="overflow:hidden;"><a name="2.0.0"></a><h2>2.0.0</h2><div class="tip"><strong>NOTE</strong>&emsp; This is a <b>MAJOR</b> update to LeanTouch. I recommend you only use this in new projects.</div><p>Redesigned all demo scenes.<br>Added smoothing/dampening to all components.<br>Renamed <b>LeanCameraMove</b> to <b>LeanDragCamera</b>.<br>Renamed <b>LeanCameraZoom</b> to <b>LeanPinchCamera</b>.<br>Moved <b>LeanPinchCamera</b> to LeanTouch+<br>Renamed <b>LeanRotate</b> to <b>LeanTwistRotate</b>.<br>Renamed <b>LeanTranslate</b> to <b>LeanDragRotate</b>.<br>Renamed <b>LeanScale</b> to <b>LeanPinchScale</b>.<br>Renamed <b>LeanCanvasArrow</b> to <b>LeanRoll</b>.<br>Added <b>LeanInfoText</b> component.<br>Rewrote <b>LeanFingerDown</b> component events.<br>Rewrote <b>LeanFingerHeld</b> component events.<br>Rewrote <b>LeanFingerSet</b> component events.<br>Rewrote <b>LeanFingerSwipe</b> component events.<br>Rewrote <b>LeanFingerTap</b> component events.<br>Rewrote <b>LeanFingerUp</b> component events.<br>Added <b>LeanFingerFilter</b> class for common filtering.</p><br><br></div>
 	<br><br>
 	<br><br>
 	<h1>Components</h1>
@@ -1146,7 +1146,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <h2>
 <b style="">static event System.Action&lt;LeanFinger&gt;</b>
 <br>
-<span style="">OnFingerSet</span>
+<span style="">OnFingerUpdate</span>
 </h2>
 <p>This gets fired every frame a finger is touching the screen (LeanFinger = The current finger)</p>
 </div><br><div style="padding-left:75px;"><br>
@@ -1361,23 +1361,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br>
 <b>Vector2 screenPosition, float pressure = 1.0f, int tapCount = 1</b>
 </h2>
-<p>This allows you to simulate a tap on the screen at the specified location.</p><div class="tip"><strong>NOTE</strong>&emsp; The tap events will events execute the next time LeanTouch updates, which may be the next frame.</div>
-</div><br><br><br></div><div style="overflow:hidden;"><a name="LeanDestroy"></a><h2>LeanDestroy</h2><p>This component will automatically destroy this GameObject after the specified amount of time.</p><div class="tip"><strong>NOTE</strong>&emsp; If you want to manually destroy this GameObject, then disable this component, and call the DestroyNow method directly.</div><div style="padding-left:75px;"><br>
-<h2>
-<b style="">float</b>
-<br>
-<span style="">Seconds</span>
-</h2>
-<p>The amount of seconds remaining before this GameObject gets destroyed.</p><p>-1 = You must manually call the DestroyNow method.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">void</b>
-<br>
-<span style="">DestroyNow</span>
-<br>
-<b></b>
-</h2>
-<p>You can manually call this method to destroy the current GameObject now.</p>
+<p>This allows you to simulate a tap on the screen at the specified location.</p>
 </div><br><br><br></div><div style="overflow:hidden;"><a name="LeanDragCamera"></a><h2>LeanDragCamera</h2><p>This component allows you to move the current GameObject (e.g. Camera) based on finger drags and the specified ScreenDepth.</p><div style="padding-left:75px;"><br>
 <h2>
 <b style="">LeanFingerFilter</b>
@@ -1422,82 +1406,6 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <b></b>
 </h2>
 <p>This method moves the current GameObject to the center point of all selected objects.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">void</b>
-<br>
-<span style="">AddFinger</span>
-<br>
-<b>LeanFinger finger</b>
-</h2>
-<p>If you've set Use to ManuallyAddedFingers, then you can call this method to manually add a finger.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">void</b>
-<br>
-<span style="">RemoveFinger</span>
-<br>
-<b>LeanFinger finger</b>
-</h2>
-<p>If you've set Use to ManuallyAddedFingers, then you can call this method to manually remove a finger.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">void</b>
-<br>
-<span style="">RemoveAllFingers</span>
-<br>
-<b></b>
-</h2>
-<p>If you've set Use to ManuallyAddedFingers, then you can call this method to manually remove all fingers.</p>
-</div><br><br><br></div><div style="overflow:hidden;"><a name="LeanDragTrail"></a><h2>LeanDragTrail</h2><p>This component draws trails behind fingers.</p><div class="tip"><strong>NOTE</strong>&emsp; This requires you to enable the LeanTouch.RecordFingers setting.</div><div style="padding-left:75px;"><br>
-<h2>
-<b style="">LeanFingerFilter</b>
-<br>
-<span style="">Use</span>
-</h2>
-<p>The method used to find fingers to use with this component. See LeanFingerFilter documentation for more information.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">LeanScreenDepth</b>
-<br>
-<span style="">ScreenDepth</span>
-</h2>
-<p>The method used to convert between screen coordinates, and world coordinates.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">LineRenderer</b>
-<br>
-<span style="">Prefab</span>
-</h2>
-<p>The line prefab that will be used to render the trails.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">int</b>
-<br>
-<span style="">MaxTrails</span>
-</h2>
-<p>The maximum amount of active trails.</p><p>-1 = Unlimited.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">float</b>
-<br>
-<span style="">FadeTime</span>
-</h2>
-<p>How many seconds it takes for each trail to disappear after a finger is released.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">Color</b>
-<br>
-<span style="">StartColor</span>
-</h2>
-<p>The color of the trail start.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">Color</b>
-<br>
-<span style="">EndColor</span>
-</h2>
-<p>The color of the trail end.</p>
 </div><br><div style="padding-left:75px;"><br>
 <h2>
 <b style="">void</b>
@@ -1737,104 +1645,6 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <span style="">OnPosition</span>
 </h2>
 <p>Called on the first frame the conditions are met.</p><p>Vector3 = Start point based on the ScreenDepth settings.</p>
-</div><br><br><br></div><div style="overflow:hidden;"><a name="LeanFingerSet"></a><h2>LeanFingerSet</h2><p>This component allows you to detect when a finger is touching the screen.</p><div style="padding-left:75px;"><br>
-<h2>
-<b style="">bool</b>
-<br>
-<span style="">IgnoreStartedOverGui</span>
-</h2>
-<p>Ignore fingers with StartedOverGui?</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">bool</b>
-<br>
-<span style="">IgnoreIsOverGui</span>
-</h2>
-<p>Ignore fingers with IsOverGui?</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">bool</b>
-<br>
-<span style="">IgnoreIfStatic</span>
-</h2>
-<p>If the finger didn't move, ignore it?</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">LeanSelectable</b>
-<br>
-<span style="">RequiredSelectable</span>
-</h2>
-<p>If RequiredSelectable.IsSelected is false, ignore?</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">LeanFingerEvent</b>
-<br>
-<span style="">OnFinger</span>
-</h2>
-<p>Called on every frame the conditions are met.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">CoordinateType</b>
-<br>
-<span style="">Coordinate</span>
-</h2>
-<p>The coordinate space of the OnDelta values.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">float</b>
-<br>
-<span style="">Multiplier</span>
-</h2>
-<p>The delta values will be multiplied by this when output.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">Vector2Event</b>
-<br>
-<span style="">OnDelta</span>
-</h2>
-<p>This event is invoked when the requirements are met.</p><p>Vector2 = Position Delta based on your Coordinates setting.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">FloatEvent</b>
-<br>
-<span style="">OnDistance</span>
-</h2>
-<p>Called on the first frame the conditions are met.</p><p>Float = The distance/magnitude/length of the swipe delta vector.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">LeanScreenDepth</b>
-<br>
-<span style="">ScreenDepth</span>
-</h2>
-<p>The method used to find world coordinates from a finger. See LeanScreenDepth documentation for more information.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">Vector3Event</b>
-<br>
-<span style="">OnWorldFrom</span>
-</h2>
-<p>Called on the first frame the conditions are met.</p><p>Vector3 = Start point in world space.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">Vector3Event</b>
-<br>
-<span style="">OnWorldTo</span>
-</h2>
-<p>Called on the first frame the conditions are met.</p><p>Vector3 = End point in world space.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">Vector3Event</b>
-<br>
-<span style="">OnWorldDelta</span>
-</h2>
-<p>Called on the first frame the conditions are met.</p><p>Vector3 = The vector between the start and end points in world space.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">Vector3Vector3Event</b>
-<br>
-<span style="">OnWorldFromTo</span>
-</h2>
-<p>Called on the first frame the conditions are met.</p><p>Vector3 = Start point in world space.</p><p>Vector3 = End point in world space.</p>
 </div><br><br><br></div><div style="overflow:hidden;"><a name="LeanFingerSwipe"></a><h2>LeanFingerSwipe</h2><p>This component fires events if a finger has swiped across the screen.</p><p>A swipe is defined as a touch that began and ended within the LeanTouch.TapThreshold time, and moved more than the LeanTouch.SwipeThreshold distance.</p><div style="padding-left:75px;"><br>
 <h2>
 <b style="">bool</b>
@@ -1961,20 +1771,118 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <span style="">OnPosition</span>
 </h2>
 <p>Called on the first frame the conditions are met.</p><p>Vector3 = Start point based on the ScreenDepth settings.</p>
-</div><br><br><br></div><div style="overflow:hidden;"><a name="LeanInfoText"></a><h2>LeanInfoText</h2><p>This component allows you to display formatted text from Unity events by calling one of the <b>Display</b> methods.</p><div style="padding-left:75px;"><br>
+</div><br><br><br></div><div style="overflow:hidden;"><a name="LeanFingerUpdate"></a><h2>LeanFingerUpdate</h2><p>This component allows you to detect when a finger is touching the screen.</p><div style="padding-left:75px;"><br>
 <h2>
-<b style="">Text</b>
+<b style="">bool</b>
 <br>
-<span style="">Target</span>
+<span style="">IgnoreStartedOverGui</span>
 </h2>
-<p>The text component that will be modified.</p>
+<p>Ignore fingers with StartedOverGui?</p>
 </div><br><div style="padding-left:75px;"><br>
 <h2>
-<b style="">string</b>
+<b style="">bool</b>
 <br>
-<span style="">Format</span>
+<span style="">IgnoreIsOverGui</span>
 </h2>
-<p>The final text will use this string formatting.</p>
+<p>Ignore fingers with IsOverGui?</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">bool</b>
+<br>
+<span style="">IgnoreIfStatic</span>
+</h2>
+<p>If the finger didn't move, ignore it?</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">bool</b>
+<br>
+<span style="">IgnoreIfDown</span>
+</h2>
+<p>If the finger just began touching the screen, ignore it?</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">bool</b>
+<br>
+<span style="">IgnoreIfUp</span>
+</h2>
+<p>If the finger just stopped touching the screen, ignore it?</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">LeanSelectable</b>
+<br>
+<span style="">RequiredSelectable</span>
+</h2>
+<p>If RequiredSelectable.IsSelected is false, ignore?</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">LeanFingerEvent</b>
+<br>
+<span style="">OnFinger</span>
+</h2>
+<p>Called on every frame the conditions are met.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">CoordinateType</b>
+<br>
+<span style="">Coordinate</span>
+</h2>
+<p>The coordinate space of the OnDelta values.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">float</b>
+<br>
+<span style="">Multiplier</span>
+</h2>
+<p>The delta values will be multiplied by this when output.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">Vector2Event</b>
+<br>
+<span style="">OnDelta</span>
+</h2>
+<p>This event is invoked when the requirements are met.</p><p>Vector2 = Position Delta based on your Coordinates setting.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">FloatEvent</b>
+<br>
+<span style="">OnDistance</span>
+</h2>
+<p>Called on the first frame the conditions are met.</p><p>Float = The distance/magnitude/length of the swipe delta vector.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">LeanScreenDepth</b>
+<br>
+<span style="">ScreenDepth</span>
+</h2>
+<p>The method used to find world coordinates from a finger. See LeanScreenDepth documentation for more information.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">Vector3Event</b>
+<br>
+<span style="">OnWorldFrom</span>
+</h2>
+<p>Called on the first frame the conditions are met.</p><p>Vector3 = Start point in world space.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">Vector3Event</b>
+<br>
+<span style="">OnWorldTo</span>
+</h2>
+<p>Called on the first frame the conditions are met.</p><p>Vector3 = End point in world space.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">Vector3Event</b>
+<br>
+<span style="">OnWorldDelta</span>
+</h2>
+<p>Called on the first frame the conditions are met.</p><p>Vector3 = The vector between the start and end points in world space.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">Vector3Vector3Event</b>
+<br>
+<span style="">OnWorldFromTo</span>
+</h2>
+<p>Called on the first frame the conditions are met.</p><p>Vector3 = Start point in world space.</p><p>Vector3 = End point in world space.</p>
 </div><br><br><br></div><div style="overflow:hidden;"><a name="LeanPath"></a><h2>LeanPath</h2><p>This component stores a list of points that form a path.</p><div style="padding-left:75px;"><br>
 <h2>
 <b style="">List&lt;Vector3&gt;</b>
@@ -2100,41 +2008,6 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <span style="">SnapY</span>
 </h2>
 <p>The distance between each position snap on the x axis.</p>
-</div><br><br><br></div><div style="overflow:hidden;"><a name="LeanPulseScale"></a><h2>LeanPulseScale</h2><p>This component will pulse the transform.localScale value over time.</p><div style="padding-left:75px;"><br>
-<h2>
-<b style="">Vector3</b>
-<br>
-<span style="">BaseScale</span>
-</h2>
-<p>The current scale multiplier.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">float</b>
-<br>
-<span style="">Size</span>
-</h2>
-<p>The current scale multiplier.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">float</b>
-<br>
-<span style="">PulseInterval</span>
-</h2>
-<p>The interval between each pulse in seconds.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">float</b>
-<br>
-<span style="">PulseSize</span>
-</h2>
-<p>The amount Size will be incremented each pulse.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">float</b>
-<br>
-<span style="">Dampening</span>
-</h2>
-<p>If you want this component to change smoothly over time, then this allows you to control how quick the changes reach their target value.</p><p>-1 = Instantly change.</p><p>1 = Slowly change.</p><p>10 = Quickly change.</p>
 </div><br><br><br></div><div style="overflow:hidden;"><a name="LeanRoll"></a><h2>LeanRoll</h2><p>This component rotates the current GameObject based on the current Angle value.</p><div class="tip"><strong>NOTE</strong>&emsp; This component overrides and takes over the rotation of this GameObject, so you can no longer externally influence it.</div><div style="padding-left:75px;"><br>
 <h2>
 <b style="">float</b>
@@ -2313,7 +2186,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <h2>
 <b style="">LeanFingerEvent</b>
 <br>
-<span style="">OnSelectSet</span>
+<span style="">OnSelectUpdate</span>
 </h2>
 <p>This event is called every frame this selectable is selected with a finger (finger = the finger that selected this).</p>
 </div><br><div style="padding-left:75px;"><br>
@@ -2568,45 +2441,6 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <span style="">SelectedColor</span>
 </h2>
 <p>The color given to the SpriteRenderer when selected.</p>
-</div><br><br><br></div><div style="overflow:hidden;"><a name="LeanSpawn"></a><h2>LeanSpawn</h2><p>This component allows you to spawn a prefab at the specified world point.</p><div class="tip"><strong>NOTE</strong>&emsp; To trigger the prefab spawn you must call the Spawn method on this component from somewhere.</div><div style="padding-left:75px;"><br>
-<h2>
-<b style="">Transform</b>
-<br>
-<span style="">Prefab</span>
-</h2>
-<p>The prefab that this component can spawn.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">SourceType</b>
-<br>
-<span style="">DefaultPosition</span>
-</h2>
-<p>If you call <b>Spawn()</b>, where should the position come from?</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">SourceType</b>
-<br>
-<span style="">DefaultRotation</span>
-</h2>
-<p>If you call <b>Spawn()</b>, where should the rotation come from?</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">void</b>
-<br>
-<span style="">Spawn</span>
-<br>
-<b></b>
-</h2>
-<p>This will spawn <b>Prefab</b> at the current <b>Transform.position</b>.</p>
-</div><br><div style="padding-left:75px;"><br>
-<h2>
-<b style="">void</b>
-<br>
-<span style="">Spawn</span>
-<br>
-<b>Vector3 position</b>
-</h2>
-<p>This will spawn <b>Prefab</b> at the specified position in world space.</p>
 </div><br><br><br></div><div style="overflow:hidden;"><a name="LeanSwipeBase"></a><h2>LeanSwipeBase</h2><p>This is the base class for all swiping actions.</p><div style="padding-left:75px;"><br>
 <h2>
 <b style="">float</b>
@@ -2698,7 +2532,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <span style="">OnWorldFromTo</span>
 </h2>
 <p>Called on the first frame the conditions are met.</p><p>Vector3 = Start point in world space.</p><p>Vector3 = End point in world space.</p>
-</div><br><br><br></div><div style="overflow:hidden;"><a name="LeanTouchEvents"></a><h2>LeanTouchEvents</h2><p>This component will hook into every LeanTouch event, and spam the console with the information.</p><br><br></div><div style="overflow:hidden;"><a name="LeanTwistRotate"></a><h2>LeanTwistRotate</h2><p>This component allows you to transform the current GameObject relative to the specified camera using a twist gesture.</p><div style="padding-left:75px;"><br>
+</div><br><br><br></div><div style="overflow:hidden;"><a name="LeanTwistRotate"></a><h2>LeanTwistRotate</h2><p>This component allows you to transform the current GameObject relative to the specified camera using a twist gesture.</p><div style="padding-left:75px;"><br>
 <h2>
 <b style="">LeanFingerFilter</b>
 <br>
@@ -2801,7 +2635,187 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <b></b>
 </h2>
 <p>If you've set Use to ManuallyAddedFingers, then you can call this method to manually remove all fingers.</p>
-</div><br><br><br></div>
+</div><br><br><br></div><div style="overflow:hidden;"><a name="LeanDestroy"></a><h2>LeanDestroy</h2><p>This component will automatically destroy this GameObject after the specified amount of time.</p><div class="tip"><strong>NOTE</strong>&emsp; If you want to manually destroy this GameObject, then disable this component, and call the DestroyNow method directly.</div><div style="padding-left:75px;"><br>
+<h2>
+<b style="">float</b>
+<br>
+<span style="">Seconds</span>
+</h2>
+<p>The amount of seconds remaining before this GameObject gets destroyed.</p><p>-1 = You must manually call the DestroyNow method.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">void</b>
+<br>
+<span style="">DestroyNow</span>
+<br>
+<b></b>
+</h2>
+<p>You can manually call this method to destroy the current GameObject now.</p>
+</div><br><br><br></div><div style="overflow:hidden;"><a name="LeanDragTrail"></a><h2>LeanDragTrail</h2><p>This component draws trails behind fingers.</p><div class="tip"><strong>NOTE</strong>&emsp; This requires you to enable the LeanTouch.RecordFingers setting.</div><div style="padding-left:75px;"><br>
+<h2>
+<b style="">LeanFingerFilter</b>
+<br>
+<span style="">Use</span>
+</h2>
+<p>The method used to find fingers to use with this component. See LeanFingerFilter documentation for more information.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">LeanScreenDepth</b>
+<br>
+<span style="">ScreenDepth</span>
+</h2>
+<p>The method used to convert between screen coordinates, and world coordinates.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">LineRenderer</b>
+<br>
+<span style="">Prefab</span>
+</h2>
+<p>The line prefab that will be used to render the trails.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">int</b>
+<br>
+<span style="">MaxTrails</span>
+</h2>
+<p>The maximum amount of active trails.</p><p>-1 = Unlimited.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">float</b>
+<br>
+<span style="">FadeTime</span>
+</h2>
+<p>How many seconds it takes for each trail to disappear after a finger is released.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">Color</b>
+<br>
+<span style="">StartColor</span>
+</h2>
+<p>The color of the trail start.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">Color</b>
+<br>
+<span style="">EndColor</span>
+</h2>
+<p>The color of the trail end.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">void</b>
+<br>
+<span style="">AddFinger</span>
+<br>
+<b>LeanFinger finger</b>
+</h2>
+<p>If you've set Use to ManuallyAddedFingers, then you can call this method to manually add a finger.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">void</b>
+<br>
+<span style="">RemoveFinger</span>
+<br>
+<b>LeanFinger finger</b>
+</h2>
+<p>If you've set Use to ManuallyAddedFingers, then you can call this method to manually remove a finger.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">void</b>
+<br>
+<span style="">RemoveAllFingers</span>
+<br>
+<b></b>
+</h2>
+<p>If you've set Use to ManuallyAddedFingers, then you can call this method to manually remove all fingers.</p>
+</div><br><br><br></div><div style="overflow:hidden;"><a name="LeanInfoText"></a><h2>LeanInfoText</h2><p>This component allows you to display formatted text from Unity events by calling one of the <b>Display</b> methods.</p><div style="padding-left:75px;"><br>
+<h2>
+<b style="">Text</b>
+<br>
+<span style="">Target</span>
+</h2>
+<p>The text component that will be modified.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">string</b>
+<br>
+<span style="">Format</span>
+</h2>
+<p>The final text will use this string formatting.</p>
+</div><br><br><br></div><div style="overflow:hidden;"><a name="LeanPulseScale"></a><h2>LeanPulseScale</h2><p>This component will pulse the transform.localScale value over time.</p><div style="padding-left:75px;"><br>
+<h2>
+<b style="">Vector3</b>
+<br>
+<span style="">BaseScale</span>
+</h2>
+<p>The current scale multiplier.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">float</b>
+<br>
+<span style="">Size</span>
+</h2>
+<p>The current scale multiplier.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">float</b>
+<br>
+<span style="">PulseInterval</span>
+</h2>
+<p>The interval between each pulse in seconds.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">float</b>
+<br>
+<span style="">PulseSize</span>
+</h2>
+<p>The amount Size will be incremented each pulse.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">float</b>
+<br>
+<span style="">Dampening</span>
+</h2>
+<p>If you want this component to change smoothly over time, then this allows you to control how quick the changes reach their target value.</p><p>-1 = Instantly change.</p><p>1 = Slowly change.</p><p>10 = Quickly change.</p>
+</div><br><br><br></div><div style="overflow:hidden;"><a name="LeanSpawn"></a><h2>LeanSpawn</h2><p>This component allows you to spawn a prefab at the specified world point.</p><div class="tip"><strong>NOTE</strong>&emsp; To trigger the prefab spawn you must call the Spawn method on this component from somewhere.</div><div style="padding-left:75px;"><br>
+<h2>
+<b style="">Transform</b>
+<br>
+<span style="">Prefab</span>
+</h2>
+<p>The prefab that this component can spawn.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">SourceType</b>
+<br>
+<span style="">DefaultPosition</span>
+</h2>
+<p>If you call <b>Spawn()</b>, where should the position come from?</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">SourceType</b>
+<br>
+<span style="">DefaultRotation</span>
+</h2>
+<p>If you call <b>Spawn()</b>, where should the rotation come from?</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">void</b>
+<br>
+<span style="">Spawn</span>
+<br>
+<b></b>
+</h2>
+<p>This will spawn <b>Prefab</b> at the current <b>Transform.position</b>.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">void</b>
+<br>
+<span style="">Spawn</span>
+<br>
+<b>Vector3 position</b>
+</h2>
+<p>This will spawn <b>Prefab</b> at the specified position in world space.</p>
+</div><br><br><br></div><div style="overflow:hidden;"><a name="LeanTouchEvents"></a><h2>LeanTouchEvents</h2><p>This component will hook into every LeanTouch event, and spam the console with the information.</p><br><br></div>
 </div>
 <div style="position: absolute; width: 310px; left: 0px; right: 0px; top: 200px; bottom: 20px; overflow-y: scroll; padding: 20px;">
 	<h2 style="padding-bottom: 5px;">Index</h2>
@@ -2814,7 +2828,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 	<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#2.1.2">2.1.2</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#2.1.1">2.1.1</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#2.1.0">2.1.0</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#2.0.9">2.0.9</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#2.0.8">2.0.8</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#2.0.7">2.0.7</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#2.0.6">2.0.6</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#2.0.5">2.0.5</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#2.0.4">2.0.4</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#2.0.3">2.0.3</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#2.0.2">2.0.2</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#2.0.1">2.0.1</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#2.0.0">2.0.0</a></p>
 	<br><br>
 	<h2 style="padding-bottom: 5px;">Components</h2>
-	<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanFinger">LeanFinger</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanGesture">LeanGesture</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanSnapshot">LeanSnapshot</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanTouch">LeanTouch</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanDestroy">LeanDestroy</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanDragCamera">LeanDragCamera</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanDragTrail">LeanDragTrail</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanDragTranslate">LeanDragTranslate</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanFingerData">LeanFingerData</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanFingerDown">LeanFingerDown</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanFingerFilter">LeanFingerFilter</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanFingerOld">LeanFingerOld</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanFingerSet">LeanFingerSet</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanFingerSwipe">LeanFingerSwipe</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanFingerTap">LeanFingerTap</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanFingerUp">LeanFingerUp</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanInfoText">LeanInfoText</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanPath">LeanPath</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanPinchScale">LeanPinchScale</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanPlane">LeanPlane</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanPulseScale">LeanPulseScale</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanRoll">LeanRoll</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanScreenDepth">LeanScreenDepth</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanSelect">LeanSelect</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanSelectable">LeanSelectable</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanSelectableBehaviour">LeanSelectableBehaviour</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanSelectableGraphicColor">LeanSelectableGraphicColor</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanSelectableRendererColor">LeanSelectableRendererColor</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanSelectableSpriteRendererColor">LeanSelectableSpriteRendererColor</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanSpawn">LeanSpawn</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanSwipeBase">LeanSwipeBase</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanTouchEvents">LeanTouchEvents</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanTwistRotate">LeanTwistRotate</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanTwistRotateAxis">LeanTwistRotateAxis</a></p>
+	<p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanFinger">LeanFinger</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanGesture">LeanGesture</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanSnapshot">LeanSnapshot</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanTouch">LeanTouch</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanDragCamera">LeanDragCamera</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanDragTranslate">LeanDragTranslate</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanFingerData">LeanFingerData</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanFingerDown">LeanFingerDown</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanFingerFilter">LeanFingerFilter</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanFingerOld">LeanFingerOld</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanFingerSwipe">LeanFingerSwipe</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanFingerTap">LeanFingerTap</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanFingerUp">LeanFingerUp</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanFingerUpdate">LeanFingerUpdate</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanPath">LeanPath</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanPinchScale">LeanPinchScale</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanPlane">LeanPlane</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanRoll">LeanRoll</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanScreenDepth">LeanScreenDepth</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanSelect">LeanSelect</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanSelectable">LeanSelectable</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanSelectableBehaviour">LeanSelectableBehaviour</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanSelectableGraphicColor">LeanSelectableGraphicColor</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanSelectableRendererColor">LeanSelectableRendererColor</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanSelectableSpriteRendererColor">LeanSelectableSpriteRendererColor</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanSwipeBase">LeanSwipeBase</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanTwistRotate">LeanTwistRotate</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanTwistRotateAxis">LeanTwistRotateAxis</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanDestroy">LeanDestroy</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanDragTrail">LeanDragTrail</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanInfoText">LeanInfoText</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanPulseScale">LeanPulseScale</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanSpawn">LeanSpawn</a></p><p style="margin: 2px; padding-left: 10px; text-indent: -10px;"><a href="#LeanTouchEvents">LeanTouchEvents</a></p>
 	<br><br>
 </div>
 <div style="background-color: #0075D0; position: absolute; left: 0px; right: 0px; bottom: 0px; height: 20px;">
