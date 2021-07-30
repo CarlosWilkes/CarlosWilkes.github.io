@@ -1,3 +1,0 @@
-Lean GUI Shapes
-Lean GUI Shapes allows you to quickly add lines, rounded boxes, polygons, and much more to your GUI!
-<a href="http://CarlosWilkes.com/Get/LeanGUIShapes" target="_blank"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/69366/icon" alt="Lean GUI Shapes" width="128" height="128" /></a>

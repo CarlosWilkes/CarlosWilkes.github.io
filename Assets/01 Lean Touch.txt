@@ -1,3 +1,0 @@
-Lean Touch
-Rapidly develop your game with consistent input across desktop & mobile using Lean Touch. This lightweight asset comes with many modular components, allowing you to customize them to your exact project needs!
-<a href="http://CarlosWilkes.com/Get/LeanTouch" target="_blank"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/30111/icon" alt="Lean Touch" width="128" height="128" /></a>

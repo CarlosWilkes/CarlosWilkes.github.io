@@ -1,3 +1,0 @@
-Paint in 3D
-Paint all your objects using <strong>Paint in 3D</strong> - both in game, and in editor. All features are optimized with GPU accelerated texture painting, so you can enjoy consistent performance, even if you paint your objects one million times!
-<a href="http://CarlosWilkes.com/Get/PaintIn3D" target="_blank"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/26286/icon" alt="Paint in 3D" width="128" height="128" /></a>

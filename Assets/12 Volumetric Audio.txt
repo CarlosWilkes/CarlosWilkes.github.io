@@ -1,3 +1,0 @@
-Volumetric Audio
-Unity sounds only emanate from a single point source. This is great for explosions and footsteps, but quite often you need something more advanced. Volumetric Audio is an easy to use package that allows you to define boxes, spheres, capsules, paths, or meshes that sounds can emanate from.
-<a href="http://CarlosWilkes.com/Get/VolumetricAudio" target="_blank"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/17125/icon" alt="Volumetric Audio" width="128" height="128" /></a>

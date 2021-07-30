@@ -1,3 +1,0 @@
-Lean Touch+
-Lean Touch+ is an extension to the popular Lean Touch asset, adding many more example scenes.
-<a href="http://CarlosWilkes.com/Get/LeanTouchPlus" target="_blank"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/72356/icon" alt="Lean Touch+" width="128" height="128" /></a>

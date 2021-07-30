@@ -1,3 +1,0 @@
-Lean GUI
-Lean GUI is a colllection of components that extend Unity's GUI system, allowing you to rapidly enhance the user experience (UX) of your game's UI.
-<a href="http://CarlosWilkes.com/Get/LeanGUI" target="_blank"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/72138/icon" alt="Lean GUI" width="128" height="128" /></a>

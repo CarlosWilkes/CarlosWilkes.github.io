@@ -1,3 +1,0 @@
-Destructible 2D
-Unlock the full potential of your 2D games using Destructible 2D, this asset allows you to quickly convert all your boring solid sprites into fully destructible ones!
-<a href="http://CarlosWilkes.com/Get/Destructible2D" target="_blank"><img src="https://api.assetstore.unity3d.com/affiliate/embed/package/18125/icon" alt="Destructible 2D" width="128" height="128" /></a>
