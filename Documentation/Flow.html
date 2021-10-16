@@ -59,6 +59,8 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <h2><span style=""> Data Precision</span></h2><p>The fluid data is stored using a collection of textures, where each pixel represents one fluid column. By default, important data like the fluid depth is stored using 32 bit floats, and less important data like the fluid color is stored using 8 bit bytes.</p><p>These defaults work well for most projects. However, if memory usage is a concern then you may want to switch from 32 bit floats to 16 bit floats. Conversely, if your project requires higher precision fluid mixing then you may want to increase from 8 bit bytes to 16 or 32 bit floats.</p><p>To adjust the precision of this data, you can modify the <b>FlowSimulation</b> component's <b>Advanced / Precision___</b> settings. You can view the tooltip of each setting to see which fluid data is stored in that specific texture.</p></div><br><div style="padding-left:75px; overflow:hidden;"><br>
 <h2><span style=""> Fluid Viscosity Mixing</span></h2><p>In real life, when you pour a low viscosity fluid like water on top of a highly viscous fluid like honey, the water will freely flow on top of it.</p><p>This is not possible to simulate in FLOW, because only one set of fluid data (e.g. depth, viscosity) is stored in each fluid column.</p><p>For example, if a column contains honey and water flows into it, the water will slowly mix into the honey and cause the overall viscosity to decrease. This results in the water appearing to stop or slow down as it hits the honey, and it gradually 'melting' as it fully mixes.</p></div><br><div style="padding-left:75px; overflow:hidden;"><br>
 <h2><span style=""> Fluid Simulation Interaction</span></h2><p>Each fluid simulation is unique and separate. If you place one simulation next to another, or one on top of another, fluid will <b>not</b> be able to flow between them.</p><p>This same limitation exists for particles. When a particle is spawned, it is assigned to one simulation. It is not possible to freely spawn a particle in space and have it automatically apply to the first simulation it hits.</p><p>A solution to remove these limitations may be implemented in the future, but it is a fairly difficult feature to implement so it isn't such a high priority.</p></div><br><div style="padding-left:75px; overflow:hidden;"><br>
+<h2><span style=""> Determinism</span></h2><p>The fluid simulation is updated on the GPU using floats, and the way floating point calculations are implemented on the GPU differs between some devices. Therefore, even if you start the exact same fluid simulation with the exact same settings, you may get slightly different results on different devices. Over a long enough timespan, these differences may become significant. So for example, it might not be a good idea to make a puzzle game that uses FLOW fluids as a main gameplay element that requires a very precise configuration/solution to solve, because it may be impossible for some people to achieve what you see.</p></div><br><div style="padding-left:75px; overflow:hidden;"><br>
+<h2><span style=""> Simulation Behavior vs Resolution</span></h2><p>The fluid simulation is split up into a uniform grid of fluid columns. Each tick, these columns are updated using neighbor data from the four cardinal directions. This means the maximum possible speed a fluid can move is one column per tick. This usually isn't something you need to think about, but it means that changing the fluid simulation resolution (i.e. the separation distance between each column) will change how the fluid behaves/looks. For example, if your game is designed for desktop and mobile devices then you may want to reduce the FlowSimulation component's Resolution setting on mobiles to keep good performance. However, this means the fluids will behave differently on mobile, and may appear to flow faster.</p><p>The only way to make the simulation behave similarly with differing resolutions is to slow down the flow rate as you decrease the resolution. However, FLOW currently doesn't implement a feature like this, but I plan to add it.</p></div><br><div style="padding-left:75px; overflow:hidden;"><br>
 <h2><span style=""> Fluid Ground Data</span></h2><p>The fluid flows on top of a runtime generated heightmap (i.e. for every XZ point within the simulation, there is an associated Y height value for the ground). This means it is not possible to have the fluid fill up a shape like the inside of a sphere, because a sphere does  not have only one Y height for each XZ point.</p><p>Similarly, the fluid itself is stored using a single fluid depth value for each fluid column, so it's not possible to have fluid on top of another fluid unless they're in separate simulations (then they can't interact).</p><p>As long as you imagine the ground data as being a heightmap, and the fluid also being a heightmap, all the same limitations will apply to how the fluid could appear on the surface.</p></div><br><div style="padding-left:75px; overflow:hidden;"><br>
 <h2><span style=""> Spherical Planet Support (e.g. Space Graphics Toolkit)</span></h2><p>While it's technically possible to implement this, it would require me to rewrite every feature with spherical calculations. This means it would require double the work to implement and support, but since only a small percentage of customers would use this, it wouldn't be worth it.</p></div><br><div style="padding-left:75px; overflow:hidden;"><br>
 <h2><span style=""> Voxel Terrains</span></h2><p>The fluid flows on top of a runtime generated heightmap, and it's impossible to represent a voxel terrain using a heightmap. Therefore, there is no possible way to combine FLOW with voxel terrains.</p></div><br><div style="padding-left:75px; overflow:hidden;"><br>
@@ -1249,6 +1251,42 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <span style="">Title</span>
 </h2>
 <p>This allows you to set the filename used when saving and loading from file, where {0} is the simulation GameObject name.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">void</b>
+<br>
+<span style="">SaveToTemp</span>
+<br>
+<b></b>
+</h2>
+<p>This method stores a temporary snapshot of the fluid data to this component. This will be erased when you close the app, change the scene, or otherwise cause this component to be destroyed.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">void</b>
+<br>
+<span style="">LoadFromTemp</span>
+<br>
+<b></b>
+</h2>
+<p>This method reverts the fluid data to the previously stored snapshot.</p>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">void</b>
+<br>
+<span style="">SaveToFile</span>
+<br>
+<b></b>
+</h2>
+<p>This method stores a persistent snapshot of the fluid data to this device.</p><div class="tip"><strong>NOTE</strong>&emsp; Depending on your fluid simulation resolution this can be a lot of data, so it may not always be possible to save.</div><div class="tip"><strong>NOTE</strong>&emsp; Depending on your fluid simulation resolution this can be slow to call, because it must copy data from GPU to CPU memory.</div>
+</div><br><div style="padding-left:75px;"><br>
+<h2>
+<b style="">void</b>
+<br>
+<span style="">LoadFromFile</span>
+<br>
+<b></b>
+</h2>
+<p>This method reverts the fluid data to the previously stored snapshot.</p>
 </div><br><br><br></div><div style="overflow:hidden;"><a name="FlowSnapshotData"></a><h2>FlowSnapshotData</h2><p>This class stores a snapshot of a fluid simulation.</p><p>The snapshot can be stored in three different formats: Raw (RenderTexture), Readable (Texture2D), and Serializable (byte[]).</p><p>The fluid simulation itself is stored using RenderTextures, so the raw format is the fastest storage method to use. However, it's not possible to directly read/write RenderTextures, and they cannot be directly saved/loaded.</p><p>The readable data is stored using Texture2D, which you can directly read/write, but it cannot be directly saved/loaded.</p><p>The serializable data is stored using PNG encoded bytes, which you cannot directly read/write, but you can directly save/load them.</p><div style="padding-left:75px;"><br>
 <h2>
 <b style="">void</b>
@@ -1257,7 +1295,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br>
 <b>FlowSimulation simulation</b>
 </h2>
-<p>This method copies all fluid and particle data from the specified simulation into this class.</p>
+<p>This method copies all fluid and particle data from the specified simulation into this class as raw data.</p>
 </div><br><div style="padding-left:75px;"><br>
 <h2>
 <b style="">void</b>
@@ -1266,7 +1304,7 @@ pre{ font-family: 'fira_monoregular'; line-height: 20px; font-size: 14px; color:
 <br>
 <b>FlowSimulation simulation</b>
 </h2>
-<p>This method copies all fluid and particle data from this class into the specified simulation.</p>
+<p>This method copies all raw fluid and particle data from this class into the specified simulation.</p>
 </div><br><br><br></div><div style="overflow:hidden;"><a name="FlowSurface"></a><h2>FlowSurface</h2><p>This component can be added to a child GameObject of the <b>FlowSimulation</b>, and allows rendering of the fluid when the camera is above the surface.</p><div style="padding-left:75px;"><br>
 <h2>
 <b style="">FlowSimulation</b>
