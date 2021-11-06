@@ -79,6 +79,15 @@ hr {
 	margin-left: 50px;
 	padding: 0;
 }
+.compact {
+	display: inline-block;
+	width: 100%;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.compact > h2 {
+	margin-top: 30px;
+}
 .feature {
 	display: inline-block;
 	width: 100%;
