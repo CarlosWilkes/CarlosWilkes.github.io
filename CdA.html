@@ -24,13 +24,15 @@
 
   <label>Temperature (°C): <input type="number" id="temperature" value="20"></label><br>
   <label>Humidity (%): <input type="number" id="humidity" value="50"></label><br>
+  <label>Pressure (hPa): <input type="number" id="pressure" value="1013"></label><br>
   <label>Altitude (m): <input type="number" id="altitude" value="0"></label>
   <!-- <button onclick="fetchAltitude()">Fetch Altitude from GPS</button><br> -->
 
   <h3>Rider and Bike</h3>
-  <label>Rider Weight (kg): <input type="number" id="riderWeight" value="68"></label><br>
-  <label>Bike Weight (kg): <input type="number" id="bikeWeight" value="11"></label><br>
-  <label>Tire Crr: <input type="number" step="0.0001" id="crr" value="0.0028"></label><br>
+  <label>Rider Weight (kg): <input type="number" id="riderWeight" value="70"></label><br>
+  <label>Bike Weight (kg): <input type="number" id="bikeWeight" value="8"></label><br>
+  <label>Tire Crr: <input type="number" step="0.0001" id="crr" value="0.005"></label><br>
+  <label>Drivetrain Loss (%): <input type="number" id="drivetrainLoss" value="3"></label><br>
 
   <h3>Speed/Power Pairs</h3>
   <div id="pairsContainer">
@@ -69,7 +71,7 @@
         return;
       }
 
-      const url = `https://archive-api.open-meteo.com/v1/archive?latitude=${lat}&longitude=${lon}&start_date=${date}&end_date=${date}&hourly=temperature_2m,relative_humidity_2m&timezone=UTC`;
+      const url = `https://archive-api.open-meteo.com/v1/archive?latitude=${lat}&longitude=${lon}&start_date=${date}&end_date=${date}&hourly=temperature_2m,relative_humidity_2m,surface_pressure&timezone=UTC`;
 
       try {
         const res = await fetch(url);
@@ -77,10 +79,17 @@
 
         const temps = data.hourly.temperature_2m;
         const hums = data.hourly.relative_humidity_2m;
+        const pressures = data.hourly.surface_pressure;
 
-        if (temps && hums && typeof temps[hour] !== 'undefined' && typeof hums[hour] !== 'undefined') {
+        if (
+          temps && hums && pressures &&
+          typeof temps[hour] !== 'undefined' &&
+          typeof hums[hour] !== 'undefined' &&
+          typeof pressures[hour] !== 'undefined'
+        ) {
           document.getElementById("temperature").value = temps[hour].toFixed(1);
           document.getElementById("humidity").value = hums[hour].toFixed(0);
+          document.getElementById("pressure").value = (pressures[hour] / 100).toFixed(1); // convert from Pa to hPa
         } else {
           alert("No weather data available for that hour, date, and location.");
         }
@@ -90,42 +99,10 @@
       }
     }
 
-    async function fetchAltitude() {
-      const lat = document.getElementById("latitude").value;
-      const lon = document.getElementById("longitude").value;
-
-      if (!lat || !lon) {
-        alert("Please enter latitude and longitude first.");
-        return;
-      }
-
-      const url = `https://api.open-meteo.com/v1/elevation?latitude=${lat}&longitude=${lon}`;
-      try {
-        const res = await fetch(url);
-        const data = await res.json();
-        if (data.elevation) {
-          document.getElementById("altitude").value = data.elevation.toFixed(1);
-        } else {
-          alert("Elevation not found.");
-        }
-      } catch (err) {
-        console.error(err);
-        alert("Failed to fetch elevation data.");
-      }
-    }
-
-    function calculateAirDensity(tempC, humidity, altitude) {
+    function calculateAirDensity(tempC, humidity, pressure_hPa) {
       const T = tempC + 273.15;
       const RH = humidity / 100;
-
-      // Barometric formula for pressure with altitude
-      const P0 = 101325; // sea level standard pressure (Pa)
-      const L = 0.0065;  // temperature lapse rate (K/m)
-      const R = 8.31447; // gas constant (J/mol·K)
-      const M = 0.0289644; // molar mass of dry air (kg/mol)
-      const g = 9.80665;
-
-      const P = P0 * Math.pow(1 - (L * altitude) / T, (g * M) / (R * L));
+      const P = pressure_hPa * 100; // convert to Pa
 
       // Water vapor pressure
       const es = 6.112 * Math.exp((17.67 * tempC) / (tempC + 243.5)) * 100;
@@ -140,18 +117,18 @@
     function calculateCdA() {
       const temp = parseFloat(document.getElementById("temperature").value);
       const humidity = parseFloat(document.getElementById("humidity").value);
-      const altitude = parseFloat(document.getElementById("altitude").value);
+      const pressure = parseFloat(document.getElementById("pressure").value); // in hPa
       const riderWeight = parseFloat(document.getElementById("riderWeight").value);
       const bikeWeight = parseFloat(document.getElementById("bikeWeight").value);
       const Crr = parseFloat(document.getElementById("crr").value);
+      const drivetrainLoss = parseFloat(document.getElementById("drivetrainLoss").value) / 100;
       const totalWeight = riderWeight + bikeWeight;
 
       const g = 9.80665;
-
       const speeds = Array.from(document.getElementsByClassName("speed")).map(el => parseFloat(el.value));
       const powers = Array.from(document.getElementsByClassName("power")).map(el => parseFloat(el.value));
 
-      const rho = calculateAirDensity(temp, humidity, altitude);
+      const rho = calculateAirDensity(temp, humidity, pressure);
 
       let resultsHTML = `<h3>Results</h3><table><tr><th>Speed (km/h)</th><th>Power (W)</th><th>CdA</th></tr>`;
       let totalCdA = 0;
@@ -159,16 +136,17 @@
 
       for (let i = 0; i < speeds.length; i++) {
         const vKph = speeds[i];
-        const P = powers[i];
+        let P = powers[i];
 
         if (isNaN(vKph) || isNaN(P) || vKph <= 0 || P <= 0) continue;
 
+        P = P * (1 - drivetrainLoss); // apply drivetrain loss
         const v = vKph / 3.6;
         const rollingPower = totalWeight * g * Crr * v;
         const aeroPower = P - rollingPower;
         const CdA = (2 * aeroPower) / (rho * v ** 3);
 
-        resultsHTML += `<tr><td>${vKph.toFixed(1)}</td><td>${P.toFixed(1)}</td><td>${CdA.toFixed(4)}</td></tr>`;
+        resultsHTML += `<tr><td>${vKph.toFixed(1)}</td><td>${(P).toFixed(1)}</td><td>${CdA.toFixed(4)}</td></tr>`;
         totalCdA += CdA;
         count++;
       }
