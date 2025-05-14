@@ -29,9 +29,9 @@
   <!-- <button onclick="fetchAltitude()">Fetch Altitude from GPS</button><br> -->
 
   <h3>Rider and Bike</h3>
-  <label>Rider Weight (kg): <input type="number" id="riderWeight" value="70"></label><br>
-  <label>Bike Weight (kg): <input type="number" id="bikeWeight" value="8"></label><br>
-  <label>Tire Crr: <input type="number" step="0.0001" id="crr" value="0.005"></label><br>
+  <label>Rider Weight (kg): <input type="number" id="riderWeight" value="69"></label><br>
+  <label>Bike Weight (kg): <input type="number" id="bikeWeight" value="11"></label><br>
+  <label>Tire Crr: <input type="number" step="0.0001" id="crr" value="0.0028"></label><br>
   <label>Drivetrain Loss (%): <input type="number" id="drivetrainLoss" value="3"></label><br>
 
   <h3>Speed/Power Pairs</h3>
@@ -89,7 +89,7 @@
         ) {
           document.getElementById("temperature").value = temps[hour].toFixed(1);
           document.getElementById("humidity").value = hums[hour].toFixed(0);
-          document.getElementById("pressure").value = (pressures[hour] / 100).toFixed(1); // convert from Pa to hPa
+          document.getElementById("pressure").value = (pressures[hour] / 1).toFixed(1); // convert from Pa to hPa
         } else {
           alert("No weather data available for that hour, date, and location.");
         }
