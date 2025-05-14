@@ -25,12 +25,12 @@
   <label>Temperature (°C): <input type="number" id="temperature" value="20"></label><br>
   <label>Humidity (%): <input type="number" id="humidity" value="50"></label><br>
   <label>Altitude (m): <input type="number" id="altitude" value="0"></label>
-  <button onclick="fetchAltitude()">Fetch Altitude from GPS</button><br>
+  <!-- <button onclick="fetchAltitude()">Fetch Altitude from GPS</button><br> -->
 
   <h3>Rider and Bike</h3>
-  <label>Rider Weight (kg): <input type="number" id="riderWeight" value="70"></label><br>
-  <label>Bike Weight (kg): <input type="number" id="bikeWeight" value="8"></label><br>
-  <label>Tire Crr: <input type="number" step="0.0001" id="crr" value="0.005"></label><br>
+  <label>Rider Weight (kg): <input type="number" id="riderWeight" value="68"></label><br>
+  <label>Bike Weight (kg): <input type="number" id="bikeWeight" value="11"></label><br>
+  <label>Tire Crr: <input type="number" step="0.0001" id="crr" value="0.0028"></label><br>
 
   <h3>Speed/Power Pairs</h3>
   <div id="pairsContainer">
@@ -91,29 +91,28 @@
     }
 
     async function fetchAltitude() {
-	  const lat = document.getElementById("latitude").value;
-	  const lon = document.getElementById("longitude").value;
+      const lat = document.getElementById("latitude").value;
+      const lon = document.getElementById("longitude").value;
 
-	  if (!lat || !lon) {
-		alert("Please enter latitude and longitude first.");
-		return;
-	  }
+      if (!lat || !lon) {
+        alert("Please enter latitude and longitude first.");
+        return;
+      }
 
-	  const url = `https://api.open-meteo.com/v1/elevation?latitude=${lat}&longitude=${lon}`;
-	  try {
-		const res = await fetch(url);
-		const data = await res.json();
-
-		if (data.elevation && Array.isArray(data.elevation.elevation)) {
-		  document.getElementById("altitude").value = data.elevation.elevation[0].toFixed(1);
-		} else {
-		  alert("Elevation not found in API response.");
-		}
-	  } catch (err) {
-		console.error(err);
-		alert("Failed to fetch elevation data.");
-	  }
-	}
+      const url = `https://api.open-meteo.com/v1/elevation?latitude=${lat}&longitude=${lon}`;
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        if (data.elevation) {
+          document.getElementById("altitude").value = data.elevation.toFixed(1);
+        } else {
+          alert("Elevation not found.");
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Failed to fetch elevation data.");
+      }
+    }
 
     function calculateAirDensity(tempC, humidity, altitude) {
       const T = tempC + 273.15;
