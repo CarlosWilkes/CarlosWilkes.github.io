@@ -91,28 +91,29 @@
     }
 
     async function fetchAltitude() {
-      const lat = document.getElementById("latitude").value;
-      const lon = document.getElementById("longitude").value;
+	  const lat = document.getElementById("latitude").value;
+	  const lon = document.getElementById("longitude").value;
 
-      if (!lat || !lon) {
-        alert("Please enter latitude and longitude first.");
-        return;
-      }
+	  if (!lat || !lon) {
+		alert("Please enter latitude and longitude first.");
+		return;
+	  }
 
-      const url = `https://api.open-meteo.com/v1/elevation?latitude=${lat}&longitude=${lon}`;
-      try {
-        const res = await fetch(url);
-        const data = await res.json();
-        if (data.elevation) {
-          document.getElementById("altitude").value = data.elevation.toFixed(1);
-        } else {
-          alert("Elevation not found.");
-        }
-      } catch (err) {
-        console.error(err);
-        alert("Failed to fetch elevation data.");
-      }
-    }
+	  const url = `https://api.open-meteo.com/v1/elevation?latitude=${lat}&longitude=${lon}`;
+	  try {
+		const res = await fetch(url);
+		const data = await res.json();
+
+		if (data.elevation && Array.isArray(data.elevation.elevation)) {
+		  document.getElementById("altitude").value = data.elevation.elevation[0].toFixed(1);
+		} else {
+		  alert("Elevation not found in API response.");
+		}
+	  } catch (err) {
+		console.error(err);
+		alert("Failed to fetch elevation data.");
+	  }
+	}
 
     function calculateAirDensity(tempC, humidity, altitude) {
       const T = tempC + 273.15;
