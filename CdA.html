@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bicycle CdA Calculator</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    input { margin: 5px; }
+    table { border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+    .pair-row { margin-bottom: 5px; }
+    #results { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Bicycle CdA Calculator</h1>
+
+  <h3>Environment Inputs</h3>
+  <label>Latitude: <input type="number" id="latitude" value="35.6895" step="0.0001"></label><br>
+  <label>Longitude: <input type="number" id="longitude" value="139.6917" step="0.0001"></label><br>
+  <label>Date (YYYY-MM-DD): <input type="date" id="weatherDate"></label><br>
+  <label>Hour (0-23): <input type="number" id="weatherHour" min="0" max="23" value="12"></label><br>
+  <button onclick="fetchWeather()">Fetch Weather</button><br><br>
+
+  <label>Temperature (°C): <input type="number" id="temperature" value="20"></label><br>
+  <label>Humidity (%): <input type="number" id="humidity" value="50"></label><br>
+  <label>Altitude (m): <input type="number" id="altitude" value="0"></label>
+  <button onclick="fetchAltitude()">Fetch Altitude from GPS</button><br>
+
+  <h3>Rider and Bike</h3>
+  <label>Rider Weight (kg): <input type="number" id="riderWeight" value="70"></label><br>
+  <label>Bike Weight (kg): <input type="number" id="bikeWeight" value="8"></label><br>
+  <label>Tire Crr: <input type="number" step="0.0001" id="crr" value="0.005"></label><br>
+
+  <h3>Speed/Power Pairs</h3>
+  <div id="pairsContainer">
+    <div class="pair-row">
+      <label>Speed (km/h): <input type="number" class="speed" value="30"></label>
+      <label>Power (W): <input type="number" class="power" value="200"></label>
+    </div>
+  </div>
+  <button onclick="addPair()">Add Another Pair</button>
+
+  <br><br>
+  <button onclick="calculateCdA()">Calculate CdA</button>
+
+  <div id="results"></div>
+
+  <script>
+    function addPair() {
+      const container = document.getElementById("pairsContainer");
+      const div = document.createElement("div");
+      div.className = "pair-row";
+      div.innerHTML = `
+        <label>Speed (km/h): <input type="number" class="speed" value="30"></label>
+        <label>Power (W): <input type="number" class="power" value="200"></label>
+      `;
+      container.appendChild(div);
+    }
+
+    async function fetchWeather() {
+      const lat = document.getElementById("latitude").value;
+      const lon = document.getElementById("longitude").value;
+      const date = document.getElementById("weatherDate").value;
+      const hour = parseInt(document.getElementById("weatherHour").value);
+
+      if (!lat || !lon || !date || isNaN(hour)) {
+        alert("Please fill in latitude, longitude, date, and hour.");
+        return;
+      }
+
+      const url = `https://archive-api.open-meteo.com/v1/archive?latitude=${lat}&longitude=${lon}&start_date=${date}&end_date=${date}&hourly=temperature_2m,relative_humidity_2m&timezone=UTC`;
+
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+
+        const temps = data.hourly.temperature_2m;
+        const hums = data.hourly.relative_humidity_2m;
+
+        if (temps && hums && typeof temps[hour] !== 'undefined' && typeof hums[hour] !== 'undefined') {
+          document.getElementById("temperature").value = temps[hour].toFixed(1);
+          document.getElementById("humidity").value = hums[hour].toFixed(0);
+        } else {
+          alert("No weather data available for that hour, date, and location.");
+        }
+      } catch (error) {
+        console.error(error);
+        alert("Failed to fetch weather data.");
+      }
+    }
+
+    async function fetchAltitude() {
+      const lat = document.getElementById("latitude").value;
+      const lon = document.getElementById("longitude").value;
+
+      if (!lat || !lon) {
+        alert("Please enter latitude and longitude first.");
+        return;
+      }
+
+      const url = `https://api.open-meteo.com/v1/elevation?latitude=${lat}&longitude=${lon}`;
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        if (data.elevation) {
+          document.getElementById("altitude").value = data.elevation.toFixed(1);
+        } else {
+          alert("Elevation not found.");
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Failed to fetch elevation data.");
+      }
+    }
+
+    function calculateAirDensity(tempC, humidity, altitude) {
+      const T = tempC + 273.15;
+      const RH = humidity / 100;
+
+      // Barometric formula for pressure with altitude
+      const P0 = 101325; // sea level standard pressure (Pa)
+      const L = 0.0065;  // temperature lapse rate (K/m)
+      const R = 8.31447; // gas constant (J/mol·K)
+      const M = 0.0289644; // molar mass of dry air (kg/mol)
+      const g = 9.80665;
+
+      const P = P0 * Math.pow(1 - (L * altitude) / T, (g * M) / (R * L));
+
+      // Water vapor pressure
+      const es = 6.112 * Math.exp((17.67 * tempC) / (tempC + 243.5)) * 100;
+      const e = RH * es;
+
+      const Rd = 287.05;
+      const Rv = 461.495;
+
+      return ((P - e) / (Rd * T)) + (e / (Rv * T));
+    }
+
+    function calculateCdA() {
+      const temp = parseFloat(document.getElementById("temperature").value);
+      const humidity = parseFloat(document.getElementById("humidity").value);
+      const altitude = parseFloat(document.getElementById("altitude").value);
+      const riderWeight = parseFloat(document.getElementById("riderWeight").value);
+      const bikeWeight = parseFloat(document.getElementById("bikeWeight").value);
+      const Crr = parseFloat(document.getElementById("crr").value);
+      const totalWeight = riderWeight + bikeWeight;
+
+      const g = 9.80665;
+
+      const speeds = Array.from(document.getElementsByClassName("speed")).map(el => parseFloat(el.value));
+      const powers = Array.from(document.getElementsByClassName("power")).map(el => parseFloat(el.value));
+
+      const rho = calculateAirDensity(temp, humidity, altitude);
+
+      let resultsHTML = `<h3>Results</h3><table><tr><th>Speed (km/h)</th><th>Power (W)</th><th>CdA</th></tr>`;
+      let totalCdA = 0;
+      let count = 0;
+
+      for (let i = 0; i < speeds.length; i++) {
+        const vKph = speeds[i];
+        const P = powers[i];
+
+        if (isNaN(vKph) || isNaN(P) || vKph <= 0 || P <= 0) continue;
+
+        const v = vKph / 3.6;
+        const rollingPower = totalWeight * g * Crr * v;
+        const aeroPower = P - rollingPower;
+        const CdA = (2 * aeroPower) / (rho * v ** 3);
+
+        resultsHTML += `<tr><td>${vKph.toFixed(1)}</td><td>${P.toFixed(1)}</td><td>${CdA.toFixed(4)}</td></tr>`;
+        totalCdA += CdA;
+        count++;
+      }
+
+      const avgCdA = count > 0 ? totalCdA / count : 0;
+      resultsHTML += `<tr><th colspan="2">Average CdA</th><th>${avgCdA.toFixed(4)}</th></tr>`;
+      resultsHTML += `</table>`;
+
+      document.getElementById("results").innerHTML = resultsHTML;
+    }
+  </script>
+</body>
+</html>
