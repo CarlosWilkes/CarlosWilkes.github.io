@@ -11,15 +11,34 @@
     .pair-row { margin-bottom: 5px; }
     #results { margin-top: 20px; }
   </style>
+	  <!-- Leaflet CSS -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+	<!-- Leaflet JS -->
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
   <h1>Bicycle CdA Calculator</h1>
+  
+  <h3>Pick Location on Map</h3>
+<div id="map" style="height: 300px; width: 100%; margin-bottom: 20px;"></div>
 
   <h3>Environment Inputs</h3>
   <label>Latitude: <input type="number" id="latitude" value="34.868535" step="0.0001"></label><br>
   <label>Longitude: <input type="number" id="longitude" value="135.676671" step="0.0001"></label><br>
   <label>Date (YYYY-MM-DD): <input type="date" id="weatherDate"></label><br>
   <label>Hour (0-23): <input type="number" id="weatherHour" min="0" max="23" value="12"></label><br>
+	<label>Time Zone:
+		<select id="timezone">
+		<option value="Asia/Tokyo" selected>Asia/Tokyo (default)</option>
+		<option value="UTC">UTC</option>
+		<option value="America/New_York">America/New_York</option>
+		<option value="Europe/London">Europe/London</option>
+		<option value="Europe/Paris">Europe/Paris</option>
+		<option value="Asia/Shanghai">Asia/Shanghai</option>
+		<option value="Australia/Sydney">Australia/Sydney</option>
+		<!-- Add more as needed -->
+		</select>
+	</label><br>
   <button onclick="fetchWeather()">Fetch Weather</button><br><br>
 
   <label>Temperature (°C): <input type="number" id="temperature" value="20"></label><br>
@@ -37,8 +56,10 @@
   <h3>Speed/Power Pairs</h3>
   <div id="pairsContainer">
     <div class="pair-row">
-      <label>Speed (km/h): <input type="number" class="speed" value="30"></label>
-      <label>Power (W): <input type="number" class="power" value="200"></label>
+		<label>Speed (km/h): <input type="number" class="speed" value="30"></label>
+		<label>Power (W): <input type="number" class="power" value="200"></label>
+		<label>Gradient (%): <input type="number" class="gradient" value="0" step="0.1"></label>
+		<button onclick="deletePair(this)">X</button>
     </div>
   </div>
   <button onclick="addPair()">Add Another Pair</button>
@@ -56,48 +77,76 @@
       div.innerHTML = `
         <label>Speed (km/h): <input type="number" class="speed" value="30"></label>
         <label>Power (W): <input type="number" class="power" value="200"></label>
+        <label>Gradient (%): <input type="number" class="gradient" value="0" step="0.1"></label>
+		<button onclick="deletePair(this)">X</button>
       `;
       container.appendChild(div);
     }
+	
+	function deletePair(button) {
+	  const row = button.parentElement;
+	  row.remove();
+	}
 
-    async function fetchWeather() {
-      const lat = document.getElementById("latitude").value;
-      const lon = document.getElementById("longitude").value;
-      const date = document.getElementById("weatherDate").value;
-      const hour = parseInt(document.getElementById("weatherHour").value);
+	async function fetchWeather() {
+	  const lat = document.getElementById("latitude").value;
+	  const lon = document.getElementById("longitude").value;
+	  const dateStr = document.getElementById("weatherDate").value;
+	  const hour = parseInt(document.getElementById("weatherHour").value);
 
-      if (!lat || !lon || !date || isNaN(hour)) {
-        alert("Please fill in latitude, longitude, date, and hour.");
-        return;
-      }
+	  if (!lat || !lon || !dateStr || isNaN(hour)) {
+		alert("Please fill in latitude, longitude, date, and hour.");
+		return;
+	  }
 
-      const url = `https://archive-api.open-meteo.com/v1/archive?latitude=${lat}&longitude=${lon}&start_date=${date}&end_date=${date}&hourly=temperature_2m,relative_humidity_2m,surface_pressure&timezone=Asia%2FTokyo`;
+	  const selectedDate = new Date(dateStr);
+	  const today = new Date();
+	  today.setHours(0, 0, 0, 0); // set to midnight for clean comparison
 
-      try {
-        const res = await fetch(url);
-        const data = await res.json();
+	  let url = "";
+	  
+	  const tz = document.getElementById("timezone").value;
 
-        const temps = data.hourly.temperature_2m;
-        const hums = data.hourly.relative_humidity_2m;
-        const pressures = data.hourly.surface_pressure;
+	  if (selectedDate < today) {
+		// Use archive API
+		url = `https://archive-api.open-meteo.com/v1/archive?latitude=${lat}&longitude=${lon}&start_date=${dateStr}&end_date=${dateStr}&hourly=temperature_2m,relative_humidity_2m,surface_pressure&timezone=${encodeURIComponent(tz)}`;
+	  } else {
+		// Use forecast API
+		url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relative_humidity_2m,surface_pressure&timezone=${encodeURIComponent(tz)}`;
+	  }
 
-        if (
-          temps && hums && pressures &&
-          typeof temps[hour] !== 'undefined' &&
-          typeof hums[hour] !== 'undefined' &&
-          typeof pressures[hour] !== 'undefined'
-        ) {
-          document.getElementById("temperature").value = temps[hour].toFixed(1);
-          document.getElementById("humidity").value = hums[hour].toFixed(0);
-          document.getElementById("pressure").value = (pressures[hour] / 1).toFixed(1); // convert from Pa to hPa
-        } else {
-          alert("No weather data available for that hour, date, and location.");
-        }
-      } catch (error) {
-        console.error(error);
-        alert("Failed to fetch weather data.");
-      }
-    }
+	  try {
+		const res = await fetch(url);
+		const data = await res.json();
+
+		const temps = data.hourly?.temperature_2m;
+		const hums = data.hourly?.relative_humidity_2m;
+		const pressures = data.hourly?.surface_pressure;
+		const times = data.hourly?.time;
+
+		if (!temps || !hums || !pressures || !times) {
+		  alert("No weather data available.");
+		  return;
+		}
+
+		// Find the index of the hour that matches the selected date + hour
+		const targetTime = `${dateStr}T${hour.toString().padStart(2, '0')}:00`;
+		const index = times.indexOf(targetTime);
+
+		if (index === -1) {
+		  alert("No weather data for that hour.");
+		  return;
+		}
+
+		document.getElementById("temperature").value = temps[index].toFixed(1);
+		document.getElementById("humidity").value = hums[index].toFixed(0);
+		document.getElementById("pressure").value = pressures[index].toFixed(1);
+
+	  } catch (error) {
+		console.error(error);
+		alert("Failed to fetch weather data.");
+	  }
+	}
 
     function calculateAirDensity(tempC, humidity, pressure_hPa) {
       const T = tempC + 273.15;
@@ -127,29 +176,34 @@
       const g = 9.80665;
       const speeds = Array.from(document.getElementsByClassName("speed")).map(el => parseFloat(el.value));
       const powers = Array.from(document.getElementsByClassName("power")).map(el => parseFloat(el.value));
+	  const gradients = Array.from(document.getElementsByClassName("gradient")).map(el => parseFloat(el.value));
 
       const rho = calculateAirDensity(temp, humidity, pressure);
 
-      let resultsHTML = `<h3>Results</h3><table><tr><th>Speed (km/h)</th><th>Power (W)</th><th>CdA</th></tr>`;
+      let resultsHTML = `<h3>Results</h3><table><tr><th>Speed (km/h)</th><th>Power (W)</th><th>Gradient (%)</th><th>CdA</th></tr>`;
       let totalCdA = 0;
       let count = 0;
 
-      for (let i = 0; i < speeds.length; i++) {
-        const vKph = speeds[i];
-        let P = powers[i];
+      for (let i = 0; i < speeds.length; i++)
+	  {
+		  const vKph = speeds[i];
+		  let P = powers[i];
+		  const gradientPercent = gradients[i];
 
-        if (isNaN(vKph) || isNaN(P) || vKph <= 0 || P <= 0) continue;
+		  if (isNaN(vKph) || isNaN(P) || isNaN(gradientPercent) || vKph <= 0 || P <= 0) continue;
 
-        P = P * (1 - drivetrainLoss); // apply drivetrain loss
-        const v = vKph / 3.6;
-        const rollingPower = totalWeight * g * Crr * v;
-        const aeroPower = P - rollingPower;
-        const CdA = (2 * aeroPower) / (rho * v ** 3);
+		  const gradient = gradientPercent / 100;
+		  P = P * (1 - drivetrainLoss); // apply drivetrain loss
+		  const v = vKph / 3.6;
+		  const rollingPower = totalWeight * g * Crr * v;
+		  const slopePower = totalWeight * g * Math.sin(Math.atan(gradient)) * v;
+		  const aeroPower = P - rollingPower - slopePower;
+		  const CdA = (2 * aeroPower) / (rho * v ** 3);
 
-        resultsHTML += `<tr><td>${vKph.toFixed(1)}</td><td>${(P).toFixed(1)}</td><td>${CdA.toFixed(4)}</td></tr>`;
-        totalCdA += CdA;
-        count++;
-      }
+		  resultsHTML += `<tr><td>${vKph.toFixed(1)}</td><td>${(P).toFixed(1)}</td><td>${gradientPercent.toFixed(1)}%</td><td>${CdA.toFixed(4)}</td></tr>`;
+		  totalCdA += CdA;
+		  count++;
+		}
 
       const avgCdA = count > 0 ? totalCdA / count : 0;
       resultsHTML += `<tr><th colspan="2">Average CdA</th><th>${avgCdA.toFixed(4)}</th></tr>`;
@@ -159,4 +213,39 @@
     }
   </script>
 </body>
+
+<script>
+  // Wait for the page to load
+  window.addEventListener('DOMContentLoaded', () => {
+    const latInput = document.getElementById("latitude");
+    const lonInput = document.getElementById("longitude");
+
+    const initialLat = parseFloat(latInput.value);
+    const initialLon = parseFloat(lonInput.value);
+
+    const map = L.map('map').setView([initialLat, initialLon], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const marker = L.marker([initialLat, initialLon], { draggable: true }).addTo(map);
+
+    // Update input values when marker is dragged
+    marker.on('dragend', function (e) {
+      const { lat, lng } = marker.getLatLng();
+      latInput.value = lat.toFixed(6);
+      lonInput.value = lng.toFixed(6);
+    });
+
+    // Update marker position when user clicks on the map
+    map.on('click', function (e) {
+      const { lat, lng } = e.latlng;
+      marker.setLatLng([lat, lng]);
+      latInput.value = lat.toFixed(6);
+      lonInput.value = lng.toFixed(6);
+    });
+  });
+</script>
+
 </html>
