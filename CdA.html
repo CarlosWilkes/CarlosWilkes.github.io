@@ -55,12 +55,6 @@
 
   <h3>Speed/Power Pairs</h3>
   <div id="pairsContainer">
-    <div class="pair-row">
-		<label>Speed (km/h): <input type="number" class="speed" value="30"></label>
-		<label>Power (W): <input type="number" class="power" value="200"></label>
-		<label>Gradient (%): <input type="number" class="gradient" value="0" step="0.1"></label>
-		<button onclick="deletePair(this)">X</button>
-    </div>
   </div>
   <button onclick="addPair()">Add Another Pair</button>
 
@@ -71,17 +65,18 @@
 
   <script>
     function addPair() {
-      const container = document.getElementById("pairsContainer");
-      const div = document.createElement("div");
-      div.className = "pair-row";
-      div.innerHTML = `
-        <label>Speed (km/h): <input type="number" class="speed" value="30"></label>
-        <label>Power (W): <input type="number" class="power" value="200"></label>
-        <label>Gradient (%): <input type="number" class="gradient" value="0" step="0.1"></label>
+	  const container = document.getElementById("pairsContainer");
+	  const div = document.createElement("div");
+	  div.className = "pair-row";
+	  div.innerHTML = `
+		<label>Name: <input type="text" class="pairName" placeholder="e.g., Flat 30kph"></label>
+		<label>Speed (km/h): <input type="number" class="speed" value=""></label>
+		<label>Power (W): <input type="number" class="power" value=""></label>
+		<label>Gradient (%): <input type="number" class="gradient" value="0" step="0.1"></label>
 		<button onclick="deletePair(this)">X</button>
-      `;
-      container.appendChild(div);
-    }
+	  `;
+	  container.appendChild(div);
+	}
 	
 	function deletePair(button) {
 	  const row = button.parentElement;
@@ -163,54 +158,56 @@
       return ((P - e) / (Rd * T)) + (e / (Rv * T));
     }
 
-    function calculateCdA() {
-      const temp = parseFloat(document.getElementById("temperature").value);
-      const humidity = parseFloat(document.getElementById("humidity").value);
-      const pressure = parseFloat(document.getElementById("pressure").value); // in hPa
-      const riderWeight = parseFloat(document.getElementById("riderWeight").value);
-      const bikeWeight = parseFloat(document.getElementById("bikeWeight").value);
-      const Crr = parseFloat(document.getElementById("crr").value);
-      const drivetrainLoss = parseFloat(document.getElementById("drivetrainLoss").value) / 100;
-      const totalWeight = riderWeight + bikeWeight;
+    function calculateCdA()
+	{
+	  const temp = parseFloat(document.getElementById("temperature").value);
+	  const humidity = parseFloat(document.getElementById("humidity").value);
+	  const pressure = parseFloat(document.getElementById("pressure").value);
+	  const riderWeight = parseFloat(document.getElementById("riderWeight").value);
+	  const bikeWeight = parseFloat(document.getElementById("bikeWeight").value);
+	  const Crr = parseFloat(document.getElementById("crr").value);
+	  const drivetrainLoss = parseFloat(document.getElementById("drivetrainLoss").value) / 100;
+	  const totalWeight = riderWeight + bikeWeight;
+	  const g = 9.80665;
 
-      const g = 9.80665;
-      const speeds = Array.from(document.getElementsByClassName("speed")).map(el => parseFloat(el.value));
-      const powers = Array.from(document.getElementsByClassName("power")).map(el => parseFloat(el.value));
+	  const names = Array.from(document.getElementsByClassName("pairName")).map(el => el.value || "Unnamed");
+	  const speeds = Array.from(document.getElementsByClassName("speed")).map(el => parseFloat(el.value));
+	  const powers = Array.from(document.getElementsByClassName("power")).map(el => parseFloat(el.value));
 	  const gradients = Array.from(document.getElementsByClassName("gradient")).map(el => parseFloat(el.value));
 
-      const rho = calculateAirDensity(temp, humidity, pressure);
+	  const rho = calculateAirDensity(temp, humidity, pressure);
 
-      let resultsHTML = `<h3>Results</h3><table><tr><th>Speed (km/h)</th><th>Power (W)</th><th>Gradient (%)</th><th>CdA</th></tr>`;
-      let totalCdA = 0;
-      let count = 0;
+	  let resultsHTML = `<h3>Results</h3><table><tr><th>Pair Name</th><th>Gradient (%)</th><th>CdA</th></tr>`;
+	  let totalCdA = 0;
+	  let count = 0;
 
-      for (let i = 0; i < speeds.length; i++)
-	  {
-		  const vKph = speeds[i];
-		  let P = powers[i];
-		  const gradientPercent = gradients[i];
+	  for (let i = 0; i < speeds.length; i++) {
+		const name = names[i];
+		const vKph = speeds[i];
+		let P = powers[i];
+		const gradientPercent = gradients[i];
 
-		  if (isNaN(vKph) || isNaN(P) || isNaN(gradientPercent) || vKph <= 0 || P <= 0) continue;
+		if (isNaN(vKph) || isNaN(P) || isNaN(gradientPercent) || vKph <= 0 || P <= 0) continue;
 
-		  const gradient = gradientPercent / 100;
-		  P = P * (1 - drivetrainLoss); // apply drivetrain loss
-		  const v = vKph / 3.6;
-		  const rollingPower = totalWeight * g * Crr * v;
-		  const slopePower = totalWeight * g * Math.sin(Math.atan(gradient)) * v;
-		  const aeroPower = P - rollingPower - slopePower;
-		  const CdA = (2 * aeroPower) / (rho * v ** 3);
+		const gradient = gradientPercent / 100;
+		P = P * (1 - drivetrainLoss);
+		const v = vKph / 3.6;
+		const rollingPower = totalWeight * g * Crr * v;
+		const slopePower = totalWeight * g * Math.sin(Math.atan(gradient)) * v;
+		const aeroPower = P - rollingPower - slopePower;
+		const CdA = (2 * aeroPower) / (rho * v ** 3);
 
-		  resultsHTML += `<tr><td>${vKph.toFixed(1)}</td><td>${(P).toFixed(1)}</td><td>${gradientPercent.toFixed(1)}%</td><td>${CdA.toFixed(4)}</td></tr>`;
-		  totalCdA += CdA;
-		  count++;
-		}
+		resultsHTML += `<tr><td>${name}</td><td>${gradientPercent.toFixed(1)}</td><td>${CdA.toFixed(4)}</td></tr>`;
+		totalCdA += CdA;
+		count++;
+	  }
 
-      const avgCdA = count > 0 ? totalCdA / count : 0;
-      resultsHTML += `<tr><th colspan="2">Average CdA</th><th>${avgCdA.toFixed(4)}</th></tr>`;
-      resultsHTML += `</table>`;
+	  const avgCdA = count > 0 ? totalCdA / count : 0;
+	  resultsHTML += `<tr><th colspan="2">Average CdA</th><th>${avgCdA.toFixed(4)}</th></tr>`;
+	  resultsHTML += `</table>`;
 
-      document.getElementById("results").innerHTML = resultsHTML;
-    }
+	  document.getElementById("results").innerHTML = resultsHTML;
+	}
   </script>
 </body>
 
