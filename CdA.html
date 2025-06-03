@@ -69,10 +69,11 @@
 	  const div = document.createElement("div");
 	  div.className = "pair-row";
 	  div.innerHTML = `
-		<label>Name: <input type="text" class="pairName" placeholder="e.g., Flat 30kph"></label>
+		<label>Name: <input type="text" class="pairName" placeholder="e.g., A or B"></label>
 		<label>Speed (km/h): <input type="number" class="speed" value=""></label>
 		<label>Power (W): <input type="number" class="power" value=""></label>
 		<label>Gradient (%): <input type="number" class="gradient" value="0" step="0.1"></label>
+		<label>Wind Speed (km/h): <input type="number" class="wind" value="0" step="0.1"></label>
 		<button onclick="deletePair(this)">X</button>
 	  `;
 	  container.appendChild(div);
@@ -157,57 +158,88 @@
 
       return ((P - e) / (Rd * T)) + (e / (Rv * T));
     }
+	
+	function adjustPressureForElevation(seaLevelPressure_hPa, altitude_m) {
+	  const tempLapseRate = 0.0065; // °C/m
+	  const seaLevelTemp = 288.15; // K (~15°C)
+	  const g = 9.80665; // m/s²
+	  const R = 287.05; // J/(kg·K)
 
-    function calculateCdA()
-	{
-	  const temp = parseFloat(document.getElementById("temperature").value);
-	  const humidity = parseFloat(document.getElementById("humidity").value);
-	  const pressure = parseFloat(document.getElementById("pressure").value);
-	  const riderWeight = parseFloat(document.getElementById("riderWeight").value);
-	  const bikeWeight = parseFloat(document.getElementById("bikeWeight").value);
-	  const Crr = parseFloat(document.getElementById("crr").value);
-	  const drivetrainLoss = parseFloat(document.getElementById("drivetrainLoss").value) / 100;
-	  const totalWeight = riderWeight + bikeWeight;
-	  const g = 9.80665;
-
-	  const names = Array.from(document.getElementsByClassName("pairName")).map(el => el.value || "Unnamed");
-	  const speeds = Array.from(document.getElementsByClassName("speed")).map(el => parseFloat(el.value));
-	  const powers = Array.from(document.getElementsByClassName("power")).map(el => parseFloat(el.value));
-	  const gradients = Array.from(document.getElementsByClassName("gradient")).map(el => parseFloat(el.value));
-
-	  const rho = calculateAirDensity(temp, humidity, pressure);
-
-	  let resultsHTML = `<h3>Results</h3><table><tr><th>Pair Name</th><th>Gradient (%)</th><th>CdA</th></tr>`;
-	  let totalCdA = 0;
-	  let count = 0;
-
-	  for (let i = 0; i < speeds.length; i++) {
-		const name = names[i];
-		const vKph = speeds[i];
-		let P = powers[i];
-		const gradientPercent = gradients[i];
-
-		if (isNaN(vKph) || isNaN(P) || isNaN(gradientPercent) || vKph <= 0 || P <= 0) continue;
-
-		const gradient = gradientPercent / 100;
-		P = P * (1 - drivetrainLoss);
-		const v = vKph / 3.6;
-		const rollingPower = totalWeight * g * Crr * v;
-		const slopePower = totalWeight * g * Math.sin(Math.atan(gradient)) * v;
-		const aeroPower = P - rollingPower - slopePower;
-		const CdA = (2 * aeroPower) / (rho * v ** 3);
-
-		resultsHTML += `<tr><td>${name}</td><td>${gradientPercent.toFixed(1)}</td><td>${CdA.toFixed(4)}</td></tr>`;
-		totalCdA += CdA;
-		count++;
-	  }
-
-	  const avgCdA = count > 0 ? totalCdA / count : 0;
-	  resultsHTML += `<tr><th colspan="2">Average CdA</th><th>${avgCdA.toFixed(4)}</th></tr>`;
-	  resultsHTML += `</table>`;
-
-	  document.getElementById("results").innerHTML = resultsHTML;
+	  return seaLevelPressure_hPa * Math.pow(
+		1 - (tempLapseRate * altitude_m) / seaLevelTemp,
+		(g / (R * tempLapseRate))
+	  );
 	}
+
+    function calculateCdA() {
+  const temp = parseFloat(document.getElementById("temperature").value);
+  const humidity = parseFloat(document.getElementById("humidity").value);
+  const rawPressure = parseFloat(document.getElementById("pressure").value);
+  const altitude = parseFloat(document.getElementById("altitude").value);
+  const pressure = adjustPressureForElevation(rawPressure, altitude);
+  const riderWeight = parseFloat(document.getElementById("riderWeight").value);
+  const bikeWeight = parseFloat(document.getElementById("bikeWeight").value);
+  const Crr = parseFloat(document.getElementById("crr").value);
+  const drivetrainLoss = parseFloat(document.getElementById("drivetrainLoss").value) / 100;
+  const totalWeight = riderWeight + bikeWeight;
+  const g = 9.80665;
+
+  const names = Array.from(document.getElementsByClassName("pairName")).map(el => el.value.trim() || "Unnamed");
+  const speeds = Array.from(document.getElementsByClassName("speed")).map(el => parseFloat(el.value));
+  const powers = Array.from(document.getElementsByClassName("power")).map(el => parseFloat(el.value));
+  const gradients = Array.from(document.getElementsByClassName("gradient")).map(el => parseFloat(el.value));
+  const winds = Array.from(document.getElementsByClassName("wind")).map(el => parseFloat(el.value || 0));
+
+  const rho = calculateAirDensity(temp, humidity, pressure);
+
+  const groupedResults = {};
+
+  for (let i = 0; i < speeds.length; i++) {
+    const name = names[i];
+    const vKph = speeds[i];
+    let P = powers[i];
+    const gradientPercent = gradients[i];
+    const windKph = winds[i];
+
+    if (isNaN(vKph) || isNaN(P) || isNaN(gradientPercent) || isNaN(windKph) || vKph <= 0 || P <= 0) continue;
+
+    const gradient = gradientPercent / 100;
+    P = P * (1 - drivetrainLoss);
+    const v = vKph / 3.6;
+    const wind = windKph / 3.6;
+    const apparentV = v - wind;
+    const rollingPower = totalWeight * g * Crr * v;
+    const slopePower = totalWeight * g * Math.sin(Math.atan(gradient)) * v;
+    const aeroPower = P - rollingPower - slopePower;
+    const CdA = (2 * aeroPower) / (rho * apparentV ** 3);
+
+    if (!groupedResults[name]) {
+      groupedResults[name] = [];
+    }
+
+    groupedResults[name].push({
+      index: i + 1,
+      gradient: gradientPercent,
+      CdA: CdA
+    });
+  }
+
+  let resultsHTML = `<h3>Results</h3><table><tr><th>Group</th><th>Pair #</th><th>Gradient (%)</th><th>CdA</th></tr>`;
+
+  for (const name in groupedResults) {
+    const group = groupedResults[name];
+    let sum = 0;
+    group.forEach((entry, idx) => {
+      resultsHTML += `<tr><td>${name}</td><td>${name}${idx + 1}</td><td>${entry.gradient.toFixed(1)}</td><td>${entry.CdA.toFixed(4)}</td></tr>`;
+      sum += entry.CdA;
+    });
+    const avg = sum / group.length;
+    resultsHTML += `<tr><th colspan="3">Average CdA for ${name}</th><th>${avg.toFixed(4)}</th></tr>`;
+  }
+
+  resultsHTML += `</table>`;
+  document.getElementById("results").innerHTML = resultsHTML;
+}
   </script>
 </body>
 
@@ -216,6 +248,19 @@
   window.addEventListener('DOMContentLoaded', () => {
     const latInput = document.getElementById("latitude");
     const lonInput = document.getElementById("longitude");
+	
+	latInput.addEventListener('input', updateMapPosition);
+	lonInput.addEventListener('input', updateMapPosition);
+
+	function updateMapPosition() {
+	  const lat = parseFloat(latInput.value);
+	  const lon = parseFloat(lonInput.value);
+	  if (!isNaN(lat) && !isNaN(lon)) {
+		const newLatLng = [lat, lon];
+		marker.setLatLng(newLatLng);
+		map.setView(newLatLng);
+	  }
+	}
 
     const initialLat = parseFloat(latInput.value);
     const initialLon = parseFloat(lonInput.value);
