@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Model Tool | Seam-Aware Decimation</title>
+    <style>
+        :root {
+            --bg: #121212;
+            --panel: #1e1e1e;
+            --text: #e0e0e0;
+            --accent: #007acc;
+            --accent-hover: #005f9e;
+            --border: #333;
+        }
+        body { margin: 0; overflow: hidden; font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); display: flex; height: 100vh; }
+        
+        #sidebar { 
+            width: 340px; background: var(--panel); border-right: 1px solid var(--border); 
+            display: flex; flex-direction: column; z-index: 10; box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+        }
+        
+        .scroll-area { flex: 1; overflow-y: auto; padding: 20px; }
+        .control-section { margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
+        .control-section:last-child { border: none; }
+        
+        h3 { font-size: 14px; text-transform: uppercase; color: #888; margin: 0 0 10px 0; letter-spacing: 1px; }
+        
+        label { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px; align-items: center; }
+        input[type="number"], input[type="text"] { background: #333; border: 1px solid #444; color: white; padding: 4px; border-radius: 4px; width: 60px; text-align: right; }
+        input[type="range"] { width: 100%; margin: 8px 0; accent-color: var(--accent); }
+        
+        .row { display: flex; gap: 8px; margin-bottom: 8px; }
+        .row input { flex: 1; }
+        
+        button { background: var(--accent); border: none; color: white; padding: 10px; border-radius: 4px; cursor: pointer; width: 100%; font-weight: 600; margin-top: 5px; transition: 0.2s; }
+        button:hover { background: var(--accent-hover); }
+        button.secondary { background: #444; }
+        button.secondary:hover { background: #555; }
+        
+        .file-input-wrapper { position: relative; margin-bottom: 15px; }
+        .file-input-wrapper input[type="file"] { position: absolute; left: 0; top: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer; }
+        .file-input-btn { background: #333; border: 1px dashed #666; color: #aaa; text-align: center; padding: 20px; border-radius: 6px; transition: 0.2s; }
+        .file-input-wrapper:hover .file-input-btn { border-color: var(--accent); color: white; background: #2a2a2a; }
+
+        .texture-list { display: flex; flex-direction: column; gap: 6px; }
+        .texture-item { display: flex; align-items: center; background: #252525; padding: 5px; border-radius: 4px; border: 1px solid #333; }
+        .texture-thumb { width: 32px; height: 32px; object-fit: cover; background: #000; border-radius: 3px; margin-right: 10px; border: 1px solid #444; }
+        .texture-info { flex: 1; font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: flex; flex-direction: column; }
+        .texture-type { color: #888; font-size: 9px; }
+        .texture-dl { background: #444; width: auto; padding: 4px 8px; font-size: 10px; margin: 0; }
+        .texture-dl:hover { background: #555; }
+
+        #viewer { flex: 1; position: relative; background: #000; }
+        #loading-overlay { position: absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); display:none; justify-content:center; align-items:center; z-index: 100; flex-direction: column; backdrop-filter: blur(2px); }
+        .spinner { width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.1); border-top: 4px solid var(--accent); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 15px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .info-tag { font-family: monospace; font-size: 11px; color: #aaa; margin-top: 5px; }
+        #sizeDisplay { color: var(--accent); font-weight: bold; }
+        
+        .format-badges { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; }
+        .format-badge { background: #2a2a2a; border: 1px solid #444; padding: 2px 6px; border-radius: 3px; font-size: 9px; color: #888; font-family: monospace; }
+
+        body.drag-over::after {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 3px dashed var(--accent);
+            pointer-events: none;
+            z-index: 9999;
+            background: rgba(0, 122, 204, 0.05);
+        }
+        
+        .file-list-info { 
+            margin-top: 8px; font-size: 10px; color: #666; 
+            max-height: 80px; overflow-y: auto; background: #1a1a1a; 
+            border-radius: 4px; padding: 6px; display: none;
+        }
+        .file-list-info.visible { display: block; }
+        .file-list-info div { padding: 1px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .file-list-info .main-file { color: var(--accent); font-weight: bold; }
+        .file-list-info .aux-file { color: #888; }
+
+        .weld-info { font-size: 10px; color: #e8a020; margin-top: 4px; display: none; }
+        .weld-info.visible { display: block; }
+
+        select {
+            background: #333; border: 1px solid #444; color: white;
+            padding: 4px 8px; border-radius: 4px; width: 100%;
+            font-size: 12px; margin-bottom: 6px;
+        }
+
+        #meshList { display: flex; flex-direction: column; gap: 4px; max-height: 200px; overflow-y: auto; margin-bottom: 8px; }
+        .mesh-item {
+            display: flex; align-items: center; background: #252525;
+            border: 1px solid #333; border-radius: 4px; padding: 4px 6px; gap: 6px;
+        }
+        .mesh-item.mesh-hidden { opacity: 0.45; }
+        .mesh-item-name {
+            flex: 1; font-size: 11px; background: transparent; border: none;
+            color: var(--text); outline: none; min-width: 0;
+        }
+        .mesh-item-name:focus { background: #333; border-radius: 3px; padding: 2px 4px; }
+        .mesh-item-vis { background: #444; padding: 2px 6px; font-size: 10px; margin: 0; width: auto; cursor: pointer; border-radius: 3px; }
+        .mesh-item-count { font-size: 9px; color: #666; white-space: nowrap; }
+        .merge-badge {
+            font-size: 9px; color: #e8a020; background: rgba(232,160,32,0.15);
+            border: 1px solid rgba(232,160,32,0.3); border-radius: 3px;
+            padding: 1px 4px; white-space: nowrap;
+        }
+
+        .viewer-btn-group {
+            position: absolute; bottom: 16px; left: 16px;
+            display: flex; flex-direction: column; gap: 8px; z-index: 20;
+        }
+        .viewer-btn {
+            background: rgba(30,30,30,0.85); border: 1px solid #444;
+            color: white; padding: 8px 12px; border-radius: 6px;
+            cursor: pointer; font-size: 12px; font-weight: 600;
+            transition: 0.2s; white-space: nowrap; text-align: center;
+            backdrop-filter: blur(4px); width: auto;
+        }
+        .viewer-btn:hover { background: rgba(0,122,204,0.7); border-color: var(--accent); }
+
+        .export-filename-row { display: flex; gap: 6px; align-items: center; margin-bottom: 8px; }
+        .export-filename-row input[type="text"] { flex: 1; width: auto; text-align: left; font-size: 11px; }
+        .export-filename-ext { font-size: 11px; color: #888; white-space: nowrap; }
+
+        .toggle-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .toggle-label { font-size: 12px; }
+        .toggle { position: relative; width: 36px; height: 20px; display: inline-block; }
+        .toggle input { opacity: 0; width: 0; height: 0; }
+        .toggle-slider {
+            position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+            background: #444; border-radius: 20px; transition: 0.2s;
+        }
+        .toggle-slider:before {
+            position: absolute; content: ""; height: 14px; width: 14px;
+            left: 3px; bottom: 3px; background: white;
+            border-radius: 50%; transition: 0.2s;
+        }
+        .toggle input:checked + .toggle-slider { background: var(--accent); }
+        .toggle input:checked + .toggle-slider:before { transform: translateX(16px); }
+
+        /* Prevent drag-over border from intercepting pointer events on overlay */
+        #drop-shield {
+            position: fixed; top:0; left:0; right:0; bottom:0;
+            z-index: 9998; display: none;
+        }
+        body.drag-over #drop-shield { display: block; }
+    </style>
+</head>
+<body>
+
+<!-- Invisible shield to catch all drop events reliably -->
+<div id="drop-shield"></div>
+
+<div id="loading-overlay">
+    <div class="spinner"></div>
+    <div id="loading-text">Processing...</div>
+</div>
+
+<div id="sidebar">
+    <div class="scroll-area">
+
+        <div class="control-section">
+            <h3>Import</h3>
+            <div class="file-input-wrapper">
+                <input type="file" id="fileInput" accept=".glb,.gltf,.obj,.dae,.bin,.png,.jpg,.jpeg,.webp,.mtl" multiple>
+                <div class="file-input-btn">📂 Drag & Drop or Click<br>to Load Model Files<br><span style="font-size:10px;color:#666;">Multi-file supported</span></div>
+            </div>
+            <div class="format-badges">
+                <span class="format-badge">.GLB</span>
+                <span class="format-badge">.GLTF</span>
+                <span class="format-badge">.OBJ</span>
+                <span class="format-badge">.DAE</span>
+            </div>
+            <div id="fileListInfo" class="file-list-info"></div>
+            <div id="modelStats" class="info-tag">No model loaded</div>
+        </div>
+
+        <div class="control-section">
+            <h3>Meshes</h3>
+            <div id="meshList"><div style="font-size:11px;color:#666;text-align:center;padding:8px;">No model loaded</div></div>
+            <div style="font-size:10px;color:#666;margin-top:4px;">Click name to rename · Same name = merged on export</div>
+        </div>
+
+        <div class="control-section">
+            <h3>Decimation</h3>
+            <label>Target Quality: <span id="qualityVal">100%</span></label>
+            <input type="range" id="decimateRange" min="0" max="100" value="100" step="1">
+            <label>Weld Tolerance</label>
+            <select id="weldMode">
+                <option value="auto">Auto (detect unwelded)</option>
+                <option value="aggressive">Aggressive (photoscans)</option>
+                <option value="conservative">Conservative (CAD/hard edges)</option>
+                <option value="none">None (preserve all splits)</option>
+            </select>
+            <div id="weldInfo" class="weld-info"></div>
+            <div class="info-tag" style="color:#666;font-size:10px;">Welds coincident verts before simplifying.<br>Locks remaining UV seams to prevent cracks.</div>
+        </div>
+
+        <div class="control-section">
+            <h3>Transform</h3>
+            <label>Position (m)</label>
+            <div class="row">
+                <input type="number" id="px" value="0" step="0.1" placeholder="X">
+                <input type="number" id="py" value="0" step="0.1" placeholder="Y">
+                <input type="number" id="pz" value="0" step="0.1" placeholder="Z">
+            </div>
+            <label>Rotation (deg)</label>
+            <div class="row">
+                <input type="number" id="rx" value="0" step="1" placeholder="X">
+                <input type="number" id="ry" value="0" step="1" placeholder="Y">
+                <input type="number" id="rz" value="0" step="1" placeholder="Z">
+            </div>
+            <label>Scale (%)</label>
+            <div class="row">
+                <input type="number" id="scale" value="100" step="1">
+            </div>
+            <button id="centerPositionBtn" class="secondary" style="margin-top:8px;">⊕ Center Position (Baked)</button>
+            <div id="sizeDisplay" class="info-tag" style="margin-top:10px;">Size: -</div>
+        </div>
+
+        <div class="control-section">
+            <h3>Display</h3>
+            <div class="toggle-row">
+                <span class="toggle-label">Wireframe</span>
+                <label class="toggle"><input type="checkbox" id="wireframeCheck"><span class="toggle-slider"></span></label>
+            </div>
+            <div class="toggle-row">
+                <span class="toggle-label">Lighting</span>
+                <label class="toggle"><input type="checkbox" id="lightingCheck" checked><span class="toggle-slider"></span></label>
+            </div>
+        </div>
+
+        <div class="control-section">
+            <h3>Textures</h3>
+            <div id="textureList" class="texture-list">
+                <div style="font-size:11px;color:#666;text-align:center;">None</div>
+            </div>
+        </div>
+
+        <div class="control-section">
+            <h3>Export</h3>
+            <p class="info-tag" style="margin-bottom:10px;">Transforms baked into vertices. Same-named meshes merged. Hidden meshes excluded.</p>
+            <label style="font-size:11px;margin-bottom:4px;">Filename</label>
+            <div class="export-filename-row">
+                <input type="text" id="exportFilename" value="model" placeholder="filename">
+                <span class="export-filename-ext">.obj / .mtl</span>
+            </div>
+            <button id="exportBtn">⬇ Export OBJ</button>
+			<button id="exportBareBtn" class="secondary" style="margin-top:6px;">⬇ Export OBJ (No MTL refs)</button>
+            <button id="exportMtlBtn" class="secondary" style="margin-top:6px;">⬇ Export MTL</button>
+        </div>
+
+    </div>
+</div>
+
+<div id="viewer">
+    <div class="viewer-btn-group">
+        <button class="viewer-btn" id="centerOrbitBtn" title="Center orbit on visible meshes">⊙ Center Orbit</button>
+        <button class="viewer-btn" id="randomBgBtn" title="Randomize background color">🎨 Random BG</button>
+    </div>
+</div>
+
+<script type="importmap">
+{
+    "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader }    from 'three/addons/loaders/GLTFLoader.js';
+import { OBJLoader }     from 'three/addons/loaders/OBJLoader.js';
+import { MTLLoader }     from 'three/addons/loaders/MTLLoader.js';
+import { ColladaLoader } from 'three/addons/loaders/ColladaLoader.js';
+import { OrbitControls }  from 'three/addons/controls/OrbitControls.js';
+import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js';
+
+/* ==========================================================
+   CUSTOM OBJ EXPORTER
+   ========================================================== */
+class CustomOBJExporter {
+    parse(records, mtlFilename, options = {}) {
+		const lines = [];
+		const skipMtl = options.skipMtlRefs || false;
+
+		if (!skipMtl && mtlFilename) lines.push('mtllib ' + mtlFilename + '.mtl');
+		if (lines.length) lines.push('');
+
+		let vOff = 1, vtOff = 1, vnOff = 1;
+
+		for (const rec of records) {
+			let g = rec.geometry;
+			if (!g.index) g = BufferGeometryUtils.mergeVertices(g, 1e-6);
+			if (!g.attributes.normal) g.computeVertexNormals();
+
+			const pos  = g.attributes.position;
+			const uv   = g.attributes.uv;
+			const norm = g.attributes.normal;
+			const idx  = g.index ? g.index.array : null;
+			const fc   = idx ? idx.length / 3 : pos.count / 3;
+			if (fc === 0) continue;
+
+			const name = sanitizeName(rec.name) || 'Mesh';
+
+			lines.push('o ' + name);
+			lines.push('g ' + name);
+
+			if (!skipMtl && rec.matName && mtlFilename) {
+				lines.push('usemtl ' + rec.matName);
+			}
+
+			for (let i = 0; i < pos.count; i++)
+				lines.push('v ' + fn(pos.getX(i)) + ' ' + fn(pos.getY(i)) + ' ' + fn(pos.getZ(i)));
+
+			if (uv) {
+				for (let i = 0; i < uv.count; i++)
+					lines.push('vt ' + fn(uv.getX(i)) + ' ' + fn(uv.getY(i)));
+			}
+
+			for (let i = 0; i < norm.count; i++)
+				lines.push('vn ' + fn(norm.getX(i)) + ' ' + fn(norm.getY(i)) + ' ' + fn(norm.getZ(i)));
+
+			for (let f = 0; f < fc; f++) {
+				const a = idx ? idx[f*3]   : f*3;
+				const b = idx ? idx[f*3+1] : f*3+1;
+				const c = idx ? idx[f*3+2] : f*3+2;
+				if (uv) {
+					lines.push('f ' +
+						(a+vOff)+'/'+(a+vtOff)+'/'+(a+vnOff)+' '+
+						(b+vOff)+'/'+(b+vtOff)+'/'+(b+vnOff)+' '+
+						(c+vOff)+'/'+(c+vtOff)+'/'+(c+vnOff));
+				} else {
+					lines.push('f ' +
+						(a+vOff)+'//'+(a+vnOff)+' '+
+						(b+vOff)+'//'+(b+vnOff)+' '+
+						(c+vOff)+'//'+(c+vnOff));
+				}
+			}
+			lines.push('');
+			vOff  += pos.count;
+			vnOff += norm.count;
+			if (uv) vtOff += uv.count;
+		}
+		return lines.join('\n');
+	}
+}
+
+function fn(n) { return n.toFixed(6); }
+
+function sanitizeName(s) {
+    return (s || '').replace(/[^A-Za-z0-9_\-\.]/g, '_').replace(/^_+/, '') || 'Mesh';
+}
+
+/* ==========================================================
+   SMART VERTEX WELDER
+   ========================================================== */
+class SmartWelder {
+    static weld(geometry, mode) {
+        if (mode === 'none') return { geometry, stats: { before: 0, after: 0, welded: 0 } };
+        if (!geometry.isBufferGeometry) return { geometry, stats: { before: 0, after: 0, welded: 0 } };
+
+        const pos = geometry.attributes.position;
+        const uv  = geometry.attributes.uv;
+        const norm = geometry.attributes.normal;
+        const vc  = pos.count;
+        const posTol = 1e-5;
+        const uvTol  = mode === 'aggressive' ? 0.01 : mode === 'conservative' ? 1e-7 : 1e-4;
+        const checkN = mode === 'conservative';
+        const cs = 0.001;
+
+        const hk = (x,y,z) => Math.round(x/cs)+','+Math.round(y/cs)+','+Math.round(z/cs);
+        const bk = new Map();
+        const vd = [];
+        for (let i = 0; i < vc; i++) {
+            const x=pos.getX(i),y=pos.getY(i),z=pos.getZ(i);
+            const d = { i:i, x:x,y:y,z:z, u:uv?uv.getX(i):0, v:uv?uv.getY(i):0,
+                        nx:norm?norm.getX(i):0, ny:norm?norm.getY(i):0, nz:norm?norm.getZ(i):0 };
+            vd.push(d);
+            const k = hk(x,y,z);
+            if (!bk.has(k)) bk.set(k,[]);
+            bk.get(k).push(d);
+        }
+
+        const remap = new Int32Array(vc).fill(-1);
+        let next = 0;
+        const canon = [];
+
+        for (let i = 0; i < vc; i++) {
+            if (remap[i] !== -1) continue;
+            const vi = vd[i];
+            remap[i] = next++;
+            canon.push(vi);
+            const bx=Math.round(vi.x/cs), by=Math.round(vi.y/cs), bz=Math.round(vi.z/cs);
+            for (let dx=-1;dx<=1;dx++) for(let dy=-1;dy<=1;dy++) for(let dz=-1;dz<=1;dz++) {
+                const b = bk.get((bx+dx)+','+(by+dy)+','+(bz+dz));
+                if (!b) continue;
+                for (const c of b) {
+                    if (c.i <= i || remap[c.i] !== -1) continue;
+                    if (Math.abs(vi.x-c.x)+Math.abs(vi.y-c.y)+Math.abs(vi.z-c.z) > posTol) continue;
+                    if (uv && Math.abs(vi.u-c.u)+Math.abs(vi.v-c.v) > uvTol) continue;
+                    if (checkN && norm && Math.abs(vi.nx-c.nx)+Math.abs(vi.ny-c.ny)+Math.abs(vi.nz-c.nz) > 0.01) continue;
+                    remap[c.i] = remap[i];
+                }
+            }
+        }
+
+        const w = vc - next;
+        if (w === 0) return { geometry, stats: { before:vc, after:vc, welded:0 } };
+
+        const np = new Float32Array(next*3);
+        const nu = uv ? new Float32Array(next*2) : null;
+        for (let i=0;i<next;i++) {
+            const c=canon[i]; np[i*3]=c.x; np[i*3+1]=c.y; np[i*3+2]=c.z;
+            if (nu) { nu[i*2]=c.u; nu[i*2+1]=c.v; }
+        }
+
+        let oi;
+        if (geometry.index) { oi = geometry.index.array; }
+        else { oi = new Uint32Array(vc); for(let i=0;i<vc;i++) oi[i]=i; }
+
+        const ci = [];
+        for (let i=0;i<oi.length;i+=3) {
+            const a=remap[oi[i]], b=remap[oi[i+1]], c=remap[oi[i+2]];
+            if (a!==b && b!==c && a!==c) ci.push(a,b,c);
+        }
+
+        const ng = new THREE.BufferGeometry();
+        ng.setAttribute('position', new THREE.Float32BufferAttribute(np,3));
+        if (nu) ng.setAttribute('uv', new THREE.Float32BufferAttribute(nu,2));
+        ng.setIndex(ci);
+        if(norm){
+            const wn=new Float32Array(next*3);
+            for(let i=0;i<next;i++){
+                const src=canon[i].i;
+                wn[i*3]  =norm.getX(src);
+                wn[i*3+1]=norm.getY(src);
+                wn[i*3+2]=norm.getZ(src);
+            }
+            ng.setAttribute('normal',new THREE.Float32BufferAttribute(wn,3));
+        } else {
+            ng.computeVertexNormals();
+        }
+        return { geometry:ng, stats:{ before:vc, after:next, welded:w } };
+    }
+
+    static analyze(geometry) {
+        const pos = geometry.attributes.position;
+        if (!pos) return { unweldedRatio:0, indexed:false };
+        const c=pos.count, indexed=!!geometry.index;
+        const seen=new Set();
+        const step=Math.max(1,Math.floor(c/10000));
+        for (let i=0;i<c;i+=step) seen.add(pos.getX(i).toFixed(5)+','+pos.getY(i).toFixed(5)+','+pos.getZ(i).toFixed(5));
+        const ratio = 1 - seen.size / Math.ceil(c/step);
+        return { uniquePositions:seen.size, totalVerts:c, unweldedRatio:ratio, indexed };
+    }
+}
+
+/* ==========================================================
+   SEAM-AWARE SIMPLIFIER
+   ========================================================== */
+class SeamAwareSimplifier {
+    modify(geometry, count) {
+        if (!geometry.isBufferGeometry) return geometry;
+        if (!geometry.index) geometry = BufferGeometryUtils.mergeVertices(geometry, 1e-6);
+        if (!geometry.index) return geometry;
+
+        if (!geometry.attributes.normal) geometry.computeVertexNormals();
+        const positions = geometry.attributes.position.array;
+        const indices   = geometry.index.array;
+
+        const ec = new Map();
+        for (let i=0;i<indices.length;i+=3){
+            this._ae(ec,indices[i],indices[i+1]);
+            this._ae(ec,indices[i+1],indices[i+2]);
+            this._ae(ec,indices[i+2],indices[i]);
+        }
+
+        const locked = new Set();
+        for (let i=0;i<indices.length;i+=3){
+            const a=indices[i],b=indices[i+1],c=indices[i+2];
+            if(this._ib(ec,a,b)){locked.add(a);locked.add(b);}
+            if(this._ib(ec,b,c)){locked.add(b);locked.add(c);}
+            if(this._ib(ec,c,a)){locked.add(c);locked.add(a);}
+        }
+
+        const vc = positions.length / 3;
+
+        const posKey = i => positions[i*3].toFixed(6)+','+positions[i*3+1].toFixed(6)+','+positions[i*3+2].toFixed(6);
+        const posMap = new Map();
+        for (let i=0;i<vc;i++){
+            const k=posKey(i);
+            if(!posMap.has(k))posMap.set(k,[]);
+            posMap.get(k).push(i);
+        }
+        const twins = new Array(vc).fill(null);
+        for(const [,group] of posMap){
+            if(group.length>1){
+                for(const idx of group){
+                    twins[idx]=group.filter(x=>x!==idx);
+                }
+            }
+        }
+
+        const verts=[], tris=[];
+        for(let i=0;i<vc;i++) verts.push({
+            id:i,
+            p:new THREE.Vector3(positions[i*3],positions[i*3+1],positions[i*3+2]),
+            locked:locked.has(i),
+            q:new Float64Array(10),
+            cost:Infinity,collapse:null,faces:[],deleted:false,
+            twins:twins[i]
+        });
+        for(let i=0;i<indices.length;i+=3) tris.push({
+            v:[indices[i],indices[i+1],indices[i+2]],
+            deleted:false,n:new THREE.Vector3()
+        });
+
+        this._cq(verts,tris);
+        for(let i=0;i<verts.length;i++) this._cc(verts[i],verts);
+
+        const target = Math.max(0, verts.length - count);
+        let cur = verts.length;
+        const heap = new MinHeap(verts);
+
+        while(cur > target && heap.size() > 0){
+            const v = heap.pop();
+            if(v.deleted) continue;
+            const tv = v.collapse;
+            if(!tv || tv.deleted) continue;
+
+            if(v.twins && v.twins.length > 0){
+                for(const twinId of v.twins){
+                    const twin = verts[twinId];
+                    if(twin.deleted) continue;
+                    if(tv.twins && tv.twins.length > 0){
+                        const tvTwin = tv.twins.find(tid => !verts[tid].deleted);
+                        if(tvTwin !== undefined){
+                            this._col(twin, verts[tvTwin], tris, verts, heap);
+                            cur--;
+                        } else {
+                            this._col(twin, tv, tris, verts, heap);
+                            cur--;
+                        }
+                    } else {
+                        this._col(twin, tv, tris, verts, heap);
+                        cur--;
+                    }
+                }
+            }
+
+            this._col(v, tv, tris, verts, heap);
+            cur--;
+        }
+
+        const r = this._rec(verts, tris, geometry.attributes);
+        r.userData = {lockedCount:locked.size, totalVerts:vc};
+        return r;
+    }
+
+    _ae(m,a,b){const k=a<b?a+'_'+b:b+'_'+a;m.set(k,(m.get(k)||0)+1);}
+    _ib(m,a,b){const k=a<b?a+'_'+b:b+'_'+a;return m.get(k)===1;}
+
+    _cq(vs,ts){
+        ts.forEach(t=>{
+            const v0=vs[t.v[0]],v1=vs[t.v[1]],v2=vs[t.v[2]];
+            const ab=new THREE.Vector3().subVectors(v1.p,v0.p),ac=new THREE.Vector3().subVectors(v2.p,v0.p);
+            t.n.copy(ab.cross(ac).normalize());
+            const a=t.n.x,b=t.n.y,c=t.n.z,d=-t.n.dot(v0.p);
+            const q=[a*a,a*b,a*c,a*d,b*b,b*c,b*d,c*c,c*d,d*d];
+            [v0,v1,v2].forEach(v=>{for(let k=0;k<10;k++)v.q[k]+=q[k];v.faces.push(t);});
+        });
+    }
+
+    _cc(v,vs){
+        if(v.locked){v.cost=Infinity;return;}
+        v.cost=Infinity;v.collapse=null;
+        const nb=new Set();
+        v.faces.forEach(t=>{if(!t.deleted)t.v.forEach(id=>{if(id!==v.id)nb.add(id);});});
+        nb.forEach(nid=>{
+            const u=vs[nid],q=new Float64Array(10);
+            for(let k=0;k<10;k++)q[k]=v.q[k]+u.q[k];
+            const p=u.p;
+            const cost=q[0]*p.x*p.x+2*q[1]*p.x*p.y+2*q[2]*p.x*p.z+2*q[3]*p.x
+                      +q[4]*p.y*p.y+2*q[5]*p.y*p.z+2*q[6]*p.y
+                      +q[7]*p.z*p.z+2*q[8]*p.z+q[9];
+            if(cost<v.cost){v.cost=cost;v.collapse=u;}
+        });
+    }
+
+    _col(u,v,tris,vs,heap){
+        u.deleted=true;const dirty=new Set();
+        u.faces.forEach(t=>{
+            if(t.deleted)return;
+            if(t.v.includes(v.id)){t.deleted=true;}
+            else{
+                for(let k=0;k<3;k++)if(t.v[k]===u.id)t.v[k]=v.id;
+                v.faces.push(t);
+                t.v.forEach(id=>{if(id!==v.id)dirty.add(id);});
+            }
+        });
+        for(let k=0;k<10;k++)v.q[k]+=u.q[k];
+        this._cc(v,vs);heap.update(v);
+        dirty.forEach(id=>{this._cc(vs[id],vs);heap.update(vs[id]);});
+    }
+
+    _rec(vs,ts,oa){
+        const np=[],nu=oa.uv?[]:null,nn=oa.normal?[]:null,map=new Map(),idx=[];
+        const gi=vid=>{
+            if(map.has(vid))return map.get(vid);
+            const v=vs[vid];
+            np.push(v.p.x,v.p.y,v.p.z);
+            if(nu)nu.push(oa.uv.getX(vid),oa.uv.getY(vid));
+            if(nn&&vid<oa.normal.count){
+                nn.push(oa.normal.getX(vid),oa.normal.getY(vid),oa.normal.getZ(vid));
+            } else if(nn){
+                nn.push(0,1,0);
+            }
+            const i=(np.length/3)-1;map.set(vid,i);return i;
+        };
+        ts.forEach(t=>{if(!t.deleted)idx.push(gi(t.v[0]),gi(t.v[1]),gi(t.v[2]));});
+        const g=new THREE.BufferGeometry();
+        g.setAttribute('position',new THREE.Float32BufferAttribute(np,3));
+        if(nu)g.setAttribute('uv',new THREE.Float32BufferAttribute(nu,2));
+        if(nn)g.setAttribute('normal',new THREE.Float32BufferAttribute(nn,3));
+        g.setIndex(idx);
+        if(!nn)g.computeVertexNormals();
+        return g;
+    }
+}
+
+class MinHeap {
+    constructor(data){this.data=[];data.forEach(d=>{if(d.cost<Infinity)this.push(d);});}
+    push(item){this.data.push(item);this._up(this.data.length-1);}
+    pop(){if(!this.data.length)return null;const t=this.data[0],b=this.data.pop();if(this.data.length){this.data[0]=b;this._dn(0);}return t;}
+    size(){return this.data.length;}
+    update(item){const i=this.data.indexOf(item);if(i!==-1){this._up(i);this._dn(i);}else if(item.cost<Infinity&&!item.deleted)this.push(item);}
+    _up(n){while(n>0){let p=Math.floor((n-1)/2);if(this.data[n].cost>=this.data[p].cost)break;[this.data[n],this.data[p]]=[this.data[p],this.data[n]];n=p;}}
+    _dn(n){while(true){let l=2*n+1,r=2*n+2,m=n;if(l<this.data.length&&this.data[l].cost<this.data[m].cost)m=l;if(r<this.data.length&&this.data[r].cost<this.data[m].cost)m=r;if(m===n)break;[this.data[n],this.data[m]]=[this.data[m],this.data[n]];n=m;}}
+}
+
+/* ==========================================================
+   VIRTUAL FILE MANAGER
+   ========================================================== */
+class VirtualFileManager {
+    constructor(){this.files=new Map();this.revokeList=[];}
+    clear(){this.revokeList.forEach(u=>URL.revokeObjectURL(u));this.revokeList=[];this.files.clear();}
+    addFile(file){
+        const url=URL.createObjectURL(file);this.revokeList.push(url);
+        this.files.set(file.name.toLowerCase(),{file,url,name:file.name});
+        const base=file.name.split('/').pop().split('\\').pop();
+        if(base.toLowerCase()!==file.name.toLowerCase())
+            this.files.set(base.toLowerCase(),{file,url,name:base});
+    }
+    addFiles(list){for(const f of list)this.addFile(f);}
+    getURL(n){const k=n.toLowerCase().split('/').pop().split('\\').pop();const e=this.files.get(k);return e?e.url:null;}
+    createLoadingManager(){
+        const m=new THREE.LoadingManager(),self=this;
+        m.setURLModifier(url=>{
+            let f=url;
+            try{f=new URL(url).pathname.split('/').pop();}catch(e){f=url.split('/').pop().split('\\').pop();}
+            try{f=decodeURIComponent(f);}catch(e){}
+            return self.getURL(f)||url;
+        });
+        return m;
+    }
+}
+
+/* ==========================================================
+   SCENE SETUP
+   ========================================================== */
+const container = document.getElementById('viewer');
+const scene     = new THREE.Scene();
+scene.background = new THREE.Color(0x111111);
+
+const camera = new THREE.PerspectiveCamera(45, container.clientWidth/container.clientHeight, 0.01, 2000);
+camera.position.set(2,2,4);
+
+const renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setSize(container.clientWidth, container.clientHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type    = THREE.PCFSoftShadowMap;
+container.appendChild(renderer.domElement);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.screenSpacePanning = true;
+controls.minDistance = 0.1;
+controls.maxDistance = 500;
+controls.update();
+
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+const dirLight = new THREE.DirectionalLight(0xffffff, 2.5);
+dirLight.position.set(5,8,5);
+dirLight.castShadow = true;
+scene.add(dirLight);
+const fillLight = new THREE.DirectionalLight(0xccccff, 1);
+fillLight.position.set(-5,3,-5);
+scene.add(fillLight);
+scene.add(new THREE.GridHelper(20,20,0x444444,0x222222));
+
+/* ==========================================================
+   APP STATE
+   ========================================================== */
+let activeModel        = null;
+let originalGeometries = new Map();
+let meshNameMap        = new Map();
+let mainFileName       = 'model';
+const vfs              = new VirtualFileManager();
+const objExporter      = new CustomOBJExporter();
+
+const overlay     = document.getElementById('loading-overlay');
+const loadingText = document.getElementById('loading-text');
+let decimateTimer = null;
+
+/* ==========================================================
+   UI REFS
+   ========================================================== */
+const ui = {
+    px: document.getElementById('px'),
+    py: document.getElementById('py'),
+    pz: document.getElementById('pz'),
+    rx: document.getElementById('rx'),
+    ry: document.getElementById('ry'),
+    rz: document.getElementById('rz'),
+    scale: document.getElementById('scale'),
+    wire: document.getElementById('wireframeCheck'),
+    lighting: document.getElementById('lightingCheck'),
+    decimateRange: document.getElementById('decimateRange'),
+    qualityVal: document.getElementById('qualityVal'),
+    size: document.getElementById('sizeDisplay'),
+    stats: document.getElementById('modelStats'),
+    textureList: document.getElementById('textureList'),
+    fileListInfo: document.getElementById('fileListInfo'),
+    weldMode: document.getElementById('weldMode'),
+    weldInfo: document.getElementById('weldInfo'),
+    meshList: document.getElementById('meshList'),
+    exportFilename: document.getElementById('exportFilename'),
+};
+
+/* ==========================================================
+   RESIZE
+   ========================================================== */
+window.addEventListener('resize', () => {
+    camera.aspect = container.clientWidth / container.clientHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(container.clientWidth, container.clientHeight);
+});
+
+/* ==========================================================
+   EVENT WIRING
+   ========================================================== */
+document.getElementById('fileInput').addEventListener('change', e => handleFiles(e.target.files));
+document.getElementById('exportBtn').addEventListener('click', exportOBJ);
+document.getElementById('exportBareBtn').addEventListener('click', exportOBJBare);
+document.getElementById('exportMtlBtn').addEventListener('click', exportMTL);
+document.getElementById('centerOrbitBtn').addEventListener('click', centerOrbit);
+document.getElementById('randomBgBtn').addEventListener('click', randomizeBg);
+document.getElementById('centerPositionBtn').addEventListener('click', centerPositionBaked);
+
+ui.lighting.addEventListener('change', updateLighting);
+ui.wire.addEventListener('change', () => applyCurrentWireframe());
+['px','py','pz','rx','ry','rz','scale'].forEach(id =>
+    document.getElementById(id).addEventListener('input', updateTransform)
+);
+
+ui.decimateRange.addEventListener('input', e => {
+    ui.qualityVal.innerText = e.target.value + '%';
+});
+ui.decimateRange.addEventListener('change', () => {
+    clearTimeout(decimateTimer);
+    decimateTimer = setTimeout(applyDecimation, 80);
+});
+
+/* ==========================================================
+   DRAG & DROP
+   ========================================================== */
+const dropShield = document.getElementById('drop-shield');
+
+let dragCounter = 0;
+['dragenter','dragover','dragleave','drop'].forEach(evt =>
+    document.body.addEventListener(evt, e => { e.preventDefault(); e.stopPropagation(); }, false)
+);
+document.body.addEventListener('dragenter', () => { dragCounter++; document.body.classList.add('drag-over'); });
+document.body.addEventListener('dragleave', () => { dragCounter--; if(dragCounter<=0){dragCounter=0;document.body.classList.remove('drag-over');} });
+document.body.addEventListener('drop', e => {
+    dragCounter=0; document.body.classList.remove('drag-over');
+    const items=e.dataTransfer.items;
+    if(items&&items.length>0&&items[0].webkitGetAsEntry){
+        const entries=[];
+        for(let i=0;i<items.length;i++){const en=items[i].webkitGetAsEntry();if(en)entries.push(en);}
+        if(entries.some(en=>en.isDirectory)){readEntriesRecursive(entries).then(f=>{if(f.length)handleFiles(f);});return;}
+    }
+    if(e.dataTransfer.files.length>0)handleFiles(e.dataTransfer.files);
+});
+
+async function readEntriesRecursive(entries){
+    const all=[];
+    async function read(entry){
+        if(entry.isFile)return new Promise(r=>entry.file(f=>{all.push(f);r();},()=>r()));
+        if(entry.isDirectory){
+            const reader=entry.createReader();
+            return new Promise(r=>{const batch=()=>reader.readEntries(async res=>{if(!res.length){r();return;}for(const x of res)await read(x);batch();},()=>r());batch();});
+        }
+    }
+    for(const e of entries)await read(e); return all;
+}
+
+/* ==========================================================
+   HELPERS
+   ========================================================== */
+function showLoading(msg) { loadingText.innerText = msg; overlay.style.display = 'flex'; }
+function hideLoading() { overlay.style.display = 'none'; }
+function stemName(f) { return f.replace(/\.[^.]+$/, ''); }
+
+/**
+ * Compute a bounding box from only the VISIBLE meshes in the model.
+ * Returns null if no visible meshes exist.
+ */
+function getVisibleBoundingBox() {
+    if (!activeModel) return null;
+    activeModel.updateMatrixWorld(true);
+    const box = new THREE.Box3();
+    let hasAny = false;
+    activeModel.traverse(c => {
+        if (!c.isMesh || !c.visible) return;
+        const g = c.geometry;
+        if (!g || !g.attributes.position) return;
+        g.computeBoundingBox();
+        const meshBox = g.boundingBox.clone().applyMatrix4(c.matrixWorld);
+        if (!hasAny) { box.copy(meshBox); hasAny = true; }
+        else box.union(meshBox);
+    });
+    return hasAny ? box : null;
+}
+
+/* ==========================================================
+   FILE HANDLING
+   ========================================================== */
+function handleFiles(fileList) {
+    const files = Array.from(fileList);
+    if (!files.length) return;
+
+    vfs.clear();
+    vfs.addFiles(files);
+    showFileList(files);
+
+    const exts = ['.gltf','.glb','.obj','.dae'];
+    let mainFile = null, mainExt = null;
+    for (const f of files) {
+        const ext = '.' + f.name.split('.').pop().toLowerCase();
+        if (exts.includes(ext)) { mainFile = f; mainExt = ext; break; }
+    }
+    if (!mainFile) { alert('No supported model file found.'); return; }
+
+    mainFileName = stemName(mainFile.name);
+    ui.exportFilename.value = mainFileName;
+
+    switch (mainExt) {
+        case '.glb':  loadGLB(mainFile); break;
+        case '.gltf': loadGLTF(mainFile); break;
+        case '.obj':  loadOBJ(mainFile, files); break;
+        case '.dae':  loadDAE(mainFile); break;
+    }
+}
+
+function showFileList(files) {
+    const info = ui.fileListInfo;
+    info.innerHTML = '';
+    const exts = ['.gltf','.glb','.obj','.dae'];
+    files.forEach(f => {
+        const isMain = exts.includes('.' + f.name.split('.').pop().toLowerCase());
+        const div = document.createElement('div');
+        div.className = isMain ? 'main-file' : 'aux-file';
+        const sz = f.size > 1048576 ? (f.size/1048576).toFixed(1)+' MB' : (f.size/1024).toFixed(1)+' KB';
+        div.textContent = (isMain ? '▸ ' : '  ') + f.name + ' (' + sz + ')';
+        info.appendChild(div);
+    });
+    info.classList.add('visible');
+}
+
+/* ==========================================================
+   LOADERS
+   ========================================================== */
+function loadGLB(f) {
+    showLoading('Parsing GLB...');
+    const mgr = vfs.createLoadingManager();
+    const url = vfs.getURL(f.name) || URL.createObjectURL(f);
+    new GLTFLoader(mgr).load(url,
+        g => { processLoadedModel(g.scene); hideLoading(); },
+        undefined,
+        err => { console.error(err); alert('Failed to parse GLB.'); hideLoading(); }
+    );
+}
+
+function loadGLTF(f) {
+    showLoading('Parsing GLTF...');
+    const mgr = vfs.createLoadingManager();
+    const url = vfs.getURL(f.name) || URL.createObjectURL(f);
+    new GLTFLoader(mgr).load(url,
+        g => { processLoadedModel(g.scene); hideLoading(); },
+        undefined,
+        err => { console.error(err); alert('Failed to parse GLTF. Include .bin and textures.'); hideLoading(); }
+    );
+}
+
+function loadOBJ(f, allFiles) {
+    showLoading('Parsing OBJ...');
+    const mgr = vfs.createLoadingManager();
+    const mtlFile = allFiles.find(x => x.name.toLowerCase().endsWith('.mtl'));
+    const reader = new FileReader();
+    reader.onload = e => {
+        const txt = e.target.result;
+        if (mtlFile) {
+            const mr = new FileReader();
+            mr.onload = me => {
+                try {
+                    const ml = new MTLLoader(mgr);
+                    const mats = ml.parse(me.target.result, '');
+                    mats.preload();
+                    const ol = new OBJLoader(mgr);
+                    ol.setMaterials(mats);
+                    processLoadedModel(ol.parse(txt));
+                } catch(err) {
+                    console.warn('MTL parse failed, loading OBJ without materials:', err);
+                    const ol = new OBJLoader(mgr);
+                    const o = ol.parse(txt);
+                    assignDefaultMaterials(o);
+                    processLoadedModel(o);
+                }
+                hideLoading();
+            };
+            mr.readAsText(mtlFile);
+        } else {
+            const ol = new OBJLoader(mgr);
+            const o = ol.parse(txt);
+            assignDefaultMaterials(o);
+            processLoadedModel(o);
+            hideLoading();
+        }
+    };
+    reader.readAsText(f);
+}
+
+function loadDAE(f) {
+    showLoading('Parsing Collada...');
+    const mgr = vfs.createLoadingManager();
+    const url = vfs.getURL(f.name) || URL.createObjectURL(f);
+    new ColladaLoader(mgr).load(url,
+        c => {
+            c.scene.traverse(ch => {
+                if (ch.isMesh && ch.material && (ch.material.isMeshPhongMaterial || ch.material.isMeshLambertMaterial)) {
+                    const o = ch.material;
+                    ch.material = new THREE.MeshStandardMaterial({
+                        color:o.color, map:o.map, normalMap:o.normalMap,
+                        emissive:o.emissive, roughness:0.6, metalness:0.1
+                    });
+                }
+            });
+            processLoadedModel(c.scene);
+            hideLoading();
+        },
+        undefined,
+        err => { console.error(err); alert('Failed to parse DAE.'); hideLoading(); }
+    );
+}
+
+function assignDefaultMaterials(o) {
+    o.traverse(c => {
+        if (c.isMesh && (!c.material || !c.material.map))
+            c.material = new THREE.MeshStandardMaterial({color:0x888888, roughness:0.6, metalness:0.1});
+    });
+}
+
+/* ==========================================================
+   PROCESS LOADED MODEL
+   ========================================================== */
+function processLoadedModel(root) {
+    if (activeModel) {
+        scene.remove(activeModel);
+        activeModel.traverse(c => {
+            if (c.isMesh) {
+                c.geometry.dispose();
+                const mats = Array.isArray(c.material) ? c.material : [c.material];
+                mats.forEach(m => { if (m) m.dispose(); });
+            }
+        });
+    }
+
+    const box = new THREE.Box3().setFromObject(root);
+    if (box.isEmpty()) { alert('Model is empty.'); return; }
+
+    const center = box.getCenter(new THREE.Vector3());
+    const size   = box.getSize(new THREE.Vector3());
+    const maxDim = Math.max(size.x, size.y, size.z);
+    root.position.sub(center);
+
+    originalGeometries.clear();
+    meshNameMap.clear();
+
+    let triCount = 0, meshIdx = 0;
+    let totalVerts = 0, totalUnique = 0, nonIndexed = 0;
+
+    root.traverse(c => {
+        if (!c.isMesh) return;
+
+        if (Array.isArray(c.material)) c.material = c.material.map(m => m.clone());
+        else c.material = c.material.clone();
+
+        if (!c.geometry) return;
+
+        originalGeometries.set(c.uuid, c.geometry.clone());
+
+        let meshName = '';
+        if (c.name && c.name.trim() && !/^\d+$/.test(c.name.trim())) {
+            meshName = c.name.trim();
+        } else if (c.parent && c.parent.name && c.parent.name.trim() && !/^\d+$/.test(c.parent.name.trim())) {
+            meshName = c.parent.name.trim();
+        } else if (c.parent && c.parent.parent && c.parent.parent.name && c.parent.parent.name.trim()) {
+            meshName = c.parent.parent.name.trim();
+        }
+        if (!meshName) meshName = 'Mesh_' + meshIdx;
+
+        meshNameMap.set(c.uuid, meshName);
+        c.name = meshName;
+
+        triCount += c.geometry.index
+            ? c.geometry.index.count / 3
+            : c.geometry.attributes.position.count / 3;
+
+        const a = SmartWelder.analyze(c.geometry);
+        totalVerts  += a.totalVerts;
+        totalUnique += a.uniquePositions;
+        if (!a.indexed) nonIndexed++;
+        meshIdx++;
+    });
+
+    activeModel = root;
+    scene.add(activeModel);
+
+    const ratio = totalVerts > 0 ? 1 - (totalUnique / totalVerts) : 0;
+    if (ratio > 0.05 || nonIndexed > 0) {
+        ui.weldInfo.textContent = '⚠ ~' + (ratio*100).toFixed(0) + '% duplicate verts' +
+            (nonIndexed > 0 ? ' (' + nonIndexed + ' non-indexed)' : '') + '. Welding recommended.';
+        ui.weldInfo.classList.add('visible');
+        ui.weldMode.value = (ratio > 0.3 || nonIndexed > 0) ? 'aggressive' : 'auto';
+    } else {
+        ui.weldInfo.textContent = '';
+        ui.weldInfo.classList.remove('visible');
+        ui.weldMode.value = 'auto';
+    }
+
+    controls.target.set(0, 0, 0);
+    const fovR = THREE.MathUtils.degToRad(camera.fov);
+    const dist = Math.max(maxDim * 2.5, maxDim / (2 * Math.tan(fovR / 2)));
+    camera.position.set(dist * 0.6, dist * 0.4, dist * 0.6);
+    camera.near = maxDim * 0.001;
+    camera.far  = maxDim * 100;
+    camera.updateProjectionMatrix();
+    controls.update();
+
+    ui.px.value = 0; ui.py.value = 0; ui.pz.value = 0;
+    ui.rx.value = 0; ui.ry.value = 0; ui.rz.value = 0;
+    ui.scale.value = 100;
+    ui.decimateRange.value = 100;
+    ui.qualityVal.innerText = '100%';
+    ui.stats.innerText = Math.round(triCount).toLocaleString() + ' tris';
+
+    updateTransform();
+    applyCurrentWireframe();
+    updateLighting();
+    listTextures(activeModel);
+    buildMeshList();
+}
+
+/* ==========================================================
+   MESH LIST
+   ========================================================== */
+function buildMeshList() {
+    ui.meshList.innerHTML = '';
+    if (!activeModel) {
+        ui.meshList.innerHTML = '<div style="font-size:11px;color:#666;text-align:center;padding:8px;">No model loaded</div>';
+        return;
+    }
+
+    const meshes = [];
+    activeModel.traverse(c => { if (c.isMesh && originalGeometries.has(c.uuid)) meshes.push(c); });
+
+    if (!meshes.length) {
+        ui.meshList.innerHTML = '<div style="font-size:11px;color:#666;text-align:center;padding:8px;">No meshes</div>';
+        return;
+    }
+
+    meshes.forEach(mesh => {
+        const uuid = mesh.uuid;
+        const geo  = mesh.geometry;
+        const tris = geo.index ? Math.round(geo.index.count/3) : Math.round(geo.attributes.position.count/3);
+        const currentName = meshNameMap.get(uuid) || mesh.name || 'Mesh';
+
+        const item = document.createElement('div');
+        item.className = 'mesh-item';
+        item.dataset.uuid = uuid;
+
+        // Visibility toggle
+        const visBtn = document.createElement('button');
+        visBtn.className = 'mesh-item-vis secondary';
+        visBtn.textContent = mesh.visible ? '👁' : '🚫';
+        visBtn.addEventListener('click', () => {
+            mesh.visible = !mesh.visible;
+            visBtn.textContent = mesh.visible ? '👁' : '🚫';
+            item.classList.toggle('mesh-hidden', !mesh.visible);
+            updateVisibleStats();
+        });
+
+        // Editable name
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.className = 'mesh-item-name';
+        nameInput.value = currentName;
+        nameInput.title = 'Rename mesh. Same name = merged on export.';
+        const commitName = () => {
+            const v = nameInput.value.trim() || 'Mesh';
+            nameInput.value = v;
+            meshNameMap.set(uuid, v);
+            mesh.name = v;
+            refreshMergeBadges();
+        };
+        nameInput.addEventListener('change', commitName);
+        nameInput.addEventListener('blur', commitName);
+
+        // Merge badge
+        const badge = document.createElement('span');
+        badge.className = 'merge-badge';
+        badge.dataset.mergebadge = '1';
+        badge.textContent = 'merge';
+        badge.style.display = 'none';
+
+        // Tri count
+        const countSpan = document.createElement('span');
+        countSpan.className = 'mesh-item-count';
+        countSpan.textContent = tris.toLocaleString() + '▲';
+
+        item.appendChild(visBtn);
+        item.appendChild(nameInput);
+        item.appendChild(badge);
+        item.appendChild(countSpan);
+        ui.meshList.appendChild(item);
+    });
+
+    refreshMergeBadges();
+}
+
+function refreshMergeBadges() {
+    // Only count visible meshes for merge badges
+    const nameCount = new Map();
+    if (activeModel) {
+        activeModel.traverse(c => {
+            if (!c.isMesh || !c.visible || !meshNameMap.has(c.uuid)) return;
+            const name = meshNameMap.get(c.uuid);
+            nameCount.set(name, (nameCount.get(name)||0) + 1);
+        });
+    }
+
+    ui.meshList.querySelectorAll('.mesh-item').forEach(item => {
+        const uuid  = item.dataset.uuid;
+        const name  = meshNameMap.get(uuid) || 'Mesh';
+        const badge = item.querySelector('[data-mergebadge]');
+        if (badge) badge.style.display = (nameCount.get(name) || 1) > 1 ? 'inline' : 'none';
+    });
+}
+
+function refreshMeshListCounts() {
+    if (!activeModel) return;
+    ui.meshList.querySelectorAll('.mesh-item').forEach(item => {
+        const uuid = item.dataset.uuid;
+        let mesh = null;
+        activeModel.traverse(c => { if (c.uuid === uuid) mesh = c; });
+        if (!mesh) return;
+        const geo  = mesh.geometry;
+        const tris = geo.index ? Math.round(geo.index.count/3) : Math.round(geo.attributes.position.count/3);
+        const span = item.querySelector('.mesh-item-count');
+        if (span) span.textContent = tris.toLocaleString() + '▲';
+    });
+}
+
+/**
+ * Update the tri count and size display based on visible meshes only.
+ */
+function updateVisibleStats() {
+    if (!activeModel) return;
+    let triCount = 0;
+    activeModel.traverse(c => {
+        if (!c.isMesh || !c.visible || !c.geometry) return;
+        triCount += c.geometry.index
+            ? c.geometry.index.count / 3
+            : c.geometry.attributes.position.count / 3;
+    });
+    ui.stats.innerText = Math.round(triCount).toLocaleString() + ' tris (visible)';
+    updateTransform(); // refresh size display for visible only
+}
+
+/* ==========================================================
+   DISPLAY
+   ========================================================== */
+function applyCurrentWireframe() {
+    if (!activeModel) return;
+    const v = ui.wire.checked;
+    activeModel.traverse(c => {
+        if (c.isMesh) {
+            const mats = Array.isArray(c.material) ? c.material : [c.material];
+            mats.forEach(m => { if (m) m.wireframe = v; });
+        }
+    });
+}
+
+function updateLighting() {
+    const on = ui.lighting.checked;
+    ambientLight.intensity = on ? 0.5 : 1.5;
+    dirLight.visible  = on;
+    fillLight.visible = on;
+}
+
+/* ==========================================================
+   TRANSFORM
+   ========================================================== */
+function updateTransform() {
+    if (!activeModel) return;
+    activeModel.position.set(
+        parseFloat(ui.px.value) || 0,
+        parseFloat(ui.py.value) || 0,
+        parseFloat(ui.pz.value) || 0
+    );
+    activeModel.rotation.set(
+        THREE.MathUtils.degToRad(parseFloat(ui.rx.value) || 0),
+        THREE.MathUtils.degToRad(parseFloat(ui.ry.value) || 0),
+        THREE.MathUtils.degToRad(parseFloat(ui.rz.value) || 0)
+    );
+    const s = (parseFloat(ui.scale.value) || 100) / 100;
+    activeModel.scale.set(s, s, s);
+    activeModel.updateMatrixWorld(true);
+
+    // Size display uses visible meshes only
+    const box = getVisibleBoundingBox();
+    if (!box) {
+        ui.size.innerText = 'Size: - (no visible meshes)';
+    } else {
+        const sv = new THREE.Vector3();
+        box.getSize(sv);
+        ui.size.innerHTML = 'Size (m):<br>X:' + sv.x.toFixed(2) + ' Y:' + sv.y.toFixed(2) + ' Z:' + sv.z.toFixed(2);
+    }
+}
+
+function centerPositionBaked() {
+    if (!activeModel) return;
+    activeModel.updateMatrixWorld(true);
+
+    // Center on visible meshes only
+    const box = getVisibleBoundingBox();
+    if (!box) { alert('No visible meshes to center on.'); return; }
+
+    const center = box.getCenter(new THREE.Vector3());
+    activeModel.position.sub(center);
+    activeModel.updateMatrixWorld(true);
+    ui.px.value = parseFloat(activeModel.position.x.toFixed(4));
+    ui.py.value = parseFloat(activeModel.position.y.toFixed(4));
+    ui.pz.value = parseFloat(activeModel.position.z.toFixed(4));
+    updateTransform();
+}
+
+/* ==========================================================
+   VIEWER BUTTONS
+   ========================================================== */
+function centerOrbit() {
+    if (!activeModel) return;
+    activeModel.updateMatrixWorld(true);
+
+    // Center orbit on visible meshes only
+    const box = getVisibleBoundingBox();
+    if (!box) { alert('No visible meshes to center on.'); return; }
+
+    const center = box.getCenter(new THREE.Vector3());
+    const size   = box.getSize(new THREE.Vector3());
+    const maxDim = Math.max(size.x, size.y, size.z);
+    controls.target.copy(center);
+    const dist = Math.max(maxDim * 2.5, maxDim / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2)));
+    const dir  = new THREE.Vector3().subVectors(camera.position, controls.target).normalize();
+    camera.position.copy(center).addScaledVector(dir, dist);
+    controls.update();
+}
+
+function randomizeBg() {
+    scene.background = new THREE.Color().setHSL(
+        Math.random(),
+        0.15 + Math.random() * 0.2,
+        0.08 + Math.random() * 0.15
+    );
+}
+
+/* ==========================================================
+   TEXTURES
+   ========================================================== */
+function listTextures(model) {
+    ui.textureList.innerHTML = '';
+    const done = new Set();
+    const slots = [
+        {k:'map',n:'Color'},{k:'emissiveMap',n:'Emissive'},{k:'normalMap',n:'Normal'},
+        {k:'roughnessMap',n:'Roughness'},{k:'metalnessMap',n:'Metalness'},{k:'aoMap',n:'AO'}
+    ];
+
+    model.traverse(c => {
+        if (!c.isMesh) return;
+        const mats = Array.isArray(c.material) ? c.material : [c.material];
+        mats.forEach(mat => {
+            if (!mat) return;
+            slots.forEach(({k,n}) => {
+                const tex = mat[k];
+                if (tex && !done.has(tex.uuid) && (tex.image || tex.source?.data)) {
+                    done.add(tex.uuid);
+                    addTextureRow(tex.image || tex.source.data, n, tex.name || n);
+                }
+            });
+        });
+    });
+
+    if (!done.size)
+        ui.textureList.innerHTML = '<div style="font-size:11px;color:#666;text-align:center;padding:10px;">No textures detected.</div>';
+}
+
+function addTextureRow(img, type, name) {
+    const canvas = document.createElement('canvas');
+    const w = img.width || 256, h = img.height || 256;
+    canvas.width = w; canvas.height = h;
+    try { canvas.getContext('2d').drawImage(img, 0, 0, w, h); } catch(e) { return; }
+    const dataURL = canvas.toDataURL('image/png');
+
+    const div = document.createElement('div');
+    div.className = 'texture-item';
+    div.innerHTML = '<img src="' + dataURL + '" class="texture-thumb">' +
+        '<div class="texture-info"><span>' + name + '</span><span class="texture-type">' + type + ' - ' + w + 'x' + h + '</span></div>';
+
+    const btn = document.createElement('button');
+    btn.className = 'texture-dl';
+    btn.innerText = '↓';
+    btn.onclick = () => {
+        const a = document.createElement('a');
+        a.href = dataURL;
+        a.download = 'tex_' + type + '_' + Date.now() + '.png';
+        a.click();
+    };
+    div.appendChild(btn);
+    ui.textureList.appendChild(div);
+}
+
+/* ==========================================================
+   DECIMATION
+   ========================================================== */
+function applyDecimation() {
+    if (!activeModel) return;
+    const quality = parseInt(ui.decimateRange.value) / 100;
+    const mode    = ui.weldMode.value;
+
+    if (quality >= 1) {
+        activeModel.traverse(c => {
+            if (c.isMesh && originalGeometries.has(c.uuid)) {
+                c.geometry.dispose();
+                c.geometry = originalGeometries.get(c.uuid).clone();
+            }
+        });
+        let tc = 0;
+        activeModel.traverse(c => {
+            if (c.isMesh && c.visible && c.geometry)
+                tc += c.geometry.index ? c.geometry.index.count/3 : c.geometry.attributes.position.count/3;
+        });
+        ui.stats.innerText = Math.round(tc).toLocaleString() + ' tris (Restored)';
+        ui.weldInfo.textContent = '';
+        ui.weldInfo.classList.remove('visible');
+        applyCurrentWireframe();
+        refreshMeshListCounts();
+        return;
+    }
+
+    showLoading('Welding & Simplifying...');
+    setTimeout(() => {
+        const simplifier = new SeamAwareSimplifier();
+        let tris = 0, welded = 0, locked = 0, verts = 0;
+
+        activeModel.traverse(c => {
+            if (!c.isMesh || !originalGeometries.has(c.uuid)) return;
+            let geo = originalGeometries.get(c.uuid).clone();
+
+            const wr = SmartWelder.weld(geo, mode);
+            geo = wr.geometry;
+            welded += wr.stats.welded;
+
+            const targetRem = Math.floor(geo.attributes.position.count * (1 - quality));
+            try {
+                const s = simplifier.modify(geo, targetRem);
+                if (s.userData) {
+                    locked += s.userData.lockedCount || 0;
+                    verts  += s.userData.totalVerts  || 0;
+                }
+                c.geometry.dispose();
+                c.geometry = s;
+                if (c.visible) {
+                    tris += s.index ? s.index.count/3 : s.attributes.position.count/3;
+                }
+            } catch(e) {
+                console.error('Simplify failed:', e);
+            }
+        });
+
+        ui.stats.innerText = Math.round(tris).toLocaleString() + ' tris (Decimated, visible)';
+        if (welded > 0 || locked > 0) {
+            ui.weldInfo.textContent = 'Welded ' + welded.toLocaleString() + ' verts | ' +
+                (verts > 0 ? ((locked/verts)*100).toFixed(1) : '0') + '% border-locked';
+            ui.weldInfo.classList.add('visible');
+        }
+
+        applyCurrentWireframe();
+        refreshMeshListCounts();
+        hideLoading();
+    }, 50);
+}
+
+/* ==========================================================
+   BUILD EXPORT RECORDS — visible meshes only
+   ========================================================== */
+function buildExportRecords() {
+    if (!activeModel) return null;
+    activeModel.updateMatrixWorld(true);
+
+    const matNames = new Map();
+    const groups = new Map();
+
+    activeModel.traverse(c => {
+        if (!c.isMesh || !c.visible) return;
+        const name = meshNameMap.get(c.uuid) || c.name || 'Mesh';
+        const geo  = c.geometry.clone().applyMatrix4(c.matrixWorld);
+        const mat  = Array.isArray(c.material) ? c.material[0] : c.material;
+
+        let mName = 'material_0';
+        if (mat) {
+            if (matNames.has(mat.uuid)) {
+                mName = matNames.get(mat.uuid);
+            } else {
+                const base = sanitizeName(mat.name) || 'mat_' + matNames.size;
+                let candidate = base, n = 1;
+                const vals = new Set(matNames.values());
+                while (vals.has(candidate)) candidate = base + '_' + (n++);
+                matNames.set(mat.uuid, candidate);
+                mName = candidate;
+            }
+        }
+
+        if (!groups.has(name)) groups.set(name, []);
+        groups.get(name).push({ geo, mat, matName: mName });
+    });
+
+    const records = [];
+    groups.forEach((items, name) => {
+        if (items.length === 1) {
+            records.push({ name, geometry: items[0].geo, material: items[0].mat, matName: items[0].matName });
+        } else {
+            try {
+                const merged = BufferGeometryUtils.mergeGeometries(items.map(i => i.geo), false);
+                if (merged) {
+                    records.push({ name, geometry: merged, material: items[0].mat, matName: items[0].matName });
+                } else {
+                    throw new Error('merge returned null');
+                }
+            } catch(e) {
+                items.forEach((item, i) => {
+                    records.push({
+                        name: name + '_' + i,
+                        geometry: item.geo,
+                        material: item.mat,
+                        matName: item.matName
+                    });
+                });
+            }
+        }
+    });
+
+    return records;
+}
+
+/* ==========================================================
+   EXPORT OBJ
+   ========================================================== */
+function exportOBJ() {
+    if (!activeModel) return;
+    showLoading('Exporting OBJ...');
+    setTimeout(() => {
+        const records = buildExportRecords();
+        if (!records || !records.length) { hideLoading(); alert('No visible meshes to export.'); return; }
+        const baseName = ui.exportFilename.value.trim() || mainFileName;
+        const objStr   = objExporter.parse(records, baseName);
+        const blob = new Blob([objStr], { type: 'text/plain' });
+        const url  = URL.createObjectURL(blob);
+        const a    = document.createElement('a');
+        a.href     = url;
+        a.download = baseName + '.obj';
+        a.click();
+        URL.revokeObjectURL(url);
+        hideLoading();
+    }, 100);
+}
+
+function exportOBJBare() {
+    if (!activeModel) return;
+    showLoading('Exporting OBJ (no MTL refs)...');
+    setTimeout(() => {
+        const records = buildExportRecords();
+        if (!records || !records.length) { hideLoading(); alert('No visible meshes to export.'); return; }
+        const baseName = ui.exportFilename.value.trim() || mainFileName;
+        const objStr   = objExporter.parse(records, baseName, { skipMtlRefs: true });
+        const blob = new Blob([objStr], { type: 'text/plain' });
+        const url  = URL.createObjectURL(blob);
+        const a    = document.createElement('a');
+        a.href     = url;
+        a.download = baseName + '.obj';
+        a.click();
+        URL.revokeObjectURL(url);
+        hideLoading();
+    }, 100);
+}
+
+/* ==========================================================
+   EXPORT MTL — visible meshes' materials only
+   ========================================================== */
+function exportMTL() {
+    if (!activeModel) { alert('No model loaded.'); return; }
+    showLoading('Building MTL...');
+    setTimeout(() => {
+        const matMap = new Map();
+
+        activeModel.traverse(c => {
+            if (!c.isMesh || !c.visible) return;
+            const mats = Array.isArray(c.material) ? c.material : [c.material];
+            mats.forEach(m => {
+                if (!m || matMap.has(m.uuid)) return;
+                const base = sanitizeName(m.name) || 'material_' + matMap.size;
+                let name = base, n = 1;
+                const vals = new Set([...matMap.values()].map(v => v.name));
+                while (vals.has(name)) name = base + '_' + (n++);
+                matMap.set(m.uuid, { mat: m, name });
+            });
+        });
+
+        if (!matMap.size) { hideLoading(); alert('No materials found on visible meshes.'); return; }
+
+        let mtl = '# MTL exported by 3D Model Tool\n\n';
+        matMap.forEach(({ mat, name }) => {
+            mtl += 'newmtl ' + name + '\n';
+            mtl += 'Ka 0.200 0.200 0.200\n';
+            const col = mat.color || new THREE.Color(0.8, 0.8, 0.8);
+            mtl += 'Kd ' + col.r.toFixed(4) + ' ' + col.g.toFixed(4) + ' ' + col.b.toFixed(4) + '\n';
+            mtl += 'Ks 0.500 0.500 0.500\n';
+            const rough = mat.roughness !== undefined ? mat.roughness : 0.6;
+            mtl += 'Ns ' + Math.round(Math.pow(1-rough, 2) * 1000) + '\n';
+            mtl += 'd ' + (mat.opacity !== undefined ? mat.opacity : 1).toFixed(4) + '\n';
+            mtl += 'illum 2\n';
+            if (mat.map && mat.map.name) mtl += 'map_Kd ' + mat.map.name + '\n';
+            if (mat.normalMap && mat.normalMap.name) mtl += 'map_Bump ' + mat.normalMap.name + '\n';
+            if (mat.emissiveMap && mat.emissiveMap.name) mtl += 'map_Ke ' + mat.emissiveMap.name + '\n';
+            mtl += '\n';
+        });
+
+        const baseName = ui.exportFilename.value.trim() || mainFileName;
+        const blob = new Blob([mtl], { type: 'text/plain' });
+        const url  = URL.createObjectURL(blob);
+        const a    = document.createElement('a');
+        a.href     = url;
+        a.download = baseName + '.mtl';
+        a.click();
+        URL.revokeObjectURL(url);
+        hideLoading();
+    }, 50);
+}
+
+/* ==========================================================
+   RENDER LOOP
+   ========================================================== */
+function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
+    renderer.render(scene, camera);
+}
+animate();
+</script>
+</body>
+</html>
