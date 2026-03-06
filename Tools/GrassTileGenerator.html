@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Grass Tile Generator</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #1a1a2e; color: #e0e0e0; display: flex; height: 100vh; overflow: hidden; }
+
+#sidebar {
+    width: 380px;
+    min-width: 380px;
+    background: #16213e;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 15px;
+    border-right: 2px solid #0f3460;
+}
+
+#sidebar > * {
+    margin-bottom: 10px;
+}
+
+#viewport { flex: 1; position: relative; }
+canvas { width: 100%; height: 100%; display: block; }
+
+h2 { color: #e94560; font-size: 16px; border-bottom: 1px solid #0f3460; padding-bottom: 5px; }
+label { font-size: 12px; color: #a0a0c0; }
+input[type="file"] { font-size: 11px; width: 100%; }
+input[type="number"], input[type="text"] { width: 100%; padding: 4px 8px; background: #0f3460; border: 1px solid #533483; color: #e0e0e0; border-radius: 3px; font-size: 12px; }
+input[type="range"] { width: 100%; accent-color: #e94560; height: 18px; }
+button { padding: 8px 16px; background: #e94560; border: none; color: white; border-radius: 4px; cursor: pointer; font-size: 13px; font-weight: bold; }
+button:hover { background: #c73652; }
+button:disabled { background: #555; cursor: not-allowed; }
+
+.setting-row { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
+.setting-row label { white-space: nowrap; min-width: 120px; }
+.setting-row input { flex: 1; }
+.setting-row .val-display { font-size: 11px; min-width: 35px; text-align: right; color: #e0e0e0; }
+
+.mesh-item {
+    background: #0f3460;
+    border: 1px solid #533483;
+    border-radius: 5px;
+    padding: 8px 10px;
+    margin-bottom: 6px;
+}
+.mesh-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.mesh-name { font-size: 13px; font-weight: bold; color: #e94560; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 200px; }
+.mesh-info { font-size: 11px; color: #888; white-space: nowrap; }
+.mesh-prob { display: flex; align-items: center; gap: 6px; }
+.mesh-prob label { font-size: 11px; min-width: 65px; }
+.mesh-prob input[type="range"] { flex: 1; height: 18px; }
+.prob-val { font-size: 11px; min-width: 35px; text-align: right; color: #e0e0e0; }
+
+#meshList {
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid #0f3460;
+    border-radius: 5px;
+    padding: 6px;
+    background: #111a33;
+}
+
+.section { background: #1a1a3e; border-radius: 5px; padding: 10px; }
+#status { font-size: 11px; color: #888; min-height: 20px; padding: 5px; background: #0a0a1e; border-radius: 3px; word-wrap: break-word; }
+.color-row { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
+.color-row label { min-width: 120px; font-size: 12px; }
+.color-row input[type="color"] { width: 40px; height: 25px; border: none; background: none; cursor: pointer; }
+.checkbox-row { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
+.checkbox-row input[type="checkbox"] { width: 16px; height: 16px; }
+.stat-bar { background: #0f3460; padding: 6px 10px; border-radius: 4px; font-size: 12px; color: #e94560; font-weight: bold; }
+.no-meshes { font-size: 12px; color: #666; padding: 8px; }
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+    <h2>📁 Load Assets</h2>
+    <div class="section">
+        <label>OBJ File (multi-mesh):</label>
+        <input type="file" id="objFile" accept=".obj">
+        <label style="margin-top:8px;display:block;">Texture (PNG/JPG):</label>
+        <input type="file" id="texFile" accept="image/*">
+    </div>
+
+    <h2>🌿 Meshes (<span id="meshCount">0</span>)</h2>
+    <div id="meshList"><div class="no-meshes">Load an OBJ to see meshes...</div></div>
+
+    <h2>⚙️ Tile Settings</h2>
+    <div class="section">
+        <div class="setting-row">
+            <label>Tile Size (XZ):</label>
+            <input type="number" id="tileSize" value="5" min="0.1" step="0.1">
+        </div>
+        <div class="setting-row">
+            <label>Spawn Count:</label>
+            <input type="number" id="spawnCount" value="100" min="1" step="1">
+        </div>
+        <div class="setting-row">
+            <label>Random Seed:</label>
+            <input type="number" id="randomSeed" value="42" min="0" step="1">
+        </div>
+        <div class="setting-row">
+            <label>Roundness:</label>
+            <input type="range" id="roundness" min="0" max="1" step="0.01" value="0">
+            <span class="val-display" id="roundnessVal">0.00</span>
+        </div>
+    </div>
+
+    <h2>🎲 Scatter Settings</h2>
+    <div class="section">
+        <div class="setting-row">
+            <label>XZ Scatter:</label>
+            <input type="number" id="xzScatter" value="0" min="0" step="0.01">
+        </div>
+        <div class="setting-row">
+            <label>Y Offset:</label>
+            <input type="number" id="yOffset" value="0" step="0.01">
+        </div>
+        <div class="setting-row">
+            <label>Scale Min:</label>
+            <input type="number" id="scaleMin" value="0.8" min="0.01" step="0.01">
+        </div>
+        <div class="setting-row">
+            <label>Scale Max:</label>
+            <input type="number" id="scaleMax" value="1.2" min="0.01" step="0.01">
+        </div>
+        <div class="setting-row">
+            <label>Scale Y Bias:</label>
+            <input type="number" id="scaleYBias" value="0" step="0.01">
+        </div>
+        <div class="checkbox-row">
+            <input type="checkbox" id="uniformScale" checked>
+            <label>Uniform XYZ Scale</label>
+        </div>
+        <div class="setting-row">
+            <label>Y Rotation Min (°):</label>
+            <input type="number" id="rotYMin" value="0" step="1">
+        </div>
+        <div class="setting-row">
+            <label>Y Rotation Max (°):</label>
+            <input type="number" id="rotYMax" value="360" step="1">
+        </div>
+        <div class="setting-row">
+            <label>Tilt Max (°):</label>
+            <input type="number" id="tiltMax" value="0" min="0" step="1">
+        </div>
+    </div>
+
+    <h2>🎨 Preview Settings</h2>
+    <div class="section">
+        <div class="setting-row">
+            <label>Alpha Cutoff:</label>
+            <input type="number" id="alphaCutoff" value="0.5" min="0" max="1" step="0.01">
+        </div>
+        <div class="setting-row">
+            <label>Normals Up:</label>
+            <input type="range" id="normalsUp" min="0" max="1" step="0.01" value="0">
+            <span class="val-display" id="normalsUpVal">0.00</span>
+        </div>
+        <div class="setting-row">
+            <label>Wind:</label>
+            <input type="range" id="windStrength" min="0" max="1" step="0.01" value="0">
+            <span class="val-display" id="windStrengthVal">0.00</span>
+        </div>
+        <div class="color-row">
+            <label>Background:</label>
+            <input type="color" id="bgColor" value="#1a1a2e">
+        </div>
+        <div class="checkbox-row">
+            <input type="checkbox" id="showGrid" checked>
+            <label>Show Tile Grid</label>
+        </div>
+        <div class="checkbox-row">
+            <input type="checkbox" id="showWireframe">
+            <label>Wireframe Overlay</label>
+        </div>
+    </div>
+
+    <h2>💾 Export</h2>
+    <div class="section">
+        <div class="setting-row">
+            <label>Mesh Name:</label>
+            <input type="text" id="meshName" value="GrassTile">
+        </div>
+        <div class="setting-row">
+            <label>Scale on Export:</label>
+            <input type="number" id="exportScale" value="1" min="0.001" step="0.1">
+        </div>
+        <button id="exportBtn" style="margin-top:8px;width:100%;" disabled>Export OBJ</button>
+        <button id="regenerateBtn" style="margin-top:5px;width:100%;background:#533483;">🔄 Regenerate</button>
+    </div>
+
+    <div class="stat-bar" id="triCount">Triangles: 0 | Instances: 0</div>
+    <div id="status">Ready. Load an OBJ file to begin.</div>
+</div>
+
+<div id="viewport">
+    <canvas id="glCanvas"></canvas>
+</div>
+
+<script>
+"use strict";
+
+/* ===== Seeded RNG ===== */
+class SeededRNG {
+    constructor(s) { this.s = s >>> 0 || 1; }
+    next() { this.s = (this.s * 1664525 + 1013904223) >>> 0; return this.s / 4294967296; }
+    range(a, b) { return a + this.next() * (b - a); }
+}
+
+/* ===== OBJ Parser ===== */
+function parseOBJ(text) {
+    var allV = [], allVT = [], allVN = [];
+    var groups = [];
+    var curGroup = null;
+
+    function startGroup(name) {
+        curGroup = { name: name, faceData: [] };
+        groups.push(curGroup);
+    }
+
+    var lines = text.split('\n');
+    for (var i = 0; i < lines.length; i++) {
+        var line = lines[i].trim();
+        if (line.length === 0 || line.charAt(0) === '#') continue;
+
+        var sp = line.indexOf(' ');
+        if (sp === -1) continue;
+        var cmd = line.substring(0, sp);
+        var rest = line.substring(sp + 1).trim();
+
+        if (cmd === 'v') {
+            var p = rest.split(/\s+/);
+            allV.push(+p[0] || 0, +p[1] || 0, +p[2] || 0);
+        } else if (cmd === 'vt') {
+            var p = rest.split(/\s+/);
+            allVT.push(+p[0] || 0, +p[1] || 0);
+        } else if (cmd === 'vn') {
+            var p = rest.split(/\s+/);
+            allVN.push(+p[0] || 0, +p[1] || 0, +p[2] || 0);
+        } else if (cmd === 'o' || cmd === 'g') {
+            var name = rest || ('Mesh_' + groups.length);
+            startGroup(name);
+        } else if (cmd === 'f') {
+            if (!curGroup) startGroup('Default');
+            var parts = rest.split(/\s+/);
+            var fv = [];
+            for (var j = 0; j < parts.length; j++) {
+                var ids = parts[j].split('/');
+                var vi = parseInt(ids[0]);
+                var vti = ids.length > 1 && ids[1] !== '' ? parseInt(ids[1]) : 0;
+                var vni = ids.length > 2 && ids[2] !== '' ? parseInt(ids[2]) : 0;
+                fv.push({
+                    vi: vi > 0 ? vi - 1 : allV.length / 3 + vi,
+                    vti: vti > 0 ? vti - 1 : (vti < 0 ? allVT.length / 2 + vti : -1),
+                    vni: vni > 0 ? vni - 1 : (vni < 0 ? allVN.length / 3 + vni : -1)
+                });
+            }
+            for (var j = 1; j < fv.length - 1; j++) {
+                curGroup.faceData.push(fv[0], fv[j], fv[j + 1]);
+            }
+        }
+    }
+
+    var meshes = [];
+    for (var g = 0; g < groups.length; g++) {
+        var gr = groups[g];
+        var fd = gr.faceData;
+        if (fd.length === 0) continue;
+
+        var vc = fd.length;
+        var pos = new Float32Array(vc * 3);
+        var uv = new Float32Array(vc * 2);
+        var nor = new Float32Array(vc * 3);
+
+        for (var ii = 0; ii < vc; ii++) {
+            var f = fd[ii];
+            var vi3 = f.vi * 3;
+            pos[ii * 3] = allV[vi3] || 0;
+            pos[ii * 3 + 1] = allV[vi3 + 1] || 0;
+            pos[ii * 3 + 2] = allV[vi3 + 2] || 0;
+
+            if (f.vti >= 0) {
+                var ti2 = f.vti * 2;
+                uv[ii * 2] = allVT[ti2] || 0;
+                uv[ii * 2 + 1] = allVT[ti2 + 1] || 0;
+            }
+
+            if (f.vni >= 0) {
+                var ni3 = f.vni * 3;
+                nor[ii * 3] = allVN[ni3] || 0;
+                nor[ii * 3 + 1] = allVN[ni3 + 1] || 0;
+                nor[ii * 3 + 2] = allVN[ni3 + 2] || 0;
+            } else {
+                nor[ii * 3 + 1] = 1;
+            }
+        }
+
+        // Center XZ
+        var minX = Infinity, maxX = -Infinity, minZ = Infinity, maxZ = -Infinity;
+        for (var ii = 0; ii < vc; ii++) {
+            var x = pos[ii * 3], z = pos[ii * 3 + 2];
+            if (x < minX) minX = x; if (x > maxX) maxX = x;
+            if (z < minZ) minZ = z; if (z > maxZ) maxZ = z;
+        }
+        var cx = (minX + maxX) * 0.5, cz = (minZ + maxZ) * 0.5;
+        for (var ii = 0; ii < vc; ii++) {
+            pos[ii * 3] -= cx;
+            pos[ii * 3 + 2] -= cz;
+        }
+
+        meshes.push({ name: gr.name, positions: pos, uvs: uv, normals: nor, triCount: vc / 3 });
+    }
+
+    return meshes;
+}
+
+/* ===== Globals ===== */
+var loadedMeshes = [];
+var spawnedInstances = [];
+var texture = null;
+var gl = null, canvas = null;
+var shaderProg = null, wireProg = null, gridProg = null;
+
+var camAngle = 0.5, camPitch = 0.4, camDist = 8;
+var camTgt = [0, 0.5, 0];
+var camAngleT = 0.5, camPitchT = 0.4, camDistT = 8;
+var camTgtT = [0, 0.5, 0];
+var SMOOTH = 0.1;
+
+var dragging = false, dragBtn = -1, lastM = [0, 0];
+var tileData = null, gridData = null;
+
+/* ===== GL Init ===== */
+function initGL() {
+    canvas = document.getElementById('glCanvas');
+    gl = canvas.getContext('webgl2', { antialias: true, alpha: false });
+    if (!gl) { alert('WebGL2 required'); return; }
+
+    resize();
+    window.addEventListener('resize', resize);
+
+    canvas.addEventListener('mousedown', function(e) {
+        dragging = true; dragBtn = e.button; lastM = [e.clientX, e.clientY]; e.preventDefault();
+    });
+    window.addEventListener('mouseup', function() { dragging = false; dragBtn = -1; });
+    canvas.addEventListener('mousemove', function(e) {
+        if (!dragging) return;
+        var dx = e.clientX - lastM[0], dy = e.clientY - lastM[1];
+        lastM = [e.clientX, e.clientY];
+        if (dragBtn === 0) {
+            camAngleT += dx * 0.008;
+            camPitchT = Math.max(-1.5, Math.min(1.5, camPitchT + dy * 0.008));
+        } else if (dragBtn === 2 || dragBtn === 1) {
+            var ca = Math.cos(camAngle), sa = Math.sin(camAngle);
+            var right = [sa, 0, -ca];
+            var cp2 = Math.cos(camPitch), sp2 = Math.sin(camPitch);
+            var fwd = [-ca * cp2, -sp2, -sa * cp2];
+            var up2 = [
+                right[1]*fwd[2]-right[2]*fwd[1],
+                right[2]*fwd[0]-right[0]*fwd[2],
+                right[0]*fwd[1]-right[1]*fwd[0]
+            ];
+            var s = camDist * 0.002;
+            camTgtT[0] -= (right[0]*dx - up2[0]*dy) * s;
+            camTgtT[1] -= (right[1]*dx - up2[1]*dy) * s;
+            camTgtT[2] -= (right[2]*dx - up2[2]*dy) * s;
+        }
+    });
+    canvas.addEventListener('wheel', function(e) {
+        camDistT *= 1 + e.deltaY * 0.001;
+        camDistT = Math.max(0.3, Math.min(200, camDistT));
+        e.preventDefault();
+    }, { passive: false });
+    canvas.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+
+    shaderProg = mkProg(VS_MAIN, FS_MAIN);
+    wireProg = mkProg(VS_WIRE, FS_WIRE);
+    gridProg = mkProg(VS_WIRE, FS_WIRE);
+
+    var wt = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, wt);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([255,255,255,255]));
+    texture = wt;
+
+    requestAnimationFrame(frame);
+}
+
+function resize() {
+    var r = canvas.parentElement.getBoundingClientRect();
+    canvas.width = r.width * devicePixelRatio;
+    canvas.height = r.height * devicePixelRatio;
+    if (gl) gl.viewport(0, 0, canvas.width, canvas.height);
+}
+
+/* ===== Shaders ===== */
+var VS_MAIN = `#version 300 es
+precision highp float;
+layout(location=0) in vec3 aP;
+layout(location=1) in vec2 aU;
+layout(location=2) in vec3 aN;
+layout(location=3) in float aH; // height ratio 0..1 for wind
+layout(location=4) in vec3 aRoot; // instance root position for wind phase
+
+uniform mat4 uVP;
+uniform float uNormalsUp;
+uniform float uWind;
+uniform float uTime;
+
+out vec2 vU;
+out vec3 vN;
+
+// Wind function matching the HLSL version
+vec3 applyWind(vec3 pos, vec3 root, float heightRatio, float windStrength, float time) {
+    if (windStrength < 0.001 || heightRatio < 0.001) return pos;
+
+    float phase = root.x * 0.7 + root.z * 0.5;
+    float gust = sin(time * 0.4 + root.x * 0.05 + root.z * 0.07) * 0.5 + 0.5;
+
+    float mainWave = sin(time * 2.2 + phase) * 0.6
+                   + sin(time * 3.7 + phase * 1.3) * 0.25
+                   + sin(time * 5.5 + phase * 2.1) * 0.15;
+
+    float strength = windStrength * (0.5 + 0.5 * gust);
+    float hFactor = heightRatio * heightRatio;
+    float bendAmount = mainWave * strength * hFactor;
+
+    vec3 windDir = normalize(vec3(0.8, 0.0, 0.6));
+    vec3 result = pos;
+    result.x += windDir.x * bendAmount * 0.5;
+    result.z += windDir.z * bendAmount * 0.5;
+    result.y -= abs(bendAmount) * 0.1 * hFactor;
+
+    return result;
+}
+
+void main(){
+    vec3 pos = applyWind(aP, aRoot, aH, uWind, uTime);
+
+    vec3 up = vec3(0.0, 1.0, 0.0);
+    vec3 n = normalize(mix(aN, up, uNormalsUp));
+
+    vU = aU;
+    vN = n;
+    gl_Position = uVP * vec4(pos, 1.0);
+}`;
+
+var FS_MAIN = `#version 300 es
+precision highp float;
+in vec2 vU;
+in vec3 vN;
+uniform sampler2D uT;
+uniform float uAC;
+out vec4 fc;
+void main(){
+    vec4 c = texture(uT, vU);
+    if(c.a < uAC) discard;
+    vec3 n = normalize(vN);
+    vec3 L = normalize(vec3(.5, 1, .3));
+    float d = max(dot(n, L), 0.0);
+    float db = max(dot(-n, L), 0.0);
+    float l = .35 + .65 * max(d, db * .7);
+    fc = vec4(c.rgb * l, 1.0);
+}`;
+
+var VS_WIRE = `#version 300 es
+precision highp float;
+layout(location=0) in vec3 aP;
+uniform mat4 uVP;
+uniform float uWind;
+uniform float uTime;
+void main(){
+    gl_Position = uVP * vec4(aP, 1.0);
+}`;
+
+var FS_WIRE = `#version 300 es
+precision highp float;
+uniform vec4 uC;
+out vec4 fc;
+void main(){ fc = uC; }`;
+
+function mkProg(vs, fs) {
+    var v = gl.createShader(gl.VERTEX_SHADER); gl.shaderSource(v,vs); gl.compileShader(v);
+    if(!gl.getShaderParameter(v,gl.COMPILE_STATUS)) console.error('VS:', gl.getShaderInfoLog(v));
+    var f = gl.createShader(gl.FRAGMENT_SHADER); gl.shaderSource(f,fs); gl.compileShader(f);
+    if(!gl.getShaderParameter(f,gl.COMPILE_STATUS)) console.error('FS:', gl.getShaderInfoLog(f));
+    var p = gl.createProgram(); gl.attachShader(p,v); gl.attachShader(p,f); gl.linkProgram(p);
+    if(!gl.getProgramParameter(p,gl.LINK_STATUS)) console.error('Link:', gl.getProgramInfoLog(p));
+    return p;
+}
+
+/* ===== Matrix ===== */
+function perspective(fov,asp,n,f){
+    var t=1/Math.tan(fov/2),nf=1/(n-f);
+    return new Float32Array([t/asp,0,0,0, 0,t,0,0, 0,0,(f+n)*nf,-1, 0,0,2*f*n*nf,0]);
+}
+function lookAt(e,c,u){
+    var zx=e[0]-c[0],zy=e[1]-c[1],zz=e[2]-c[2];
+    var l=Math.sqrt(zx*zx+zy*zy+zz*zz); zx/=l;zy/=l;zz/=l;
+    var xx=u[1]*zz-u[2]*zy, xy=u[2]*zx-u[0]*zz, xz=u[0]*zy-u[1]*zx;
+    l=Math.sqrt(xx*xx+xy*xy+xz*xz); xx/=l;xy/=l;xz/=l;
+    var yx=zy*xz-zz*xy, yy=zz*xx-zx*xz, yz=zx*xy-zy*xx;
+    return new Float32Array([xx,yx,zx,0, xy,yy,zy,0, xz,yz,zz,0,
+        -(xx*e[0]+xy*e[1]+xz*e[2]),-(yx*e[0]+yy*e[1]+yz*e[2]),-(zx*e[0]+zy*e[1]+zz*e[2]),1]);
+}
+function mul(a,b){
+    var r=new Float32Array(16);
+    for(var i=0;i<4;i++)for(var j=0;j<4;j++){r[j*4+i]=0;for(var k=0;k<4;k++)r[j*4+i]+=a[k*4+i]*b[j*4+k];}
+    return r;
+}
+
+/* ===== Transform ===== */
+function xfPos(x,y,z,inst){
+    var vx=x*inst.sx, vy=y*inst.sy, vz=z*inst.sz;
+    var c=Math.cos(inst.tz),s=Math.sin(inst.tz),tx=vx*c-vy*s,ty=vx*s+vy*c; vx=tx;vy=ty;
+    c=Math.cos(inst.tx);s=Math.sin(inst.tx); ty=vy*c-vz*s;var tz=vy*s+vz*c; vy=ty;vz=tz;
+    c=Math.cos(inst.ry);s=Math.sin(inst.ry); tx=vx*c+vz*s;tz=-vx*s+vz*c; vx=tx;vz=tz;
+    return [vx+inst.px, vy+inst.py, vz+inst.pz];
+}
+function xfNor(nx,ny,nz,inst){
+    var vx=nx,vy=ny,vz=nz;
+    var c=Math.cos(inst.tz),s=Math.sin(inst.tz),tx=vx*c-vy*s,ty=vx*s+vy*c; vx=tx;vy=ty;
+    c=Math.cos(inst.tx);s=Math.sin(inst.tx); ty=vy*c-vz*s;var tz=vy*s+vz*c; vy=ty;vz=tz;
+    c=Math.cos(inst.ry);s=Math.sin(inst.ry); tx=vx*c+vz*s;tz=-vx*s+vz*c; vx=tx;vz=tz;
+    var l=Math.sqrt(vx*vx+vy*vy+vz*vz)||1;
+    return [vx/l,vy/l,vz/l];
+}
+
+/* ===== Generation ===== */
+function generate() {
+    if (loadedMeshes.length === 0) { tileData = null; updateStats(); return; }
+
+    var tileSize = +document.getElementById('tileSize').value || 5;
+    var count = Math.max(1, +document.getElementById('spawnCount').value || 100);
+    var scatter = +document.getElementById('xzScatter').value || 0;
+    var yOff = +document.getElementById('yOffset').value || 0;
+    var sMin = +document.getElementById('scaleMin').value || 0.8;
+    var sMax = +document.getElementById('scaleMax').value || 1.2;
+    var syBias = +document.getElementById('scaleYBias').value || 0;
+    var uniS = document.getElementById('uniformScale').checked;
+    var ryMin = (+document.getElementById('rotYMin').value||0)*Math.PI/180;
+    var ryMax = (+document.getElementById('rotYMax').value||360)*Math.PI/180;
+    var tiltMax = (+document.getElementById('tiltMax').value||0)*Math.PI/180;
+    var seed = +document.getElementById('randomSeed').value || 42;
+    var roundness = +document.getElementById('roundness').value || 0;
+
+    var rng = new SeededRNG(seed);
+
+    var probs = [], pTotal = 0;
+    for (var i = 0; i < loadedMeshes.length; i++) {
+        var el = document.getElementById('prob_' + i);
+        var v = el ? +el.value : 50;
+        probs.push(v);
+        pTotal += v;
+    }
+    if (pTotal <= 0) { setStatus('All probabilities are 0'); return; }
+
+    var cumul = [], cc = 0;
+    for (var i = 0; i < probs.length; i++) { cc += probs[i]/pTotal; cumul.push(cc); }
+
+    var half = tileSize / 2;
+    var radius = half; // radius for circular placement
+
+    // For roundness: we generate more candidates and reject those outside the shape
+    // At roundness=0, shape is square; at roundness=1, shape is circle
+    spawnedInstances = [];
+    var n = 0;
+    var maxAttempts = count * 10; // prevent infinite loop
+    var attempts = 0;
+
+    // Grid-based placement with roundness rejection
+    var cols = Math.max(1, Math.round(Math.sqrt(count)));
+    var rows = Math.max(1, Math.ceil(count / cols));
+    var cw = tileSize / cols, ch = tileSize / rows;
+
+    // Pre-generate grid positions, then filter by roundness
+    var candidates = [];
+    for (var r2 = 0; r2 < rows; r2++) {
+        for (var c2 = 0; c2 < cols; c2++) {
+            var px = -half + (c2 + 0.5) * cw;
+            var pz = -half + (r2 + 0.5) * ch;
+            candidates.push([px, pz]);
+        }
+    }
+
+    // If roundness > 0, we may need extra candidates
+    // Use a hybrid approach: start with grid, add random fill for circle
+    if (roundness > 0) {
+        // Add extra random candidates for circular fill
+        for (var extra = 0; extra < count * 3; extra++) {
+            var rpx = rng.range(-half, half);
+            var rpz = rng.range(-half, half);
+            candidates.push([rpx, rpz]);
+        }
+    }
+
+    // Shuffle candidates with seeded RNG for fairness
+    for (var si = candidates.length - 1; si > 0; si--) {
+        var sj = Math.floor(rng.next() * (si + 1));
+        var tmp = candidates[si]; candidates[si] = candidates[sj]; candidates[sj] = tmp;
+    }
+
+    // Place instances, filtering by shape
+    var ci = 0;
+    while (n < count && ci < candidates.length) {
+        var cpx = candidates[ci][0] + rng.range(-scatter, scatter);
+        var cpz = candidates[ci][1] + rng.range(-scatter, scatter);
+        ci++;
+
+        // Shape test: interpolate between square and circle
+        var inSquare = Math.abs(cpx) <= half && Math.abs(cpz) <= half;
+        var dist = Math.sqrt(cpx * cpx + cpz * cpz);
+        var inCircle = dist <= radius;
+
+        // For roundness blend: at 0 use square, at 1 use circle
+        // A point must be inside the blended shape
+        if (roundness <= 0) {
+            if (!inSquare) continue;
+        } else if (roundness >= 1) {
+            if (!inCircle) continue;
+        } else {
+            // Blend: use superellipse-like test
+            // At roundness=0: max(|x|,|z|) <= half (square)
+            // At roundness=1: sqrt(x^2+z^2) <= half (circle)
+            // Interpolate the exponent: square uses Chebyshev (inf-norm), circle uses L2
+            // Use p-norm approach: p = 2 / (1 - roundness * 0.5) doesn't work well
+            // Simpler: blend the two distances
+            var squareDist = Math.max(Math.abs(cpx), Math.abs(cpz)) / half;
+            var circleDist = dist / radius;
+            var blendDist = squareDist * (1 - roundness) + circleDist * roundness;
+            if (blendDist > 1) continue;
+        }
+
+        var rv = rng.next(), mi = 0;
+        for (var ii = 0; ii < cumul.length; ii++) { if (rv <= cumul[ii]) { mi = ii; break; } }
+
+        var bs = rng.range(sMin, sMax);
+        var sx, sy, sz;
+        if (uniS) { sx = sz = bs; sy = bs + rng.range(0, syBias); }
+        else { sx = rng.range(sMin,sMax); sy = rng.range(sMin,sMax)+rng.range(0,syBias); sz = rng.range(sMin,sMax); }
+
+        spawnedInstances.push({
+            meshIdx: mi, px: cpx, py: yOff, pz: cpz,
+            sx: sx, sy: sy, sz: sz,
+            ry: rng.range(ryMin, ryMax),
+            tx: rng.range(-tiltMax, tiltMax),
+            tz: rng.range(-tiltMax, tiltMax)
+        });
+        n++;
+    }
+
+    buildBuffers();
+    updateStats();
+    setStatus('Generated ' + spawnedInstances.length + ' instances');
+}
+
+function buildBuffers() {
+    var tv = 0;
+    for (var i = 0; i < spawnedInstances.length; i++) tv += loadedMeshes[spawnedInstances[i].meshIdx].positions.length / 3;
+
+    var aP = new Float32Array(tv * 3);
+    var aU = new Float32Array(tv * 2);
+    var aN = new Float32Array(tv * 3);
+    var aH = new Float32Array(tv);       // height ratio per vertex
+    var aRoot = new Float32Array(tv * 3); // instance root position
+    var o3 = 0, o2 = 0, oH = 0;
+
+    for (var i = 0; i < spawnedInstances.length; i++) {
+        var inst = spawnedInstances[i];
+        var m = loadedMeshes[inst.meshIdx];
+        var vc = m.positions.length / 3;
+
+        // Compute Y bounds for this mesh instance to determine height ratio
+        var minY = Infinity, maxY = -Infinity;
+        for (var j = 0; j < vc; j++) {
+            var py = m.positions[j * 3 + 1];
+            if (py < minY) minY = py;
+            if (py > maxY) maxY = py;
+        }
+        var yRange = maxY - minY;
+        if (yRange < 0.0001) yRange = 1;
+
+        for (var j = 0; j < vc; j++) {
+            var p = xfPos(m.positions[j*3], m.positions[j*3+1], m.positions[j*3+2], inst);
+            aP[o3]=p[0]; aP[o3+1]=p[1]; aP[o3+2]=p[2];
+            var n = xfNor(m.normals[j*3], m.normals[j*3+1], m.normals[j*3+2], inst);
+            aN[o3]=n[0]; aN[o3+1]=n[1]; aN[o3+2]=n[2];
+
+            // Root position (instance base)
+            aRoot[o3] = inst.px;
+            aRoot[o3+1] = inst.py;
+            aRoot[o3+2] = inst.pz;
+
+            o3 += 3;
+            aU[o2]=m.uvs[j*2]; aU[o2+1]=m.uvs[j*2+1];
+            o2 += 2;
+
+            // Height ratio: 0 at bottom, 1 at top (in local mesh space before transform)
+            var heightRatio = (m.positions[j * 3 + 1] - minY) / yRange;
+            aH[oH] = Math.max(0, Math.min(1, heightRatio));
+            oH++;
+        }
+    }
+
+    if (tileData) {
+        gl.deleteBuffer(tileData.bp); gl.deleteBuffer(tileData.bu); gl.deleteBuffer(tileData.bn);
+        if (tileData.bh) gl.deleteBuffer(tileData.bh);
+        if (tileData.br) gl.deleteBuffer(tileData.br);
+        gl.deleteVertexArray(tileData.va); gl.deleteVertexArray(tileData.wva);
+    }
+
+    var va = gl.createVertexArray(); gl.bindVertexArray(va);
+    var bp = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, bp);
+    gl.bufferData(gl.ARRAY_BUFFER, aP, gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0,3,gl.FLOAT,false,0,0);
+    var bu = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, bu);
+    gl.bufferData(gl.ARRAY_BUFFER, aU, gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(1); gl.vertexAttribPointer(1,2,gl.FLOAT,false,0,0);
+    var bn = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, bn);
+    gl.bufferData(gl.ARRAY_BUFFER, aN, gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(2); gl.vertexAttribPointer(2,3,gl.FLOAT,false,0,0);
+    var bh = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, bh);
+    gl.bufferData(gl.ARRAY_BUFFER, aH, gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(3); gl.vertexAttribPointer(3,1,gl.FLOAT,false,0,0);
+    var br = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, br);
+    gl.bufferData(gl.ARRAY_BUFFER, aRoot, gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(4); gl.vertexAttribPointer(4,3,gl.FLOAT,false,0,0);
+    gl.bindVertexArray(null);
+
+    var wva = gl.createVertexArray(); gl.bindVertexArray(wva);
+    gl.bindBuffer(gl.ARRAY_BUFFER, bp);
+    gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0,3,gl.FLOAT,false,0,0);
+    gl.bindVertexArray(null);
+
+    tileData = { va: va, wva: wva, bp: bp, bu: bu, bn: bn, bh: bh, br: br, vc: tv, pos: aP, uvs: aU, nor: aN };
+    document.getElementById('exportBtn').disabled = false;
+}
+
+function updateStats() {
+    var tris = tileData ? Math.floor(tileData.vc / 3) : 0;
+    document.getElementById('triCount').textContent = 'Triangles: ' + tris.toLocaleString() + ' | Instances: ' + spawnedInstances.length;
+}
+
+function buildGrid() {
+    var sz = +document.getElementById('tileSize').value || 5;
+    var roundness = +document.getElementById('roundness').value || 0;
+    var h = sz / 2;
+
+    var verts = [];
+
+    if (roundness < 1) {
+        // Square border
+        verts.push(
+            -h,0,-h, h,0,-h, h,0,-h, h,0,h, h,0,h, -h,0,h, -h,0,h, -h,0,-h,
+            -h,0,0, h,0,0, 0,0,-h, 0,0,h
+        );
+    }
+
+    if (roundness > 0) {
+        // Circle border
+        var segments = 64;
+        var r = h;
+        for (var i = 0; i < segments; i++) {
+            var a1 = (i / segments) * Math.PI * 2;
+            var a2 = ((i + 1) / segments) * Math.PI * 2;
+            verts.push(
+                Math.cos(a1) * r, 0, Math.sin(a1) * r,
+                Math.cos(a2) * r, 0, Math.sin(a2) * r
+            );
+        }
+        // Cross lines
+        verts.push(-r,0,0, r,0,0, 0,0,-r, 0,0,r);
+    }
+
+    var v = new Float32Array(verts);
+
+    if (gridData) { gl.deleteBuffer(gridData.b); gl.deleteVertexArray(gridData.va); }
+    var va = gl.createVertexArray(); gl.bindVertexArray(va);
+    var b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b);
+    gl.bufferData(gl.ARRAY_BUFFER, v, gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0,3,gl.FLOAT,false,0,0);
+    gl.bindVertexArray(null);
+    gridData = { va: va, b: b, n: v.length / 3 };
+}
+
+/* ===== Render ===== */
+function lerp(a,b,t){ return a+(b-a)*t; }
+
+var startTime = performance.now() / 1000;
+
+function frame() {
+    requestAnimationFrame(frame);
+    if (!gl) return;
+
+    var currentTime = performance.now() / 1000 - startTime;
+
+    camAngle = lerp(camAngle, camAngleT, SMOOTH);
+    camPitch = lerp(camPitch, camPitchT, SMOOTH);
+    camDist = lerp(camDist, camDistT, SMOOTH);
+    camTgt[0] = lerp(camTgt[0], camTgtT[0], SMOOTH);
+    camTgt[1] = lerp(camTgt[1], camTgtT[1], SMOOTH);
+    camTgt[2] = lerp(camTgt[2], camTgtT[2], SMOOTH);
+
+    var bg = document.getElementById('bgColor').value;
+    gl.clearColor(parseInt(bg.substr(1,2),16)/255, parseInt(bg.substr(3,2),16)/255, parseInt(bg.substr(5,2),16)/255, 1);
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    gl.enable(gl.DEPTH_TEST); gl.depthFunc(gl.LESS); gl.disable(gl.CULL_FACE);
+
+    var asp = canvas.width / canvas.height;
+    var proj = perspective(0.785, asp, 0.01, 500);
+    var eye = [
+        camTgt[0] + Math.cos(camAngle)*Math.cos(camPitch)*camDist,
+        camTgt[1] + Math.sin(camPitch)*camDist,
+        camTgt[2] + Math.sin(camAngle)*Math.cos(camPitch)*camDist
+    ];
+    var vp = mul(proj, lookAt(eye, camTgt, [0,1,0]));
+
+    var normalsUp = +document.getElementById('normalsUp').value || 0;
+    var windStrength = +document.getElementById('windStrength').value || 0;
+
+    if (document.getElementById('showGrid').checked && gridData) {
+        gl.useProgram(gridProg);
+        gl.uniformMatrix4fv(gl.getUniformLocation(gridProg,'uVP'), false, vp);
+        gl.uniform4f(gl.getUniformLocation(gridProg,'uC'), 0.3,0.6,0.3,1);
+        var wLoc = gl.getUniformLocation(gridProg,'uWind');
+        if (wLoc) gl.uniform1f(wLoc, 0);
+        var tLoc = gl.getUniformLocation(gridProg,'uTime');
+        if (tLoc) gl.uniform1f(tLoc, 0);
+        gl.bindVertexArray(gridData.va);
+        gl.drawArrays(gl.LINES, 0, gridData.n);
+        gl.bindVertexArray(null);
+    }
+
+    if (tileData && tileData.vc > 0) {
+        var ac = +document.getElementById('alphaCutoff').value || 0;
+
+        gl.useProgram(shaderProg);
+        gl.uniformMatrix4fv(gl.getUniformLocation(shaderProg,'uVP'), false, vp);
+        gl.uniform1i(gl.getUniformLocation(shaderProg,'uT'), 0);
+        gl.uniform1f(gl.getUniformLocation(shaderProg,'uAC'), ac);
+        gl.uniform1f(gl.getUniformLocation(shaderProg,'uNormalsUp'), normalsUp);
+        gl.uniform1f(gl.getUniformLocation(shaderProg,'uWind'), windStrength);
+        gl.uniform1f(gl.getUniformLocation(shaderProg,'uTime'), currentTime);
+        gl.activeTexture(gl.TEXTURE0);
+        gl.bindTexture(gl.TEXTURE_2D, texture);
+        gl.bindVertexArray(tileData.va);
+        gl.drawArrays(gl.TRIANGLES, 0, tileData.vc);
+        gl.bindVertexArray(null);
+
+        if (document.getElementById('showWireframe').checked) {
+            gl.useProgram(wireProg);
+            gl.uniformMatrix4fv(gl.getUniformLocation(wireProg,'uVP'), false, vp);
+            gl.uniform4f(gl.getUniformLocation(wireProg,'uC'), 1,1,0,1);
+            var wLoc2 = gl.getUniformLocation(wireProg,'uWind');
+            if (wLoc2) gl.uniform1f(wLoc2, 0);
+            var tLoc2 = gl.getUniformLocation(wireProg,'uTime');
+            if (tLoc2) gl.uniform1f(tLoc2, 0);
+            gl.depthFunc(gl.LEQUAL);
+            gl.bindVertexArray(tileData.wva);
+            for (var i = 0; i < tileData.vc; i += 3) gl.drawArrays(gl.LINE_LOOP, i, 3);
+            gl.bindVertexArray(null);
+            gl.depthFunc(gl.LESS);
+        }
+    }
+}
+
+/* ===== Export ===== */
+function exportOBJ() {
+    if (!tileData) return;
+    var name = document.getElementById('meshName').value || 'GrassTile';
+    var sc = +document.getElementById('exportScale').value || 1;
+    var normalsUp = +document.getElementById('normalsUp').value || 0;
+    var p = tileData.pos, u = tileData.uvs, n = tileData.nor, vc = tileData.vc;
+
+    var lines = ['# Grass Tile Generator Export', '# ' + vc + ' vertices, ' + (vc/3) + ' triangles', 'o ' + name, 'g ' + name];
+    for (var i=0;i<vc;i++) lines.push('v '+(p[i*3]*sc).toFixed(6)+' '+(p[i*3+1]*sc).toFixed(6)+' '+(p[i*3+2]*sc).toFixed(6));
+    for (var i=0;i<vc;i++) lines.push('vt '+u[i*2].toFixed(6)+' '+(1.0 - u[i*2+1]).toFixed(6));
+
+    // Export normals with normalsUp blend baked in
+    for (var i=0;i<vc;i++) {
+        var nx = n[i*3], ny = n[i*3+1], nz = n[i*3+2];
+        // Blend toward up
+        var bx = nx * (1 - normalsUp);
+        var by = ny * (1 - normalsUp) + normalsUp;
+        var bz = nz * (1 - normalsUp);
+        var bl = Math.sqrt(bx*bx+by*by+bz*bz)||1;
+        lines.push('vn '+(bx/bl).toFixed(6)+' '+(by/bl).toFixed(6)+' '+(bz/bl).toFixed(6));
+    }
+
+    for (var i=0;i<vc;i+=3){ var a=i+1; lines.push('f '+a+'/'+a+'/'+a+' '+(a+1)+'/'+(a+1)+'/'+(a+1)+' '+(a+2)+'/'+(a+2)+'/'+(a+2)); }
+
+    var blob = new Blob([lines.join('\n')], {type:'text/plain'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a'); a.href=url; a.download=name+'.obj'; a.click();
+    URL.revokeObjectURL(url);
+    setStatus('Exported ' + name + '.obj \u2014 ' + vc + ' verts, ' + (vc/3) + ' tris');
+}
+
+/* ===== UI ===== */
+function setStatus(s) { document.getElementById('status').textContent = s; }
+
+function buildMeshList() {
+    var container = document.getElementById('meshList');
+    container.innerHTML = '';
+
+    document.getElementById('meshCount').textContent = String(loadedMeshes.length);
+
+    if (loadedMeshes.length === 0) {
+        var d = document.createElement('div');
+        d.className = 'no-meshes';
+        d.textContent = 'No meshes loaded.';
+        container.appendChild(d);
+        return;
+    }
+
+    var defProb = Math.round(100 / loadedMeshes.length);
+
+    for (var i = 0; i < loadedMeshes.length; i++) {
+        (function(idx) {
+            var mesh = loadedMeshes[idx];
+
+            var item = document.createElement('div');
+            item.className = 'mesh-item';
+
+            var header = document.createElement('div');
+            header.className = 'mesh-header';
+
+            var nameEl = document.createElement('span');
+            nameEl.className = 'mesh-name';
+            nameEl.textContent = mesh.name;
+            nameEl.title = mesh.name;
+
+            var infoEl = document.createElement('span');
+            infoEl.className = 'mesh-info';
+            infoEl.textContent = mesh.triCount + ' tris';
+
+            header.appendChild(nameEl);
+            header.appendChild(infoEl);
+            item.appendChild(header);
+
+            var probRow = document.createElement('div');
+            probRow.className = 'mesh-prob';
+
+            var probLbl = document.createElement('label');
+            probLbl.textContent = 'Probability:';
+
+            var probSlider = document.createElement('input');
+            probSlider.type = 'range';
+            probSlider.id = 'prob_' + idx;
+            probSlider.min = '0';
+            probSlider.max = '100';
+            probSlider.value = String(defProb);
+
+            var probValEl = document.createElement('span');
+            probValEl.className = 'prob-val';
+            probValEl.textContent = defProb + '%';
+
+            probSlider.addEventListener('input', function() {
+                probValEl.textContent = this.value + '%';
+                scheduleRegen();
+            });
+
+            probRow.appendChild(probLbl);
+            probRow.appendChild(probSlider);
+            probRow.appendChild(probValEl);
+            item.appendChild(probRow);
+
+            container.appendChild(item);
+        })(i);
+    }
+}
+
+var regenTimer = null;
+function scheduleRegen() {
+    if (regenTimer) clearTimeout(regenTimer);
+    regenTimer = setTimeout(function() { generate(); buildGrid(); }, 80);
+}
+
+/* ===== Slider value displays ===== */
+function setupSliderDisplay(sliderId, displayId) {
+    var slider = document.getElementById(sliderId);
+    var display = document.getElementById(displayId);
+    if (slider && display) {
+        slider.addEventListener('input', function() {
+            display.textContent = parseFloat(this.value).toFixed(2);
+        });
+    }
+}
+
+/* ===== File loading ===== */
+document.getElementById('objFile').addEventListener('change', function(e) {
+    var file = e.target.files[0];
+    if (!file) return;
+    setStatus('Loading ' + file.name + '...');
+    var reader = new FileReader();
+    reader.onload = function(ev) {
+        try {
+            loadedMeshes = parseOBJ(ev.target.result);
+            var tt = 0;
+            for (var i = 0; i < loadedMeshes.length; i++) tt += loadedMeshes[i].triCount;
+            setStatus('Loaded ' + loadedMeshes.length + ' mesh(es) from ' + file.name + ' (' + tt + ' source tris)');
+            buildMeshList();
+            generate();
+            buildGrid();
+            camDistT = (+document.getElementById('tileSize').value || 5) * 1.8;
+            camTgtT = [0, 0.5, 0];
+        } catch (err) {
+            setStatus('Error: ' + err.message);
+            console.error(err);
+        }
+    };
+    reader.readAsText(file);
+});
+
+document.getElementById('texFile').addEventListener('change', function(e) {
+    var file = e.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function(ev) {
+        var img = new Image();
+        img.onload = function() {
+            var t = gl.createTexture();
+            gl.bindTexture(gl.TEXTURE_2D, t);
+            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+            gl.generateMipmap(gl.TEXTURE_2D);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.REPEAT);
+            texture = t;
+            setStatus('Texture loaded: ' + img.width + '\u00d7' + img.height);
+        };
+        img.src = ev.target.result;
+    };
+    reader.readAsDataURL(file);
+});
+
+['tileSize','spawnCount','xzScatter','yOffset','scaleMin','scaleMax',
+ 'scaleYBias','uniformScale','rotYMin','rotYMax','tiltMax','randomSeed','roundness'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) {
+        el.addEventListener('input', scheduleRegen);
+        el.addEventListener('change', scheduleRegen);
+    }
+});
+
+document.getElementById('exportBtn').addEventListener('click', exportOBJ);
+document.getElementById('regenerateBtn').addEventListener('click', function() { generate(); buildGrid(); });
+
+window.addEventListener('load', function() {
+    initGL();
+    buildGrid();
+    setupSliderDisplay('normalsUp', 'normalsUpVal');
+    setupSliderDisplay('windStrength', 'windStrengthVal');
+    setupSliderDisplay('roundness', 'roundnessVal');
+});
+</script>
+</body>
+</html>
